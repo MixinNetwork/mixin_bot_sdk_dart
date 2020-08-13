@@ -1,0 +1,15 @@
+name: bot_api_dart_client
+description: Mixin API for Dart/Flutter
+version: 0.0.1
+homepage: https://github.com/MixinNetwork/bot_api_dart_client
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  cryptography: ^1.4.1
+
+dev_dependencies:
+  test: ^1.15.1
+  pedantic: ^1.9.2
+
