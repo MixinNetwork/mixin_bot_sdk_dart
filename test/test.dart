@@ -1,4 +1,3 @@
-import 'package:bot_api_dart_client/src/api/user_api.dart';
 import 'package:bot_api_dart_client/bot_api_dart_client.dart';
 import './config.dart';
 
