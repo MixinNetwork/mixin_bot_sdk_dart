@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'mixin_error.g.dart';
 
 @JsonSerializable()
-class MixinError extends Object {
+class MixinError {
   @JsonKey(name: 'status')
   int status;
 

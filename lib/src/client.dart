@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
 import 'auth.dart';
+import 'vo/mixin_response.dart';
 
 class Client {
   Dio dio;
@@ -29,7 +30,7 @@ class Client {
           );
       return options;
     }, onResponse: (Response response) async {
-      return response;
+      return MixinResponse.fromJson(response.data);
     }, onError: (DioError error) async {
       return error;
     }));
