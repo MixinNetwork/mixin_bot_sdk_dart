@@ -13,11 +13,11 @@ String signAuthenticationToken(
   final claims = JsonWebTokenClaims.fromJson({
     'uid': userId,
     'sid': sessionId,
-    "iat": (DateTime.now().millisecondsSinceEpoch / 1000).floor(),
-    "exp":
+    'iat': (DateTime.now().millisecondsSinceEpoch / 1000).floor(),
+    'exp':
         (DateTime.now().add(Duration(days: 365)).millisecondsSinceEpoch / 1000)
             .floor(),
-    "jti": Uuid().v4(),
+    'jti': Uuid().v4(),
     'sig': hex.encode(hash.bytes),
     'scp': 'FULL',
   });
