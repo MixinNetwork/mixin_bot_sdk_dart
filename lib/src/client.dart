@@ -21,12 +21,12 @@ class Client {
       options.headers['Mixin-Device-Id'] = deviceId;
       options.headers['Authorization'] = 'Bearer ' +
           signAuthenticationToken(
-            options.method,
-            options.path,
-            body,
             userId,
             sessionId,
             privateKey,
+            options.method,
+            options.path,
+            body,
           );
       return options;
     }, onResponse: (Response response) async {
