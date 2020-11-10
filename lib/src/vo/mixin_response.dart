@@ -20,13 +20,12 @@ class MixinResponse extends Object {
       _$MixinResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$MixinResponseToJson(this);
-}
 
-handleResponse(MixinResponse response,
-    {Function onSuccess, Function onFailure}) {
-  if (response.error != null) {
-    onFailure(response.error);
-  } else {
-    onSuccess(response.data);
+  void handleResponse({Function onSuccess, Function onFailure}) {
+    if (error != null) {
+      onFailure(error);
+    } else {
+      onSuccess(data);
+    }
   }
 }
