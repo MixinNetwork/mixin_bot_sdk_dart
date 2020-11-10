@@ -4,7 +4,11 @@ import './config.dart';
 void main() async {
   var client = Client('UA', 'zh', 'desktop', uid, sid, private);
   await getMe(client.dio).then((value) {
-    var user = User.fromJson(value.data['data']);
-    print(user.avatarUrl);
+    handleResponse(MixinResponse.fromJson(value.data),
+        onSuccess: (Map<String, dynamic> response) {
+          var user = User.fromJson(response);
+          print(user.toJson());
+        },
+        onFailure: (MixinError error) => {print(error.toJson())});
   });
 }
