@@ -149,7 +149,7 @@ packages:
     source: hosted
     version: "0.14.0"
   crypto:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: crypto
       url: "https://pub.dartlang.org"
@@ -352,7 +352,7 @@ packages:
     source: hosted
     version: "1.7.0"
   pedantic:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: pedantic
       url: "https://pub.dartlang.org"
