@@ -1,5 +1,6 @@
 library bot_api_dart_client;
 
+export 'src/mixin.dart';
 export 'src/client.dart';
 export 'src/api/user_api.dart';
 export 'src/vo/mixin_error.dart';

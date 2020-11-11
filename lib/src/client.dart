@@ -1,14 +1,17 @@
 import 'package:dio/dio.dart';
 
 import 'auth.dart';
+import 'mixin.dart';
 import 'vo/mixin_response.dart';
 
 class Client {
+  Mixin mixin = Mixin();
+
   Dio dio;
   String userId;
   String sessionId;
 
-  Client(String ua, userId, sessionId, privateKey) {
+  Client(String ua, [String userId, sessionId, privateKey]) {
     dio = Dio();
     dio.options.baseUrl = 'https://api.mixin.one';
     dio.options.connectTimeout = 10000; // 10s
@@ -21,9 +24,9 @@ class Client {
       options.headers['Accept-Language'] = 'en_US';
       options.headers['Authorization'] = 'Bearer ' +
           signAuthenticationToken(
-            userId,
-            sessionId,
-            privateKey,
+            userId ?? mixin.userId,
+            sessionId ?? mixin.sessionId,
+            privateKey ?? mixin.privateKey,
             options.method,
             options.path,
             body,

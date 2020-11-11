@@ -2,7 +2,8 @@ import 'package:bot_api_dart_client/bot_api_dart_client.dart';
 import './config.dart';
 
 void main() async {
-  var client = Client('UA', uid, sid, private);
+  Mixin.init(userId: uid, sessionId: sid, privateKey: private);
+  var client = Client('UA');
   await getMe(client.dio).then((response) {
     response.data.handleResponse<User>(
         onSuccess: (User user) {
