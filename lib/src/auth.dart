@@ -5,14 +5,13 @@ import 'package:cryptography/cryptography.dart';
 import 'package:jose/jose.dart';
 import 'package:uuid/uuid.dart';
 
+import './extension/string_extension.dart';
+
 String signAuthenticationToken(
-    String userId, sessionId, privateKey, method, uri, body) {
-  if (userId == null ||
-      sessionId == null ||
-      privateKey == null ||
-      userId == '' ||
-      sessionId == '' ||
-      privateKey == '') {
+    String userId, String sessionId, String privateKey, method, uri, body) {
+  if (userId.isNullOrEmpty ||
+      sessionId.isNullOrEmpty ||
+      privateKey.isNullOrEmpty) {
     return '';
   }
   final bytes = utf8.encode(method + uri + body);

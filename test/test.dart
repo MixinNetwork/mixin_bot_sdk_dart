@@ -5,6 +5,7 @@ import 'dart:io';
 void main() {
   testUserApi();
   testProvisioningId();
+  testStringExtension();
 }
 
 void testUserApi() async {
@@ -31,4 +32,25 @@ void testProvisioningId() {
               print(error.toJson());
             })
           });
+}
+
+void testStringExtension() {
+  String str;
+  if (str.isNullOrEmpty) {
+    print('empty or null');
+  } else {
+    print(str);
+  }
+  str = '';
+  if (str.isNullOrEmpty) {
+    print('empty or null');
+  } else {
+    print(str);
+  }
+  str = 'str';
+  if (str.isNullOrEmpty) {
+    print('empty or null');
+  } else {
+    print(str);
+  }
 }

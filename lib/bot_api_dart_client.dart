@@ -8,3 +8,4 @@ export 'src/vo/mixin_error.dart';
 export 'src/vo/mixin_response.dart';
 export 'src/vo/user.dart';
 export 'src/vo/provisioning.dart';
+export 'src/extension/string_extension.dart';
