@@ -1,5 +1,11 @@
 import 'package:dio/dio.dart';
 
-Future<Response> getProvisioningId(Dio dio, String deviceId) async {
-  return await dio.post('/provisionings', data: {'device': deviceId});
+class ProvisioningApi {
+  final Dio dio;
+
+  ProvisioningApi({this.dio});
+
+  Future<Response> getProvisioningId(String deviceId) async {
+    return await dio.post('/provisionings', data: {'device': deviceId});
+  }
 }

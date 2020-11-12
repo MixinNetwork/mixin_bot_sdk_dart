@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 
 import 'auth.dart';
 import 'mixin.dart';
+import 'api/provisionings_api.dart';
+import 'api/user_api.dart';
 import 'vo/mixin_response.dart';
 
 class Client {
@@ -10,6 +12,8 @@ class Client {
   Dio dio;
   String userId;
   String sessionId;
+  ProvisioningApi provisioningApi;
+  UserApi userApi;
 
   Client(String ua, [String userId, sessionId, privateKey]) {
     dio = Dio();
@@ -38,5 +42,8 @@ class Client {
     }, onError: (DioError error) async {
       return error;
     }));
+
+    userApi = UserApi(dio: dio);
+    provisioningApi = ProvisioningApi(dio: dio);
   }
 }
