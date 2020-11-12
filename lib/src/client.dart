@@ -17,6 +17,7 @@ class Client {
     dio.options.connectTimeout = 10000; // 10s
     dio.options.sendTimeout = 10000;
     dio.options.receiveTimeout = 10000;
+    dio.options.responseType = ResponseType.plain;
     dio.interceptors
         .add(InterceptorsWrapper(onRequest: (RequestOptions options) async {
       final body = (options.data ?? '').toString();
