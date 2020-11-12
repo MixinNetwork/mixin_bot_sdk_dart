@@ -13,10 +13,14 @@ class MixinError {
   @JsonKey(name: 'description')
   String description;
 
+  @JsonKey(name: 'extra')
+  String extra;
+
   MixinError(
     this.status,
     this.code,
     this.description,
+    this.extra,
   );
 
   factory MixinError.fromJson(Map<String, dynamic> json) =>
