@@ -1,9 +1,13 @@
 import 'package:bot_api_dart_client/bot_api_dart_client.dart';
 import './config.dart';
+import 'dart:io';
 
-void main() async {
-  Mixin.init(userId: uid, sessionId: sid, privateKey: private);
+void main() {
+  testUserApi();
+  testProvisioningId();
+}
 
+void testUserApi() async {
   var client = Client('UA', uid, sid, private);
 
   await client.userApi.getMe(client.dio).then((response) {
@@ -13,9 +17,12 @@ void main() async {
         },
         onFailure: (MixinError error) => {print(error.toJson())});
   });
+}
 
-  await client.provisioningApi
-      .getProvisioningId("deviceId")
+void testProvisioningId() {
+  var client = Client('UA');
+  client.provisioningApi
+      .getProvisioningId(Platform.operatingSystem)
       .then((response) => {
             response.data.handleResponse<Provisioning>(
                 onSuccess: (Provisioning provisioning) {

@@ -6,7 +6,7 @@ class UserApi {
 
   UserApi({this.dio});
 
-  Future<Response<MixinResponse>> getMe(Dio dio) async {
-    return await dio.get<MixinResponse>('/me');
+  Future<Response<MixinResponse>> getMe(Dio dio) {
+    return dio.get<MixinResponse>('/me');
   }
 }

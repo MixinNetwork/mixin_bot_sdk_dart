@@ -10,4 +10,8 @@ class ProvisioningApi {
   Future<Response<MixinResponse>> getProvisioningId(String deviceId) {
     return dio.post('/provisionings', data: {'device': deviceId});
   }
+
+  Future<Response<MixinResponse>> getProvisioning(String deviceId) {
+    return dio.get('/provisionings/$deviceId');
+  }
 }

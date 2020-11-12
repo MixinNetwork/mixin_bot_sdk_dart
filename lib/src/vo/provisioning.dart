@@ -8,11 +8,9 @@ class Provisioning {
   String deviceId;
   @JsonKey(name: 'expired_at')
   String expiredAt;
+  String secret;
 
-  Provisioning({
-    this.deviceId,
-    this.expiredAt,
-  });
+  Provisioning({this.deviceId, this.expiredAt, this.secret});
 
   factory Provisioning.fromJson(Map<String, dynamic> json) =>
       _$ProvisioningFromJson(json);
