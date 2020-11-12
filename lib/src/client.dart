@@ -29,7 +29,7 @@ class Client {
       options.headers['Accept-Language'] = 'en_US';
       options.headers['Authorization'] = 'Bearer ' +
           signAuthenticationToken(
-            userId ?? mixin.userId,
+            userId ?? mixin?.userId,
             sessionId ?? mixin?.sessionId,
             privateKey ?? mixin?.privateKey,
             options.method,
