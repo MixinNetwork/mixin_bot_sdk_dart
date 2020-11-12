@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:bot_api_dart_client/src/vo/mixin_response.dart';
+import '../vo/mixin_response.dart';
 
 class UserApi {
   final Dio dio;
