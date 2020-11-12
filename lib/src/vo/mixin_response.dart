@@ -3,6 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'mixin_error.dart';
 import 'user.dart';
 import 'app.dart';
+import 'provisioning.dart';
 
 part 'mixin_response.g.dart';
 
@@ -54,6 +55,8 @@ generateJsonForType(type, json) {
       return User.fromJson(json);
     case 'App':
       return App.fromJson(json);
+    case 'Provisioning':
+      return Provisioning.fromJson(json);
   }
   throw Exception('Unknown type');
 }

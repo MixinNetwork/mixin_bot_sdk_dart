@@ -3,7 +3,9 @@ import './config.dart';
 
 void main() async {
   Mixin.init(userId: uid, sessionId: sid, privateKey: private);
-  var client = Client('UA');
+
+  var client = Client('UA', uid, sid, private);
+
   await client.userApi.getMe(client.dio).then((response) {
     response.data.handleResponse<User>(
         onSuccess: (User user) {
@@ -11,4 +13,15 @@ void main() async {
         },
         onFailure: (MixinError error) => {print(error.toJson())});
   });
+
+  await client.provisioningApi
+      .getProvisioningId("deviceId")
+      .then((response) => {
+            response.data.handleResponse<Provisioning>(
+                onSuccess: (Provisioning provisioning) {
+              print(provisioning.toJson());
+            }, onFailure: (MixinError error) {
+              print(error.toJson());
+            })
+          });
 }

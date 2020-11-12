@@ -2,12 +2,12 @@ import 'package:dio/dio.dart';
 
 import 'auth.dart';
 import 'mixin.dart';
-import 'api/provisionings_api.dart';
+import 'api/provisioning_api.dart';
 import 'api/user_api.dart';
 import 'vo/mixin_response.dart';
 
 class Client {
-  Mixin mixin = Mixin();
+  Mixin mixin;
 
   Dio dio;
   String userId;
@@ -30,8 +30,8 @@ class Client {
       options.headers['Authorization'] = 'Bearer ' +
           signAuthenticationToken(
             userId ?? mixin.userId,
-            sessionId ?? mixin.sessionId,
-            privateKey ?? mixin.privateKey,
+            sessionId ?? mixin?.sessionId,
+            privateKey ?? mixin?.privateKey,
             options.method,
             options.path,
             body,

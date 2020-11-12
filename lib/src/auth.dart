@@ -7,6 +7,14 @@ import 'package:uuid/uuid.dart';
 
 String signAuthenticationToken(
     String userId, sessionId, privateKey, method, uri, body) {
+  if (userId == null ||
+      sessionId == null ||
+      privateKey == null ||
+      userId == '' ||
+      sessionId == '' ||
+      privateKey == '') {
+    return '';
+  }
   final bytes = utf8.encode(method + uri + body);
 
   final hash = sha256.hashSync(bytes);

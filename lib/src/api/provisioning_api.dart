@@ -7,7 +7,7 @@ class ProvisioningApi {
 
   ProvisioningApi({this.dio});
 
-  Future<Response<MixinResponse>> getProvisioningId(String deviceId) async {
-    return await dio.post('/provisionings', data: {'device': deviceId});
+  Future<Response<MixinResponse>> getProvisioningId(String deviceId) {
+    return dio.post('/provisionings', data: {'device': deviceId});
   }
 }
