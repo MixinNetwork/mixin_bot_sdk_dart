@@ -9,7 +9,11 @@ environment:
 dependencies:
   cryptography: ^1.4.1
   convert: ^2.1.1
-  jose: ^0.2.1+1
+  jose:
+    git:
+        url: git@github.com:Tougee/jose.git
+        ref: feature/eddsa
+
   sprintf: "^4.0.0"
   uuid: ^2.2.0
   dio: ^3.0.10
