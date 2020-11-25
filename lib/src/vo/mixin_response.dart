@@ -48,11 +48,13 @@ class MixinResponse extends Object {
 // ignore: always_declare_return_types
 generateJson<T>(json) {
   var type = T.toString();
-  if (T is List) {
+  if (T is List || type.startsWith('List')) {
     var itemType = type.substring(5, type.length - 1);
-    return json
-        ?.map((e) => e == null ? null : generateJsonForType(itemType, e))
-        ?.toList();
+    var tempList = _getListFromType(itemType);
+    json.forEach((itemJson) {
+      tempList.add(generateJsonForType(itemType, itemJson));
+    });
+    return tempList as T;
   } else {
     return generateJsonForType(type, json);
   }
@@ -63,13 +65,20 @@ generateJsonForType(type, json) {
   switch (type) {
     case 'User':
       return User.fromJson(json);
-    case 'List<User>': // need remove
-      var users = json as List<dynamic>;
-      return users.map((u) => User.fromJson(u)).toList();
     case 'App':
       return App.fromJson(json);
     case 'Provisioning':
       return Provisioning.fromJson(json);
   }
   throw Exception('Unknown type');
+}
+
+List _getListFromType(String type) {
+  switch (type) {
+    case 'User':
+      return <User>[];
+    case 'BannerEntity':
+      return <App>[];
+  }
+  return null;
 }
