@@ -21,9 +21,9 @@ class Client {
     dio.options.connectTimeout = 10000; // 10s
     dio.options.sendTimeout = 10000;
     dio.options.receiveTimeout = 10000;
-    dio.options.responseType = ResponseType.plain;
+    dio.options.responseType = ResponseType.json;
     dio.interceptors
-        .add(InterceptorsWrapper(onRequest: (RequestOptions options) async {
+        .add(InterceptorsWrapper(onRequest: (RequestOptions options) {
       final body = (options.data ?? '').toString();
       options.headers['User-Agent'] = ua;
       options.headers['Accept-Language'] = 'en_US';
@@ -38,7 +38,7 @@ class Client {
           );
       return options;
     }, onResponse: (Response response) async {
-      return MixinResponse.fromJson(response.data);
+      return response;
     }, onError: (DioError error) async {
       return error;
     }));

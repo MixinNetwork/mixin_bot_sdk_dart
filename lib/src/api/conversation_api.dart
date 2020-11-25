@@ -1,5 +1,6 @@
 import 'package:bot_api_dart_client/bot_api_dart_client.dart';
 import 'package:bot_api_dart_client/src/vo/conversation_request.dart';
+import 'package:bot_api_dart_client/src/vo/conversation_response.dart';
 import 'package:dio/dio.dart';
 
 import '../vo/mixin_response.dart';
@@ -9,16 +10,19 @@ class ConversationdApi {
 
   ConversationdApi({this.dio});
 
-  Future<Response<MixinResponse>> createConversation(
+  Future<MixinResponse<ConversationResponse>> createConversation(
       ConversationRequest request) {
-    return dio.post('/conversations', data: request);
+    return MixinResponse.request<ConversationResponse>(
+        dio.post('/conversations', data: request));
   }
 
-  Future<Response<MixinResponse>> getConversation(String id) {
-    return dio.get<MixinResponse>('/conversations/$id');
+  Future<MixinResponse<ConversationResponse>> getConversation(String id) {
+    return MixinResponse.request<ConversationResponse>(
+        dio.get('/conversations/$id'));
   }
 
-  Future<Response<MixinResponse>> updateConversation(String id) {
-    return dio.get<MixinResponse>('/conversations/$id');
+  Future<MixinResponse<ConversationResponse>> updateConversation(String id) {
+    return MixinResponse.request<ConversationResponse>(
+        dio.get('/conversations/$id'));
   }
 }

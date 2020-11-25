@@ -11,8 +11,7 @@ void testProvisioningId() {
   client.provisioningApi
       .getProvisioningId(Platform.operatingSystem)
       .then((response) => {
-            response.data.handleResponse<Provisioning>(
-                onSuccess: (Provisioning provisioning) {
+            response.handleResponse(onSuccess: (Provisioning provisioning) {
               print(provisioning.toJson());
             }, onFailure: (MixinError error) {
               print(error.toJson());

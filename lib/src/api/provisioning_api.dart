@@ -1,17 +1,20 @@
 import 'package:dio/dio.dart';
 
 import '../vo/mixin_response.dart';
+import '../vo/provisioning.dart';
 
 class ProvisioningApi {
   final Dio dio;
 
   ProvisioningApi({this.dio});
 
-  Future<Response<MixinResponse>> getProvisioningId(String deviceId) {
-    return dio.post('/provisionings', data: {'device': deviceId});
+  Future<MixinResponse<Provisioning>> getProvisioningId(String deviceId) {
+    return MixinResponse.request<Provisioning>(
+        dio.post('/provisionings', data: {'device': deviceId}));
   }
 
-  Future<Response<MixinResponse>> getProvisioning(String deviceId) {
-    return dio.get('/provisionings/$deviceId');
+  Future<MixinResponse<Provisioning>> getProvisioning(String deviceId) {
+    return MixinResponse.request<Provisioning>(
+        dio.get('/provisionings/$deviceId'));
   }
 }

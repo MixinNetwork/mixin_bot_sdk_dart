@@ -9,31 +9,34 @@ class UserApi {
 
   UserApi({this.dio});
 
-  Future<Response<MixinResponse>> getMe() {
-    return dio.get<MixinResponse>('/me');
+  Future<MixinResponse<User>> getMe() {
+    return MixinResponse.request<User>(dio.get('/me'));
   }
 
-  Future<Response<MixinResponse>> getUserById(String id) {
-    return dio.get<MixinResponse>('/users/$id');
+  Future<MixinResponse<User>> getUserById(String id) {
+    return MixinResponse.request<User>(dio.get('/users/$id'));
   }
 
-  Future<Response<MixinResponse>> getUsers(List<String> ids) {
-    return dio.post('/users/fetch', data: ids);
+  Future<MixinResponse<List<User>>> getUsers(List<String> ids) {
+    return MixinResponse.request<List<User>>(
+        dio.post('/users/fetch', data: ids));
   }
 
-  Future<Response<MixinResponse>> relationships(RelationshipRequest request) {
-    return dio.post('/relationships', data: request);
+  Future<MixinResponse<User>> relationships(RelationshipRequest request) {
+    return MixinResponse.request<User>(
+        dio.post('/relationships', data: request));
   }
 
-  Future<Response<MixinResponse>> report(RelationshipRequest request) {
-    return dio.post('/reports', data: request);
+  Future<MixinResponse<User>> report(RelationshipRequest request) {
+    return MixinResponse.request<User>(dio.post('/reports', data: request));
   }
 
-  Future<Response<MixinResponse>> blockingUsers() {
-    return dio.get<MixinResponse>('/blocking_users');
+  Future<MixinResponse<List<User>>> blockingUsers() {
+    return MixinResponse.request<List<User>>(dio.get('/blocking_users'));
   }
 
-  Future<Response<MixinResponse>> getSessions(List<String> ids) {
-    return dio.post('/sessions/fetch', data: ids);
+  Future<MixinResponse<List>> getSessions(List<String> ids) {
+    return MixinResponse.request<List<UserSession>>(
+        dio.post('/sessions/fetch', data: ids));
   }
 }
