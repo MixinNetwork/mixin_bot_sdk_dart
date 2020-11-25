@@ -5,25 +5,35 @@ import 'user.dart';
 import 'app.dart';
 import 'provisioning.dart';
 
-part 'mixin_response.g.dart';
-
-@JsonSerializable()
 class MixinResponse extends Object {
   @JsonKey(name: 'error')
   MixinError error;
 
   @JsonKey(name: 'data')
-  Map<String, dynamic> data;
+  dynamic data;
 
   MixinResponse(
     this.error,
     this.data,
   );
 
-  factory MixinResponse.fromJson(Map<String, dynamic> json) =>
-      _$MixinResponseFromJson(json);
+  MixinResponse.fromJson(Map<String, dynamic> json) {
+    error = json['error'] == null
+        ? null
+        : MixinError.fromJson(json['error'] as Map<String, dynamic>);
 
-  Map<String, dynamic> toJson() => _$MixinResponseToJson(this);
+    var dataJson = json['data'];
+    if (dataJson is Map<String, dynamic>) {
+      data = dataJson;
+    } else {
+      data = dataJson as List<dynamic>;
+    }
+  }
+
+  Map<String, dynamic> toJson(MixinResponse instance) => <String, dynamic>{
+        'error': instance.error,
+        'data': instance.data,
+      };
 
   void handleResponse<T>({Function onSuccess, Function onFailure}) {
     if (error != null) {
@@ -53,6 +63,9 @@ generateJsonForType(type, json) {
   switch (type) {
     case 'User':
       return User.fromJson(json);
+    case 'List<User>': // need remove
+      var users = json as List<dynamic>;
+      return users.map((u) => User.fromJson(u)).toList();
     case 'App':
       return App.fromJson(json);
     case 'Provisioning':

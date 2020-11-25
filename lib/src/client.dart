@@ -28,7 +28,7 @@ class Client {
       options.headers['User-Agent'] = ua;
       options.headers['Accept-Language'] = 'en_US';
       options.headers['Authorization'] = 'Bearer ' +
-          signAuthTokenWithRSA(
+          signAuthTokenWithEdDSA(
             userId ?? mixin?.userId,
             sessionId ?? mixin?.sessionId,
             privateKey ?? mixin?.privateKey,
