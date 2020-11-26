@@ -9,9 +9,9 @@ class User {
   String userId;
   @JsonKey(name: 'identity_number', nullable: false)
   String identityNumber;
-  @JsonKey(name: 'relationship')
+  @JsonKey(name: 'relationship', nullable: false)
   String relationship;
-  @JsonKey(name: 'biography')
+  @JsonKey(name: 'biography', nullable: false)
   String biography;
   @JsonKey(name: 'full_name')
   String fullName;

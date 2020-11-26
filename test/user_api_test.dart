@@ -6,16 +6,6 @@ void main() {
   group('user apis', () {
     var client = Client('UA', uid, sid, private);
 
-    test('test getMe', () async {
-      await client.userApi.getMe().then((response) {
-        response.handleResponse(
-            onSuccess: (User user) {
-              print(user.toJson());
-            },
-            onFailure: (MixinError error) => {print(error.toJson())});
-      });
-    });
-
     test('test getUsers', () async {
       await client.userApi.getUsers(uids).then((response) {
         response.handleResponse(

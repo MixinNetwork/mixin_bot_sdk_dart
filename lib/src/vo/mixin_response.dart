@@ -1,5 +1,4 @@
 import 'package:dio/src/response.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 import 'mixin_error.dart';
 import 'user.dart';
@@ -32,8 +31,6 @@ class MixinResponse<T> extends Object {
   }
 }
 
-class MixinResponseM {}
-
 dynamic generateJson<T>(json) {
   var type = T.toString();
   if (T is List || type.startsWith('List')) {
@@ -64,7 +61,7 @@ List _getListFromType(String type) {
   switch (type) {
     case 'User':
       return <User>[];
-    case 'BannerEntity':
+    case 'App':
       return <App>[];
   }
   return null;

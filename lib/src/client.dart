@@ -1,10 +1,11 @@
+import 'package:bot_api_dart_client/src/api/conversation_api.dart';
 import 'package:dio/dio.dart';
 
+import 'api/account_api.dart';
 import 'auth.dart';
 import 'mixin.dart';
 import 'api/provisioning_api.dart';
 import 'api/user_api.dart';
-import 'vo/mixin_response.dart';
 
 class Client {
   Mixin mixin;
@@ -14,6 +15,8 @@ class Client {
   String sessionId;
   ProvisioningApi provisioningApi;
   UserApi userApi;
+  ConversationdApi conversationdApi;
+  AccountApi accountApi;
 
   Client(String ua, [String userId, sessionId, privateKey]) {
     dio = Dio();
