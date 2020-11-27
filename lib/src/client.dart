@@ -1,10 +1,11 @@
+import 'package:bot_api_dart_client/src/api/conversation_api.dart';
 import 'package:dio/dio.dart';
 
+import 'api/account_api.dart';
 import 'auth.dart';
 import 'mixin.dart';
 import 'api/provisioning_api.dart';
 import 'api/user_api.dart';
-import 'vo/mixin_response.dart';
 
 class Client {
   Mixin mixin;
@@ -14,6 +15,8 @@ class Client {
   String sessionId;
   ProvisioningApi provisioningApi;
   UserApi userApi;
+  ConversationdApi conversationdApi;
+  AccountApi accountApi;
 
   Client(String ua, [String userId, sessionId, privateKey]) {
     dio = Dio();
@@ -21,14 +24,14 @@ class Client {
     dio.options.connectTimeout = 10000; // 10s
     dio.options.sendTimeout = 10000;
     dio.options.receiveTimeout = 10000;
-    dio.options.responseType = ResponseType.plain;
+    dio.options.responseType = ResponseType.json;
     dio.interceptors
-        .add(InterceptorsWrapper(onRequest: (RequestOptions options) async {
+        .add(InterceptorsWrapper(onRequest: (RequestOptions options) {
       final body = (options.data ?? '').toString();
       options.headers['User-Agent'] = ua;
       options.headers['Accept-Language'] = 'en_US';
       options.headers['Authorization'] = 'Bearer ' +
-          signAuthTokenWithRSA(
+          signAuthTokenWithEdDSA(
             userId ?? mixin?.userId,
             sessionId ?? mixin?.sessionId,
             privateKey ?? mixin?.privateKey,
@@ -38,7 +41,7 @@ class Client {
           );
       return options;
     }, onResponse: (Response response) async {
-      return MixinResponse.fromJson(response.data);
+      return response;
     }, onError: (DioError error) async {
       return error;
     }));

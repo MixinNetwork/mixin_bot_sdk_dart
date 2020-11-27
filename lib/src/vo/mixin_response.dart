@@ -1,55 +1,51 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:dio/src/response.dart';
 
 import 'mixin_error.dart';
 import 'user.dart';
 import 'app.dart';
 import 'provisioning.dart';
 
-part 'mixin_response.g.dart';
-
-@JsonSerializable()
-class MixinResponse extends Object {
-  @JsonKey(name: 'error')
+class MixinResponse<T> extends Object {
   MixinError error;
 
-  @JsonKey(name: 'data')
-  Map<String, dynamic> data;
+  T data;
 
   MixinResponse(
     this.error,
     this.data,
   );
 
-  factory MixinResponse.fromJson(Map<String, dynamic> json) =>
-      _$MixinResponseFromJson(json);
+  factory MixinResponse.fromJson(Map<String, dynamic> json) {
+    var error = json['error'] == null
+        ? null
+        : MixinError.fromJson(json['error'] as Map<String, dynamic>);
 
-  Map<String, dynamic> toJson() => _$MixinResponseToJson(this);
+    var dataJson = json['data'];
+    var data = dataJson == null ? null : generateJson<T>(dataJson);
+    return MixinResponse<T>(error, data);
+  }
 
-  void handleResponse<T>({Function onSuccess, Function onFailure}) {
-    if (error != null) {
-      onFailure(error);
-    } else {
-      var result = generateJson<T>(data);
-      onSuccess(result);
-    }
+  static Future<MixinResponse<T>> request<T>(Future<Response> future) async {
+    var response = (await future).data;
+    return MixinResponse<T>.fromJson(response);
   }
 }
 
-// ignore: always_declare_return_types
-generateJson<T>(json) {
+dynamic generateJson<T>(json) {
   var type = T.toString();
-  if (T is List) {
+  if (T is List || type.startsWith('List')) {
     var itemType = type.substring(5, type.length - 1);
-    return json
-        ?.map((e) => e == null ? null : generateJsonForType(itemType, e))
-        ?.toList();
+    var tempList = _getListFromType(itemType);
+    json.forEach((itemJson) {
+      tempList.add(_generateJsonForType(itemType, itemJson));
+    });
+    return tempList as T;
   } else {
-    return generateJsonForType(type, json);
+    return _generateJsonForType(type, json);
   }
 }
 
-// ignore: always_declare_return_types
-generateJsonForType(type, json) {
+dynamic _generateJsonForType(type, json) {
   switch (type) {
     case 'User':
       return User.fromJson(json);
@@ -59,4 +55,14 @@ generateJsonForType(type, json) {
       return Provisioning.fromJson(json);
   }
   throw Exception('Unknown type');
+}
+
+List _getListFromType(String type) {
+  switch (type) {
+    case 'User':
+      return <User>[];
+    case 'App':
+      return <App>[];
+  }
+  return null;
 }
