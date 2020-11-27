@@ -7,7 +7,9 @@ part of 'signal_key_count.dart';
 // **************************************************************************
 
 SignalKeyCount _$SignalKeyCountFromJson(Map<String, dynamic> json) {
-  return SignalKeyCount()..preKeyCount = json['one_time_pre_keys_count'] as int;
+  return SignalKeyCount(
+    preKeyCount: json['one_time_pre_keys_count'] as int,
+  );
 }
 
 Map<String, dynamic> _$SignalKeyCountToJson(SignalKeyCount instance) =>

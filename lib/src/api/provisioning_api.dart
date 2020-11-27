@@ -1,3 +1,4 @@
+import 'package:bot_api_dart_client/src/vo/request/provisioning_request.dart';
 import 'package:dio/dio.dart';
 
 import '../vo/mixin_response.dart';
@@ -16,5 +17,11 @@ class ProvisioningApi {
   Future<MixinResponse<Provisioning>> getProvisioning(String deviceId) {
     return MixinResponse.request<Provisioning>(
         dio.get('/provisionings/$deviceId'));
+  }
+
+  Future<MixinResponse<Provisioning>> verifyProvisioning(
+      ProvisioningRequest data) {
+    return MixinResponse.request<Provisioning>(
+        dio.post('/provisionings/verify', data: data));
   }
 }
