@@ -10,23 +10,12 @@ void main() {
     var client = Client('UA', uid, sid, private);
 
     test('test getMe', () async {
-      await client.accountApi.getMe().then((response) {
-        response.handleResponse(
-            onSuccess: (User user) {
-              print(user.toJson());
-            },
-            onFailure: (MixinError error) => {print(error.toJson())});
-      });
+      var resp = await client.accountApi.getMe();
+      print(resp.data.toJson());
     });
 
     test('test getSignalCountKey', () async {
-      await client.accountApi.getSignalKeyCount().then((response) {
-        response.handleResponse(
-            onSuccess: (SignalKeyCount signalKeyCount) {
-              print(signalKeyCount.toJson());
-            },
-            onFailure: (MixinError error) => {print(error.toJson())});
-      });
+      // await client.accountApi.getSignalKeyCount();
     });
 
     test('test logout', () async {

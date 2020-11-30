@@ -48,5 +48,6 @@ class Client {
 
     userApi = UserApi(dio: dio);
     provisioningApi = ProvisioningApi(dio: dio);
+    accountApi = AccountApi(dio: dio);
   }
 }
