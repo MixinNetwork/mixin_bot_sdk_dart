@@ -1,4 +1,4 @@
-import 'package:bot_api_dart_client/src/vo/participant_request.dart';
+import '../vo/participant_request.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'conversation_request.g.dart';

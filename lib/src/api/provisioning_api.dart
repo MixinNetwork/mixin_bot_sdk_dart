@@ -1,8 +1,8 @@
-import 'package:bot_api_dart_client/src/vo/request/provisioning_request.dart';
 import 'package:dio/dio.dart';
 
 import '../vo/mixin_response.dart';
 import '../vo/provisioning.dart';
+import '../vo/request/provisioning_request.dart';
 
 class ProvisioningApi {
   final Dio dio;

@@ -1,7 +1,7 @@
-import 'package:bot_api_dart_client/src/vo/signal_key_count.dart';
 import 'package:dio/dio.dart';
 
 import '../vo/mixin_response.dart';
+import '../vo/signal_key_count.dart';
 import '../vo/user.dart';
 
 class AccountApi {

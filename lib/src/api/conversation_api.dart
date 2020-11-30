@@ -1,6 +1,5 @@
-import 'package:bot_api_dart_client/bot_api_dart_client.dart';
-import 'package:bot_api_dart_client/src/vo/conversation_request.dart';
-import 'package:bot_api_dart_client/src/vo/conversation_response.dart';
+import 'package:mixin_bot_sdk_dart/src/vo/conversation_request.dart';
+import 'package:mixin_bot_sdk_dart/src/vo/conversation_response.dart';
 import 'package:dio/dio.dart';
 
 import '../vo/mixin_response.dart';

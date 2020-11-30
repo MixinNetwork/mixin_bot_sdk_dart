@@ -1,4 +1,4 @@
-library bot_api_dart_client;
+library mixin_bot_sdk_dart;
 
 export 'src/mixin.dart';
 export 'src/client.dart';

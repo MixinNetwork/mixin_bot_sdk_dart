@@ -1,4 +1,4 @@
-import 'package:bot_api_dart_client/src/api/conversation_api.dart';
+import 'package:mixin_bot_sdk_dart/src/api/conversation_api.dart';
 import 'package:dio/dio.dart';
 
 import 'api/account_api.dart';

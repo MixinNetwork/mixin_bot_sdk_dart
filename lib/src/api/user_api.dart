@@ -1,7 +1,8 @@
-import 'package:bot_api_dart_client/bot_api_dart_client.dart';
-import 'package:bot_api_dart_client/src/vo/relationship_request.dart';
 import 'package:dio/dio.dart';
 
+import '../vo/user.dart';
+import '../vo/user_session.dart';
+import '../vo/relationship_request.dart';
 import '../vo/mixin_response.dart';
 
 class UserApi {
