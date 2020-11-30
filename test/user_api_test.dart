@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:bot_api_dart_client/bot_api_dart_client.dart';
+import 'package:mixin_bot_sdk_dart/mixin_bot_sdk_dart.dart';
 import 'config.dart';
 
 void main() {
