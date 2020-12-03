@@ -11,7 +11,6 @@ MixinError _$MixinErrorFromJson(Map<String, dynamic> json) {
     json['status'] as int,
     json['code'] as int,
     json['description'] as String,
-    json['extra'] as String,
   );
 }
 
@@ -20,5 +19,4 @@ Map<String, dynamic> _$MixinErrorToJson(MixinError instance) =>
       'status': instance.status,
       'code': instance.code,
       'description': instance.description,
-      'extra': instance.extra,
     };
