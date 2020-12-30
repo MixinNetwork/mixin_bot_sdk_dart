@@ -1,9 +1,10 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'mixin_error.g.dart';
 
 @JsonSerializable()
-class MixinError {
+class MixinError with EquatableMixin {
   @JsonKey(name: 'status')
   int status;
 
@@ -23,4 +24,11 @@ class MixinError {
       _$MixinErrorFromJson(json);
 
   Map<String, dynamic> toJson() => _$MixinErrorToJson(this);
+
+  @override
+  List<Object> get props => [
+        status,
+        code,
+        description,
+      ];
 }

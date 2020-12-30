@@ -1,9 +1,10 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'provisioning_request.g.dart';
 
 @JsonSerializable()
-class ProvisioningRequest {
+class ProvisioningRequest with EquatableMixin {
   @JsonKey(name: 'user_id')
   String userId;
   @JsonKey(name: 'session_id')
@@ -18,18 +19,31 @@ class ProvisioningRequest {
   @JsonKey(name: 'registration_id')
   String registrationId;
 
-  ProvisioningRequest(
-      {this.userId,
-      this.sessionId,
-      this.sessionSecret,
-      this.code,
-      this.platform,
-      this.platformVersion,
-      this.purpose,
-      this.registrationId});
+  ProvisioningRequest({
+    this.userId,
+    this.sessionId,
+    this.sessionSecret,
+    this.code,
+    this.platform,
+    this.platformVersion,
+    this.purpose,
+    this.registrationId,
+  });
 
   factory ProvisioningRequest.fromJson(Map<String, dynamic> json) =>
       _$ProvisioningRequestFromJson(json);
 
   Map<String, dynamic> toJson() => _$ProvisioningRequestToJson(this);
+
+  @override
+  List<Object> get props => [
+    userId,
+    sessionId,
+    sessionSecret,
+    code,
+    platform,
+    platformVersion,
+    purpose,
+    registrationId,
+  ];
 }

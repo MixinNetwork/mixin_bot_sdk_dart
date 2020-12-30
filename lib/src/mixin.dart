@@ -7,10 +7,11 @@ class Mixin {
     return _instance;
   }
 
-  Mixin._(
-      {@required this.userId,
-      @required this.sessionId,
-      @required this.privateKey});
+  Mixin._({
+    @required this.userId,
+    @required this.sessionId,
+    @required this.privateKey,
+  });
 
   @visibleForTesting
   static void reset() {

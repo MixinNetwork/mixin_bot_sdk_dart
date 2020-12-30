@@ -6,8 +6,6 @@ import 'package:cryptography/cryptography.dart';
 import 'package:jose/jose.dart';
 import 'package:uuid/uuid.dart';
 
-import './extension/string_extension.dart';
-
 String signAuthTokenWithRSA(
     String userId, String sessionId, String privateKey, method, uri, body) {
   return _signAuthenticationToken(
@@ -22,9 +20,8 @@ String signAuthTokenWithEdDSA(
 
 String _signAuthenticationToken(String userId, String sessionId,
     String privateKey, method, uri, body, bool isRSA) {
-  if (userId.isNullOrEmpty ||
-      sessionId.isNullOrEmpty ||
-      privateKey.isNullOrEmpty) {
+  if ([userId, sessionId, privateKey]
+      .any((element) => element?.isEmpty ?? true)) {
     return '';
   }
   final bytes = utf8.encode(method + uri + body);

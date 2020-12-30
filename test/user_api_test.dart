@@ -5,7 +5,7 @@ import 'config.dart';
 void main() {
   Mixin.init(userId: uid, sessionId: sid, privateKey: private);
   group('user apis', () {
-    var client = Client('UA', uid, sid, private);
+    var client = Client(userId: uid, sessionId: sid, privateKey: private);
 
     test('test getUsers', () async {
       await client.userApi.getUsers(uids).then((response) {
@@ -62,7 +62,7 @@ void main() {
   });
 
   test('test getSessions', () async {
-    var client = Client('UA', uid, sid, private);
+    var client = Client(userId: uid, sessionId: sid, privateKey: private);
     await client.userApi.getSessions(uids).then((response) {
       response.handleResponse(
           onSuccess: (List<UserSession> userSessions) {

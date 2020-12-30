@@ -7,10 +7,10 @@ import 'config.dart';
 
 void main() {
   group('test conversation apis', () {
-    var client = Client('UA', uid, sid, private);
+    var client = Client(userId: uid, sessionId: sid, privateKey: private);
 
     test('test createConversation', () async {
-      await client.conversationdApi
+      await client.conversationApi
           .createConversation(createConversationRequest)
           .then((response) {
         response.handleResponse(
@@ -22,7 +22,7 @@ void main() {
     });
 
     test('test getConversation', () async {
-      await client.conversationdApi.getConversation(cid).then((response) {
+      await client.conversationApi.getConversation(cid).then((response) {
         response.handleResponse(
             onSuccess: (ConversationResponse conversationResponse) {
               print(conversationResponse.toJson());
@@ -32,7 +32,7 @@ void main() {
     });
 
     test('test updateConversation', () async {
-      await client.conversationdApi.updateConversation(cid).then((response) {
+      await client.conversationApi.updateConversation(cid).then((response) {
         response.handleResponse(
             onSuccess: (ConversationResponse conversationResponse) {
               print(conversationResponse.toJson());
