@@ -8,33 +8,27 @@ import 'api/provisioning_api.dart';
 import 'api/user_api.dart';
 
 class Client {
-  Mixin mixin;
-
-  Dio dio;
-  String userId;
-  String sessionId;
-  ProvisioningApi provisioningApi;
-  UserApi userApi;
-  ConversationdApi conversationdApi;
-  AccountApi accountApi;
-
-  Client(String ua, [String userId, sessionId, privateKey]) {
-    dio = Dio();
-    dio.options.baseUrl = 'https://api.mixin.one';
-    dio.options.connectTimeout = 10000; // 10s
-    dio.options.sendTimeout = 10000;
-    dio.options.receiveTimeout = 10000;
-    dio.options.responseType = ResponseType.json;
-    dio.interceptors
+  Client({
+    String userId,
+    String sessionId,
+    String privateKey,
+    BaseOptions dioOptions,
+  }) {
+    _dio = Dio(dioOptions);
+    _dio.options.baseUrl = 'https://api.mixin.one';
+    _dio.options.connectTimeout ??= 10000;
+    _dio.options.sendTimeout ??= 10000;
+    _dio.options.receiveTimeout ??= 10000;
+    _dio.options.responseType = ResponseType.json;
+    _dio.interceptors
         .add(InterceptorsWrapper(onRequest: (RequestOptions options) {
       final body = (options.data ?? '').toString();
-      options.headers['User-Agent'] = ua;
-      options.headers['Accept-Language'] = 'en_US';
+      options.headers['Accept-Language'] ??= 'en_US';
       options.headers['Authorization'] = 'Bearer ' +
           signAuthTokenWithEdDSA(
-            userId ?? mixin?.userId,
-            sessionId ?? mixin?.sessionId,
-            privateKey ?? mixin?.privateKey,
+            userId ?? _mixin?.userId,
+            sessionId ?? _mixin?.sessionId,
+            privateKey ?? _mixin?.privateKey,
             options.method,
             options.path,
             body,
@@ -46,8 +40,27 @@ class Client {
       return error;
     }));
 
-    userApi = UserApi(dio: dio);
-    provisioningApi = ProvisioningApi(dio: dio);
-    accountApi = AccountApi(dio: dio);
+    _userApi = UserApi(dio: _dio);
+    _provisioningApi = ProvisioningApi(dio: _dio);
+    _accountApi = AccountApi(dio: _dio);
+    _conversationApi = ConversationApi(dio: _dio);
   }
+
+  Mixin _mixin;
+
+  Dio _dio;
+  ProvisioningApi _provisioningApi;
+  UserApi _userApi;
+  ConversationApi _conversationApi;
+  AccountApi _accountApi;
+
+  Dio get dio => _dio;
+
+  AccountApi get accountApi => _accountApi;
+
+  ConversationApi get conversationApi => _conversationApi;
+
+  UserApi get userApi => _userApi;
+
+  ProvisioningApi get provisioningApi => _provisioningApi;
 }

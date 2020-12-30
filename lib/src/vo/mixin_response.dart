@@ -1,11 +1,12 @@
 import 'package:dio/src/response.dart';
+import 'package:equatable/equatable.dart';
 
 import 'mixin_error.dart';
 import 'user.dart';
 import 'app.dart';
 import 'provisioning.dart';
 
-class MixinResponse<T> extends Object {
+class MixinResponse<T> with EquatableMixin {
   MixinError error;
 
   T data;
@@ -29,6 +30,12 @@ class MixinResponse<T> extends Object {
     var response = (await future).data;
     return MixinResponse<T>.fromJson(response);
   }
+
+  @override
+  List<Object> get props => [
+        error,
+        data,
+      ];
 }
 
 dynamic generateJson<T>(json) {

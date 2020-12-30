@@ -4,10 +4,10 @@ import 'package:dio/dio.dart';
 
 import '../vo/mixin_response.dart';
 
-class ConversationdApi {
+class ConversationApi {
   final Dio dio;
 
-  ConversationdApi({this.dio});
+  ConversationApi({this.dio});
 
   Future<MixinResponse<ConversationResponse>> createConversation(
       ConversationRequest request) {

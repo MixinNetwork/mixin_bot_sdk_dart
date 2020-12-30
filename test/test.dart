@@ -3,11 +3,10 @@ import 'dart:io';
 
 void main() {
   testProvisioningId();
-  testStringExtension();
 }
 
 void testProvisioningId() {
-  var client = Client('UA');
+  var client = Client();
   client.provisioningApi
       .getProvisioningId(Platform.operatingSystem)
       .then((response) => {
@@ -19,23 +18,3 @@ void testProvisioningId() {
           });
 }
 
-void testStringExtension() {
-  String str;
-  if (str.isNullOrEmpty) {
-    print('empty or null');
-  } else {
-    print(str);
-  }
-  str = '';
-  if (str.isNullOrEmpty) {
-    print('empty or null');
-  } else {
-    print(str);
-  }
-  str = 'str';
-  if (str.isNullOrEmpty) {
-    print('empty or null');
-  } else {
-    print(str);
-  }
-}

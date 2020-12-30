@@ -1,13 +1,20 @@
+import 'package:dio/dio.dart';
 import 'package:mixin_bot_sdk_dart/mixin_bot_sdk_dart.dart';
 import 'package:mixin_bot_sdk_dart/src/client.dart';
-import 'package:mixin_bot_sdk_dart/src/vo/signal_key_count.dart';
 import 'package:test/test.dart';
 
 import 'config.dart';
 
 void main() {
   group('user apis', () {
-    var client = Client('UA', uid, sid, private);
+    var client = Client(
+      userId: uid,
+      sessionId: sid,
+      privateKey: private,
+      dioOptions: BaseOptions(
+        baseUrl: 'fuck',
+      ),
+    );
 
     test('test getMe', () async {
       var resp = await client.accountApi.getMe();

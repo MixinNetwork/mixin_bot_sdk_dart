@@ -1,9 +1,10 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'conversation.g.dart';
 
 @JsonSerializable()
-class Conversation {
+class Conversation with EquatableMixin {
   @JsonKey(name: 'conversation_id', nullable: false)
   String conversationId;
   @JsonKey(name: 'owner_id', nullable: true)
@@ -33,26 +34,45 @@ class Conversation {
   @JsonKey(name: 'mute_until', nullable: true)
   String muteUntil;
 
-  Conversation(
-      {this.conversationId,
-      this.name,
-      this.ownerId,
-      this.category,
-      this.announcement,
-      this.iconUrl,
-      this.createdAt,
-      this.pinTime,
-      this.lastMessageId,
-      this.lastReadMessageId,
-      this.unseenMessageCount,
-      this.status,
-      this.draft,
-      this.muteUntil});
+  Conversation({
+    this.conversationId,
+    this.name,
+    this.ownerId,
+    this.category,
+    this.announcement,
+    this.iconUrl,
+    this.createdAt,
+    this.pinTime,
+    this.lastMessageId,
+    this.lastReadMessageId,
+    this.unseenMessageCount,
+    this.status,
+    this.draft,
+    this.muteUntil,
+  });
 
   factory Conversation.fromJson(Map<String, dynamic> json) =>
       _$ConversationFromJson(json);
 
   Map<String, dynamic> toJson() => _$ConversationToJson(this);
+
+  @override
+  List<Object> get props => [
+    conversationId,
+    name,
+    ownerId,
+    category,
+    announcement,
+    iconUrl,
+    createdAt,
+    pinTime,
+    lastMessageId,
+    lastReadMessageId,
+    unseenMessageCount,
+    status,
+    draft,
+    muteUntil,
+  ];
 }
 
 enum ConversationCategory { contact, group }

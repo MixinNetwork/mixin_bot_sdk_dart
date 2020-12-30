@@ -1,9 +1,10 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'app.g.dart';
 
 @JsonSerializable()
-class App {
+class App with EquatableMixin {
   @JsonKey(name: 'user_id')
   String appId;
   @JsonKey(name: 'app_number')
@@ -31,22 +32,40 @@ class App {
   @JsonKey(name: 'updated_at')
   String updatedAt;
 
-  App(
-      {this.appId,
-      this.appNumber,
-      this.homeUri,
-      this.redirectUri,
-      this.name,
-      this.iconUrl,
-      this.category,
-      this.description,
-      this.capabilities,
-      this.appSecret,
-      this.creatorId,
-      this.resourcePatterns,
-      this.updatedAt});
+  App({
+    this.appId,
+    this.appNumber,
+    this.homeUri,
+    this.redirectUri,
+    this.name,
+    this.iconUrl,
+    this.category,
+    this.description,
+    this.capabilities,
+    this.appSecret,
+    this.creatorId,
+    this.resourcePatterns,
+    this.updatedAt,
+  });
 
   factory App.fromJson(Map<String, dynamic> json) => _$AppFromJson(json);
 
   Map<String, dynamic> toJson() => _$AppToJson(this);
+
+  @override
+  List<Object> get props => [
+    appId,
+    appNumber,
+    homeUri,
+    redirectUri,
+    name,
+    iconUrl,
+    category,
+    description,
+    capabilities,
+    appSecret,
+    creatorId,
+    resourcePatterns,
+    updatedAt,
+  ];
 }
