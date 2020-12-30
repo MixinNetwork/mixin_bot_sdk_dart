@@ -3,43 +3,182 @@ import 'dart:typed_data';
 import 'package:collection/collection.dart';
 import 'package:mixin_bot_sdk_dart/src/crypto_util.dart';
 import 'package:test/test.dart';
-import 'package:ed25519_edwards/ed25519_edwards.dart';
-import 'package:ed25519_edwards/src/edwards25519.dart';
 
 void main() {
   test('test curve25519 conversion', () {
-    var keyPair = generateKey();
-    var privateKey = keyPair.privateKey;
-    var publicKey = keyPair.publicKey;
+    var publicKey = Uint8List.fromList([
+      147,
+      193,
+      19,
+      201,
+      96,
+      200,
+      216,
+      248,
+      19,
+      54,
+      49,
+      150,
+      150,
+      167,
+      41,
+      75,
+      87,
+      242,
+      28,
+      199,
+      153,
+      217,
+      6,
+      224,
+      84,
+      169,
+      210,
+      80,
+      186,
+      202,
+      128,
+      201
+    ]);
+    var privateKey = Uint8List.fromList([
+      126,
+      51,
+      73,
+      128,
+      30,
+      5,
+      236,
+      244,
+      27,
+      127,
+      26,
+      150,
+      49,
+      250,
+      179,
+      252,
+      107,
+      36,
+      94,
+      118,
+      231,
+      79,
+      230,
+      175,
+      74,
+      217,
+      163,
+      61,
+      162,
+      214,
+      235,
+      156,
+      147,
+      193,
+      19,
+      201,
+      96,
+      200,
+      216,
+      248,
+      19,
+      54,
+      49,
+      150,
+      150,
+      167,
+      41,
+      75,
+      87,
+      242,
+      28,
+      199,
+      153,
+      217,
+      6,
+      224,
+      84,
+      169,
+      210,
+      80,
+      186,
+      202,
+      128,
+      201
+    ]);
+    var targetPrivate = Uint8List.fromList([
+      232,
+      23,
+      164,
+      168,
+      212,
+      159,
+      250,
+      121,
+      48,
+      244,
+      252,
+      13,
+      183,
+      100,
+      82,
+      162,
+      219,
+      106,
+      10,
+      171,
+      30,
+      240,
+      31,
+      208,
+      91,
+      201,
+      15,
+      179,
+      136,
+      192,
+      210,
+      87
+    ]);
+    var targetPublic = Uint8List.fromList([
+      159,
+      128,
+      169,
+      96,
+      138,
+      29,
+      242,
+      209,
+      248,
+      250,
+      1,
+      148,
+      133,
+      194,
+      107,
+      237,
+      154,
+      18,
+      40,
+      50,
+      51,
+      58,
+      81,
+      213,
+      200,
+      152,
+      8,
+      126,
+      7,
+      140,
+      6,
+      47
+    ]);
 
-    var curve25519Private = privateKeyToCurve25519(privateKey.bytes);
+    var curve25519PrivateKey = privateKeyToCurve25519(privateKey);
+    assert(ListEquality().equals(curve25519PrivateKey, targetPrivate));
 
-    // Calculate Ed25519 public key from Curve25519 private key
-    var A = ExtendedGroupElement();
-    var edPublic = Uint8List(32);
-    GeScalarMultBase(A, curve25519Private);
-    A.ToBytes(edPublic);
-
-    assert(ListEquality().equals(edPublic, publicKey.bytes));
-
-    var curve25519PublicKey2 = publicKeyToCurve25519(publicKey.bytes);
-
-    // Calculate Ed25519 public key from Curve25519 public key
-    curve25519PublicKey2[31] &= 0x7F;
-    var edY = FieldElement();
-    var one = FieldElement();
-    var montX = FieldElement();
-    var montXMinusOne = FieldElement();
-    var montXPlusOne = FieldElement();
-    FeFromBytes(montX, curve25519PublicKey2);
-    FeOne(one);
-    FeSub(montXMinusOne, montX, one);
-    FeAdd(montXPlusOne, montX, one);
-    FeInvert(montXPlusOne, montXPlusOne);
-    FeMul(edY, montXMinusOne, montXPlusOne);
-    var A_ed = Uint8List(32);
-    FeToBytes(A_ed, edY);
-
-    assert(ListEquality().equals(A_ed, publicKey.bytes));
+    var curve25519PublicKey = publicKeyToCurve25519(publicKey);
+    assert(ListEquality().equals(curve25519PublicKey, targetPublic));
   });
 }
