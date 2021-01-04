@@ -20,7 +20,6 @@ String signAuthTokenWithEdDSA(String userId, String sessionId,
 
 String _signAuthenticationToken(String userId, String sessionId,
     String privateKey, scp, method, uri, body, bool isRSA) {
-  print('$userId $sessionId $privateKey $method');
   if ([userId, sessionId, privateKey]
       .any((element) => element?.isEmpty ?? true)) {
     return '';
