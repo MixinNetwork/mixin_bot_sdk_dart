@@ -29,6 +29,7 @@ class Client {
             userId ?? _mixin?.userId,
             sessionId ?? _mixin?.sessionId,
             privateKey ?? _mixin?.privateKey,
+            _mixin?.scp,
             options.method,
             options.path,
             body,
@@ -47,6 +48,17 @@ class Client {
   }
 
   Mixin _mixin;
+
+  void initMixin(
+    String userId,
+    String sessionId,
+    String privateKey,
+    String scp,
+  ) {
+    Mixin.init(
+        userId: userId, sessionId: sessionId, privateKey: privateKey, scp: scp);
+    _mixin = Mixin();
+  }
 
   Dio _dio;
   ProvisioningApi _provisioningApi;

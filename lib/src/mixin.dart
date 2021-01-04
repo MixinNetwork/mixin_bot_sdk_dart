@@ -11,6 +11,7 @@ class Mixin {
     @required this.userId,
     @required this.sessionId,
     @required this.privateKey,
+    this.scp,
   });
 
   @visibleForTesting
@@ -22,14 +23,15 @@ class Mixin {
     @required String userId,
     @required String sessionId,
     @required String privateKey,
+    String scp,
   }) {
     assert(userId != null);
     assert(sessionId != null);
     assert(privateKey != null);
     assert((_instance != null) || _instance == null,
         'Are you trying to reset the previous keys by calling Mixin.init() again?.');
-    _instance =
-        Mixin._(userId: userId, sessionId: sessionId, privateKey: privateKey);
+    _instance = Mixin._(
+        userId: userId, sessionId: sessionId, privateKey: privateKey, scp: scp);
   }
 
   static Mixin _instance;
@@ -37,4 +39,5 @@ class Mixin {
   final String userId;
   final String sessionId;
   final String privateKey;
+  final String scp;
 }
