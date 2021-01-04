@@ -6,6 +6,8 @@ import 'package:cryptography/cryptography.dart';
 import 'package:jose/jose.dart';
 import 'package:uuid/uuid.dart';
 
+import 'crypto_util.dart';
+
 String signAuthTokenWithRSA(String userId, String sessionId, String privateKey,
     scp, method, uri, body) {
   return _signAuthenticationToken(
@@ -45,7 +47,7 @@ String _signAuthenticationToken(String userId, String sessionId,
     key = JsonWebKey.fromPem(privateKey);
     alg = 'RS512';
   } else {
-    var privateBytes = base64.decode(privateKey);
+    var privateBytes = decodeBase64(privateKey);
     key = JsonWebKey.fromCryptoKeys(
         privateKey: EdDSAPrivateKey(bytes: privateBytes));
     alg = 'EdDSA';
