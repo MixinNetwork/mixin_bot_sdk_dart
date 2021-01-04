@@ -1,8 +1,28 @@
+import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:convert/convert.dart';
 import 'package:crypto/crypto.dart';
 import 'package:ed25519_edwards/src/edwards25519.dart';
+
+Uint8List decodeBase64(String str) {
+  var output = str.replaceAll('-', '+').replaceAll('_', '/');
+
+  switch (output.length % 4) {
+    case 0:
+      break;
+    case 2:
+      output += '==';
+      break;
+    case 3:
+      output += '=';
+      break;
+    default:
+      throw Exception('Illegal base64url string!"');
+  }
+
+  return base64Url.decode(output);
+}
 
 Uint8List privateKeyToCurve25519(Uint8List privateKey) {
   var output = AccumulatorSink<Digest>();
