@@ -1,6 +1,7 @@
 import 'package:dio/src/response.dart';
 import 'package:equatable/equatable.dart';
 
+import 'account.dart';
 import 'mixin_error.dart';
 import 'user.dart';
 import 'app.dart';
@@ -60,6 +61,8 @@ dynamic _generateJsonForType(type, json) {
       return App.fromJson(json);
     case 'Provisioning':
       return Provisioning.fromJson(json);
+    case 'Account':
+      return Account.fromJson(json);
   }
   throw Exception('Unknown type');
 }
