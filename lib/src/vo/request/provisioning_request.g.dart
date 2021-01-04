@@ -14,8 +14,9 @@ ProvisioningRequest _$ProvisioningRequestFromJson(Map<String, dynamic> json) {
     code: json['code'] as String,
     platform: json['platform'] as String,
     platformVersion: json['platform_version'] as String,
+    appVersion: json['app_version'] as String,
     purpose: json['purpose'] as String,
-    registrationId: json['registration_id'] as String,
+    registrationId: json['registration_id'] as int,
   );
 }
 
@@ -28,6 +29,7 @@ Map<String, dynamic> _$ProvisioningRequestToJson(
       'code': instance.code,
       'platform': instance.platform,
       'platform_version': instance.platformVersion,
+      'app_version': instance.appVersion,
       'purpose': instance.purpose,
       'registration_id': instance.registrationId,
     };

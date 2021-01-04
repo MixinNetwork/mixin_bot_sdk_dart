@@ -15,9 +15,11 @@ class ProvisioningRequest with EquatableMixin {
   String platform;
   @JsonKey(name: 'platform_version')
   String platformVersion;
+  @JsonKey(name: 'app_version')
+  String appVersion;
   String purpose;
   @JsonKey(name: 'registration_id')
-  String registrationId;
+  int registrationId;
 
   ProvisioningRequest({
     this.userId,
@@ -26,6 +28,7 @@ class ProvisioningRequest with EquatableMixin {
     this.code,
     this.platform,
     this.platformVersion,
+    this.appVersion,
     this.purpose,
     this.registrationId,
   });
@@ -37,13 +40,14 @@ class ProvisioningRequest with EquatableMixin {
 
   @override
   List<Object> get props => [
-    userId,
-    sessionId,
-    sessionSecret,
-    code,
-    platform,
-    platformVersion,
-    purpose,
-    registrationId,
-  ];
+        userId,
+        sessionId,
+        sessionSecret,
+        code,
+        platform,
+        platformVersion,
+        appVersion,
+        purpose,
+        registrationId,
+      ];
 }
