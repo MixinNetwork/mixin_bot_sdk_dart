@@ -12,6 +12,8 @@ class ConversationResponse with EquatableMixin {
   String conversationId;
   @JsonKey(name: 'name', nullable: false)
   String name;
+  @JsonKey(name: 'category', nullable: false)
+  String category;
   @JsonKey(name: 'creator_id', nullable: false)
   String creatorId;
   @JsonKey(name: 'icon_url', nullable: false)
@@ -34,6 +36,7 @@ class ConversationResponse with EquatableMixin {
   ConversationResponse({
     this.conversationId,
     this.name,
+    this.category,
     this.iconUrl,
     this.codeUrl,
     this.createdAt,
@@ -52,6 +55,7 @@ class ConversationResponse with EquatableMixin {
   List<Object> get props => [
         conversationId,
         name,
+        category,
         iconUrl,
         codeUrl,
         createdAt,

@@ -2,6 +2,7 @@ import 'package:dio/src/response.dart';
 import 'package:equatable/equatable.dart';
 
 import 'account.dart';
+import 'conversation_response.dart';
 import 'mixin_error.dart';
 import 'user.dart';
 import 'app.dart';
@@ -55,6 +56,8 @@ dynamic generateJson<T>(json) {
 
 dynamic _generateJsonForType(type, json) {
   switch (type) {
+    case 'ConversationResponse':
+      return ConversationResponse.fromJson(json);
     case 'User':
       return User.fromJson(json);
     case 'App':
