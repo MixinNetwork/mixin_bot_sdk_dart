@@ -25,10 +25,14 @@ class ParticipantRequest with EquatableMixin {
 
   @override
   List<Object> get props => [
-    userId,
-    role,
-    createdAt,
-  ];
+        userId,
+        role,
+        createdAt,
+      ];
 }
 
-enum RelationshipAction { add, update, remove, block, unblock }
+const RelationshipActionAdd = 'ADD';
+const RelationshipActionUpdate = 'UPDATE';
+const RelationshipActionRemove = 'REMOVE';
+const RelationshipActionBlock = 'BLOCK';
+const RelationshipActionUnblock = 'UNBLOCK';
