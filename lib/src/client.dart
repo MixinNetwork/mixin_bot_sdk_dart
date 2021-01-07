@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:mixin_bot_sdk_dart/src/api/conversation_api.dart';
 import 'package:dio/dio.dart';
 
@@ -22,7 +24,10 @@ class Client {
     _dio.options.responseType = ResponseType.json;
     _dio.interceptors
         .add(InterceptorsWrapper(onRequest: (RequestOptions options) {
-      final body = (options.data ?? '').toString();
+      var body = '';
+      if (options.data != null) {
+        body = jsonEncode(options.data);
+      }
       options.headers['Accept-Language'] ??= 'en_US';
       options.headers['Authorization'] = 'Bearer ' +
           signAuthTokenWithEdDSA(
