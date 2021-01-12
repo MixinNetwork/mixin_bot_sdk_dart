@@ -4,6 +4,7 @@ import 'package:mixin_bot_sdk_dart/src/api/conversation_api.dart';
 import 'package:dio/dio.dart';
 
 import 'api/account_api.dart';
+import 'api/message_api.dart';
 import 'auth.dart';
 import 'mixin.dart';
 import 'api/provisioning_api.dart';
@@ -41,6 +42,7 @@ class Client {
           );
       return options;
     }, onResponse: (Response response) async {
+      print(response.data);
       return response;
     }, onError: (DioError error) async {
       return error;
@@ -50,6 +52,7 @@ class Client {
     _provisioningApi = ProvisioningApi(dio: _dio);
     _accountApi = AccountApi(dio: _dio);
     _conversationApi = ConversationApi(dio: _dio);
+    _messageApi = MessageApi(dio: _dio);
   }
 
   Mixin _mixin;
@@ -69,6 +72,7 @@ class Client {
   ProvisioningApi _provisioningApi;
   UserApi _userApi;
   ConversationApi _conversationApi;
+  MessageApi _messageApi;
   AccountApi _accountApi;
 
   Dio get dio => _dio;
@@ -76,6 +80,8 @@ class Client {
   AccountApi get accountApi => _accountApi;
 
   ConversationApi get conversationApi => _conversationApi;
+
+  MessageApi get messageApi => _messageApi;
 
   UserApi get userApi => _userApi;
 

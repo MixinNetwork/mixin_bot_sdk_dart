@@ -10,6 +10,7 @@ ConversationResponse _$ConversationResponseFromJson(Map<String, dynamic> json) {
   return ConversationResponse(
     conversationId: json['conversation_id'] as String,
     name: json['name'] as String,
+    category: json['category'] as String,
     iconUrl: json['icon_url'] as String,
     codeUrl: json['code_url'] as String,
     createdAt: json['created_at'] as String,
@@ -36,6 +37,7 @@ Map<String, dynamic> _$ConversationResponseToJson(
     <String, dynamic>{
       'conversation_id': instance.conversationId,
       'name': instance.name,
+      'category': instance.category,
       'creator_id': instance.creatorId,
       'icon_url': instance.iconUrl,
       'code_url': instance.codeUrl,
