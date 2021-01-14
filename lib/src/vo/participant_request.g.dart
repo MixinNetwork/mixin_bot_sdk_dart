@@ -10,7 +10,9 @@ ParticipantRequest _$ParticipantRequestFromJson(Map<String, dynamic> json) {
   return ParticipantRequest(
     userId: json['user_id'] as String,
     role: json['role'] as String,
-    createdAt: json['created_at'] as String,
+    createdAt: json['created_at'] == null
+        ? null
+        : DateTime.parse(json['created_at'] as String),
   );
 }
 
@@ -18,5 +20,5 @@ Map<String, dynamic> _$ParticipantRequestToJson(ParticipantRequest instance) =>
     <String, dynamic>{
       'user_id': instance.userId,
       'role': instance.role,
-      'created_at': instance.createdAt,
+      'created_at': instance.createdAt?.toIso8601String(),
     };

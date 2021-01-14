@@ -13,7 +13,7 @@ ConversationResponse _$ConversationResponseFromJson(Map<String, dynamic> json) {
     category: json['category'] as String,
     iconUrl: json['icon_url'] as String,
     codeUrl: json['code_url'] as String,
-    createdAt: json['created_at'] as String,
+    createdAt: DateTime.parse(json['created_at'] as String),
     participants: (json['participants'] as List)
         .map((e) => ParticipantRequest.fromJson(e as Map<String, dynamic>))
         .toList(),
@@ -42,7 +42,7 @@ Map<String, dynamic> _$ConversationResponseToJson(
       'icon_url': instance.iconUrl,
       'code_url': instance.codeUrl,
       'announcement': instance.announcement,
-      'created_at': instance.createdAt,
+      'created_at': instance.createdAt.toIso8601String(),
       'participants': instance.participants,
       'participant_sessions': instance.participantSessions,
       'circles': instance.circles,

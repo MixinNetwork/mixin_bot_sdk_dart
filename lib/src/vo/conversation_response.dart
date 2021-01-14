@@ -23,7 +23,7 @@ class ConversationResponse with EquatableMixin {
   @JsonKey(name: 'announcement', nullable: false)
   String announcement;
   @JsonKey(name: 'created_at', nullable: false)
-  String createdAt;
+  DateTime createdAt;
   @JsonKey(name: 'participants', nullable: false)
   List<ParticipantRequest> participants;
   @JsonKey(name: 'participant_sessions', nullable: true)

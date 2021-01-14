@@ -16,7 +16,9 @@ Account _$AccountFromJson(Map<String, dynamic> json) {
     avatarUrl: json['avatar_url'] as String,
     relationship: json['relationship'] as String,
     muteUntil: json['mute_until'] as String,
-    createdAt: json['created_at'] as String,
+    createdAt: json['created_at'] == null
+        ? null
+        : DateTime.parse(json['created_at'] as String),
     isVerified: json['is_verified'] as bool,
     isScam: json['is_scam'] as bool,
     sessionId: json['session_id'] as String,
@@ -47,7 +49,7 @@ Map<String, dynamic> _$AccountToJson(Account instance) => <String, dynamic>{
       'avatar_url': instance.avatarUrl,
       'relationship': instance.relationship,
       'mute_until': instance.muteUntil,
-      'created_at': instance.createdAt,
+      'created_at': instance.createdAt?.toIso8601String(),
       'is_verified': instance.isVerified,
       'is_scam': instance.isScam,
       'session_id': instance.sessionId,

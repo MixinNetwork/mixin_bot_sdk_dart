@@ -16,7 +16,9 @@ User _$UserFromJson(Map<String, dynamic> json) {
     avatarUrl: json['avatar_url'] as String,
     phone: json['phone'] as String,
     isVerified: json['is_verified'] as bool,
-    createdAt: json['created_at'] as String,
+    createdAt: json['created_at'] == null
+        ? null
+        : DateTime.parse(json['created_at'] as String),
     muteUntil: json['mute_until'] as String,
     hasPin: json['has_pin'] as bool,
     app: json['app'] == null
@@ -36,7 +38,7 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'avatar_url': instance.avatarUrl,
       'phone': instance.phone,
       'is_verified': instance.isVerified,
-      'created_at': instance.createdAt,
+      'created_at': instance.createdAt?.toIso8601String(),
       'mute_until': instance.muteUntil,
       'has_pin': instance.hasPin,
       'app': instance.app,

@@ -18,7 +18,7 @@ class Conversation with EquatableMixin {
   @JsonKey(name: 'icon_url', nullable: true)
   String iconUrl;
   @JsonKey(name: 'created_at', nullable: false)
-  String createdAt;
+  DateTime createdAt;
   @JsonKey(name: 'pin_time', nullable: true)
   String pinTime;
   @JsonKey(name: 'last_message_id', nullable: true)
