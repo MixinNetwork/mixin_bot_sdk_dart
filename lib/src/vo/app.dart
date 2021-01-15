@@ -19,7 +19,7 @@ class App with EquatableMixin {
   String iconUrl;
   @JsonKey(name: 'category')
   String category;
-  @JsonKey(name: 'userdescription_id')
+  @JsonKey(name: 'description')
   String description;
   @JsonKey(name: 'capabilities')
   List<String> capabilities;
