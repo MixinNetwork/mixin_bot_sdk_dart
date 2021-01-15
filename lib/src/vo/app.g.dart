@@ -8,7 +8,7 @@ part of 'app.dart';
 
 App _$AppFromJson(Map<String, dynamic> json) {
   return App(
-    appId: json['user_id'] as String,
+    appId: json['app_id'] as String,
     appNumber: json['app_number'] as String,
     homeUri: json['home_uri'] as String,
     redirectUri: json['redirect_uri'] as String,
@@ -27,7 +27,7 @@ App _$AppFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$AppToJson(App instance) => <String, dynamic>{
-      'user_id': instance.appId,
+      'app_id': instance.appId,
       'app_number': instance.appNumber,
       'home_uri': instance.homeUri,
       'redirect_uri': instance.redirectUri,

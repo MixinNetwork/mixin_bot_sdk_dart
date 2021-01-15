@@ -5,7 +5,7 @@ part 'app.g.dart';
 
 @JsonSerializable()
 class App with EquatableMixin {
-  @JsonKey(name: 'user_id')
+  @JsonKey(name: 'app_id')
   String appId;
   @JsonKey(name: 'app_number')
   String appNumber;
