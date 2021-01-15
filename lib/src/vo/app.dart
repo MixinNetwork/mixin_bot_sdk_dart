@@ -21,8 +21,8 @@ class App with EquatableMixin {
   String category;
   @JsonKey(name: 'description')
   String description;
-  @JsonKey(name: 'capabilities')
-  List<String> capabilities;
+  @JsonKey(name: 'capabilites')
+  List<String> capabilites;
   @JsonKey(name: 'app_secret')
   String appSecret;
   @JsonKey(name: 'creator_id')
@@ -41,7 +41,7 @@ class App with EquatableMixin {
     this.iconUrl,
     this.category,
     this.description,
-    this.capabilities,
+    this.capabilites,
     this.appSecret,
     this.creatorId,
     this.resourcePatterns,
@@ -54,18 +54,18 @@ class App with EquatableMixin {
 
   @override
   List<Object> get props => [
-    appId,
-    appNumber,
-    homeUri,
-    redirectUri,
-    name,
-    iconUrl,
-    category,
-    description,
-    capabilities,
-    appSecret,
-    creatorId,
-    resourcePatterns,
-    updatedAt,
-  ];
+        appId,
+        appNumber,
+        homeUri,
+        redirectUri,
+        name,
+        iconUrl,
+        category,
+        description,
+        capabilites,
+        appSecret,
+        creatorId,
+        resourcePatterns,
+        updatedAt,
+      ];
 }

@@ -15,9 +15,9 @@ App _$AppFromJson(Map<String, dynamic> json) {
     name: json['name'] as String,
     iconUrl: json['icon_url'] as String,
     category: json['category'] as String,
-    description: json['userdescription_id'] as String,
-    capabilities:
-        (json['capabilities'] as List)?.map((e) => e as String)?.toList(),
+    description: json['description'] as String,
+    capabilites:
+        (json['capabilites'] as List)?.map((e) => e as String)?.toList(),
     appSecret: json['app_secret'] as String,
     creatorId: json['creator_id'] as String,
     resourcePatterns:
@@ -36,8 +36,8 @@ Map<String, dynamic> _$AppToJson(App instance) => <String, dynamic>{
       'name': instance.name,
       'icon_url': instance.iconUrl,
       'category': instance.category,
-      'userdescription_id': instance.description,
-      'capabilities': instance.capabilities,
+      'description': instance.description,
+      'capabilites': instance.capabilites,
       'app_secret': instance.appSecret,
       'creator_id': instance.creatorId,
       'resource_patterns': instance.resourcePatterns,
