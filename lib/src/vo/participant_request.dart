@@ -10,7 +10,7 @@ class ParticipantRequest with EquatableMixin {
   @JsonKey(name: 'role', nullable: false)
   String role;
   @JsonKey(name: 'created_at', nullable: true)
-  String createdAt;
+  DateTime createdAt;
 
   ParticipantRequest({
     this.userId,

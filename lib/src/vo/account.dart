@@ -22,7 +22,7 @@ class Account with EquatableMixin {
   @JsonKey(name: 'mute_until')
   String muteUntil;
   @JsonKey(name: 'created_at')
-  String createdAt;
+  DateTime createdAt;
   @JsonKey(name: 'is_verified')
   bool isVerified;
   @JsonKey(name: 'is_scam')

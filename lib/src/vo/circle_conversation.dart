@@ -12,7 +12,7 @@ class CircleConversation with EquatableMixin {
   @JsonKey(name: 'user_id', nullable: true)
   String userId;
   @JsonKey(name: 'created_at', nullable: false)
-  String createdAt;
+  DateTime createdAt;
   String pinTime;
 
   CircleConversation({

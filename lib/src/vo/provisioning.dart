@@ -8,7 +8,7 @@ class Provisioning with EquatableMixin {
   @JsonKey(name: 'device_id')
   String deviceId;
   @JsonKey(name: 'expired_at')
-  String expiredAt;
+  DateTime expiredAt;
   String secret;
   String platform;
   @JsonKey(name: 'provisioning_code')

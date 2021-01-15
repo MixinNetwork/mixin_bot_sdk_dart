@@ -22,7 +22,9 @@ App _$AppFromJson(Map<String, dynamic> json) {
     creatorId: json['creator_id'] as String,
     resourcePatterns:
         (json['resource_patterns'] as List)?.map((e) => e as String)?.toList(),
-    updatedAt: json['updated_at'] as String,
+    updatedAt: json['updated_at'] == null
+        ? null
+        : DateTime.parse(json['updated_at'] as String),
   );
 }
 
@@ -39,5 +41,5 @@ Map<String, dynamic> _$AppToJson(App instance) => <String, dynamic>{
       'app_secret': instance.appSecret,
       'creator_id': instance.creatorId,
       'resource_patterns': instance.resourcePatterns,
-      'updated_at': instance.updatedAt,
+      'updated_at': instance.updatedAt?.toIso8601String(),
     };

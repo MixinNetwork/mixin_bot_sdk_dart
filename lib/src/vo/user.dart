@@ -23,7 +23,7 @@ class User with EquatableMixin {
   @JsonKey(name: 'is_verified')
   bool isVerified;
   @JsonKey(name: 'created_at')
-  String createdAt;
+  DateTime createdAt;
   @JsonKey(name: 'mute_until')
   String muteUntil;
   @JsonKey(name: 'has_pin')

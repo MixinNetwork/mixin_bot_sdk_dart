@@ -30,7 +30,7 @@ class App with EquatableMixin {
   @JsonKey(name: 'resource_patterns')
   List<String> resourcePatterns;
   @JsonKey(name: 'updated_at')
-  String updatedAt;
+  DateTime updatedAt;
 
   App({
     this.appId,
