@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'circle_conversation.dart';
+import 'conversation_category.dart';
 import 'participant_request.dart';
 import 'user_session.dart';
 
@@ -13,7 +14,7 @@ class ConversationResponse with EquatableMixin {
   @JsonKey(name: 'name', nullable: false)
   String name;
   @JsonKey(name: 'category', nullable: false)
-  String category;
+  ConversationCategory category;
   @JsonKey(name: 'creator_id', nullable: false)
   String creatorId;
   @JsonKey(name: 'icon_url', nullable: false)

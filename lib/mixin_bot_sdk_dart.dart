@@ -15,4 +15,5 @@ export 'src/vo/provisioning.dart';
 export 'src/vo/participant_request.dart';
 export 'src/vo/request/provisioning_request.dart';
 export 'src/vo/blaze_ack_message.dart';
+export 'src/vo/conversation_category.dart';
 export 'src/extension/mixin_response_extension.dart';
