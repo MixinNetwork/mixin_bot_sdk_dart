@@ -20,7 +20,7 @@ class Sticker with EquatableMixin {
   @JsonKey(name: 'asset_height', nullable: false)
   int assetHeight;
   @JsonKey(name: 'created_at', nullable: false)
-  String createdAt;
+  DateTime createdAt;
 
   Sticker(this.stickerId, this.albumId, this.name, this.assetUrl,
       this.assetType, this.assetWidth, this.assetHeight, this.createdAt);

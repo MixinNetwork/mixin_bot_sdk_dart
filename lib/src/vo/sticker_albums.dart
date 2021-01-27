@@ -12,9 +12,9 @@ class StickerAlbum with EquatableMixin {
   @JsonKey(name: 'icon_url', nullable: false)
   String iconUrl;
   @JsonKey(name: 'created_at', nullable: false)
-  String createdAt;
+  DateTime createdAt;
   @JsonKey(name: 'update_at', nullable: false)
-  String updateAt;
+  DateTime updateAt;
   @JsonKey(name: 'user_id', nullable: false)
   String userId;
   @JsonKey(name: 'category', nullable: false)

@@ -15,7 +15,7 @@ Sticker _$StickerFromJson(Map<String, dynamic> json) {
     json['asset_type'] as String,
     json['asset_width'] as int,
     json['asset_height'] as int,
-    json['created_at'] as String,
+    DateTime.parse(json['created_at'] as String),
   );
 }
 
@@ -27,5 +27,5 @@ Map<String, dynamic> _$StickerToJson(Sticker instance) => <String, dynamic>{
       'asset_type': instance.assetType,
       'asset_width': instance.assetWidth,
       'asset_height': instance.assetHeight,
-      'created_at': instance.createdAt,
+      'created_at': instance.createdAt.toIso8601String(),
     };
