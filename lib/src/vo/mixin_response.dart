@@ -4,6 +4,8 @@ import 'package:equatable/equatable.dart';
 import 'account.dart';
 import 'conversation_response.dart';
 import 'mixin_error.dart';
+import 'sticker.dart';
+import 'sticker_albums.dart';
 import 'user.dart';
 import 'app.dart';
 import 'provisioning.dart';
@@ -66,6 +68,10 @@ dynamic _generateJsonForType(type, json) {
       return Provisioning.fromJson(json);
     case 'Account':
       return Account.fromJson(json);
+    case 'StickerAlbum':
+      return StickerAlbum.fromJson(json);
+    case 'Sticker':
+      return Sticker.fromJson(json);
   }
   throw Exception('Unknown type');
 }
@@ -76,6 +82,10 @@ List _getListFromType(String type) {
       return <User>[];
     case 'App':
       return <App>[];
+    case 'StickerAlbum':
+      return <StickerAlbum>[];
+    case 'Sticker':
+      return <Sticker>[];
   }
   return null;
 }

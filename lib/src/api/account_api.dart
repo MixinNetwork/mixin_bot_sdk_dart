@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 
 import '../vo/mixin_response.dart';
 import '../vo/signal_key_count.dart';
+import '../vo/sticker.dart';
+import '../vo/sticker_albums.dart';
 import '../vo/user.dart';
 
 class AccountApi {
@@ -20,4 +22,13 @@ class AccountApi {
 
   Future<MixinResponse<void>> logout() =>
       MixinResponse.request<void>(dio.get('/logout'));
+
+  Future<MixinResponse<List<StickerAlbum>>> getStickerAlbums() =>
+      MixinResponse.request<List<StickerAlbum>>(dio.get('/stickers/albums'));
+
+  Future<MixinResponse<List<Sticker>>> getStickersByAlbumId(String id) =>
+      MixinResponse.request<List<Sticker>>(dio.get('/stickers/albums/$id'));
+
+  Future<MixinResponse<Sticker>> getStickerById(String id) =>
+      MixinResponse.request<Sticker>(dio.get('/stickers/$id'));
 }

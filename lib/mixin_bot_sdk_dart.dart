@@ -12,6 +12,8 @@ export 'src/vo/mixin_response.dart';
 export 'src/vo/user.dart';
 export 'src/vo/user_session.dart';
 export 'src/vo/provisioning.dart';
+export 'src/vo/sticker.dart';
+export 'src/vo/sticker_albums.dart';
 export 'src/vo/participant_request.dart';
 export 'src/vo/request/provisioning_request.dart';
 export 'src/vo/blaze_ack_message.dart';
