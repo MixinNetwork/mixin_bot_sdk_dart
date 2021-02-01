@@ -11,6 +11,7 @@ export 'src/vo/mixin_error.dart';
 export 'src/vo/mixin_response.dart';
 export 'src/vo/user.dart';
 export 'src/vo/user_session.dart';
+export 'src/vo/user_relationship.dart';
 export 'src/vo/provisioning.dart';
 export 'src/vo/sticker.dart';
 export 'src/vo/sticker_albums.dart';
