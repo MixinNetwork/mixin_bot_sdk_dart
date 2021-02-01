@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:mixin_bot_sdk_dart/src/vo/user_relationship.dart';
 import './app.dart';
 
 part 'user.g.dart';
@@ -11,7 +12,7 @@ class User with EquatableMixin {
   @JsonKey(name: 'identity_number', nullable: false)
   String identityNumber;
   @JsonKey(name: 'relationship', nullable: false)
-  String relationship;
+  UserRelationship relationship;
   @JsonKey(name: 'biography', nullable: false)
   String biography;
   @JsonKey(name: 'full_name')

@@ -10,7 +10,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
   return User(
     userId: json['user_id'] as String,
     identityNumber: json['identity_number'] as String,
-    relationship: json['relationship'] as String,
+    relationship: _$enumDecode(_$UserRelationshipEnumMap, json['relationship']),
     biography: json['biography'] as String,
     fullName: json['full_name'] as String,
     avatarUrl: json['avatar_url'] as String,
@@ -32,7 +32,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'user_id': instance.userId,
       'identity_number': instance.identityNumber,
-      'relationship': instance.relationship,
+      'relationship': _$UserRelationshipEnumMap[instance.relationship],
       'biography': instance.biography,
       'full_name': instance.fullName,
       'avatar_url': instance.avatarUrl,
@@ -45,3 +45,31 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'app_id': instance.appId,
       'is_scam': instance.isScam,
     };
+
+T _$enumDecode<T>(
+  Map<T, dynamic> enumValues,
+  dynamic source, {
+  T unknownValue,
+}) {
+  if (source == null) {
+    throw ArgumentError('A value must be provided. Supported values: '
+        '${enumValues.values.join(', ')}');
+  }
+
+  final value = enumValues.entries
+      .singleWhere((e) => e.value == source, orElse: () => null)
+      ?.key;
+
+  if (value == null && unknownValue == null) {
+    throw ArgumentError('`$source` is not one of the supported values: '
+        '${enumValues.values.join(', ')}');
+  }
+  return value ?? unknownValue;
+}
+
+const _$UserRelationshipEnumMap = {
+  UserRelationship.friend: 'FRIEND',
+  UserRelationship.me: 'ME',
+  UserRelationship.stranger: 'STRANGER',
+  UserRelationship.blocking: 'BLOCKING',
+};
