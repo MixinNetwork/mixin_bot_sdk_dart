@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:mixin_bot_sdk_dart/src/vo/participant_role.dart';
 
 part 'participant_request.g.dart';
 
@@ -8,7 +9,7 @@ class ParticipantRequest with EquatableMixin {
   @JsonKey(name: 'user_id', nullable: false)
   String userId;
   @JsonKey(name: 'role', nullable: false)
-  String role;
+  ParticipantRole role;
   @JsonKey(name: 'created_at', nullable: true)
   DateTime createdAt;
 
