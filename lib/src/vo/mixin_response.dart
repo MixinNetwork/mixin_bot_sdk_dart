@@ -1,5 +1,6 @@
 import 'package:dio/src/response.dart';
 import 'package:equatable/equatable.dart';
+import 'package:mixin_bot_sdk_dart/mixin_bot_sdk_dart.dart';
 
 import 'account.dart';
 import 'conversation_response.dart';
@@ -68,6 +69,8 @@ dynamic _generateJsonForType(type, json) {
       return Provisioning.fromJson(json);
     case 'Account':
       return Account.fromJson(json);
+    case 'Attchment':
+      return Attchment.fromJson(json);
     case 'StickerAlbum':
       return StickerAlbum.fromJson(json);
     case 'Sticker':

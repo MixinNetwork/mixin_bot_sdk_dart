@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:mixin_bot_sdk_dart/src/api/attachment_api.dart';
 import 'package:mixin_bot_sdk_dart/src/api/conversation_api.dart';
 import 'package:dio/dio.dart';
 
@@ -53,6 +54,7 @@ class Client {
     _accountApi = AccountApi(dio: _dio);
     _conversationApi = ConversationApi(dio: _dio);
     _messageApi = MessageApi(dio: _dio);
+    _attachmentApi = AttachmentApi(dio: _dio);
   }
 
   Mixin _mixin;
@@ -74,6 +76,7 @@ class Client {
   ConversationApi _conversationApi;
   MessageApi _messageApi;
   AccountApi _accountApi;
+  AttachmentApi _attachmentApi;
 
   Dio get dio => _dio;
 
@@ -86,4 +89,6 @@ class Client {
   UserApi get userApi => _userApi;
 
   ProvisioningApi get provisioningApi => _provisioningApi;
+
+  AttachmentApi get attachmentApi => _attachmentApi;
 }
