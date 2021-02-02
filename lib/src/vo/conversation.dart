@@ -1,16 +1,20 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../mixin_bot_sdk_dart.dart';
+
 part 'conversation.g.dart';
 
 @JsonSerializable()
+@ConversationCategoryJsonConverter()
+@ConversationStatusJsonConverter()
 class Conversation with EquatableMixin {
   @JsonKey(name: 'conversation_id', nullable: false)
   String conversationId;
   @JsonKey(name: 'owner_id', nullable: true)
   String ownerId;
   @JsonKey(name: 'category', nullable: false)
-  String category;
+  ConversationCategory category;
   @JsonKey(name: 'name', nullable: true)
   String name;
   @JsonKey(name: 'announcement', nullable: true)
@@ -28,11 +32,14 @@ class Conversation with EquatableMixin {
   @JsonKey(name: 'unseen_message_count', nullable: true)
   String unseenMessageCount;
   @JsonKey(name: 'status', nullable: false)
-  int status;
+  ConversationStatus status;
   @JsonKey(name: 'draft', nullable: true)
   String draft;
   @JsonKey(name: 'mute_until', nullable: true)
   String muteUntil;
+
+  bool get isGroup => ConversationCategory.group == category;
+  bool get isContact => ConversationCategory.contact == category;
 
   Conversation({
     this.conversationId,
@@ -58,30 +65,40 @@ class Conversation with EquatableMixin {
 
   @override
   List<Object> get props => [
-    conversationId,
-    name,
-    ownerId,
-    category,
-    announcement,
-    iconUrl,
-    createdAt,
-    pinTime,
-    lastMessageId,
-    lastReadMessageId,
-    unseenMessageCount,
-    status,
-    draft,
-    muteUntil,
-  ];
+        conversationId,
+        name,
+        ownerId,
+        category,
+        announcement,
+        iconUrl,
+        createdAt,
+        pinTime,
+        lastMessageId,
+        lastReadMessageId,
+        unseenMessageCount,
+        status,
+        draft,
+        muteUntil,
+      ];
 }
 
-enum ConversationCategory { contact, group }
-enum ConversationStatus { start, failure, success, quit }
+enum ConversationStatus {
+  start,
+  failure,
+  success,
+  quit,
+}
 
-extension on Conversation {
-  // ignore: unused_element
-  bool isGroup() => category == ConversationCategory.group.toString();
+class ConversationStatusJsonConverter
+    implements JsonConverter<ConversationStatus, int> {
+  const ConversationStatusJsonConverter();
 
-  // ignore: unused_element
-  bool isContact() => category == ConversationCategory.contact.toString();
+  @override
+  ConversationStatus fromJson(int json) => ConversationStatus.values[json];
+
+  @override
+  int toJson(ConversationStatus object) {
+    if (object == null) return ConversationStatus.failure.index;
+    return object.index;
+  }
 }

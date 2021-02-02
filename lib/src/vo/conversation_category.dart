@@ -1,8 +1,10 @@
-import 'package:json_annotation/json_annotation.dart';
+import '../enum.converter.dart';
 
-enum ConversationCategory {
-  @JsonValue('CONTACT')
-  contact,
-  @JsonValue('GROUP')
-  group
+enum ConversationCategory { contact, group }
+
+class ConversationCategoryJsonConverter
+    extends EnumStringJsonConverter<ConversationCategory> {
+  const ConversationCategoryJsonConverter();
+  @override
+  List<ConversationCategory> enumValues() => ConversationCategory.values;
 }

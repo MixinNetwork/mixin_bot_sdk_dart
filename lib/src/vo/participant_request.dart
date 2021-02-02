@@ -5,10 +5,11 @@ import 'package:mixin_bot_sdk_dart/src/vo/participant_role.dart';
 part 'participant_request.g.dart';
 
 @JsonSerializable()
+@ParticipantRoleJsonConverter()
 class ParticipantRequest with EquatableMixin {
   @JsonKey(name: 'user_id', nullable: false)
   String userId;
-  @JsonKey(name: 'role', nullable: false)
+  @JsonKey(name: 'role', nullable: true)
   ParticipantRole role;
   @JsonKey(name: 'created_at', nullable: true)
   DateTime createdAt;

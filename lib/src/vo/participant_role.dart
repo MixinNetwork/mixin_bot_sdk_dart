@@ -1,8 +1,13 @@
-import 'package:json_annotation/json_annotation.dart';
+import '../enum.converter.dart';
 
 enum ParticipantRole {
-  @JsonValue('OWNER')
   owner,
-  @JsonValue('ADMIN')
   admin,
+}
+
+class ParticipantRoleJsonConverter
+    extends EnumStringJsonConverter<ParticipantRole> {
+  const ParticipantRoleJsonConverter();
+  @override
+  List<ParticipantRole> enumValues() => ParticipantRole.values;
 }

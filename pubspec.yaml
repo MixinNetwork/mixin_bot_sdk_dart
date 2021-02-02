@@ -4,15 +4,15 @@ version: 0.0.1
 homepage: https://github.com/MixinNetwork/mixin_bot_sdk_dart
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.7.0 <3.0.0'
 
 dependencies:
   cryptography: ^1.4.1
   convert: ^2.1.1
   jose:
     git:
-        url: git@github.com:Tougee/jose.git
-        ref: feature/eddsa
+      url: git@github.com:Tougee/jose.git
+      ref: feature/eddsa
 
   sprintf: ^5.0.0
   uuid: ^2.2.2
@@ -21,11 +21,11 @@ dependencies:
   crypto: ^2.1.5
   meta: ^1.2.4
   equatable: ^1.2.5
-
+  enum_to_string: ^1.0.14
+  recase: ^3.0.1
 
 dev_dependencies:
   test: ^1.15.7
   pedantic: ^1.9.2
   build_runner: ^1.10.11
   json_serializable: ^3.5.1
-

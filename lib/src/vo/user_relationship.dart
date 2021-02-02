@@ -1,12 +1,15 @@
-import 'package:json_annotation/json_annotation.dart';
+import '../enum.converter.dart';
 
 enum UserRelationship {
-  @JsonValue('FRIEND')
   friend,
-  @JsonValue('ME')
   me,
-  @JsonValue('STRANGER')
   stranger,
-  @JsonValue('BLOCKING')
   blocking,
+}
+
+class UserRelationshipJsonConverter
+    extends EnumStringJsonConverter<UserRelationship> {
+  const UserRelationshipJsonConverter();
+  @override
+  List<UserRelationship> enumValues() => UserRelationship.values;
 }

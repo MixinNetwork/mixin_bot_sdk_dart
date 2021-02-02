@@ -11,7 +11,8 @@ Conversation _$ConversationFromJson(Map<String, dynamic> json) {
     conversationId: json['conversation_id'] as String,
     name: json['name'] as String,
     ownerId: json['owner_id'] as String,
-    category: json['category'] as String,
+    category: const ConversationCategoryJsonConverter()
+        .fromJson(json['category'] as String),
     announcement: json['announcement'] as String,
     iconUrl: json['icon_url'] as String,
     createdAt: DateTime.parse(json['created_at'] as String),
@@ -19,7 +20,8 @@ Conversation _$ConversationFromJson(Map<String, dynamic> json) {
     lastMessageId: json['last_message_id'] as String,
     lastReadMessageId: json['last_read_message_id'] as String,
     unseenMessageCount: json['unseen_message_count'] as String,
-    status: json['status'] as int,
+    status:
+        const ConversationStatusJsonConverter().fromJson(json['status'] as int),
     draft: json['draft'] as String,
     muteUntil: json['mute_until'] as String,
   );
@@ -29,7 +31,8 @@ Map<String, dynamic> _$ConversationToJson(Conversation instance) =>
     <String, dynamic>{
       'conversation_id': instance.conversationId,
       'owner_id': instance.ownerId,
-      'category': instance.category,
+      'category':
+          const ConversationCategoryJsonConverter().toJson(instance.category),
       'name': instance.name,
       'announcement': instance.announcement,
       'icon_url': instance.iconUrl,
@@ -38,7 +41,7 @@ Map<String, dynamic> _$ConversationToJson(Conversation instance) =>
       'last_message_id': instance.lastMessageId,
       'last_read_message_id': instance.lastReadMessageId,
       'unseen_message_count': instance.unseenMessageCount,
-      'status': instance.status,
+      'status': const ConversationStatusJsonConverter().toJson(instance.status),
       'draft': instance.draft,
       'mute_until': instance.muteUntil,
     };

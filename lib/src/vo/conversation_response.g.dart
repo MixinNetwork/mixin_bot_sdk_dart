@@ -71,6 +71,6 @@ T _$enumDecode<T>(
 }
 
 const _$ConversationCategoryEnumMap = {
-  ConversationCategory.contact: 'CONTACT',
-  ConversationCategory.group: 'GROUP',
+  ConversationCategory.contact: 'contact',
+  ConversationCategory.group: 'group',
 };
