@@ -39,12 +39,12 @@ class ConversationRequest with EquatableMixin {
 
   @override
   List<Object> get props => [
-    conversationId,
-    category,
-    name,
-    iconBase64,
-    announcement,
-    participants,
-    duration,
-  ];
+        conversationId,
+        category,
+        name,
+        iconBase64,
+        announcement,
+        participants,
+        duration,
+      ];
 }

@@ -25,8 +25,8 @@ class UserSession with EquatableMixin {
 
   @override
   List<Object> get props => [
-    userId,
-    sessionId,
-    platform,
-  ];
+        userId,
+        sessionId,
+        platform,
+      ];
 }

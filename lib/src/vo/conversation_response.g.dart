@@ -10,7 +10,8 @@ ConversationResponse _$ConversationResponseFromJson(Map<String, dynamic> json) {
   return ConversationResponse(
     conversationId: json['conversation_id'] as String,
     name: json['name'] as String,
-    category: _$enumDecode(_$ConversationCategoryEnumMap, json['category']),
+    category: const ConversationCategoryJsonConverter()
+        .fromJson(json['category'] as String),
     iconUrl: json['icon_url'] as String,
     codeUrl: json['code_url'] as String,
     createdAt: DateTime.parse(json['created_at'] as String),
@@ -37,7 +38,8 @@ Map<String, dynamic> _$ConversationResponseToJson(
     <String, dynamic>{
       'conversation_id': instance.conversationId,
       'name': instance.name,
-      'category': _$ConversationCategoryEnumMap[instance.category],
+      'category':
+          const ConversationCategoryJsonConverter().toJson(instance.category),
       'creator_id': instance.creatorId,
       'icon_url': instance.iconUrl,
       'code_url': instance.codeUrl,
@@ -48,29 +50,3 @@ Map<String, dynamic> _$ConversationResponseToJson(
       'circles': instance.circles,
       'mute_until': instance.muteUntil,
     };
-
-T _$enumDecode<T>(
-  Map<T, dynamic> enumValues,
-  dynamic source, {
-  T unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError('A value must be provided. Supported values: '
-        '${enumValues.values.join(', ')}');
-  }
-
-  final value = enumValues.entries
-      .singleWhere((e) => e.value == source, orElse: () => null)
-      ?.key;
-
-  if (value == null && unknownValue == null) {
-    throw ArgumentError('`$source` is not one of the supported values: '
-        '${enumValues.values.join(', ')}');
-  }
-  return value ?? unknownValue;
-}
-
-const _$ConversationCategoryEnumMap = {
-  ConversationCategory.contact: 'contact',
-  ConversationCategory.group: 'group',
-};

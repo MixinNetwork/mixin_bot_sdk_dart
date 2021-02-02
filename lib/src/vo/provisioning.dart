@@ -35,12 +35,12 @@ class Provisioning with EquatableMixin {
 
   @override
   List<Object> get props => [
-    deviceId,
-    expiredAt,
-    secret,
-    platform,
-    provisioningCode,
-    sessionId,
-    userId,
-  ];
+        deviceId,
+        expiredAt,
+        secret,
+        platform,
+        provisioningCode,
+        sessionId,
+        userId,
+      ];
 }

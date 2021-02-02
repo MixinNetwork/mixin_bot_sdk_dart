@@ -8,6 +8,7 @@ import 'user_session.dart';
 part 'conversation_response.g.dart';
 
 @JsonSerializable()
+@ConversationCategoryJsonConverter()
 class ConversationResponse with EquatableMixin {
   @JsonKey(name: 'conversation_id', nullable: false)
   String conversationId;
