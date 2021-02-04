@@ -1,4 +1,4 @@
-import '../enum.converter.dart';
+import '../enum_converter.dart';
 
 enum ParticipantRole {
   owner,
