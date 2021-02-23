@@ -11,6 +11,7 @@ UserSession _$UserSessionFromJson(Map<String, dynamic> json) {
     json['user_id'] as String,
     json['session_id'] as String,
     json['platform'] as String,
+    json['public_key'] as String,
   );
 }
 
@@ -19,4 +20,5 @@ Map<String, dynamic> _$UserSessionToJson(UserSession instance) =>
       'user_id': instance.userId,
       'session_id': instance.sessionId,
       'platform': instance.platform,
+      'public_key': instance.publicKey,
     };

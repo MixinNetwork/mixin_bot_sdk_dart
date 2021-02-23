@@ -11,11 +11,15 @@ class UserSession with EquatableMixin {
   String sessionId;
   @JsonKey(name: 'platform', nullable: true)
   String platform;
+  @JsonKey(name: 'public_key', nullable: true)
+  String publicKey;
+  
 
   UserSession(
     this.userId,
     this.sessionId,
     this.platform,
+    this.publicKey
   );
 
   factory UserSession.fromJson(Map<String, dynamic> json) =>
@@ -28,5 +32,6 @@ class UserSession with EquatableMixin {
         userId,
         sessionId,
         platform,
+        publicKey,
       ];
 }
