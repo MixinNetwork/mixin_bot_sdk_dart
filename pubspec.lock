@@ -164,13 +164,6 @@ packages:
       url: "git@github.com:Tougee/crypto_keys.git"
     source: git
     version: "0.2.0-nullsafety.2"
-  cryptography:
-    dependency: "direct main"
-    description:
-      name: cryptography
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0-nullsafety.2"
   dart_style:
     dependency: transitive
     description:

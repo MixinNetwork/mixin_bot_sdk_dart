@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:convert/convert.dart';
-import 'package:cryptography/cryptography.dart';
+import 'package:crypto/crypto.dart';
 import 'package:jose/jose.dart';
 import 'package:crypto_keys/crypto_keys.dart';
 import 'package:uuid/uuid.dart';
@@ -24,7 +24,7 @@ Future<String> _signAuthenticationToken(String userId, String sessionId,
     String privateKey, scp, method, uri, body, bool isRSA) async {
   final bytes = utf8.encode(method + uri + body);
 
-  final hash = await Sha256().hash(bytes);
+  final hash = await sha512.convert(bytes);
   final claims = JsonWebTokenClaims.fromJson({
     'uid': userId,
     'sid': sessionId,
