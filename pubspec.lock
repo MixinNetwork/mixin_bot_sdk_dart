@@ -158,9 +158,11 @@ packages:
   crypto_keys:
     dependency: transitive
     description:
-      name: crypto_keys
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: "feature/eddsa"
+      resolved-ref: "05acf6977f94a2331f3e49b3e0dc9b27377a92f8"
+      url: "git@github.com:Tougee/crypto_keys.git"
+    source: git
     version: "0.2.0-nullsafety.2"
   cryptography:
     dependency: "direct main"
@@ -263,9 +265,11 @@ packages:
   jose:
     dependency: "direct main"
     description:
-      name: jose
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: "feature/eddsa"
+      resolved-ref: df8e2285480217015989d0d9e5fa56322170d05e
+      url: "git@github.com:Tougee/jose.git"
+    source: git
     version: "0.3.0-nullsafety.2"
   js:
     dependency: transitive
@@ -347,9 +351,11 @@ packages:
   pointycastle:
     dependency: transitive
     description:
-      name: pointycastle
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: "feature/eddsa"
+      resolved-ref: a17776910f83c333858b209dff2e6d9196b33e49
+      url: "git@github.com:Tougee/pc-dart.git"
+    source: git
     version: "3.0.0-nullsafety.2"
   pool:
     dependency: transitive
@@ -557,9 +563,11 @@ packages:
   x509:
     dependency: transitive
     description:
-      name: x509
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: "feature/eddsa"
+      resolved-ref: dcc7c3a63a868d751fdcaf40160e938e3e4fcf1c
+      url: "git@github.com:Tougee/x509.git"
+    source: git
     version: "0.2.0-nullsafety.3"
   yaml:
     dependency: transitive
