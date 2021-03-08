@@ -22,15 +22,15 @@ class ProvisioningRequest with EquatableMixin {
   int registrationId;
 
   ProvisioningRequest({
-    this.userId,
-    this.sessionId,
-    this.sessionSecret,
-    this.code,
-    this.platform,
-    this.platformVersion,
-    this.appVersion,
-    this.purpose,
-    this.registrationId,
+    required this.userId,
+    required this.sessionId,
+    required this.sessionSecret,
+    required this.code,
+    required this.platform,
+    required this.platformVersion,
+    required this.appVersion,
+    required this.purpose,
+    required this.registrationId,
   });
 
   factory ProvisioningRequest.fromJson(Map<String, dynamic> json) =>

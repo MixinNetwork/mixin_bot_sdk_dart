@@ -10,42 +10,44 @@ part 'conversation_response.g.dart';
 @JsonSerializable()
 @ConversationCategoryJsonConverter()
 class ConversationResponse with EquatableMixin {
-  @JsonKey(name: 'conversation_id', nullable: false)
+  @JsonKey(name: 'conversation_id', disallowNullValue: true)
   String conversationId;
-  @JsonKey(name: 'name', nullable: false)
+  @JsonKey(name: 'name', disallowNullValue: true)
   String name;
-  @JsonKey(name: 'category', nullable: false)
+  @JsonKey(name: 'category', disallowNullValue: true)
   ConversationCategory category;
-  @JsonKey(name: 'creator_id', nullable: false)
+  @JsonKey(name: 'creator_id', disallowNullValue: true)
   String creatorId;
-  @JsonKey(name: 'icon_url', nullable: false)
+  @JsonKey(name: 'icon_url', disallowNullValue: true)
   String iconUrl;
-  @JsonKey(name: 'code_url', nullable: false)
+  @JsonKey(name: 'code_url', disallowNullValue: true)
   String codeUrl;
-  @JsonKey(name: 'announcement', nullable: false)
+  @JsonKey(name: 'announcement', disallowNullValue: true)
   String announcement;
-  @JsonKey(name: 'created_at', nullable: false)
+  @JsonKey(name: 'created_at', disallowNullValue: true)
   DateTime createdAt;
-  @JsonKey(name: 'participants', nullable: false)
+  @JsonKey(name: 'participants', disallowNullValue: true)
   List<ParticipantRequest> participants;
-  @JsonKey(name: 'participant_sessions', nullable: true)
-  List<UserSession> participantSessions;
-  @JsonKey(name: 'circles', nullable: true)
-  List<CircleConversation> circles;
-  @JsonKey(name: 'mute_until', nullable: false)
+  @JsonKey(name: 'participant_sessions', disallowNullValue: false)
+  List<UserSession>? participantSessions;
+  @JsonKey(name: 'circles', disallowNullValue: false)
+  List<CircleConversation>? circles;
+  @JsonKey(name: 'mute_until', disallowNullValue: true)
   String muteUntil;
 
   ConversationResponse({
-    this.conversationId,
-    this.name,
-    this.category,
-    this.iconUrl,
-    this.codeUrl,
-    this.createdAt,
-    this.participants,
+    required this.conversationId,
+    required this.name,
+    required this.category,
+    required this.iconUrl,
+    required this.codeUrl,
+    required this.createdAt,
+    required this.participants,
     this.participantSessions,
     this.circles,
-    this.muteUntil,
+    required this.muteUntil,
+    required this.announcement,
+    required this.creatorId,
   });
 
   factory ConversationResponse.fromJson(Map<String, dynamic> json) =>
@@ -54,7 +56,7 @@ class ConversationResponse with EquatableMixin {
   Map<String, dynamic> toJson() => _$ConversationResponseToJson(this);
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         conversationId,
         name,
         category,

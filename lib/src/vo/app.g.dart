@@ -14,14 +14,16 @@ App _$AppFromJson(Map<String, dynamic> json) {
     redirectUri: json['redirect_uri'] as String,
     name: json['name'] as String,
     iconUrl: json['icon_url'] as String,
-    category: json['category'] as String,
+    category: json['category'] as String?,
     description: json['description'] as String,
-    capabilites:
-        (json['capabilites'] as List)?.map((e) => e as String)?.toList(),
+    capabilites: (json['capabilites'] as List<dynamic>?)
+        ?.map((e) => e as String)
+        .toList(),
     appSecret: json['app_secret'] as String,
     creatorId: json['creator_id'] as String,
-    resourcePatterns:
-        (json['resource_patterns'] as List)?.map((e) => e as String)?.toList(),
+    resourcePatterns: (json['resource_patterns'] as List<dynamic>?)
+        ?.map((e) => e as String)
+        .toList(),
     updatedAt: json['updated_at'] == null
         ? null
         : DateTime.parse(json['updated_at'] as String),

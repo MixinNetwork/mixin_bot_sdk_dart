@@ -7,10 +7,12 @@ part of 'circle_conversation.dart';
 // **************************************************************************
 
 CircleConversation _$CircleConversationFromJson(Map<String, dynamic> json) {
+  $checkKeys(json,
+      disallowNullValues: const ['conversation_id', 'circle_id', 'created_at']);
   return CircleConversation(
-    conversationId: json['conversationd_id'] as String,
+    conversationId: json['conversation_id'] as String,
     circleId: json['circle_id'] as String,
-    userId: json['user_id'] as String,
+    userId: json['user_id'] as String?,
     createdAt: DateTime.parse(json['created_at'] as String),
     pinTime: json['pinTime'] as String,
   );
@@ -18,7 +20,7 @@ CircleConversation _$CircleConversationFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$CircleConversationToJson(CircleConversation instance) =>
     <String, dynamic>{
-      'conversationd_id': instance.conversationId,
+      'conversation_id': instance.conversationId,
       'circle_id': instance.circleId,
       'user_id': instance.userId,
       'created_at': instance.createdAt.toIso8601String(),

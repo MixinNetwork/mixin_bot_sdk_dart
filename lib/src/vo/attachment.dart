@@ -4,21 +4,29 @@ import 'package:json_annotation/json_annotation.dart';
 part 'attachment.g.dart';
 
 @JsonSerializable()
-class Attchment with EquatableMixin {
-  @JsonKey(name: 'attachment_id', nullable: false)
+class Attachment with EquatableMixin {
+  @JsonKey(name: 'attachment_id', disallowNullValue: true)
   String attachmentId;
   @JsonKey(name: 'upload_url')
-  String uploadUrl;
+  String? uploadUrl;
   @JsonKey(name: 'view_url')
-  String viewUrl;
+  String? viewUrl;
 
-  Attchment(this.attachmentId, {this.uploadUrl, this.viewUrl});
+  Attachment(
+    this.attachmentId, {
+    this.uploadUrl,
+    this.viewUrl,
+  });
 
-  factory Attchment.fromJson(Map<String, dynamic> json) =>
-      _$AttchmentFromJson(json);
+  factory Attachment.fromJson(Map<String, dynamic> json) =>
+      _$AttachmentFromJson(json);
 
-  Map<String, dynamic> toJson() => _$AttchmentToJson(this);
+  Map<String, dynamic> toJson() => _$AttachmentToJson(this);
 
   @override
-  List<Object> get props => [attachmentId, uploadUrl, viewUrl];
+  List<Object?> get props => [
+        attachmentId,
+        uploadUrl,
+        viewUrl,
+      ];
 }

@@ -1,29 +1,31 @@
 import 'package:equatable/equatable.dart';
 
+import '../../mixin_bot_sdk_dart.dart';
 import '../vo/participant_request.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'conversation_request.g.dart';
 
 @JsonSerializable()
+@ConversationCategoryJsonConverter()
 class ConversationRequest with EquatableMixin {
-  @JsonKey(name: 'conversation_id', nullable: false)
+  @JsonKey(name: 'conversation_id', disallowNullValue: true)
   String conversationId;
-  @JsonKey(name: 'category', nullable: true)
-  String category;
-  @JsonKey(name: 'name', nullable: false)
-  String name;
-  @JsonKey(name: 'icon_base64', nullable: true)
-  String iconBase64;
-  @JsonKey(name: 'announcement', nullable: true)
-  String announcement;
-  @JsonKey(name: 'participants', nullable: true)
-  List<ParticipantRequest> participants;
-  @JsonKey(name: 'duration', nullable: true)
-  int duration;
+  @JsonKey(name: 'category', disallowNullValue: false)
+  ConversationCategory? category;
+  @JsonKey(name: 'name', disallowNullValue: true)
+  String? name;
+  @JsonKey(name: 'icon_base64', disallowNullValue: false)
+  String? iconBase64;
+  @JsonKey(name: 'announcement', disallowNullValue: false)
+  String? announcement;
+  @JsonKey(name: 'participants', disallowNullValue: false)
+  List<ParticipantRequest>? participants;
+  @JsonKey(name: 'duration', disallowNullValue: false)
+  int? duration;
 
   ConversationRequest({
-    this.conversationId,
+    required this.conversationId,
     this.category,
     this.name,
     this.iconBase64,
@@ -38,7 +40,7 @@ class ConversationRequest with EquatableMixin {
   Map<String, dynamic> toJson() => _$ConversationRequestToJson(this);
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         conversationId,
         category,
         name,

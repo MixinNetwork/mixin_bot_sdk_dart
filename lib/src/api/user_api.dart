@@ -8,7 +8,7 @@ import '../vo/mixin_response.dart';
 class UserApi {
   final Dio dio;
 
-  UserApi({this.dio});
+  UserApi({required this.dio});
 
   Future<MixinResponse<User>> getMe() {
     return MixinResponse.request<User>(dio.get('/me'));

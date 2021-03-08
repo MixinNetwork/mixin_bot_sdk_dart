@@ -28,27 +28,29 @@ void main() {
       });
     });
 
-    test('test relationships', () async {
-      await client.userApi
-          .relationships(mockRelationshipRequest)
-          .then((response) {
-        response.handleResponse(
-            onSuccess: (User user) {
-              print(user.toJson());
-            },
-            onFailure: (MixinError error) => {print(error.toJson())});
-      });
-    });
+    // TODO
+    // test('test relationships', () async {
+    //   await client.userApi
+    //       .relationships(mockRelationshipRequest)
+    //       .then((response) {
+    //     response.handleResponse(
+    //         onSuccess: (User user) {
+    //           print(user.toJson());
+    //         },
+    //         onFailure: (MixinError error) => {print(error.toJson())});
+    //   });
+    // });
 
-    test('test report', () async {
-      await client.userApi.report(mockRelationshipRequest).then((response) {
-        response.handleResponse(
-            onSuccess: (User user) {
-              print(user.toJson());
-            },
-            onFailure: (MixinError error) => {print(error.toJson())});
-      });
-    });
+    // TODO
+    // test('test report', () async {
+    //   await client.userApi.report(mockRelationshipRequest).then((response) {
+    //     response.handleResponse(
+    //         onSuccess: (User user) {
+    //           print(user.toJson());
+    //         },
+    //         onFailure: (MixinError error) => {print(error.toJson())});
+    //   });
+    // });
 
     test('test blockingUsers', () async {
       await client.userApi.blockingUsers().then((response) {

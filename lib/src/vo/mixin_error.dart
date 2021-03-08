@@ -6,12 +6,12 @@ part 'mixin_error.g.dart';
 @JsonSerializable()
 class MixinError with EquatableMixin {
   @JsonKey(name: 'status')
-  int status;
+  int? status;
 
-  @JsonKey(name: 'code')
+  @JsonKey(name: 'code', defaultValue: 0)
   int code;
 
-  @JsonKey(name: 'description')
+  @JsonKey(name: 'description', defaultValue: '')
   String description;
 
   MixinError(
@@ -26,7 +26,7 @@ class MixinError with EquatableMixin {
   Map<String, dynamic> toJson() => _$MixinErrorToJson(this);
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         status,
         code,
         description,

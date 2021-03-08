@@ -7,7 +7,7 @@ import '../vo/mixin_response.dart';
 class ConversationApi {
   final Dio dio;
 
-  ConversationApi({this.dio});
+  ConversationApi({required  this.dio});
 
   Future<MixinResponse<ConversationResponse>> createConversation(
       ConversationRequest request) {

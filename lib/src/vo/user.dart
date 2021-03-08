@@ -8,40 +8,40 @@ part 'user.g.dart';
 @JsonSerializable()
 @UserRelationshipJsonConverter()
 class User with EquatableMixin {
-  @JsonKey(name: 'user_id', nullable: false)
+  @JsonKey(name: 'user_id', disallowNullValue: true)
   String userId;
-  @JsonKey(name: 'identity_number', nullable: false)
+  @JsonKey(name: 'identity_number', disallowNullValue: true)
   String identityNumber;
-  @JsonKey(name: 'relationship', nullable: true)
+  @JsonKey(name: 'relationship', disallowNullValue: false)
   UserRelationship relationship;
-  @JsonKey(name: 'biography', nullable: false)
+  @JsonKey(name: 'biography', disallowNullValue: true)
   String biography;
   @JsonKey(name: 'full_name')
-  String fullName;
+  String? fullName;
   @JsonKey(name: 'avatar_url')
-  String avatarUrl;
+  String? avatarUrl;
   @JsonKey(name: 'phone')
-  String phone;
+  String? phone;
   @JsonKey(name: 'is_verified')
-  bool isVerified;
+  bool? isVerified;
   @JsonKey(name: 'created_at')
-  DateTime createdAt;
+  DateTime? createdAt;
   @JsonKey(name: 'mute_until')
-  String muteUntil;
+  String? muteUntil;
   @JsonKey(name: 'has_pin')
-  bool hasPin;
-  @JsonKey(name: 'app')
-  App app;
+  bool? hasPin;
+  @JsonKey(name: 'app', ignore: true)
+  App? app;
   @JsonKey(name: 'app_id')
-  String appId;
+  String? appId;
   @JsonKey(name: 'is_scam')
-  bool isScam;
+  bool? isScam;
 
   User({
-    this.userId,
-    this.identityNumber,
-    this.relationship,
-    this.biography,
+    required this.userId,
+    required this.identityNumber,
+    required this.relationship,
+    required this.biography,
     this.fullName,
     this.avatarUrl,
     this.phone,
@@ -59,7 +59,7 @@ class User with EquatableMixin {
   Map<String, dynamic> toJson() => _$UserToJson(this);
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         userId,
         identityNumber,
         relationship,

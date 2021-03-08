@@ -28,7 +28,7 @@ Uint8List decodeBase64(String str) {
   }
 }
 
-Uint8List privateKeyToCurve25519(Uint8List privateKey) {
+List<int> privateKeyToCurve25519(Uint8List privateKey) {
   var output = AccumulatorSink<Digest>();
   var input = sha512.startChunkedConversion(output);
   input.add(privateKey.sublist(0, 32));

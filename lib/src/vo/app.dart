@@ -18,32 +18,32 @@ class App with EquatableMixin {
   @JsonKey(name: 'icon_url')
   String iconUrl;
   @JsonKey(name: 'category')
-  String category;
+  String? category;
   @JsonKey(name: 'description')
   String description;
   @JsonKey(name: 'capabilites')
-  List<String> capabilites;
+  List<String>? capabilites;
   @JsonKey(name: 'app_secret')
   String appSecret;
   @JsonKey(name: 'creator_id')
   String creatorId;
   @JsonKey(name: 'resource_patterns')
-  List<String> resourcePatterns;
+  List<String>? resourcePatterns;
   @JsonKey(name: 'updated_at')
-  DateTime updatedAt;
+  DateTime? updatedAt;
 
   App({
-    this.appId,
-    this.appNumber,
-    this.homeUri,
-    this.redirectUri,
-    this.name,
-    this.iconUrl,
+    required this.appId,
+    required this.appNumber,
+    required this.homeUri,
+    required this.redirectUri,
+    required this.name,
+    required this.iconUrl,
     this.category,
-    this.description,
+    required this.description,
     this.capabilites,
-    this.appSecret,
-    this.creatorId,
+    required this.appSecret,
+    required this.creatorId,
     this.resourcePatterns,
     this.updatedAt,
   });
@@ -53,7 +53,7 @@ class App with EquatableMixin {
   Map<String, dynamic> toJson() => _$AppToJson(this);
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         appId,
         appNumber,
         homeUri,

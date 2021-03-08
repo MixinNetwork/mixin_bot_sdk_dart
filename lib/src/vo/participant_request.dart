@@ -7,17 +7,17 @@ part 'participant_request.g.dart';
 @JsonSerializable()
 @ParticipantRoleJsonConverter()
 class ParticipantRequest with EquatableMixin {
-  @JsonKey(name: 'user_id', nullable: false)
+  @JsonKey(name: 'user_id', disallowNullValue: true)
   String userId;
-  @JsonKey(name: 'role', nullable: true)
+  @JsonKey(name: 'role', disallowNullValue: false)
   ParticipantRole role;
-  @JsonKey(name: 'created_at', nullable: true)
-  DateTime createdAt;
+  @JsonKey(name: 'created_at', disallowNullValue: false)
+  DateTime? createdAt;
 
   ParticipantRequest({
-    this.userId,
-    this.role,
-    this.createdAt,
+    required this.userId,
+    required this.role,
+    required this.createdAt,
   });
 
   factory ParticipantRequest.fromJson(Map<String, dynamic> json) =>
@@ -26,7 +26,7 @@ class ParticipantRequest with EquatableMixin {
   Map<String, dynamic> toJson() => _$ParticipantRequestToJson(this);
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         userId,
         role,
         createdAt,

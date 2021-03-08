@@ -19,13 +19,13 @@ class Provisioning with EquatableMixin {
   String userId;
 
   Provisioning({
-    this.deviceId,
-    this.expiredAt,
-    this.secret,
-    this.platform,
-    this.provisioningCode,
-    this.sessionId,
-    this.userId,
+    required this.deviceId,
+    required this.expiredAt,
+    required this.secret,
+    required this.platform,
+    required this.provisioningCode,
+    required this.sessionId,
+    required this.userId,
   });
 
   factory Provisioning.fromJson(Map<String, dynamic> json) =>

@@ -6,11 +6,11 @@ import '../vo/mixin_response.dart';
 class AttachmentApi {
   final Dio dio;
 
-  AttachmentApi({this.dio});
+  AttachmentApi({required  this.dio});
 
-  Future<MixinResponse<Attchment>> getAttachment(String id) =>
-      MixinResponse.request<Attchment>(dio.get('/attachments/${id}'));
+  Future<MixinResponse<Attachment>> getAttachment(String id) =>
+      MixinResponse.request<Attachment>(dio.get('/attachments/${id}'));
 
-  Future<MixinResponse<Attchment>> postAttachment() =>
-      MixinResponse.request<Attchment>(dio.post('/attachments'));
+  Future<MixinResponse<Attachment>> postAttachment() =>
+      MixinResponse.request<Attachment>(dio.post('/attachments'));
 }

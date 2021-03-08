@@ -5,21 +5,20 @@ part 'user_session.g.dart';
 
 @JsonSerializable()
 class UserSession with EquatableMixin {
-  @JsonKey(name: 'user_id', nullable: false)
+  @JsonKey(name: 'user_id', disallowNullValue: true)
   String userId;
-  @JsonKey(name: 'session_id', nullable: false)
+  @JsonKey(name: 'session_id', disallowNullValue: true)
   String sessionId;
-  @JsonKey(name: 'platform', nullable: true)
-  String platform;
-  @JsonKey(name: 'public_key', nullable: true)
-  String publicKey;
-  
+  @JsonKey(name: 'platform', disallowNullValue: false)
+  String? platform;
+  @JsonKey(name: 'public_key', disallowNullValue: false)
+  String? publicKey;
 
   UserSession(
     this.userId,
     this.sessionId,
     this.platform,
-    this.publicKey
+    this.publicKey,
   );
 
   factory UserSession.fromJson(Map<String, dynamic> json) =>
@@ -28,7 +27,7 @@ class UserSession with EquatableMixin {
   Map<String, dynamic> toJson() => _$UserSessionToJson(this);
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         userId,
         sessionId,
         platform,
