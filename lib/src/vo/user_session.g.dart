@@ -7,11 +7,12 @@ part of 'user_session.dart';
 // **************************************************************************
 
 UserSession _$UserSessionFromJson(Map<String, dynamic> json) {
+  $checkKeys(json, disallowNullValues: const ['user_id', 'session_id']);
   return UserSession(
     json['user_id'] as String,
     json['session_id'] as String,
-    json['platform'] as String,
-    json['public_key'] as String,
+    json['platform'] as String?,
+    json['public_key'] as String?,
   );
 }
 

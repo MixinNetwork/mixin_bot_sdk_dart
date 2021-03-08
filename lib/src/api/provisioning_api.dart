@@ -8,7 +8,7 @@ import '../vo/request/provisioning_request.dart';
 class ProvisioningApi {
   final Dio dio;
 
-  ProvisioningApi({this.dio});
+  ProvisioningApi({required this.dio});
 
   Future<MixinResponse<Provisioning>> getProvisioningId(String deviceId) {
     return MixinResponse.request<Provisioning>(

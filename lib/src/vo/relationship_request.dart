@@ -5,16 +5,16 @@ part 'relationship_request.g.dart';
 
 @JsonSerializable()
 class RelationshipRequest with EquatableMixin {
-  @JsonKey(name: 'user_id', nullable: false)
+  @JsonKey(name: 'user_id', disallowNullValue: true)
   String userId;
-  @JsonKey(name: 'action', nullable: false)
+  @JsonKey(name: 'action', disallowNullValue: true)
   String action;
-  @JsonKey(name: 'full_name', nullable: true)
-  String fullName;
+  @JsonKey(name: 'full_name', disallowNullValue: false)
+  String? fullName;
 
   RelationshipRequest({
-    this.userId,
-    this.action,
+    required this.userId,
+    required this.action,
     this.fullName,
   });
 
@@ -24,7 +24,7 @@ class RelationshipRequest with EquatableMixin {
   Map<String, dynamic> toJson() => _$RelationshipRequestToJson(this);
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         userId,
         action,
         fullName,

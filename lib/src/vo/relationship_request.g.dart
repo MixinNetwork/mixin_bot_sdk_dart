@@ -7,10 +7,11 @@ part of 'relationship_request.dart';
 // **************************************************************************
 
 RelationshipRequest _$RelationshipRequestFromJson(Map<String, dynamic> json) {
+  $checkKeys(json, disallowNullValues: const ['user_id', 'action']);
   return RelationshipRequest(
     userId: json['user_id'] as String,
     action: json['action'] as String,
-    fullName: json['full_name'] as String,
+    fullName: json['full_name'] as String?,
   );
 }
 

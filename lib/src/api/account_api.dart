@@ -9,7 +9,7 @@ import '../vo/user.dart';
 class AccountApi {
   final Dio dio;
 
-  AccountApi({this.dio});
+  AccountApi({required this.dio});
 
   Future<MixinResponse<User>> getMe() =>
       MixinResponse.request<User>(dio.get('/me'));

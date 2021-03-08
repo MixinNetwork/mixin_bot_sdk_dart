@@ -1,34 +1,29 @@
 import 'dart:convert';
 
 import 'package:convert/convert.dart';
-import 'package:crypto_keys/crypto_keys.dart';
 import 'package:cryptography/cryptography.dart';
 import 'package:jose/jose.dart';
 import 'package:uuid/uuid.dart';
 
 import 'crypto_util.dart';
 
-String signAuthTokenWithRSA(String userId, String sessionId, String privateKey,
-    scp, method, uri, body) {
-  return _signAuthenticationToken(
+Future<String> signAuthTokenWithRSA(String userId, String sessionId,
+    String privateKey, String? scp, String method, String uri, String body) async {
+  return await _signAuthenticationToken(
       userId, sessionId, privateKey, scp, method, uri, body, true);
 }
 
-String signAuthTokenWithEdDSA(String userId, String sessionId,
-    String privateKey, scp, method, uri, body) {
-  return _signAuthenticationToken(
+Future<String> signAuthTokenWithEdDSA(String userId, String sessionId,
+    String privateKey, String? scp, String method, String uri, String body) async {
+  return await _signAuthenticationToken(
       userId, sessionId, privateKey, scp, method, uri, body, false);
 }
 
-String _signAuthenticationToken(String userId, String sessionId,
-    String privateKey, scp, method, uri, body, bool isRSA) {
-  if ([userId, sessionId, privateKey]
-      .any((element) => element?.isEmpty ?? true)) {
-    return '';
-  }
+Future<String> _signAuthenticationToken(String userId, String sessionId,
+    String privateKey, scp, method, uri, body, bool isRSA) async {
   final bytes = utf8.encode(method + uri + body);
 
-  final hash = sha256.hashSync(bytes);
+  final hash = await Sha256().hash(bytes);
   final claims = JsonWebTokenClaims.fromJson({
     'uid': userId,
     'sid': sessionId,

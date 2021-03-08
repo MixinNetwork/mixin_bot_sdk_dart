@@ -7,15 +7,26 @@ part of 'sticker.dart';
 // **************************************************************************
 
 Sticker _$StickerFromJson(Map<String, dynamic> json) {
+  $checkKeys(json, disallowNullValues: const [
+    'sticker_id',
+    'asset_url',
+    'asset_type',
+    'asset_width',
+    'asset_height',
+    'created_at'
+  ]);
   return Sticker(
-    json['sticker_id'] as String,
-    json['album_id'] as String,
-    json['name'] as String,
-    json['asset_url'] as String,
-    json['asset_type'] as String,
-    json['asset_width'] as int,
-    json['asset_height'] as int,
-    DateTime.parse(json['created_at'] as String),
+    stickerId: json['sticker_id'] as String,
+    albumId: json['album_id'] as String?,
+    name: json['name'] as String,
+    assetUrl: json['asset_url'] as String,
+    assetType: json['asset_type'] as String,
+    assetWidth: json['asset_width'] as int,
+    assetHeight: json['asset_height'] as int,
+    createdAt: DateTime.parse(json['created_at'] as String),
+    lastUsedAt: json['last_use_at'] == null
+        ? null
+        : DateTime.parse(json['last_use_at'] as String),
   );
 }
 
@@ -28,4 +39,5 @@ Map<String, dynamic> _$StickerToJson(Sticker instance) => <String, dynamic>{
       'asset_width': instance.assetWidth,
       'asset_height': instance.assetHeight,
       'created_at': instance.createdAt.toIso8601String(),
+      'last_use_at': instance.lastUsedAt?.toIso8601String(),
     };

@@ -12,7 +12,7 @@ import 'app.dart';
 import 'provisioning.dart';
 
 class MixinResponse<T> with EquatableMixin {
-  MixinError error;
+  MixinError? error;
 
   T data;
 
@@ -37,7 +37,7 @@ class MixinResponse<T> with EquatableMixin {
   }
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         error,
         data,
       ];
@@ -48,6 +48,9 @@ dynamic generateJson<T>(json) {
   if (T is List || type.startsWith('List')) {
     var itemType = type.substring(5, type.length - 1);
     var tempList = _getListFromType(itemType);
+
+    if (tempList == null) return _generateJsonForType(type, json);
+
     json.forEach((itemJson) {
       tempList.add(_generateJsonForType(itemType, itemJson));
     });
@@ -70,7 +73,7 @@ dynamic _generateJsonForType(type, json) {
     case 'Account':
       return Account.fromJson(json);
     case 'Attchment':
-      return Attchment.fromJson(json);
+      return Attachment.fromJson(json);
     case 'StickerAlbum':
       return StickerAlbum.fromJson(json);
     case 'Sticker':
@@ -79,7 +82,7 @@ dynamic _generateJsonForType(type, json) {
   throw Exception('Unknown type');
 }
 
-List _getListFromType(String type) {
+List? _getListFromType(String type) {
   switch (type) {
     case 'User':
       return <User>[];
