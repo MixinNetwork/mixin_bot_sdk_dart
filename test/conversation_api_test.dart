@@ -1,12 +1,9 @@
-import 'package:mixin_bot_sdk_dart/mixin_bot_sdk_dart.dart';
 import 'package:test/test.dart';
-
-import 'config.dart';
 
 // TODO
 void main() {
   group('test conversation apis', () {
-    var client = Client(userId: uid, sessionId: sid, privateKey: private);
+    // var client = Client(userId: uid, sessionId: sid, privateKey: private);
 
     // test('test createConversation', () async {
     //   await client.conversationApi

@@ -14,7 +14,7 @@ import 'provisioning.dart';
 class MixinResponse<T> with EquatableMixin {
   MixinError? error;
 
-  T data;
+  T? data;
 
   MixinResponse(
     this.error,

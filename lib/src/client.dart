@@ -12,9 +12,10 @@ import 'api/user_api.dart';
 
 class Client {
   Client({
-    required String userId,
-    required String sessionId,
-    required String privateKey,
+    String? userId,
+    String? sessionId,
+    String? privateKey,
+    String? scp,
     BaseOptions? dioOptions,
   }) {
     _dio = Dio(dioOptions);
@@ -32,7 +33,7 @@ class Client {
             userId,
             sessionId,
             privateKey,
-            null,
+            scp,
             options.method,
             options.path,
             body,

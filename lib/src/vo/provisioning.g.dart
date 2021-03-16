@@ -9,7 +9,9 @@ part of 'provisioning.dart';
 Provisioning _$ProvisioningFromJson(Map<String, dynamic> json) {
   return Provisioning(
     deviceId: json['device_id'] as String,
-    expiredAt: DateTime.parse(json['expired_at'] as String),
+    expiredAt: json['expired_at'] == null
+        ? null
+        : DateTime.parse(json['expired_at'] as String),
     secret: json['secret'] as String,
     platform: json['platform'] as String,
     provisioningCode: json['provisioning_code'] as String,
@@ -21,7 +23,7 @@ Provisioning _$ProvisioningFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$ProvisioningToJson(Provisioning instance) =>
     <String, dynamic>{
       'device_id': instance.deviceId,
-      'expired_at': instance.expiredAt.toIso8601String(),
+      'expired_at': instance.expiredAt?.toIso8601String(),
       'secret': instance.secret,
       'platform': instance.platform,
       'provisioning_code': instance.provisioningCode,

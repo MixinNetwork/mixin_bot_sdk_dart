@@ -18,7 +18,7 @@ class App with EquatableMixin {
   @JsonKey(name: 'icon_url')
   String iconUrl;
   @JsonKey(name: 'category')
-  String? category;
+  String category;
   @JsonKey(name: 'description')
   String description;
   @JsonKey(name: 'capabilites')
@@ -39,7 +39,7 @@ class App with EquatableMixin {
     required this.redirectUri,
     required this.name,
     required this.iconUrl,
-    this.category,
+    required this.category,
     required this.description,
     this.capabilites,
     required this.appSecret,

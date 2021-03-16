@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:mixin_bot_sdk_dart/mixin_bot_sdk_dart.dart';
 import 'package:mixin_bot_sdk_dart/src/client.dart';
 import 'package:test/test.dart';
@@ -15,7 +14,7 @@ void main() {
 
     test('test getMe', () async {
       var resp = await client.accountApi.getMe();
-      print(resp.data.toJson());
+      print(resp.data?.toJson());
     });
 
     test('test getSignalCountKey', () async {

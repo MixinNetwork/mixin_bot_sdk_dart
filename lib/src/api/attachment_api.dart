@@ -9,7 +9,7 @@ class AttachmentApi {
   AttachmentApi({required  this.dio});
 
   Future<MixinResponse<Attachment>> getAttachment(String id) =>
-      MixinResponse.request<Attachment>(dio.get('/attachments/${id}'));
+      MixinResponse.request<Attachment>(dio.get('/attachments/$id'));
 
   Future<MixinResponse<Attachment>> postAttachment() =>
       MixinResponse.request<Attachment>(dio.post('/attachments'));

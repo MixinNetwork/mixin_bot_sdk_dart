@@ -23,11 +23,11 @@ class User with EquatableMixin {
   @JsonKey(name: 'phone')
   String? phone;
   @JsonKey(name: 'is_verified')
-  bool? isVerified;
+  bool isVerified;
   @JsonKey(name: 'created_at')
   DateTime? createdAt;
   @JsonKey(name: 'mute_until')
-  String? muteUntil;
+  String muteUntil;
   @JsonKey(name: 'has_pin')
   bool? hasPin;
   @JsonKey(name: 'app', ignore: true)
@@ -35,7 +35,7 @@ class User with EquatableMixin {
   @JsonKey(name: 'app_id')
   String? appId;
   @JsonKey(name: 'is_scam')
-  bool? isScam;
+  bool isScam;
 
   User({
     required this.userId,
@@ -45,13 +45,13 @@ class User with EquatableMixin {
     this.fullName,
     this.avatarUrl,
     this.phone,
-    this.isVerified,
+    required this.isVerified,
     this.createdAt,
-    this.muteUntil,
+    required this.muteUntil,
     this.hasPin,
     this.app,
     this.appId,
-    this.isScam,
+    required this.isScam,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

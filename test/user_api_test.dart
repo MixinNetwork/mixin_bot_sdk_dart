@@ -3,7 +3,6 @@ import 'package:mixin_bot_sdk_dart/mixin_bot_sdk_dart.dart';
 import 'config.dart';
 
 void main() {
-  Mixin.init(userId: uid, sessionId: sid, privateKey: private);
   group('user apis', () {
     var client = Client(userId: uid, sessionId: sid, privateKey: private);
 

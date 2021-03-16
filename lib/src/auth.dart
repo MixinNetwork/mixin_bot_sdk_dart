@@ -7,20 +7,25 @@ import 'package:uuid/uuid.dart';
 
 import 'crypto_util.dart';
 
-String signAuthTokenWithRSA(String userId, String sessionId, String privateKey,
-    String? scp, String method, String uri, String body) {
+String signAuthTokenWithRSA(String? userId, String? sessionId,
+    String? privateKey, String? scp, String method, String uri, String body) {
   return _signAuthenticationToken(
       userId, sessionId, privateKey, scp, method, uri, body, true);
 }
 
-String signAuthTokenWithEdDSA(String userId, String sessionId,
-    String privateKey, String? scp, String method, String uri, String body) {
+String signAuthTokenWithEdDSA(String? userId, String? sessionId,
+    String? privateKey, String? scp, String method, String uri, String body) {
   return _signAuthenticationToken(
       userId, sessionId, privateKey, scp, method, uri, body, false);
 }
 
-String _signAuthenticationToken(String userId, String sessionId,
-    String privateKey, scp, method, uri, body, bool isRSA) {
+String _signAuthenticationToken(String? userId, String? sessionId,
+    String? privateKey, scp, method, uri, body, bool isRSA) {
+  if ([userId, sessionId, privateKey]
+      .any((element) => element?.isEmpty ?? true)) {
+    return '';
+  }
+
   final bytes = utf8.encode(method + uri + body);
 
   final hash = sha256.convert(bytes);
@@ -36,7 +41,7 @@ String _signAuthenticationToken(String userId, String sessionId,
     'scp': scp ?? 'FULL',
   });
 
-  var privateBytes = decodeBase64(privateKey);
+  var privateBytes = decodeBase64(privateKey!);
   var key = EdDSAPrivateKey(privateBytes);
   return jwt.sign(key, algorithm: JWTAlgorithm.Ed25519);
 }

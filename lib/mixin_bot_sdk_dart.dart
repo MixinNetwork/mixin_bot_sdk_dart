@@ -1,6 +1,5 @@
 library mixin_bot_sdk_dart;
 
-export 'src/mixin.dart';
 export 'src/client.dart';
 export 'src/auth.dart';
 export 'src/api/user_api.dart';

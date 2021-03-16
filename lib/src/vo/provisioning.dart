@@ -8,7 +8,7 @@ class Provisioning with EquatableMixin {
   @JsonKey(name: 'device_id')
   String deviceId;
   @JsonKey(name: 'expired_at')
-  DateTime expiredAt;
+  DateTime? expiredAt;
   String secret;
   String platform;
   @JsonKey(name: 'provisioning_code')
@@ -34,7 +34,7 @@ class Provisioning with EquatableMixin {
   Map<String, dynamic> toJson() => _$ProvisioningToJson(this);
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         deviceId,
         expiredAt,
         secret,
