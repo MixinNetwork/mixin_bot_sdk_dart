@@ -11,9 +11,6 @@ void main() {
       userId: uid,
       sessionId: sid,
       privateKey: private,
-      dioOptions: BaseOptions(
-        baseUrl: 'fuck',
-      ),
     );
 
     test('test getMe', () async {
