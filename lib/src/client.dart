@@ -28,7 +28,7 @@ class Client {
       }
       options.headers['Accept-Language'] ??= 'en_US';
       options.headers['Authorization'] = 'Bearer ' +
-          await signAuthTokenWithEdDSA(
+          signAuthTokenWithEdDSA(
             userId,
             sessionId,
             privateKey,
