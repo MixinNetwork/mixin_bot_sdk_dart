@@ -22,13 +22,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
-  asn1lib:
-    dependency: transitive
-    description:
-      name: asn1lib
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.9.0-nullsafety.0"
   async:
     dependency: transitive
     description:
@@ -155,15 +148,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.0"
-  crypto_keys:
-    dependency: transitive
+  dart_jsonwebtoken:
+    dependency: "direct main"
     description:
       path: "."
-      ref: "feature/eddsa"
-      resolved-ref: "05acf6977f94a2331f3e49b3e0dc9b27377a92f8"
-      url: "git@github.com:Tougee/crypto_keys.git"
+      ref: nullsafety
+      resolved-ref: "93aac5d7c3b79b42eb59c946244f2aab76d18a39"
+      url: "git@github.com:MixinNetwork/jsonwebtoken.git"
     source: git
-    version: "0.2.0-nullsafety.2"
+    version: "2.0.0-nullsafety.1"
   dart_style:
     dependency: transitive
     description:
@@ -227,13 +220,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.0"
-  http:
-    dependency: transitive
-    description:
-      name: http
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.13.0"
   http_multi_server:
     dependency: transitive
     description:
@@ -255,15 +241,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.5"
-  jose:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: "feature/eddsa"
-      resolved-ref: df8e2285480217015989d0d9e5fa56322170d05e
-      url: "git@github.com:Tougee/jose.git"
-    source: git
-    version: "0.3.0-nullsafety.2"
   js:
     dependency: transitive
     description:
@@ -344,11 +321,9 @@ packages:
   pointycastle:
     dependency: transitive
     description:
-      path: "."
-      ref: "feature/eddsa"
-      resolved-ref: a17776910f83c333858b209dff2e6d9196b33e49
-      url: "git@github.com:Tougee/pc-dart.git"
-    source: git
+      name: pointycastle
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "3.0.0-nullsafety.2"
   pool:
     dependency: transitive
@@ -371,13 +346,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.8"
-  quiver:
-    dependency: transitive
-    description:
-      name: quiver
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.0"
   recase:
     dependency: "direct main"
     description:
@@ -553,15 +521,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.7.5"
-  x509:
-    dependency: transitive
-    description:
-      path: "."
-      ref: "feature/eddsa"
-      resolved-ref: dcc7c3a63a868d751fdcaf40160e938e3e4fcf1c
-      url: "git@github.com:Tougee/x509.git"
-    source: git
-    version: "0.2.0-nullsafety.3"
   yaml:
     dependency: transitive
     description:

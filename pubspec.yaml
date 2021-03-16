@@ -8,10 +8,11 @@ environment:
 
 dependencies:
   convert: ^3.0.0
-  jose:
-   git:
-     url: git@github.com:Tougee/jose.git
-     ref: feature/eddsa
+
+  dart_jsonwebtoken:
+    git:
+      url: git@github.com:MixinNetwork/jsonwebtoken.git
+      ref: nullsafety
 
   sprintf: ^6.0.0-nullsafety
   uuid: ^3.0.0

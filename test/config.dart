@@ -1,9 +1,9 @@
 // Get APP data from https://developers.mixin.one/dashboard
 
-final uid = '2caa4dc4-7c6f-4957-a95c-192ef4329be5';
-final sid = '2a2cd5ea-d366-4941-adc1-9f0950b69990';
+final uid = '23cec735-ffb8-435d-8c2c-e352c98a8b59';
+final sid = '63f600c8-7247-4a02-8a71-1546c3a2abdb';
 final private =
-    'vgvxnjFLrk21mZ12YKp5gnfzORrQMVNVF11lgnzVbqtgvJL96jlfFOCqNSG3Cgxfx9Dm7yokR5ZIZgLPqKMr6A==';
+    '2jQRewaz0YbZ80VXF7Z4YbU0Dyg8YT91zLOQkkhbcivJ25MePOpCw09dM6-jBu0vCyREZ3mk4zR83q0h4CFkgA';
 
 final uids = <String>['773e5e77-4107-45c2-b648-8fc722ed77f5'];
 
