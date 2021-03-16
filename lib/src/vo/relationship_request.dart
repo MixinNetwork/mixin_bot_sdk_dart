@@ -8,7 +8,7 @@ class RelationshipRequest with EquatableMixin {
   @JsonKey(name: 'user_id', disallowNullValue: true)
   String userId;
   @JsonKey(name: 'action', disallowNullValue: true)
-  String action;
+  RelationshipAction action;
   @JsonKey(name: 'full_name', disallowNullValue: false)
   String? fullName;
 
@@ -30,3 +30,5 @@ class RelationshipRequest with EquatableMixin {
         fullName,
       ];
 }
+
+enum RelationshipAction { add, remove, block, unblock }

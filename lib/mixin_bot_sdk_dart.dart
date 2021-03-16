@@ -14,6 +14,7 @@ export 'src/vo/user_session.dart';
 export 'src/vo/user_relationship.dart';
 export 'src/vo/provisioning.dart';
 export 'src/vo/sticker.dart';
+export 'src/vo/relationship_request.dart';
 export 'src/vo/sticker_albums.dart';
 export 'src/vo/participant_request.dart';
 export 'src/vo/participant_role.dart';
