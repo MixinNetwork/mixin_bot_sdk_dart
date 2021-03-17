@@ -43,5 +43,5 @@ String _signAuthenticationToken(String? userId, String? sessionId,
 
   var privateBytes = decodeBase64(privateKey!);
   var key = EdDSAPrivateKey(privateBytes);
-  return jwt.sign(key, algorithm: JWTAlgorithm.Ed25519);
+  return jwt.sign(key, algorithm: JWTAlgorithm.EdDSA);
 }
