@@ -9,19 +9,19 @@ part 'conversation_request.g.dart';
 @JsonSerializable()
 @ConversationCategoryJsonConverter()
 class ConversationRequest with EquatableMixin {
-  @JsonKey(name: 'conversation_id', disallowNullValue: true)
+  @JsonKey(name: 'conversation_id')
   String conversationId;
-  @JsonKey(name: 'category', disallowNullValue: false)
+  @JsonKey(name: 'category')
   ConversationCategory? category;
-  @JsonKey(name: 'name', disallowNullValue: true)
+  @JsonKey(name: 'name')
   String? name;
-  @JsonKey(name: 'icon_base64', disallowNullValue: false)
+  @JsonKey(name: 'icon_base64')
   String? iconBase64;
-  @JsonKey(name: 'announcement', disallowNullValue: false)
+  @JsonKey(name: 'announcement')
   String? announcement;
-  @JsonKey(name: 'participants', disallowNullValue: false)
+  @JsonKey(name: 'participants')
   List<ParticipantRequest>? participants;
-  @JsonKey(name: 'duration', disallowNullValue: false)
+  @JsonKey(name: 'duration')
   int? duration;
 
   ConversationRequest({

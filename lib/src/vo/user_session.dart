@@ -5,13 +5,13 @@ part 'user_session.g.dart';
 
 @JsonSerializable()
 class UserSession with EquatableMixin {
-  @JsonKey(name: 'user_id', disallowNullValue: true)
+  @JsonKey(name: 'user_id')
   String userId;
-  @JsonKey(name: 'session_id', disallowNullValue: true)
+  @JsonKey(name: 'session_id')
   String sessionId;
-  @JsonKey(name: 'platform', disallowNullValue: false)
+  @JsonKey(name: 'platform')
   String? platform;
-  @JsonKey(name: 'public_key', disallowNullValue: false)
+  @JsonKey(name: 'public_key')
   String? publicKey;
 
   UserSession(

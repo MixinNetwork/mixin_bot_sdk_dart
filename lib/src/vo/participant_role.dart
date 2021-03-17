@@ -6,7 +6,7 @@ enum ParticipantRole {
 }
 
 class ParticipantRoleJsonConverter
-    extends EnumStringJsonConverter<ParticipantRole> {
+    extends EnumJsonConverter<ParticipantRole> {
   const ParticipantRoleJsonConverter();
   @override
   List<ParticipantRole> enumValues() => ParticipantRole.values;

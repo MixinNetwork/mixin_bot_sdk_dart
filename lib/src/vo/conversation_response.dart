@@ -10,29 +10,29 @@ part 'conversation_response.g.dart';
 @JsonSerializable()
 @ConversationCategoryJsonConverter()
 class ConversationResponse with EquatableMixin {
-  @JsonKey(name: 'conversation_id', disallowNullValue: true)
+  @JsonKey(name: 'conversation_id')
   String conversationId;
-  @JsonKey(name: 'name', disallowNullValue: true)
+  @JsonKey(name: 'name')
   String name;
-  @JsonKey(name: 'category', disallowNullValue: true)
-  ConversationCategory category;
-  @JsonKey(name: 'creator_id', disallowNullValue: true)
+  @JsonKey(name: 'category')
+  ConversationCategory? category;
+  @JsonKey(name: 'creator_id')
   String creatorId;
-  @JsonKey(name: 'icon_url', disallowNullValue: true)
+  @JsonKey(name: 'icon_url')
   String iconUrl;
-  @JsonKey(name: 'code_url', disallowNullValue: true)
+  @JsonKey(name: 'code_url')
   String codeUrl;
-  @JsonKey(name: 'announcement', disallowNullValue: true)
+  @JsonKey(name: 'announcement')
   String announcement;
-  @JsonKey(name: 'created_at', disallowNullValue: true)
+  @JsonKey(name: 'created_at')
   DateTime createdAt;
-  @JsonKey(name: 'participants', disallowNullValue: true)
+  @JsonKey(name: 'participants')
   List<ParticipantRequest> participants;
-  @JsonKey(name: 'participant_sessions', disallowNullValue: false)
+  @JsonKey(name: 'participant_sessions')
   List<UserSession>? participantSessions;
-  @JsonKey(name: 'circles', disallowNullValue: false)
+  @JsonKey(name: 'circles')
   List<CircleConversation>? circles;
-  @JsonKey(name: 'mute_until', disallowNullValue: true)
+  @JsonKey(name: 'mute_until')
   String muteUntil;
 
   ConversationResponse({

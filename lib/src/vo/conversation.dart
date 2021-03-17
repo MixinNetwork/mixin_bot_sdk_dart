@@ -9,33 +9,33 @@ part 'conversation.g.dart';
 @ConversationCategoryJsonConverter()
 @ConversationStatusJsonConverter()
 class Conversation with EquatableMixin {
-  @JsonKey(name: 'conversation_id', disallowNullValue: true)
+  @JsonKey(name: 'conversation_id')
   String conversationId;
-  @JsonKey(name: 'owner_id', disallowNullValue: false)
+  @JsonKey(name: 'owner_id')
   String? ownerId;
-  @JsonKey(name: 'category', disallowNullValue: true)
+  @JsonKey(name: 'category')
   ConversationCategory? category;
-  @JsonKey(name: 'name', disallowNullValue: false)
+  @JsonKey(name: 'name')
   String? name;
-  @JsonKey(name: 'announcement', disallowNullValue: false)
+  @JsonKey(name: 'announcement')
   String? announcement;
-  @JsonKey(name: 'icon_url', disallowNullValue: false)
+  @JsonKey(name: 'icon_url')
   String? iconUrl;
-  @JsonKey(name: 'created_at', disallowNullValue: true)
+  @JsonKey(name: 'created_at')
   DateTime createdAt;
-  @JsonKey(name: 'pin_time', disallowNullValue: false)
+  @JsonKey(name: 'pin_time')
   DateTime? pinedAt;
-  @JsonKey(name: 'last_message_id', disallowNullValue: false)
+  @JsonKey(name: 'last_message_id')
   String? lastMessageId;
-  @JsonKey(name: 'last_read_message_id', disallowNullValue: false)
+  @JsonKey(name: 'last_read_message_id')
   String? lastReadMessageId;
-  @JsonKey(name: 'unseen_message_count', disallowNullValue: false)
+  @JsonKey(name: 'unseen_message_count')
   int? unseenMessageCount;
-  @JsonKey(name: 'status', disallowNullValue: true)
+  @JsonKey(name: 'status')
   ConversationStatus status;
-  @JsonKey(name: 'draft', disallowNullValue: false)
+  @JsonKey(name: 'draft')
   String? draft;
-  @JsonKey(name: 'mute_until', disallowNullValue: false)
+  @JsonKey(name: 'mute_until')
   String? muteUntil;
 
   bool get isGroup => ConversationCategory.group == category;
@@ -91,7 +91,7 @@ enum ConversationStatus {
 }
 
 class ConversationStatusJsonConverter
-    implements JsonConverter<ConversationStatus?, int?> {
+    implements JsonConverter<ConversationStatus, int?> {
   const ConversationStatusJsonConverter();
 
   @override
@@ -99,8 +99,6 @@ class ConversationStatusJsonConverter
       ConversationStatus.values[json ?? ConversationStatus.failure.index];
 
   @override
-  int toJson(ConversationStatus? object) {
-    if (object == null) return ConversationStatus.failure.index;
-    return object.index;
-  }
+  int? toJson(ConversationStatus? object) =>
+      object?.index ?? ConversationStatus.failure.index;
 }

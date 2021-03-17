@@ -5,7 +5,7 @@ part 'attachment.g.dart';
 
 @JsonSerializable()
 class Attachment with EquatableMixin {
-  @JsonKey(name: 'attachment_id', disallowNullValue: true)
+  @JsonKey(name: 'attachment_id')
   String attachmentId;
   @JsonKey(name: 'upload_url')
   String? uploadUrl;

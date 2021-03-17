@@ -7,7 +7,6 @@ part of 'attachment.dart';
 // **************************************************************************
 
 Attachment _$AttachmentFromJson(Map<String, dynamic> json) {
-  $checkKeys(json, disallowNullValues: const ['attachment_id']);
   return Attachment(
     json['attachment_id'] as String,
     uploadUrl: json['upload_url'] as String?,

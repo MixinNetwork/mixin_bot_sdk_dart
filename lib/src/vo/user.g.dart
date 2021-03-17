@@ -7,12 +7,11 @@ part of 'user.dart';
 // **************************************************************************
 
 User _$UserFromJson(Map<String, dynamic> json) {
-  $checkKeys(json,
-      disallowNullValues: const ['user_id', 'identity_number', 'biography']);
   return User(
     userId: json['user_id'] as String,
     identityNumber: json['identity_number'] as String,
-    relationship: _$enumDecode(_$UserRelationshipEnumMap, json['relationship']),
+    relationship: const UserRelationshipJsonConverter()
+        .fromJson(json['relationship'] as String?),
     biography: json['biography'] as String,
     fullName: json['full_name'] as String?,
     avatarUrl: json['avatar_url'] as String?,
@@ -31,7 +30,8 @@ User _$UserFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'user_id': instance.userId,
       'identity_number': instance.identityNumber,
-      'relationship': _$UserRelationshipEnumMap[instance.relationship],
+      'relationship':
+          const UserRelationshipJsonConverter().toJson(instance.relationship),
       'biography': instance.biography,
       'full_name': instance.fullName,
       'avatar_url': instance.avatarUrl,
@@ -43,36 +43,3 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'app_id': instance.appId,
       'is_scam': instance.isScam,
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
-
-const _$UserRelationshipEnumMap = {
-  UserRelationship.friend: 'friend',
-  UserRelationship.me: 'me',
-  UserRelationship.stranger: 'stranger',
-  UserRelationship.blocking: 'blocking',
-};

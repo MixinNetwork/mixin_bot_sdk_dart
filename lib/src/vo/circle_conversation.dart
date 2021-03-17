@@ -5,13 +5,13 @@ part 'circle_conversation.g.dart';
 
 @JsonSerializable()
 class CircleConversation with EquatableMixin {
-  @JsonKey(name: 'conversation_id', disallowNullValue: true)
+  @JsonKey(name: 'conversation_id')
   String conversationId;
-  @JsonKey(name: 'circle_id', disallowNullValue: true)
+  @JsonKey(name: 'circle_id')
   String circleId;
-  @JsonKey(name: 'user_id', disallowNullValue: false)
+  @JsonKey(name: 'user_id')
   String? userId;
-  @JsonKey(name: 'created_at', disallowNullValue: true)
+  @JsonKey(name: 'created_at')
   DateTime createdAt;
   String pinTime;
 

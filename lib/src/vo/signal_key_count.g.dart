@@ -7,7 +7,6 @@ part of 'signal_key_count.dart';
 // **************************************************************************
 
 SignalKeyCount _$SignalKeyCountFromJson(Map<String, dynamic> json) {
-  $checkKeys(json, disallowNullValues: const ['one_time_pre_keys_count']);
   return SignalKeyCount(
     preKeyCount: json['one_time_pre_keys_count'] as int,
   );

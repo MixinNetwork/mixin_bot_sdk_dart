@@ -8,7 +8,7 @@ enum UserRelationship {
 }
 
 class UserRelationshipJsonConverter
-    extends EnumStringJsonConverter<UserRelationship> {
+    extends EnumJsonConverter<UserRelationship> {
   const UserRelationshipJsonConverter();
   @override
   List<UserRelationship> enumValues() => UserRelationship.values;

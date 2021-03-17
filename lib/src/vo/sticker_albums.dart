@@ -5,21 +5,21 @@ part 'sticker_albums.g.dart';
 
 @JsonSerializable()
 class StickerAlbum with EquatableMixin {
-  @JsonKey(name: 'album_id', disallowNullValue: true)
+  @JsonKey(name: 'album_id')
   String albumId;
-  @JsonKey(name: 'name', disallowNullValue: false)
+  @JsonKey(name: 'name')
   String name;
-  @JsonKey(name: 'icon_url', disallowNullValue: true)
+  @JsonKey(name: 'icon_url')
   String iconUrl;
-  @JsonKey(name: 'created_at', disallowNullValue: true)
+  @JsonKey(name: 'created_at')
   DateTime createdAt;
-  @JsonKey(name: 'update_at', disallowNullValue: true)
+  @JsonKey(name: 'update_at')
   DateTime updateAt;
-  @JsonKey(name: 'user_id', disallowNullValue: true)
+  @JsonKey(name: 'user_id')
   String userId;
-  @JsonKey(name: 'category', disallowNullValue: true)
+  @JsonKey(name: 'category')
   String category;
-  @JsonKey(name: 'description', disallowNullValue: true)
+  @JsonKey(name: 'description')
   String description;
 
   StickerAlbum({

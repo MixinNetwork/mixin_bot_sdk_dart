@@ -7,8 +7,6 @@ part of 'circle_conversation.dart';
 // **************************************************************************
 
 CircleConversation _$CircleConversationFromJson(Map<String, dynamic> json) {
-  $checkKeys(json,
-      disallowNullValues: const ['conversation_id', 'circle_id', 'created_at']);
   return CircleConversation(
     conversationId: json['conversation_id'] as String,
     circleId: json['circle_id'] as String,

@@ -7,7 +7,6 @@ part of 'blaze_ack_message.dart';
 // **************************************************************************
 
 BlazeAckMessage _$BlazeAckMessageFromJson(Map<String, dynamic> json) {
-  $checkKeys(json, disallowNullValues: const ['message_id', 'status']);
   return BlazeAckMessage(
     messageId: json['message_id'] as String,
     status: json['status'] as String,

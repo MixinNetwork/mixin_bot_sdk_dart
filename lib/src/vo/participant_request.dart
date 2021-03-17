@@ -7,11 +7,11 @@ part 'participant_request.g.dart';
 @JsonSerializable()
 @ParticipantRoleJsonConverter()
 class ParticipantRequest with EquatableMixin {
-  @JsonKey(name: 'user_id', disallowNullValue: true)
+  @JsonKey(name: 'user_id')
   String userId;
-  @JsonKey(name: 'role', disallowNullValue: false)
-  ParticipantRole role;
-  @JsonKey(name: 'created_at', disallowNullValue: false)
+  @JsonKey(name: 'role')
+  ParticipantRole? role;
+  @JsonKey(name: 'created_at')
   DateTime createdAt;
 
   ParticipantRequest({

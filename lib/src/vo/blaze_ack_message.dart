@@ -5,9 +5,9 @@ part 'blaze_ack_message.g.dart';
 
 @JsonSerializable()
 class BlazeAckMessage with EquatableMixin {
-  @JsonKey(name: 'message_id', disallowNullValue: true)
+  @JsonKey(name: 'message_id')
   String messageId;
-  @JsonKey(name: 'status', disallowNullValue: true)
+  @JsonKey(name: 'status')
   String status;
 
   BlazeAckMessage({

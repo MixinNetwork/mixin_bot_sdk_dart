@@ -7,15 +7,6 @@ part of 'sticker_albums.dart';
 // **************************************************************************
 
 StickerAlbum _$StickerAlbumFromJson(Map<String, dynamic> json) {
-  $checkKeys(json, disallowNullValues: const [
-    'album_id',
-    'icon_url',
-    'created_at',
-    'update_at',
-    'user_id',
-    'category',
-    'description'
-  ]);
   return StickerAlbum(
     albumId: json['album_id'] as String,
     name: json['name'] as String,

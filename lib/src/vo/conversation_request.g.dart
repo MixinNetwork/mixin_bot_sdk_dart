@@ -7,7 +7,6 @@ part of 'conversation_request.dart';
 // **************************************************************************
 
 ConversationRequest _$ConversationRequestFromJson(Map<String, dynamic> json) {
-  $checkKeys(json, disallowNullValues: const ['conversation_id', 'name']);
   return ConversationRequest(
     conversationId: json['conversation_id'] as String,
     category: const ConversationCategoryJsonConverter()
@@ -22,23 +21,15 @@ ConversationRequest _$ConversationRequestFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ConversationRequestToJson(ConversationRequest instance) {
-  final val = <String, dynamic>{
-    'conversation_id': instance.conversationId,
-    'category':
-        const ConversationCategoryJsonConverter().toJson(instance.category),
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('name', instance.name);
-  val['icon_base64'] = instance.iconBase64;
-  val['announcement'] = instance.announcement;
-  val['participants'] = instance.participants;
-  val['duration'] = instance.duration;
-  return val;
-}
+Map<String, dynamic> _$ConversationRequestToJson(
+        ConversationRequest instance) =>
+    <String, dynamic>{
+      'conversation_id': instance.conversationId,
+      'category':
+          const ConversationCategoryJsonConverter().toJson(instance.category),
+      'name': instance.name,
+      'icon_base64': instance.iconBase64,
+      'announcement': instance.announcement,
+      'participants': instance.participants,
+      'duration': instance.duration,
+    };

@@ -3,7 +3,7 @@ import '../enum_converter.dart';
 enum ConversationCategory { contact, group }
 
 class ConversationCategoryJsonConverter
-    extends EnumStringJsonConverter<ConversationCategory> {
+    extends EnumJsonConverter<ConversationCategory> {
   const ConversationCategoryJsonConverter();
   @override
   List<ConversationCategory> enumValues() => ConversationCategory.values;

@@ -8,13 +8,13 @@ part 'user.g.dart';
 @JsonSerializable()
 @UserRelationshipJsonConverter()
 class User with EquatableMixin {
-  @JsonKey(name: 'user_id', disallowNullValue: true)
+  @JsonKey(name: 'user_id')
   String userId;
-  @JsonKey(name: 'identity_number', disallowNullValue: true)
+  @JsonKey(name: 'identity_number')
   String identityNumber;
-  @JsonKey(name: 'relationship', disallowNullValue: false)
-  UserRelationship relationship;
-  @JsonKey(name: 'biography', disallowNullValue: true)
+  @JsonKey(name: 'relationship')
+  UserRelationship? relationship;
+  @JsonKey(name: 'biography')
   String biography;
   @JsonKey(name: 'full_name')
   String? fullName;
