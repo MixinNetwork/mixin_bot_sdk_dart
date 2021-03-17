@@ -23,6 +23,7 @@ export 'src/vo/blaze_ack_message.dart';
 export 'src/vo/conversation.dart';
 export 'src/vo/conversation_response.dart';
 export 'src/vo/conversation_category.dart';
+export 'src/vo/conversation_request.dart';
 export 'src/extension/mixin_response_extension.dart';
 export 'src/enum_converter.dart';
 export 'src/crypto_util.dart';

@@ -7,12 +7,23 @@ import '../vo/mixin_response.dart';
 class ConversationApi {
   final Dio dio;
 
-  ConversationApi({required  this.dio});
+  ConversationApi({required this.dio});
 
   Future<MixinResponse<ConversationResponse>> createConversation(
       ConversationRequest request) {
     return MixinResponse.request<ConversationResponse>(
         dio.post('/conversations', data: request));
+  }
+
+  Future<MixinResponse<ConversationResponse>> update(
+      String conversationId, ConversationRequest request) {
+    return MixinResponse.request<ConversationResponse>(
+        dio.post('/conversations/$conversationId', data: request));
+  }
+
+  Future<MixinResponse<ConversationResponse>> exit(String conversationId) {
+    return MixinResponse.request<ConversationResponse>(
+        dio.post('/conversations/$conversationId/exit'));
   }
 
   Future<MixinResponse<ConversationResponse>> getConversation(String id) {
