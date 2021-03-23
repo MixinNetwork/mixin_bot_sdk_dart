@@ -10,6 +10,7 @@ import 'sticker_albums.dart';
 import 'user.dart';
 import 'app.dart';
 import 'provisioning.dart';
+import 'circle_response.dart';
 
 class MixinResponse<T> with EquatableMixin {
   MixinError? error;
@@ -78,8 +79,10 @@ dynamic _generateJsonForType(type, json) {
       return StickerAlbum.fromJson(json);
     case 'Sticker':
       return Sticker.fromJson(json);
+    case 'CircleResponse':
+      return CircleResponse.fromJson(json);
   }
-  throw Exception('Unknown type');
+  throw Exception('Unknown type $type');
 }
 
 List? _getListFromType(String type) {
@@ -92,6 +95,8 @@ List? _getListFromType(String type) {
       return <StickerAlbum>[];
     case 'Sticker':
       return <Sticker>[];
+    case 'CircleResponse':
+      return <CircleResponse>[];
   }
-  return null;
+  throw Exception('Unknown type $type');
 }
