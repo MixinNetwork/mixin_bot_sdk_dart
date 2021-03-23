@@ -35,7 +35,7 @@ class CircleApi {
         data: conversationCircleRequests));
   }
 
-  Future<MixinResponse<List<CircleConversation>> getCircleConversations(String id,
+  Future<MixinResponse<List<CircleConversation>>> getCircleConversations(String id,
       {String? offset, int limit = 500}) {
     return MixinResponse.request<List<CircleConversation>>(dio.get(
         '/circles/$id/conversations',
