@@ -15,7 +15,7 @@ class CircleApi {
     return MixinResponse.request<List<CircleResponse>>(dio.get('/circles'));
   }
 
-  Future<MixinResponse<CircleResponse>> getgetCircle(String id) {
+  Future<MixinResponse<CircleResponse>> getCircle(String id) {
     return MixinResponse.request<CircleResponse>(dio.get('/circles/$id'));
   }
 
@@ -35,10 +35,11 @@ class CircleApi {
         data: conversationCircleRequests));
   }
 
-  Future<MixinResponse<List<CircleConversation>>> getCircleConversations(String id,
-      {String? offset, int limit = 500}) {
-    return MixinResponse.request<List<CircleConversation>>(dio.get(
-        '/circles/$id/conversations',
-        queryParameters: {'offset': offset, 'limit': limit}));
+  Future<MixinResponse<List<CircleConversation>>> getCircleConversations(
+      String id,
+      {String? offset,
+      int limit = 500}) {
+    return MixinResponse.request<List<CircleConversation>>(
+        dio.get('/circles/$id/conversations?offset:$offset&limit:$limit'));
   }
 }
