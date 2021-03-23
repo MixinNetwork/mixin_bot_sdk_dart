@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:mixin_bot_sdk_dart/mixin_bot_sdk_dart.dart';
 
 import 'account.dart';
+import 'circle_conversation.dart';
 import 'conversation_response.dart';
 import 'mixin_error.dart';
 import 'sticker.dart';
@@ -81,6 +82,8 @@ dynamic _generateJsonForType(type, json) {
       return Sticker.fromJson(json);
     case 'CircleResponse':
       return CircleResponse.fromJson(json);
+    case 'CircleConversation':
+      return CircleConversation.fromJson(json);
   }
   throw Exception('Unknown type $type');
 }
@@ -97,6 +100,8 @@ List? _getListFromType(String type) {
       return <Sticker>[];
     case 'CircleResponse':
       return <CircleResponse>[];
+    case 'CircleConversation':
+      return <CircleConversation>[];
   }
   throw Exception('Unknown type $type');
 }

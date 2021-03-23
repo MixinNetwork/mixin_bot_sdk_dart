@@ -1,3 +1,4 @@
+import 'package:mixin_bot_sdk_dart/src/vo/circle_conversation.dart';
 import 'package:mixin_bot_sdk_dart/src/vo/circle_conversation_request.dart';
 import 'package:mixin_bot_sdk_dart/src/vo/circle_name.dart';
 import 'package:mixin_bot_sdk_dart/src/vo/circle_response.dart';
@@ -34,9 +35,9 @@ class CircleApi {
         data: conversationCircleRequests));
   }
 
-  Future<MixinResponse<CircleResponse>> getCircleConversations(String id,
+  Future<MixinResponse<List<CircleConversation>> getCircleConversations(String id,
       {String? offset, int limit = 500}) {
-    return MixinResponse.request<CircleResponse>(dio.get(
+    return MixinResponse.request<List<CircleConversation>>(dio.get(
         '/circles/$id/conversations',
         queryParameters: {'offset': offset, 'limit': limit}));
   }
