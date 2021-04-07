@@ -1,3 +1,4 @@
+import 'package:mixin_bot_sdk_dart/mixin_bot_sdk_dart.dart';
 import 'package:mixin_bot_sdk_dart/src/vo/conversation_request.dart';
 import 'package:mixin_bot_sdk_dart/src/vo/conversation_response.dart';
 import 'package:dio/dio.dart';
@@ -34,5 +35,11 @@ class ConversationApi {
   Future<MixinResponse<ConversationResponse>> updateConversation(String id) {
     return MixinResponse.request<ConversationResponse>(
         dio.get('/conversations/$id'));
+  }
+
+  Future<MixinResponse<ConversationResponse>> participants(
+      String id, String action, List<ParticipantRequest> requests) {
+    return MixinResponse.request<ConversationResponse>(
+        dio.post('/conversations/$id/participants/$action', data: requests));
   }
 }

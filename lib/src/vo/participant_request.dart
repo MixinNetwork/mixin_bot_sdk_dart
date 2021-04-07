@@ -12,12 +12,12 @@ class ParticipantRequest with EquatableMixin {
   @JsonKey(name: 'role')
   ParticipantRole? role;
   @JsonKey(name: 'created_at')
-  DateTime createdAt;
+  DateTime? createdAt;
 
   ParticipantRequest({
     required this.userId,
-    required this.role,
-    required this.createdAt,
+    this.role,
+    this.createdAt,
   });
 
   factory ParticipantRequest.fromJson(Map<String, dynamic> json) =>
