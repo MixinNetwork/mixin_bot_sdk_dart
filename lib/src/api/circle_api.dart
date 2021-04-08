@@ -19,6 +19,11 @@ class CircleApi {
     return MixinResponse.request<CircleResponse>(dio.get('/circles/$id'));
   }
 
+  Future<MixinResponse<CircleResponse>> createCircle(CircleName circleName) {
+    return MixinResponse.request<CircleResponse>(
+        dio.post('/circles', data: circleName));
+  }
+
   Future<MixinResponse<CircleResponse>> updateCircle(
       String id, CircleName circleName) {
     return MixinResponse.request<CircleResponse>(
