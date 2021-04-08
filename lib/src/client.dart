@@ -23,8 +23,10 @@ class Client {
     _dio = Dio(dioOptions);
     _dio.options.baseUrl = 'https://api.mixin.one';
     _dio.options.responseType = ResponseType.json;
-    _dio.interceptors
-        .add(InterceptorsWrapper(onRequest: (RequestOptions options) async {
+    _dio.interceptors.add(InterceptorsWrapper(onRequest: (
+      RequestOptions options,
+      RequestInterceptorHandler handler,
+    ) async {
       var body = '';
       if (options.data != null) {
         body = jsonEncode(options.data);
@@ -40,12 +42,18 @@ class Client {
             options.path,
             body,
           );
-      return options;
-    }, onResponse: (Response response) async {
+      handler.next(options);
+    }, onResponse: (
+      Response response,
+      ResponseInterceptorHandler handler,
+    ) async {
       print(response.data);
-      return response;
-    }, onError: (DioError error) async {
-      return error;
+      handler.resolve(response);
+    }, onError: (
+      DioError error,
+      ErrorInterceptorHandler handler,
+    ) async {
+      handler.next(error);
     }));
 
     _userApi = UserApi(dio: _dio);
