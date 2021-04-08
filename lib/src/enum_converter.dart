@@ -13,7 +13,7 @@ class EnumToString {
     if(enumItem == null) return null;
     assert(_isEnumItem(enumItem),
     '$enumItem of type ${enumItem.runtimeType.toString()} is not an enum item');
-    final _tmp = enumItem.toString().split('.')[1].toUpperCase();
+    final _tmp = enumItem.toString().split('.')[1];
     return _tmp;
   }
 
