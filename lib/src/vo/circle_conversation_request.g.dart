@@ -11,7 +11,7 @@ CircleConversationRequest _$CircleConversationRequestFromJson(
   $checkKeys(json,
       disallowNullValues: const ['conversation_id', 'action', 'user_id']);
   return CircleConversationRequest(
-    name: json['conversation_id'] as String,
+    conversationId: json['conversation_id'] as String,
     action: _$enumDecode(_$CircleConversationActionEnumMap, json['action']),
     userId: json['user_id'] as String?,
   );
@@ -20,7 +20,7 @@ CircleConversationRequest _$CircleConversationRequestFromJson(
 Map<String, dynamic> _$CircleConversationRequestToJson(
     CircleConversationRequest instance) {
   final val = <String, dynamic>{
-    'conversation_id': instance.name,
+    'conversation_id': instance.conversationId,
     'action': _$CircleConversationActionEnumMap[instance.action],
   };
 

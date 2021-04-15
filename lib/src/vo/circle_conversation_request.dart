@@ -6,14 +6,14 @@ part 'circle_conversation_request.g.dart';
 @JsonSerializable()
 class CircleConversationRequest with EquatableMixin {
   @JsonKey(name: 'conversation_id', disallowNullValue: true)
-  String name;
+  String conversationId;
   @JsonKey(name: 'action', disallowNullValue: true)
   CircleConversationAction action;
   @JsonKey(name: 'user_id', disallowNullValue: true)
   String? userId;
 
   CircleConversationRequest({
-    required this.name,
+    required this.conversationId,
     required this.action,
     this.userId,
   });
@@ -24,7 +24,7 @@ class CircleConversationRequest with EquatableMixin {
   Map<String, dynamic> toJson() => _$CircleConversationRequestToJson(this);
 
   @override
-  List<Object?> get props => [name, action, userId];
+  List<Object?> get props => [conversationId, action, userId];
 }
 
 enum CircleConversationAction { ADD, REMOVE }

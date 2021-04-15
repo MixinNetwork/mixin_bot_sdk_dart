@@ -34,10 +34,10 @@ class CircleApi {
     return MixinResponse.request<dynamic>(dio.post('/circles/$id/delete'));
   }
 
-  Future<MixinResponse<dynamic>> updateCircleConversations(
+  Future<MixinResponse<List<CircleConversation>>> updateCircleConversations(
       String id, List<CircleConversationRequest> conversationCircleRequests) {
-    return MixinResponse.request<dynamic>(dio.post('/circles/$id/conversations',
-        data: conversationCircleRequests));
+    return MixinResponse.request<List<CircleConversation>>(dio
+        .post('/circles/$id/conversations', data: conversationCircleRequests));
   }
 
   Future<MixinResponse<List<CircleConversation>>> getCircleConversations(
