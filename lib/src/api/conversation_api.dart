@@ -42,4 +42,10 @@ class ConversationApi {
     return MixinResponse.request<ConversationResponse>(
         dio.post('/conversations/$id/participants/$action', data: requests));
   }
+
+  Future<MixinResponse<ConversationResponse>> mute(
+      String id, ConversationRequest request) {
+    return MixinResponse.request<ConversationResponse>(
+        dio.post('/conversations/$id/mute', data: request));
+  }
 }
