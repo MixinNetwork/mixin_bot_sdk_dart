@@ -7,13 +7,16 @@ part 'attachment.g.dart';
 class Attachment with EquatableMixin {
   @JsonKey(name: 'attachment_id')
   String attachmentId;
+  @JsonKey(name: 'created_at')
+  String createdAt;
   @JsonKey(name: 'upload_url')
   String? uploadUrl;
   @JsonKey(name: 'view_url')
   String? viewUrl;
 
   Attachment(
-    this.attachmentId, {
+    this.attachmentId,
+    this.createdAt, {
     this.uploadUrl,
     this.viewUrl,
   });
@@ -28,5 +31,6 @@ class Attachment with EquatableMixin {
         attachmentId,
         uploadUrl,
         viewUrl,
+        createdAt,
       ];
 }
