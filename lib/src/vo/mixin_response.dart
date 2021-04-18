@@ -74,7 +74,7 @@ dynamic _generateJsonForType(type, json) {
       return Provisioning.fromJson(json);
     case 'Account':
       return Account.fromJson(json);
-    case 'Attchment':
+    case 'Attachment':
       return Attachment.fromJson(json);
     case 'StickerAlbum':
       return StickerAlbum.fromJson(json);
