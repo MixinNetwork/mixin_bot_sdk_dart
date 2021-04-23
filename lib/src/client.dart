@@ -19,10 +19,15 @@ class Client {
     String? privateKey,
     String? scp,
     BaseOptions? dioOptions,
+    JsonDecodeCallback? jsonDecodeCallback,
+    Iterable<Interceptor> interceptors = const [],
   }) {
     _dio = Dio(dioOptions);
     _dio.options.baseUrl = 'https://api.mixin.one';
     _dio.options.responseType = ResponseType.json;
+    (dio.transformer as DefaultTransformer).jsonDecodeCallback =
+        jsonDecodeCallback;
+    _dio.interceptors.addAll(interceptors);
     _dio.interceptors.add(InterceptorsWrapper(onRequest: (
       RequestOptions options,
       RequestInterceptorHandler handler,
