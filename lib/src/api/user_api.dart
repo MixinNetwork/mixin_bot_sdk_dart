@@ -36,7 +36,7 @@ class UserApi {
     return MixinResponse.request<List<User>>(dio.get('/blocking_users'));
   }
 
-  Future<MixinResponse<List>> getSessions(List<String> ids) {
+  Future<MixinResponse<List<UserSession>>> getSessions(List<String> ids) {
     return MixinResponse.request<List<UserSession>>(
         dio.post('/sessions/fetch', data: ids));
   }
