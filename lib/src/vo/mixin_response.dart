@@ -3,34 +3,26 @@ import 'package:equatable/equatable.dart';
 import 'package:mixin_bot_sdk_dart/mixin_bot_sdk_dart.dart';
 
 import 'account.dart';
+import 'app.dart';
 import 'circle_conversation.dart';
+import 'circle_response.dart';
 import 'conversation_response.dart';
-import 'mixin_error.dart';
+import 'provisioning.dart';
 import 'sticker.dart';
 import 'sticker_albums.dart';
 import 'user.dart';
-import 'app.dart';
-import 'provisioning.dart';
-import 'circle_response.dart';
 
 class MixinResponse<T> with EquatableMixin {
-  MixinError? error;
-
-  T? data;
+  T data;
 
   MixinResponse(
-    this.error,
     this.data,
   );
 
   factory MixinResponse.fromJson(Map<String, dynamic> json) {
-    var error = json['error'] == null
-        ? null
-        : MixinError.fromJson(json['error'] as Map<String, dynamic>);
-
     var dataJson = json['data'];
     var data = dataJson == null ? null : generateJson<T>(dataJson);
-    return MixinResponse<T>(error, data);
+    return MixinResponse<T>(data);
   }
 
   static Future<MixinResponse<T>> request<T>(Future<Response> future) async {
@@ -40,7 +32,6 @@ class MixinResponse<T> with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        error,
         data,
       ];
 }

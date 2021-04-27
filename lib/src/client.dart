@@ -1,16 +1,18 @@
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
 import 'package:mixin_bot_sdk_dart/src/api/attachment_api.dart';
 import 'package:mixin_bot_sdk_dart/src/api/circle_api.dart';
 import 'package:mixin_bot_sdk_dart/src/api/conversation_api.dart';
-import 'package:dio/dio.dart';
 
+import '../mixin_bot_sdk_dart.dart';
 import 'api/account_api.dart';
 import 'api/circle_api.dart';
 import 'api/message_api.dart';
-import 'auth.dart';
 import 'api/provisioning_api.dart';
 import 'api/user_api.dart';
+import 'auth.dart';
+import 'error/mixin_api_error.dart';
 
 class Client {
   Client({
@@ -21,6 +23,7 @@ class Client {
     BaseOptions? dioOptions,
     JsonDecodeCallback? jsonDecodeCallback,
     Iterable<Interceptor> interceptors = const [],
+    bool debug = true,
   }) {
     _dio = Dio(dioOptions);
     _dio.options.baseUrl = 'https://api.mixin.one';
@@ -28,38 +31,50 @@ class Client {
     (dio.transformer as DefaultTransformer).jsonDecodeCallback =
         jsonDecodeCallback;
     _dio.interceptors.addAll(interceptors);
-    _dio.interceptors.add(InterceptorsWrapper(onRequest: (
-      RequestOptions options,
-      RequestInterceptorHandler handler,
-    ) async {
-      var body = '';
-      if (options.data != null) {
-        body = jsonEncode(options.data);
-      }
-      options.headers['Accept-Language'] ??= 'en_US';
-      options.headers['Authorization'] = 'Bearer ' +
-          signAuthTokenWithEdDSA(
-            userId,
-            sessionId,
-            privateKey,
-            scp,
-            options.method,
-            options.path,
-            body,
-          );
-      handler.next(options);
-    }, onResponse: (
-      Response response,
-      ResponseInterceptorHandler handler,
-    ) async {
-      print(response.data);
-      handler.resolve(response);
-    }, onError: (
-      DioError error,
-      ErrorInterceptorHandler handler,
-    ) async {
-      handler.next(error);
-    }));
+    if (debug) {
+      _dio.interceptors.add(LogInterceptor(
+        requestBody: true,
+        responseBody: true,
+        requestHeader: false,
+        responseHeader: false,
+      ));
+    }
+    _dio.interceptors.add(InterceptorsWrapper(
+      onRequest: (
+        RequestOptions options,
+        RequestInterceptorHandler handler,
+      ) async {
+        var body = '';
+        if (options.data != null) {
+          body = jsonEncode(options.data);
+        }
+        options.headers['Accept-Language'] ??= 'en_US';
+        options.headers['Authorization'] = 'Bearer ' +
+            signAuthTokenWithEdDSA(
+              userId,
+              sessionId,
+              privateKey,
+              scp,
+              options.method,
+              options.path,
+              body,
+            );
+        handler.next(options);
+      },
+      onResponse: (Response response, ResponseInterceptorHandler handler) {
+        var error = response.data['error'];
+        if (error == null) return handler.resolve(response);
+
+        return handler.reject(
+          MixinApiError(
+            requestOptions: response.requestOptions,
+            response: response,
+            error: MixinError.fromJson(error),
+          ),
+          true,
+        );
+      },
+    ));
 
     _userApi = UserApi(dio: _dio);
     _provisioningApi = ProvisioningApi(dio: _dio);

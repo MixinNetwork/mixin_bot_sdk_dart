@@ -7,6 +7,6 @@ class MessageApi {
 
   MessageApi({required this.dio});
 
-  Future<MixinResponse<void>> acknowledgements(List<BlazeAckMessage> ack) =>
-      MixinResponse.request<void>(dio.post('/acknowledgements', data: ack));
+  Future<MixinResponse<dynamic>> acknowledgements(List<BlazeAckMessage> ack) =>
+      MixinResponse.request<dynamic>(dio.post('/acknowledgements', data: ack));
 }

@@ -27,6 +27,6 @@ export 'src/vo/conversation_request.dart';
 export 'src/vo/circle_response.dart';
 export 'src/vo/circle_name.dart';
 export 'src/vo/circle_conversation_request.dart';
-export 'src/extension/mixin_response_extension.dart';
 export 'src/enum_converter.dart';
 export 'src/crypto_util.dart';
+export 'src/error/mixin_api_error.dart';

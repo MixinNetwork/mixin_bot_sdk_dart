@@ -5,8 +5,7 @@ enum ParticipantRole {
   admin,
 }
 
-class ParticipantRoleJsonConverter
-    extends EnumJsonConverter<ParticipantRole> {
+class ParticipantRoleJsonConverter extends EnumJsonConverter<ParticipantRole> {
   const ParticipantRoleJsonConverter();
   @override
   List<ParticipantRole> enumValues() => ParticipantRole.values;

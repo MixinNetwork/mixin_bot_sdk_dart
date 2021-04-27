@@ -20,8 +20,8 @@ class AccountApi {
   Future<MixinResponse<SignalKeyCount>> getSignalKeyCount() =>
       MixinResponse.request<SignalKeyCount>(dio.get('/signal/keys/count'));
 
-  Future<MixinResponse<void>> logout() =>
-      MixinResponse.request<void>(dio.get('/logout'));
+  Future<MixinResponse<dynamic>> logout() =>
+      MixinResponse.request<dynamic>(dio.get('/logout'));
 
   Future<MixinResponse<List<StickerAlbum>>> getStickerAlbums() =>
       MixinResponse.request<List<StickerAlbum>>(dio.get('/stickers/albums'));

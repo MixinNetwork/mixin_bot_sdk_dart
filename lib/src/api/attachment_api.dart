@@ -6,7 +6,7 @@ import '../vo/mixin_response.dart';
 class AttachmentApi {
   final Dio dio;
 
-  AttachmentApi({required  this.dio});
+  AttachmentApi({required this.dio});
 
   Future<MixinResponse<Attachment>> getAttachment(String id) =>
       MixinResponse.request<Attachment>(dio.get('/attachments/$id'));

@@ -14,7 +14,7 @@ void main() {
 
     test('test getMe', () async {
       var resp = await client.accountApi.getMe();
-      print(resp.data?.toJson());
+      print(resp.data.toJson());
     });
 
     test('test getSignalCountKey', () async {

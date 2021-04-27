@@ -1,20 +1,22 @@
 import 'package:mixin_bot_sdk_dart/mixin_bot_sdk_dart.dart';
 import 'dart:io';
 
+import 'package:mixin_bot_sdk_dart/src/error/mixin_api_error.dart';
+
 void main() {
   testProvisioningId();
 }
 
-void testProvisioningId() {
+Future<void> testProvisioningId() async {
   var client = Client();
-  client.provisioningApi
-      .getProvisioningId(Platform.operatingSystem)
-      .then((response) => {
-            response.handleResponse(onSuccess: (Provisioning provisioning) {
-              print(provisioning.toJson());
-            }, onFailure: (MixinError error) {
-              print(error.toJson());
-            })
-          });
+  try {
+    var mixinResponse = await client.provisioningApi
+          .getProvisioningId(Platform.operatingSystem);
+    print(mixinResponse.data.toJson());
+  } catch (e) {
+    if(e is MixinApiError) {
+      print(e.error.toJson());
+    }
+  }
 }
 
