@@ -75,6 +75,8 @@ dynamic _generateJsonForType(type, json) {
       return CircleResponse.fromJson(json);
     case 'CircleConversation':
       return CircleConversation.fromJson(json);
+    case 'UserSession':
+      return User.fromJson(json);
   }
   throw Exception('Unknown type $type');
 }
@@ -93,6 +95,8 @@ List? _getListFromType(String type) {
       return <CircleResponse>[];
     case 'CircleConversation':
       return <CircleConversation>[];
+    case 'UserSession':
+      return <UserSession>[];
   }
   throw Exception('Unknown type $type');
 }
