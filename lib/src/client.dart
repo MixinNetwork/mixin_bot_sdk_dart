@@ -23,7 +23,7 @@ class Client {
     BaseOptions? dioOptions,
     JsonDecodeCallback? jsonDecodeCallback,
     Iterable<Interceptor> interceptors = const [],
-    bool debug = true,
+    Level? level = Level.ALL,
   }) {
     _dio = Dio(dioOptions);
     _dio.options.baseUrl = 'https://api.mixin.one';
@@ -31,14 +31,6 @@ class Client {
     (dio.transformer as DefaultTransformer).jsonDecodeCallback =
         jsonDecodeCallback;
     _dio.interceptors.addAll(interceptors);
-    if (debug) {
-      _dio.interceptors.add(LogInterceptor(
-        requestBody: true,
-        responseBody: true,
-        requestHeader: false,
-        responseHeader: false,
-      ));
-    }
     _dio.interceptors.add(InterceptorsWrapper(
       onRequest: (
         RequestOptions options,
@@ -75,7 +67,16 @@ class Client {
         );
       },
     ));
-
+    if (level != null || level != Level.NONE) {
+      var printBody = level == Level.ALL || level == Level.BODY;
+      var printHeader = level == Level.ALL || level == Level.BODY;
+      _dio.interceptors.add(LogInterceptor(
+        requestBody: printBody,
+        responseBody: printBody,
+        requestHeader: printHeader,
+        responseHeader: printHeader,
+      ));
+    }
     _userApi = UserApi(dio: _dio);
     _provisioningApi = ProvisioningApi(dio: _dio);
     _accountApi = AccountApi(dio: _dio);
@@ -110,3 +111,5 @@ class Client {
 
   CircleApi get circleApi => _circleApi;
 }
+
+enum Level { NONE, BODY, HEADERS, ALL }
