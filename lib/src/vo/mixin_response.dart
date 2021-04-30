@@ -1,6 +1,7 @@
 import 'package:dio/src/response.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mixin_bot_sdk_dart/mixin_bot_sdk_dart.dart';
+import 'package:mixin_bot_sdk_dart/src/vo/signal_key_count.dart';
 
 import 'account.dart';
 import 'app.dart';
@@ -77,6 +78,8 @@ dynamic _generateJsonForType(type, json) {
       return CircleConversation.fromJson(json);
     case 'UserSession':
       return User.fromJson(json);
+    case 'SignalKeyCount':
+      return SignalKeyCount.fromJson(json);
   }
   throw Exception('Unknown type $type');
 }

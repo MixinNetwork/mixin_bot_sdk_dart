@@ -20,6 +20,10 @@ class AccountApi {
   Future<MixinResponse<SignalKeyCount>> getSignalKeyCount() =>
       MixinResponse.request<SignalKeyCount>(dio.get('/signal/keys/count'));
 
+  Future<MixinResponse<void>> pushSignalKeys(String signalKeysRequest) =>
+      MixinResponse.request(dio.post('/signal/keys',
+          data: {'signal_key_request': signalKeysRequest}));
+
   Future<MixinResponse<dynamic>> logout() =>
       MixinResponse.request<dynamic>(dio.get('/logout'));
 

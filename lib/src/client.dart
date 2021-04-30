@@ -69,7 +69,7 @@ class Client {
     ));
     if (level != null || level != Level.NONE) {
       var printBody = level == Level.ALL || level == Level.BODY;
-      var printHeader = level == Level.ALL || level == Level.BODY;
+      var printHeader = level == Level.ALL || level == Level.HEADERS;
       _dio.interceptors.add(LogInterceptor(
         requestBody: printBody,
         responseBody: printBody,
