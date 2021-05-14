@@ -30,7 +30,7 @@ class User with EquatableMixin {
   String muteUntil;
   @JsonKey(name: 'has_pin')
   bool? hasPin;
-  @JsonKey(name: 'app', ignore: true)
+  @JsonKey(name: 'app')
   App? app;
   @JsonKey(name: 'app_id')
   String? appId;

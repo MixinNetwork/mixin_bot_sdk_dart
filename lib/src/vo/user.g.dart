@@ -22,6 +22,9 @@ User _$UserFromJson(Map<String, dynamic> json) {
         : DateTime.parse(json['created_at'] as String),
     muteUntil: json['mute_until'] as String,
     hasPin: json['has_pin'] as bool?,
+    app: json['app'] == null
+        ? null
+        : App.fromJson(json['app'] as Map<String, dynamic>),
     appId: json['app_id'] as String?,
     isScam: json['is_scam'] as bool,
   );
@@ -40,6 +43,7 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'created_at': instance.createdAt?.toIso8601String(),
       'mute_until': instance.muteUntil,
       'has_pin': instance.hasPin,
+      'app': instance.app,
       'app_id': instance.appId,
       'is_scam': instance.isScam,
     };
