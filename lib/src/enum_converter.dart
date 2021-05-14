@@ -19,11 +19,12 @@ class EnumToString {
   static T? fromString<T>(List<T?>? enumValues, String? value) {
     if (value == null || enumValues == null) return null;
 
-    return enumValues.singleWhere(
-        (enumItem) =>
-            EnumToString.convertToString(enumItem)?.toUpperCase() ==
-            value.toUpperCase(),
-        orElse: () => null);
+    return enumValues.cast<T?>().singleWhere(
+          (enumItem) =>
+              EnumToString.convertToString(enumItem)?.toUpperCase() ==
+              value.toUpperCase(),
+          orElse: () => null,
+        );
   }
 }
 
