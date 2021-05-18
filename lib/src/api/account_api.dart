@@ -21,7 +21,8 @@ class AccountApi {
   Future<MixinResponse<SignalKeyCount>> getSignalKeyCount() =>
       MixinResponse.request<SignalKeyCount>(dio.get('/signal/keys/count'));
 
-  Future<MixinResponse<void>> pushSignalKeys(String signalKeysRequest) =>
+  Future<MixinResponse<void>> pushSignalKeys(
+          Map<String, dynamic> signalKeysRequest) =>
       MixinResponse.request(dio.post('/signal/keys',
           data: {'signal_key_request': signalKeysRequest}));
 

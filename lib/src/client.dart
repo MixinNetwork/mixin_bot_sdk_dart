@@ -31,6 +31,16 @@ class Client {
     (dio.transformer as DefaultTransformer).jsonDecodeCallback =
         jsonDecodeCallback;
     _dio.interceptors.addAll(interceptors);
+    if (level != null || level != Level.NONE) {
+      var printBody = level == Level.ALL || level == Level.BODY;
+      var printHeader = level == Level.ALL || level == Level.HEADERS;
+      _dio.interceptors.add(LogInterceptor(
+        requestBody: printBody,
+        responseBody: printBody,
+        requestHeader: printHeader,
+        responseHeader: printHeader,
+      ));
+    }
     _dio.interceptors.add(InterceptorsWrapper(
       onRequest: (
         RequestOptions options,
@@ -67,16 +77,6 @@ class Client {
         );
       },
     ));
-    if (level != null || level != Level.NONE) {
-      var printBody = level == Level.ALL || level == Level.BODY;
-      var printHeader = level == Level.ALL || level == Level.HEADERS;
-      _dio.interceptors.add(LogInterceptor(
-        requestBody: printBody,
-        responseBody: printBody,
-        requestHeader: printHeader,
-        responseHeader: printHeader,
-      ));
-    }
     _userApi = UserApi(dio: _dio);
     _provisioningApi = ProvisioningApi(dio: _dio);
     _accountApi = AccountApi(dio: _dio);
