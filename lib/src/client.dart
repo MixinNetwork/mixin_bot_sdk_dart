@@ -30,7 +30,6 @@ class Client {
     _dio.options.responseType = ResponseType.json;
     (dio.transformer as DefaultTransformer).jsonDecodeCallback =
         jsonDecodeCallback;
-    _dio.interceptors.addAll(interceptors);
     if (level != null || level != Level.NONE) {
       var printBody = level == Level.ALL || level == Level.BODY;
       var printHeader = level == Level.ALL || level == Level.HEADERS;
@@ -41,6 +40,7 @@ class Client {
         responseHeader: printHeader,
       ));
     }
+    _dio.interceptors.addAll(interceptors);
     _dio.interceptors.add(InterceptorsWrapper(
       onRequest: (
         RequestOptions options,
