@@ -23,7 +23,7 @@ void main() {
     });
 
     test('test logout', () async {
-      await client.accountApi.logout().then((response) {});
+      await client.accountApi.logout(LogoutRequest(sid)).then((response) {});
     });
 
     test('test push signal keys', () async {
