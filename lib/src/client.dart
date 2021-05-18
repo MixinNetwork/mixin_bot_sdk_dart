@@ -56,7 +56,7 @@ class Client {
       },
       onResponse: (Response response, ResponseInterceptorHandler handler) {
         var error = response.data['error'];
-        if (error == null) return handler.resolve(response);
+        if (error == null) return handler.next(response);
 
         return handler.reject(
           MixinApiError(
