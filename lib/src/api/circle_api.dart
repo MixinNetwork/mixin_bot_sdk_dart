@@ -45,6 +45,6 @@ class CircleApi {
       {String? offset,
       int limit = 500}) {
     return MixinResponse.request<List<CircleConversation>>(
-        dio.get('/circles/$id/conversations?offset:$offset&limit:$limit'));
+        dio.get('/circles/$id/conversations?offset=$offset&limit=$limit'));
   }
 }
