@@ -13,6 +13,7 @@ import 'api/provisioning_api.dart';
 import 'api/user_api.dart';
 import 'auth.dart';
 import 'error/mixin_api_error.dart';
+import 'log_interceptor.dart';
 
 class Client {
   Client({
@@ -23,23 +24,13 @@ class Client {
     BaseOptions? dioOptions,
     JsonDecodeCallback? jsonDecodeCallback,
     Iterable<Interceptor> interceptors = const [],
-    Level? level = Level.ALL,
+    HttpLogLevel? httpLogLevel = HttpLogLevel.all,
   }) {
     _dio = Dio(dioOptions);
     _dio.options.baseUrl = 'https://api.mixin.one';
     _dio.options.responseType = ResponseType.json;
     (dio.transformer as DefaultTransformer).jsonDecodeCallback =
         jsonDecodeCallback;
-    if (level != null || level != Level.NONE) {
-      var printBody = level == Level.ALL || level == Level.BODY;
-      var printHeader = level == Level.ALL || level == Level.HEADERS;
-      _dio.interceptors.add(LogInterceptor(
-        requestBody: printBody,
-        responseBody: printBody,
-        requestHeader: printHeader,
-        responseHeader: printHeader,
-      ));
-    }
     _dio.interceptors.addAll(interceptors);
     _dio.interceptors.add(InterceptorsWrapper(
       onRequest: (
@@ -77,6 +68,9 @@ class Client {
         );
       },
     ));
+    if (httpLogLevel != null) {
+      _dio.interceptors.add(MixinLogInterceptor(httpLogLevel));
+    }
     _userApi = UserApi(dio: _dio);
     _provisioningApi = ProvisioningApi(dio: _dio);
     _accountApi = AccountApi(dio: _dio);
@@ -111,5 +105,3 @@ class Client {
 
   CircleApi get circleApi => _circleApi;
 }
-
-enum Level { NONE, BODY, HEADERS, ALL }

@@ -31,3 +31,4 @@ export 'src/vo/circle_conversation_request.dart';
 export 'src/enum_converter.dart';
 export 'src/crypto_util.dart';
 export 'src/error/mixin_api_error.dart';
+export 'src/log_interceptor.dart';
