@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:mixin_bot_sdk_dart/src/vo/request/logout_request.dart';
 
 import '../vo/mixin_response.dart';
 import '../vo/signal_key_count.dart';
@@ -24,8 +25,8 @@ class AccountApi {
       MixinResponse.request(dio.post('/signal/keys',
           data: {'signal_key_request': signalKeysRequest}));
 
-  Future<MixinResponse<dynamic>> logout() =>
-      MixinResponse.request<dynamic>(dio.get('/logout'));
+  Future<MixinResponse<dynamic>> logout(LogoutRequest request) =>
+      MixinResponse.request<dynamic>(dio.post('/logout', data: request));
 
   Future<MixinResponse<List<StickerAlbum>>> getStickerAlbums() =>
       MixinResponse.request<List<StickerAlbum>>(dio.get('/stickers/albums'));
