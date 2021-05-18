@@ -21,13 +21,14 @@ class Client {
     String? sessionId,
     String? privateKey,
     String? scp,
+    String? baseUrl,
     BaseOptions? dioOptions,
     JsonDecodeCallback? jsonDecodeCallback,
     Iterable<Interceptor> interceptors = const [],
     HttpLogLevel? httpLogLevel = HttpLogLevel.all,
   }) {
     _dio = Dio(dioOptions);
-    _dio.options.baseUrl = 'https://api.mixin.one';
+    _dio.options.baseUrl = baseUrl ?? 'https://api.mixin.one';
     _dio.options.responseType = ResponseType.json;
     (dio.transformer as DefaultTransformer).jsonDecodeCallback =
         jsonDecodeCallback;
