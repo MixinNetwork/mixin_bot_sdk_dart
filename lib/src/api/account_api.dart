@@ -23,8 +23,7 @@ class AccountApi {
 
   Future<MixinResponse<void>> pushSignalKeys(
           Map<String, dynamic> signalKeysRequest) =>
-      MixinResponse.request(dio.post('/signal/keys',
-          data: {'signal_key_request': signalKeysRequest}));
+      MixinResponse.request(dio.post('/signal/keys', data: signalKeysRequest));
 
   Future<MixinResponse<dynamic>> logout(LogoutRequest request) =>
       MixinResponse.request<dynamic>(dio.post('/logout', data: request));
