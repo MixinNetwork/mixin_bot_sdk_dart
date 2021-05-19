@@ -72,8 +72,10 @@ class Client {
         );
       },
       onError: (DioError e, ErrorInterceptorHandler handler) async {
-        if ((e is MixinApiError && e.error.code < 500) &&
-            {mixinBaseUrl0, mixinBaseUrl1}.contains(dio.options.baseUrl)) {
+        if(!{mixinBaseUrl0, mixinBaseUrl1}.contains(dio.options.baseUrl)) {
+          return handler.next(e);
+        }
+        if ((e is MixinApiError && e.error.code < 500)) {
           return handler.next(e);
         }
 
