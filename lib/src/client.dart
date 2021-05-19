@@ -72,12 +72,14 @@ class Client {
         );
       },
       onError: (DioError e, ErrorInterceptorHandler handler) async {
-        if ((e is MixinApiError && e.error.code < 500)) {
+        if ((e is MixinApiError && e.error.code < 500) &&
+            {mixinBaseUrl0, mixinBaseUrl1}.contains(dio.options.baseUrl)) {
           return handler.next(e);
         }
 
-        dio.options.baseUrl =
-            dio.options.baseUrl == mixinBaseUrl0 ? mixinBaseUrl1 : mixinBaseUrl0;
+        dio.options.baseUrl = dio.options.baseUrl == mixinBaseUrl0
+            ? mixinBaseUrl1
+            : mixinBaseUrl0;
 
         try {
           var response = await dio.request(
