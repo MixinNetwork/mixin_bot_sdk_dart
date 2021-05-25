@@ -42,4 +42,4 @@ class RelationshipActionJsonConverter
   List<RelationshipAction> enumValues() => RelationshipAction.values;
 }
 
-enum RelationshipAction { add, remove, block, unblock }
+enum RelationshipAction { add, update, remove, block, unblock }
