@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:mixin_bot_sdk_dart/src/api/asset_api.dart';
 import 'package:mixin_bot_sdk_dart/src/api/attachment_api.dart';
 import 'package:mixin_bot_sdk_dart/src/api/circle_api.dart';
 import 'package:mixin_bot_sdk_dart/src/api/conversation_api.dart';
@@ -114,6 +115,7 @@ class Client {
     _messageApi = MessageApi(dio: _dio);
     _attachmentApi = AttachmentApi(dio: _dio);
     _circleApi = CircleApi(dio: _dio);
+    _assetApi = AssetApi(dio: _dio);
   }
 
   late Dio _dio;
@@ -124,6 +126,7 @@ class Client {
   late AccountApi _accountApi;
   late AttachmentApi _attachmentApi;
   late CircleApi _circleApi;
+  late AssetApi _assetApi;
 
   Dio get dio => _dio;
 
@@ -140,4 +143,6 @@ class Client {
   AttachmentApi get attachmentApi => _attachmentApi;
 
   CircleApi get circleApi => _circleApi;
+
+  AssetApi get assetApi => _assetApi;
 }

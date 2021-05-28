@@ -5,6 +5,7 @@ import 'package:mixin_bot_sdk_dart/src/vo/signal_key_count.dart';
 
 import 'account.dart';
 import 'app.dart';
+import 'asset.dart';
 import 'circle_conversation.dart';
 import 'circle_response.dart';
 import 'conversation_response.dart';
@@ -80,6 +81,8 @@ dynamic _generateJsonForType(type, json) {
       return User.fromJson(json);
     case 'SignalKeyCount':
       return SignalKeyCount.fromJson(json);
+    case 'Asset':
+      return Asset.fromJson(json);
   }
   throw Exception('Unknown type $type');
 }
@@ -100,6 +103,8 @@ List? _getListFromType(String type) {
       return <CircleConversation>[];
     case 'UserSession':
       return <UserSession>[];
+    case 'Asset':
+      return <Asset>[];
   }
   throw Exception('Unknown type $type');
 }

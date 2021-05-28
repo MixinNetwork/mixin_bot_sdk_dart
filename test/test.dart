@@ -11,12 +11,11 @@ Future<void> testProvisioningId() async {
   var client = Client();
   try {
     var mixinResponse = await client.provisioningApi
-          .getProvisioningId(Platform.operatingSystem);
+        .getProvisioningId(Platform.operatingSystem);
     print(mixinResponse.data.toJson());
   } catch (e) {
-    if(e is MixinApiError) {
+    if (e is MixinApiError) {
       print(e.error.toJson());
     }
   }
 }
-

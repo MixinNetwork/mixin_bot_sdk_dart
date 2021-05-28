@@ -7,6 +7,8 @@ final private =
 
 final uids = <String>['773e5e77-4107-45c2-b648-8fc722ed77f5'];
 
+final btcId = 'c6d0c728-2624-429b-8e0d-d9d19b6592fa';
+
 // var mockRelationshipRequest = RelationshipRequest(
 //     userId: '773e5e77-4107-45c2-b648-8fc722ed77f5',
 //     action: RelationshipAction.add.toString());
