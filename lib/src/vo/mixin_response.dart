@@ -78,7 +78,7 @@ dynamic _generateJsonForType(type, json) {
     case 'CircleConversation':
       return CircleConversation.fromJson(json);
     case 'UserSession':
-      return User.fromJson(json);
+      return UserSession.fromJson(json);
     case 'SignalKeyCount':
       return SignalKeyCount.fromJson(json);
     case 'Asset':
