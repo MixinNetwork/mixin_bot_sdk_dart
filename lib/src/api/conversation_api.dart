@@ -48,4 +48,9 @@ class ConversationApi {
     return MixinResponse.request<ConversationResponse>(
         dio.post('/conversations/$id/mute', data: request));
   }
+
+  Future<MixinResponse<ConversationResponse>> rotate(String id) {
+    return MixinResponse.request<ConversationResponse>(
+        dio.post('/conversations/$id/rotate'));
+  }
 }
