@@ -61,6 +61,6 @@ K _$enumDecode<K, V>(
 }
 
 const _$CircleConversationActionEnumMap = {
-  CircleConversationAction.ADD: 'ADD',
-  CircleConversationAction.REMOVE: 'REMOVE',
+  CircleConversationAction.add: 'ADD',
+  CircleConversationAction.remove: 'REMOVE',
 };

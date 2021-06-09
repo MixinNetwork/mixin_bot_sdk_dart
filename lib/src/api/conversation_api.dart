@@ -38,13 +38,11 @@ class ConversationApi {
           dio.post('/conversations/$id/participants/$action', data: requests));
 
   Future<MixinResponse<ConversationResponse>> mute(
-      String id, ConversationRequest request) {
-    return MixinResponse.request<ConversationResponse>(
-        dio.post('/conversations/$id/mute', data: request));
-  }
+          String id, ConversationRequest request) =>
+      MixinResponse.request<ConversationResponse>(
+          dio.post('/conversations/$id/mute', data: request));
 
-  Future<MixinResponse<ConversationResponse>> rotate(String id) {
-    return MixinResponse.request<ConversationResponse>(
-        dio.post('/conversations/$id/rotate'));
-  }
+  Future<MixinResponse<ConversationResponse>> rotate(String id) =>
+      MixinResponse.request<ConversationResponse>(
+          dio.post('/conversations/$id/rotate'));
 }

@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 
 import '../mixin_bot_sdk_dart.dart';
 import 'api/account_api.dart';
+import 'api/asset_api.dart';
 import 'api/attachment_api.dart';
 import 'api/circle_api.dart';
 import 'api/conversation_api.dart';

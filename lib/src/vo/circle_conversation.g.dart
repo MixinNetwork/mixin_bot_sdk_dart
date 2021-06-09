@@ -10,9 +10,9 @@ CircleConversation _$CircleConversationFromJson(Map<String, dynamic> json) {
   return CircleConversation(
     conversationId: json['conversation_id'] as String,
     circleId: json['circle_id'] as String,
-    userId: json['user_id'] as String?,
     createdAt: DateTime.parse(json['created_at'] as String),
     pinTime: json['pinTime'] as String,
+    userId: json['user_id'] as String?,
   );
 }
 

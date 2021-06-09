@@ -5,7 +5,6 @@ part 'circle_conversation.g.dart';
 
 @JsonSerializable()
 class CircleConversation with EquatableMixin {
-
   CircleConversation({
     required this.conversationId,
     required this.circleId,
@@ -38,5 +37,3 @@ class CircleConversation with EquatableMixin {
         pinTime,
       ];
 }
-
-enum CircleConversationAction { add, remove }

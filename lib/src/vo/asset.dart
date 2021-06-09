@@ -5,6 +5,28 @@ part 'asset.g.dart';
 
 @JsonSerializable()
 class Asset with EquatableMixin {
+  Asset({
+    required this.assetId,
+    required this.symbol,
+    required this.name,
+    required this.iconUrl,
+    required this.balance,
+    required this.destination,
+    required this.priceBtc,
+    required this.priceUsd,
+    required this.chainId,
+    required this.changeBtc,
+    required this.changeUsd,
+    required this.confirmations,
+    this.tag,
+    this.assetKey,
+    this.reserve,
+  });
+
+  factory Asset.fromJson(Map<String, dynamic> json) => _$AssetFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AssetToJson(this);
+
   @JsonKey(name: 'asset_id')
   String assetId;
   @JsonKey(name: 'symbol')
@@ -35,28 +57,6 @@ class Asset with EquatableMixin {
   String? assetKey;
   @JsonKey(name: 'reserve')
   String? reserve;
-
-  Asset({
-    required this.assetId,
-    required this.symbol,
-    required this.name,
-    required this.iconUrl,
-    required this.balance,
-    required this.destination,
-    this.tag,
-    required this.priceBtc,
-    required this.priceUsd,
-    required this.chainId,
-    required this.changeBtc,
-    required this.changeUsd,
-    required this.confirmations,
-    this.assetKey,
-    this.reserve,
-  });
-
-  factory Asset.fromJson(Map<String, dynamic> json) => _$AssetFromJson(json);
-
-  Map<String, dynamic> toJson() => _$AssetToJson(this);
 
   @override
   List<Object?> get props => [

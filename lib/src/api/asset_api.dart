@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:mixin_bot_sdk_dart/src/vo/asset.dart';
 
 import '../../mixin_bot_sdk_dart.dart';
+import '../vo/asset.dart';
 
 class AssetApi {
   AssetApi({required this.dio});

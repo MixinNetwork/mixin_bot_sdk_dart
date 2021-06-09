@@ -13,20 +13,20 @@ User _$UserFromJson(Map<String, dynamic> json) {
     relationship: const UserRelationshipJsonConverter()
         .fromJson(json['relationship'] as String?),
     biography: json['biography'] as String,
+    isVerified: json['is_verified'] as bool,
+    muteUntil: json['mute_until'] as String,
+    isScam: json['is_scam'] as bool,
     fullName: json['full_name'] as String?,
     avatarUrl: json['avatar_url'] as String?,
     phone: json['phone'] as String?,
-    isVerified: json['is_verified'] as bool,
     createdAt: json['created_at'] == null
         ? null
         : DateTime.parse(json['created_at'] as String),
-    muteUntil: json['mute_until'] as String,
     hasPin: json['has_pin'] as bool?,
     app: json['app'] == null
         ? null
         : App.fromJson(json['app'] as Map<String, dynamic>),
     appId: json['app_id'] as String?,
-    isScam: json['is_scam'] as bool,
   );
 }
 

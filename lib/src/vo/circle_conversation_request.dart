@@ -5,7 +5,6 @@ part 'circle_conversation_request.g.dart';
 
 @JsonSerializable()
 class CircleConversationRequest with EquatableMixin {
-
   CircleConversationRequest({
     required this.conversationId,
     required this.action,
@@ -28,4 +27,9 @@ class CircleConversationRequest with EquatableMixin {
   List<Object?> get props => [conversationId, action, userId];
 }
 
-enum CircleConversationAction { add, remove }
+enum CircleConversationAction {
+  @JsonValue('ADD')
+  add,
+  @JsonValue('REMOVE')
+  remove,
+}

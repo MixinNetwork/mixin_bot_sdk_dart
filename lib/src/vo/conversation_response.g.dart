@@ -18,15 +18,15 @@ ConversationResponse _$ConversationResponseFromJson(Map<String, dynamic> json) {
     participants: (json['participants'] as List<dynamic>)
         .map((e) => ParticipantRequest.fromJson(e as Map<String, dynamic>))
         .toList(),
+    muteUntil: json['mute_until'] as String,
+    announcement: json['announcement'] as String,
+    creatorId: json['creator_id'] as String,
     participantSessions: (json['participant_sessions'] as List<dynamic>?)
         ?.map((e) => UserSession.fromJson(e as Map<String, dynamic>))
         .toList(),
     circles: (json['circles'] as List<dynamic>?)
         ?.map((e) => CircleConversation.fromJson(e as Map<String, dynamic>))
         .toList(),
-    muteUntil: json['mute_until'] as String,
-    announcement: json['announcement'] as String,
-    creatorId: json['creator_id'] as String,
   );
 }
 

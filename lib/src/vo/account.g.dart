@@ -11,9 +11,7 @@ Account _$AccountFromJson(Map<String, dynamic> json) {
     userId: json['user_id'] as String,
     identityNumber: json['identity_number'] as String,
     phone: json['phone'] as String,
-    fullName: json['full_name'] as String?,
     biography: json['biography'] as String,
-    avatarUrl: json['avatar_url'] as String?,
     relationship: json['relationship'] as String,
     muteUntil: json['mute_until'] as String,
     createdAt: DateTime.parse(json['created_at'] as String),
@@ -35,6 +33,8 @@ Account _$AccountFromJson(Map<String, dynamic> json) {
         json['transfer_notification_threshold'] as int,
     transferConfirmationThreshold:
         json['transfer_confirmation_threshold'] as int,
+    fullName: json['full_name'] as String?,
+    avatarUrl: json['avatar_url'] as String?,
   );
 }
 
