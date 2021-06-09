@@ -5,12 +5,6 @@ part 'circle_response.g.dart';
 
 @JsonSerializable()
 class CircleResponse with EquatableMixin {
-  @JsonKey(name: 'circle_id', disallowNullValue: true)
-  String circleId;
-  @JsonKey(name: 'name', disallowNullValue: true)
-  String name;
-  @JsonKey(name: 'created_at', disallowNullValue: true)
-  DateTime createdAt;
 
   CircleResponse({
     required this.circleId,
@@ -22,6 +16,13 @@ class CircleResponse with EquatableMixin {
       _$CircleResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$CircleResponseToJson(this);
+
+  @JsonKey(name: 'circle_id', disallowNullValue: true)
+  String circleId;
+  @JsonKey(name: 'name', disallowNullValue: true)
+  String name;
+  @JsonKey(name: 'created_at', disallowNullValue: true)
+  DateTime createdAt;
 
   @override
   List<Object> get props => [

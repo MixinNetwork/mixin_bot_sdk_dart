@@ -5,6 +5,27 @@ part 'app.g.dart';
 
 @JsonSerializable()
 class App with EquatableMixin {
+
+  App({
+    required this.appId,
+    required this.appNumber,
+    required this.homeUri,
+    required this.redirectUri,
+    required this.name,
+    required this.iconUrl,
+    required this.category,
+    required this.description,
+    required this.appSecret,
+    required this.creatorId,
+    this.capabilites,
+    this.resourcePatterns,
+    this.updatedAt,
+  });
+
+  factory App.fromJson(Map<String, dynamic> json) => _$AppFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AppToJson(this);
+
   @JsonKey(name: 'app_id')
   String appId;
   @JsonKey(name: 'app_number')
@@ -31,26 +52,6 @@ class App with EquatableMixin {
   List<String>? resourcePatterns;
   @JsonKey(name: 'updated_at')
   DateTime? updatedAt;
-
-  App({
-    required this.appId,
-    required this.appNumber,
-    required this.homeUri,
-    required this.redirectUri,
-    required this.name,
-    required this.iconUrl,
-    required this.category,
-    required this.description,
-    this.capabilites,
-    required this.appSecret,
-    required this.creatorId,
-    this.resourcePatterns,
-    this.updatedAt,
-  });
-
-  factory App.fromJson(Map<String, dynamic> json) => _$AppFromJson(json);
-
-  Map<String, dynamic> toJson() => _$AppToJson(this);
 
   @override
   List<Object?> get props => [

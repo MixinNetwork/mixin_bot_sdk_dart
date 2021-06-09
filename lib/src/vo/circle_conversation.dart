@@ -5,6 +5,20 @@ part 'circle_conversation.g.dart';
 
 @JsonSerializable()
 class CircleConversation with EquatableMixin {
+
+  CircleConversation({
+    required this.conversationId,
+    required this.circleId,
+    required this.createdAt,
+    required this.pinTime,
+    this.userId,
+  });
+
+  factory CircleConversation.fromJson(Map<String, dynamic> json) =>
+      _$CircleConversationFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CircleConversationToJson(this);
+
   @JsonKey(name: 'conversation_id')
   String conversationId;
   @JsonKey(name: 'circle_id')
@@ -14,19 +28,6 @@ class CircleConversation with EquatableMixin {
   @JsonKey(name: 'created_at')
   DateTime createdAt;
   String pinTime;
-
-  CircleConversation({
-    required this.conversationId,
-    required this.circleId,
-    this.userId,
-    required this.createdAt,
-    required this.pinTime,
-  });
-
-  factory CircleConversation.fromJson(Map<String, dynamic> json) =>
-      _$CircleConversationFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CircleConversationToJson(this);
 
   @override
   List<Object?> get props => [

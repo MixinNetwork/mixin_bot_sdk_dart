@@ -9,6 +9,28 @@ part 'conversation.g.dart';
 @ConversationCategoryJsonConverter()
 @ConversationStatusJsonConverter()
 class Conversation with EquatableMixin {
+  Conversation({
+    required this.conversationId,
+    required this.createdAt,
+    required this.status,
+    this.name,
+    this.ownerId,
+    this.category,
+    this.announcement,
+    this.iconUrl,
+    this.pinedAt,
+    this.lastMessageId,
+    this.lastReadMessageId,
+    this.unseenMessageCount,
+    this.draft,
+    this.muteUntil,
+  });
+
+  factory Conversation.fromJson(Map<String, dynamic> json) =>
+      _$ConversationFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ConversationToJson(this);
+
   @JsonKey(name: 'conversation_id')
   String conversationId;
   @JsonKey(name: 'owner_id')
@@ -41,28 +63,6 @@ class Conversation with EquatableMixin {
   bool get isGroup => ConversationCategory.group == category;
 
   bool get isContact => ConversationCategory.contact == category;
-
-  Conversation({
-    required this.conversationId,
-    this.name,
-    this.ownerId,
-    this.category,
-    this.announcement,
-    this.iconUrl,
-    required this.createdAt,
-    this.pinedAt,
-    this.lastMessageId,
-    this.lastReadMessageId,
-    this.unseenMessageCount,
-    required this.status,
-    this.draft,
-    this.muteUntil,
-  });
-
-  factory Conversation.fromJson(Map<String, dynamic> json) =>
-      _$ConversationFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ConversationToJson(this);
 
   @override
   List<Object?> get props => [

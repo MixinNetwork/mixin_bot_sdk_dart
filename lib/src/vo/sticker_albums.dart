@@ -5,22 +5,6 @@ part 'sticker_albums.g.dart';
 
 @JsonSerializable()
 class StickerAlbum with EquatableMixin {
-  @JsonKey(name: 'album_id')
-  String albumId;
-  @JsonKey(name: 'name')
-  String name;
-  @JsonKey(name: 'icon_url')
-  String iconUrl;
-  @JsonKey(name: 'created_at')
-  DateTime createdAt;
-  @JsonKey(name: 'update_at')
-  DateTime updateAt;
-  @JsonKey(name: 'user_id')
-  String userId;
-  @JsonKey(name: 'category')
-  String category;
-  @JsonKey(name: 'description')
-  String description;
 
   StickerAlbum({
     required this.albumId,
@@ -37,6 +21,23 @@ class StickerAlbum with EquatableMixin {
       _$StickerAlbumFromJson(json);
 
   Map<String, dynamic> toJson() => _$StickerAlbumToJson(this);
+
+  @JsonKey(name: 'album_id')
+  String albumId;
+  @JsonKey(name: 'name')
+  String name;
+  @JsonKey(name: 'icon_url')
+  String iconUrl;
+  @JsonKey(name: 'created_at')
+  DateTime createdAt;
+  @JsonKey(name: 'update_at')
+  DateTime updateAt;
+  @JsonKey(name: 'user_id')
+  String userId;
+  @JsonKey(name: 'category')
+  String category;
+  @JsonKey(name: 'description')
+  String description;
 
   @override
   List<Object> get props => [

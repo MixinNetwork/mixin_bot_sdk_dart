@@ -5,6 +5,37 @@ part 'account.g.dart';
 
 @JsonSerializable()
 class Account with EquatableMixin {
+  Account({
+    required this.userId,
+    required this.identityNumber,
+    required this.phone,
+    required this.biography,
+    required this.relationship,
+    required this.muteUntil,
+    required this.createdAt,
+    required this.isVerified,
+    required this.isScam,
+    required this.sessionId,
+    required this.pinToken,
+    required this.pinTokenBase64,
+    required this.codeId,
+    required this.codeUrl,
+    required this.deviceStatus,
+    required this.hasPin,
+    required this.hasEmergencyContact,
+    required this.receiveMessageSource,
+    required this.acceptConversationSource,
+    required this.acceptSearchSource,
+    required this.fiatCurrency,
+    required this.transferNotificationThreshold,
+    required this.transferConfirmationThreshold,
+    this.fullName,
+    this.avatarUrl,
+  });
+
+  factory Account.fromJson(Map<String, dynamic> json) =>
+      _$AccountFromJson(json);
+
   @JsonKey(name: 'user_id')
   String userId;
   @JsonKey(name: 'identity_number')
@@ -55,37 +86,6 @@ class Account with EquatableMixin {
   int transferNotificationThreshold;
   @JsonKey(name: 'transfer_confirmation_threshold')
   int transferConfirmationThreshold;
-
-  Account({
-    required this.userId,
-    required this.identityNumber,
-    required this.phone,
-    this.fullName,
-    required this.biography,
-    this.avatarUrl,
-    required this.relationship,
-    required this.muteUntil,
-    required this.createdAt,
-    required this.isVerified,
-    required this.isScam,
-    required this.sessionId,
-    required this.pinToken,
-    required this.pinTokenBase64,
-    required this.codeId,
-    required this.codeUrl,
-    required this.deviceStatus,
-    required this.hasPin,
-    required this.hasEmergencyContact,
-    required this.receiveMessageSource,
-    required this.acceptConversationSource,
-    required this.acceptSearchSource,
-    required this.fiatCurrency,
-    required this.transferNotificationThreshold,
-    required this.transferConfirmationThreshold,
-  });
-
-  factory Account.fromJson(Map<String, dynamic> json) =>
-      _$AccountFromJson(json);
 
   Map<String, dynamic> toJson() => _$AccountToJson(this);
 

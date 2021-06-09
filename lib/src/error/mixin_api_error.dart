@@ -6,12 +6,10 @@ class MixinApiError extends DioError {
   MixinApiError({
     required RequestOptions requestOptions,
     required Response response,
-    required this.error,
+    required MixinError error,
   }) : super(
           requestOptions: requestOptions,
           response: response,
+          error: error,
         );
-
-  @override
-  final MixinError error;
 }

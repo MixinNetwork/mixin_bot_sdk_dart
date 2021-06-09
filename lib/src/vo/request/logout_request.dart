@@ -5,8 +5,6 @@ part 'logout_request.g.dart';
 
 @JsonSerializable()
 class LogoutRequest with EquatableMixin {
-  @JsonKey(name: 'session_id')
-  String sessionId;
 
   LogoutRequest(this.sessionId);
 
@@ -14,6 +12,9 @@ class LogoutRequest with EquatableMixin {
       _$LogoutRequestFromJson(json);
 
   Map<String, dynamic> toJson() => _$LogoutRequestToJson(this);
+
+  @JsonKey(name: 'session_id')
+  String sessionId;
 
   @override
   List<Object?> get props => [sessionId];

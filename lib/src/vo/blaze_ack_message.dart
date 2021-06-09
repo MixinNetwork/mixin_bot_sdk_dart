@@ -5,10 +5,6 @@ part 'blaze_ack_message.g.dart';
 
 @JsonSerializable()
 class BlazeAckMessage with EquatableMixin {
-  @JsonKey(name: 'message_id')
-  String messageId;
-  @JsonKey(name: 'status')
-  String status;
 
   BlazeAckMessage({
     required this.messageId,
@@ -19,6 +15,11 @@ class BlazeAckMessage with EquatableMixin {
       _$BlazeAckMessageFromJson(json);
 
   Map<String, dynamic> toJson() => _$BlazeAckMessageToJson(this);
+
+  @JsonKey(name: 'message_id')
+  String messageId;
+  @JsonKey(name: 'status')
+  String status;
 
   @override
   List<Object> get props => [

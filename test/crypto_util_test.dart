@@ -6,7 +6,7 @@ import 'package:test/test.dart';
 
 void main() {
   test('test curve25519 conversion', () {
-    var publicKey = Uint8List.fromList([
+    final publicKey = Uint8List.fromList([
       147,
       193,
       19,
@@ -40,7 +40,7 @@ void main() {
       128,
       201
     ]);
-    var privateKey = Uint8List.fromList([
+    final privateKey = Uint8List.fromList([
       126,
       51,
       73,
@@ -106,7 +106,7 @@ void main() {
       128,
       201
     ]);
-    var targetPrivate = Uint8List.fromList([
+    final targetPrivate = Uint8List.fromList([
       232,
       23,
       164,
@@ -140,7 +140,7 @@ void main() {
       210,
       87
     ]);
-    var targetPublic = Uint8List.fromList([
+    final targetPublic = Uint8List.fromList([
       159,
       128,
       169,
@@ -175,10 +175,10 @@ void main() {
       47
     ]);
 
-    var curve25519PrivateKey = privateKeyToCurve25519(privateKey);
-    assert(ListEquality().equals(curve25519PrivateKey, targetPrivate));
+    final curve25519PrivateKey = privateKeyToCurve25519(privateKey);
+    assert(const ListEquality().equals(curve25519PrivateKey, targetPrivate));
 
-    var curve25519PublicKey = publicKeyToCurve25519(publicKey);
-    assert(ListEquality().equals(curve25519PublicKey, targetPublic));
+    final curve25519PublicKey = publicKeyToCurve25519(publicKey);
+    assert(const ListEquality().equals(curve25519PublicKey, targetPublic));
   });
 }

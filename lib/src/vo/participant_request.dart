@@ -1,18 +1,12 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:mixin_bot_sdk_dart/src/vo/participant_role.dart';
+import 'participant_role.dart';
 
 part 'participant_request.g.dart';
 
 @JsonSerializable()
 @ParticipantRoleJsonConverter()
 class ParticipantRequest with EquatableMixin {
-  @JsonKey(name: 'user_id')
-  String userId;
-  @JsonKey(name: 'role')
-  ParticipantRole? role;
-  @JsonKey(name: 'created_at')
-  DateTime? createdAt;
 
   ParticipantRequest({
     required this.userId,
@@ -25,6 +19,13 @@ class ParticipantRequest with EquatableMixin {
 
   Map<String, dynamic> toJson() => _$ParticipantRequestToJson(this);
 
+  @JsonKey(name: 'user_id')
+  String userId;
+  @JsonKey(name: 'role')
+  ParticipantRole? role;
+  @JsonKey(name: 'created_at')
+  DateTime? createdAt;
+
   @override
   List<Object?> get props => [
         userId,
@@ -33,8 +34,8 @@ class ParticipantRequest with EquatableMixin {
       ];
 }
 
-const RelationshipActionAdd = 'ADD';
-const RelationshipActionUpdate = 'UPDATE';
-const RelationshipActionRemove = 'REMOVE';
-const RelationshipActionBlock = 'BLOCK';
-const RelationshipActionUnblock = 'UNBLOCK';
+const kRelationshipActionAdd = 'ADD';
+const kRelationshipActionUpdate = 'UPDATE';
+const kRelationshipActionRemove = 'REMOVE';
+const kRelationshipActionBlock = 'BLOCK';
+const kRelationshipActionUnblock = 'UNBLOCK';

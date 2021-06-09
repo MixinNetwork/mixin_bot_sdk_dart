@@ -34,7 +34,6 @@ class MixinLogInterceptor extends Interceptor {
   /// Print request header [Options.headers]
   bool _requestHeader;
 
-  /// Print request data [Options.data]
   bool _requestBody;
 
   /// Print [Response.data]
@@ -60,7 +59,7 @@ class MixinLogInterceptor extends Interceptor {
 
   @override
   void onRequest(
-      RequestOptions options, RequestInterceptorHandler handler) async {
+      RequestOptions options, RequestInterceptorHandler handler) {
     logPrint('*** Request ***');
     _printKV('uri', options.uri);
     //options.headers;
@@ -91,14 +90,14 @@ class MixinLogInterceptor extends Interceptor {
   }
 
   @override
-  void onResponse(Response response, ResponseInterceptorHandler handler) async {
+  void onResponse(Response response, ResponseInterceptorHandler handler) {
     logPrint('*** Response ***');
     _printResponse(response);
     handler.next(response);
   }
 
   @override
-  void onError(DioError err, ErrorInterceptorHandler handler) async {
+  void onError(DioError err, ErrorInterceptorHandler handler) {
     if (_error) {
       logPrint('*** DioError ***:');
       logPrint('uri: ${err.requestOptions.uri}');

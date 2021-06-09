@@ -8,12 +8,6 @@ part 'relationship_request.g.dart';
 @JsonSerializable()
 @RelationshipActionJsonConverter()
 class RelationshipRequest with EquatableMixin {
-  @JsonKey(name: 'user_id')
-  String userId;
-  @JsonKey(name: 'action')
-  RelationshipAction? action;
-  @JsonKey(name: 'full_name')
-  String? fullName;
 
   RelationshipRequest({
     required this.userId,
@@ -25,6 +19,13 @@ class RelationshipRequest with EquatableMixin {
       _$RelationshipRequestFromJson(json);
 
   Map<String, dynamic> toJson() => _$RelationshipRequestToJson(this);
+
+  @JsonKey(name: 'user_id')
+  String userId;
+  @JsonKey(name: 'action')
+  RelationshipAction? action;
+  @JsonKey(name: 'full_name')
+  String? fullName;
 
   @override
   List<Object?> get props => [

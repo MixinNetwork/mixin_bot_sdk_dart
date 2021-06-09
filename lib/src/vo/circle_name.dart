@@ -5,8 +5,6 @@ part 'circle_name.g.dart';
 
 @JsonSerializable()
 class CircleName with EquatableMixin {
-  @JsonKey(name: 'name', disallowNullValue: true)
-  String name;
 
   CircleName({
     required this.name,
@@ -16,6 +14,9 @@ class CircleName with EquatableMixin {
       _$CircleNameFromJson(json);
 
   Map<String, dynamic> toJson() => _$CircleNameToJson(this);
+
+  @JsonKey(name: 'name', disallowNullValue: true)
+  String name;
 
   @override
   List<Object> get props => [

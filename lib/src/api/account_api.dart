@@ -1,16 +1,16 @@
 import 'package:dio/dio.dart';
-import 'package:mixin_bot_sdk_dart/src/vo/request/logout_request.dart';
 
 import '../vo/mixin_response.dart';
+import '../vo/request/logout_request.dart';
 import '../vo/signal_key_count.dart';
 import '../vo/sticker.dart';
 import '../vo/sticker_albums.dart';
 import '../vo/user.dart';
 
 class AccountApi {
-  final Dio dio;
-
   AccountApi({required this.dio});
+
+  final Dio dio;
 
   Future<MixinResponse<User>> getMe() =>
       MixinResponse.request<User>(dio.get('/me'));

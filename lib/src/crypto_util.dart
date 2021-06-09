@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:convert/convert.dart';
 import 'package:crypto/crypto.dart';
+// ignore: implementation_imports
 import 'package:ed25519_edwards/src/edwards25519.dart';
 
 Uint8List decodeBase64(String str) {
@@ -29,11 +30,11 @@ Uint8List decodeBase64(String str) {
 }
 
 List<int> privateKeyToCurve25519(Uint8List privateKey) {
-  var output = AccumulatorSink<Digest>();
-  var input = sha512.startChunkedConversion(output);
-  input.add(privateKey.sublist(0, 32));
-  input.close();
-  var digest = output.events.single.bytes.sublist(0, 32);
+  final output = AccumulatorSink<Digest>();
+  sha512.startChunkedConversion(output)
+    ..add(privateKey.sublist(0, 32))
+    ..close();
+  final digest = output.events.single.bytes.sublist(0, 32);
   digest[0] &= 248;
   digest[31] &= 127;
   digest[31] |= 64;
@@ -41,22 +42,21 @@ List<int> privateKeyToCurve25519(Uint8List privateKey) {
 }
 
 Uint8List publicKeyToCurve25519(Uint8List publicKey) {
-  var A = ExtendedGroupElement();
-  A.FromBytes(publicKey);
+  final A = ExtendedGroupElement()..FromBytes(publicKey);
 
-  var x = _edwardsToMontgomeryX(A.Y);
-  var curve25519Public = Uint8List(32);
+  final x = _edwardsToMontgomeryX(A.Y);
+  final curve25519Public = Uint8List(32);
   FeToBytes(curve25519Public, x);
   return curve25519Public;
 }
 
 FieldElement _edwardsToMontgomeryX(FieldElement y) {
-  var oneMinusY = FieldElement();
+  final oneMinusY = FieldElement();
   FeOne(oneMinusY);
   FeSub(oneMinusY, oneMinusY, y);
   FeInvert(oneMinusY, oneMinusY);
 
-  var outX = FieldElement();
+  final outX = FieldElement();
   FeOne(outX);
   FeAdd(outX, outX, y);
 

@@ -1,47 +1,41 @@
-import 'package:mixin_bot_sdk_dart/mixin_bot_sdk_dart.dart';
-import 'package:mixin_bot_sdk_dart/src/vo/conversation_request.dart';
-import 'package:mixin_bot_sdk_dart/src/vo/conversation_response.dart';
 import 'package:dio/dio.dart';
 
+import '../../mixin_bot_sdk_dart.dart';
+import '../vo/conversation_request.dart';
+import '../vo/conversation_response.dart';
 import '../vo/mixin_response.dart';
 
 class ConversationApi {
-  final Dio dio;
-
   ConversationApi({required this.dio});
 
+  final Dio dio;
+
   Future<MixinResponse<ConversationResponse>> createConversation(
-      ConversationRequest request) {
-    return MixinResponse.request<ConversationResponse>(
-        dio.post('/conversations', data: request));
-  }
+          ConversationRequest request) =>
+      MixinResponse.request<ConversationResponse>(
+          dio.post('/conversations', data: request));
 
   Future<MixinResponse<ConversationResponse>> update(
-      String conversationId, ConversationRequest request) {
-    return MixinResponse.request<ConversationResponse>(
-        dio.post('/conversations/$conversationId', data: request));
-  }
+          String conversationId, ConversationRequest request) =>
+      MixinResponse.request<ConversationResponse>(
+          dio.post('/conversations/$conversationId', data: request));
 
-  Future<MixinResponse<ConversationResponse>> exit(String conversationId) {
-    return MixinResponse.request<ConversationResponse>(
-        dio.post('/conversations/$conversationId/exit'));
-  }
+  Future<MixinResponse<ConversationResponse>> exit(String conversationId) =>
+      MixinResponse.request<ConversationResponse>(
+          dio.post('/conversations/$conversationId/exit'));
 
-  Future<MixinResponse<ConversationResponse>> getConversation(String id) {
-    return MixinResponse.request<ConversationResponse>(
-        dio.get('/conversations/$id'));
-  }
+  Future<MixinResponse<ConversationResponse>> getConversation(String id) =>
+      MixinResponse.request<ConversationResponse>(
+          dio.get('/conversations/$id'));
 
-  Future<MixinResponse<ConversationResponse>> updateConversation(String id) {
-    return MixinResponse.request<ConversationResponse>(
-        dio.get('/conversations/$id'));
-  }
+  Future<MixinResponse<ConversationResponse>> updateConversation(String id) =>
+      MixinResponse.request<ConversationResponse>(
+          dio.get('/conversations/$id'));
 
   Future<MixinResponse<ConversationResponse>> participants(
-      String id, String action, List<ParticipantRequest> requests) {
-    return MixinResponse.request<ConversationResponse>(
-        dio.post('/conversations/$id/participants/$action', data: requests));
-  }
+          String id, String action, List<ParticipantRequest> requests) =>
+      MixinResponse.request<ConversationResponse>(
+          dio.post('/conversations/$id/participants/$action', data: requests));
 
   Future<MixinResponse<ConversationResponse>> mute(
       String id, ConversationRequest request) {

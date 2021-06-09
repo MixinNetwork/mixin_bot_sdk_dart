@@ -1,13 +1,36 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:mixin_bot_sdk_dart/src/vo/user_relationship.dart';
+
 import './app.dart';
+import 'user_relationship.dart';
 
 part 'user.g.dart';
 
 @JsonSerializable()
 @UserRelationshipJsonConverter()
 class User with EquatableMixin {
+
+  User({
+    required this.userId,
+    required this.identityNumber,
+    required this.relationship,
+    required this.biography,
+    required this.isVerified,
+    required this.muteUntil,
+    required this.isScam,
+    this.fullName,
+    this.avatarUrl,
+    this.phone,
+    this.createdAt,
+    this.hasPin,
+    this.app,
+    this.appId,
+  });
+
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+
+  Map<String, dynamic> toJson() => _$UserToJson(this);
+
   @JsonKey(name: 'user_id')
   String userId;
   @JsonKey(name: 'identity_number')
@@ -36,27 +59,6 @@ class User with EquatableMixin {
   String? appId;
   @JsonKey(name: 'is_scam')
   bool isScam;
-
-  User({
-    required this.userId,
-    required this.identityNumber,
-    required this.relationship,
-    required this.biography,
-    this.fullName,
-    this.avatarUrl,
-    this.phone,
-    required this.isVerified,
-    this.createdAt,
-    required this.muteUntil,
-    this.hasPin,
-    this.app,
-    this.appId,
-    required this.isScam,
-  });
-
-  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
-
-  Map<String, dynamic> toJson() => _$UserToJson(this);
 
   @override
   List<Object?> get props => [

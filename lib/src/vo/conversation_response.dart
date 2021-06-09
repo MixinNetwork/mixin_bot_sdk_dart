@@ -10,6 +10,27 @@ part 'conversation_response.g.dart';
 @JsonSerializable()
 @ConversationCategoryJsonConverter()
 class ConversationResponse with EquatableMixin {
+
+  ConversationResponse({
+    required this.conversationId,
+    required this.name,
+    required this.category,
+    required this.iconUrl,
+    required this.codeUrl,
+    required this.createdAt,
+    required this.participants,
+    required this.muteUntil,
+    required this.announcement,
+    required this.creatorId,
+    this.participantSessions,
+    this.circles,
+  });
+
+  factory ConversationResponse.fromJson(Map<String, dynamic> json) =>
+      _$ConversationResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ConversationResponseToJson(this);
+
   @JsonKey(name: 'conversation_id')
   String conversationId;
   @JsonKey(name: 'name')
@@ -34,26 +55,6 @@ class ConversationResponse with EquatableMixin {
   List<CircleConversation>? circles;
   @JsonKey(name: 'mute_until')
   String muteUntil;
-
-  ConversationResponse({
-    required this.conversationId,
-    required this.name,
-    required this.category,
-    required this.iconUrl,
-    required this.codeUrl,
-    required this.createdAt,
-    required this.participants,
-    this.participantSessions,
-    this.circles,
-    required this.muteUntil,
-    required this.announcement,
-    required this.creatorId,
-  });
-
-  factory ConversationResponse.fromJson(Map<String, dynamic> json) =>
-      _$ConversationResponseFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ConversationResponseToJson(this);
 
   @override
   List<Object?> get props => [

@@ -1,8 +1,7 @@
-import 'package:dio/src/response.dart';
+import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
-import 'package:mixin_bot_sdk_dart/mixin_bot_sdk_dart.dart';
-import 'package:mixin_bot_sdk_dart/src/vo/signal_key_count.dart';
 
+import '../../mixin_bot_sdk_dart.dart';
 import 'account.dart';
 import 'app.dart';
 import 'asset.dart';
@@ -10,25 +9,26 @@ import 'circle_conversation.dart';
 import 'circle_response.dart';
 import 'conversation_response.dart';
 import 'provisioning.dart';
+import 'signal_key_count.dart';
 import 'sticker.dart';
 import 'sticker_albums.dart';
 import 'user.dart';
 
 class MixinResponse<T> with EquatableMixin {
-  T data;
-
   MixinResponse(
     this.data,
   );
 
   factory MixinResponse.fromJson(Map<String, dynamic> json) {
-    var dataJson = json['data'];
-    var data = dataJson == null ? null : generateJson<T>(dataJson);
+    final dataJson = json['data'];
+    final data = dataJson == null ? null : generateJson<T>(dataJson);
     return MixinResponse<T>(data);
   }
 
+  T data;
+
   static Future<MixinResponse<T>> request<T>(Future<Response> future) async {
-    var response = (await future).data;
+    final response = (await future).data;
     return MixinResponse<T>.fromJson(response);
   }
 
@@ -38,14 +38,15 @@ class MixinResponse<T> with EquatableMixin {
       ];
 }
 
-dynamic generateJson<T>(json) {
-  var type = T.toString();
+dynamic generateJson<T>(dynamic json) {
+  final type = T.toString();
   if (T is List || type.startsWith('List')) {
-    var itemType = type.substring(5, type.length - 1);
-    var tempList = _getListFromType(itemType);
+    final itemType = type.substring(5, type.length - 1);
+    final tempList = _getListFromType(itemType);
 
     if (tempList == null) return _generateJsonForType(type, json);
 
+    // ignore: avoid_dynamic_calls
     json.forEach((itemJson) {
       tempList.add(_generateJsonForType(itemType, itemJson));
     });

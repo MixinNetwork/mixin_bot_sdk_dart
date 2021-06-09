@@ -5,14 +5,6 @@ part 'attachment.g.dart';
 
 @JsonSerializable()
 class Attachment with EquatableMixin {
-  @JsonKey(name: 'attachment_id')
-  String attachmentId;
-  @JsonKey(name: 'created_at')
-  String createdAt;
-  @JsonKey(name: 'upload_url')
-  String? uploadUrl;
-  @JsonKey(name: 'view_url')
-  String? viewUrl;
 
   Attachment(
     this.attachmentId,
@@ -25,6 +17,15 @@ class Attachment with EquatableMixin {
       _$AttachmentFromJson(json);
 
   Map<String, dynamic> toJson() => _$AttachmentToJson(this);
+
+  @JsonKey(name: 'attachment_id')
+  String attachmentId;
+  @JsonKey(name: 'created_at')
+  String createdAt;
+  @JsonKey(name: 'upload_url')
+  String? uploadUrl;
+  @JsonKey(name: 'view_url')
+  String? viewUrl;
 
   @override
   List<Object?> get props => [

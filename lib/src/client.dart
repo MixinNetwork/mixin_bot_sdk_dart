@@ -1,14 +1,12 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:mixin_bot_sdk_dart/src/api/asset_api.dart';
-import 'package:mixin_bot_sdk_dart/src/api/attachment_api.dart';
-import 'package:mixin_bot_sdk_dart/src/api/circle_api.dart';
-import 'package:mixin_bot_sdk_dart/src/api/conversation_api.dart';
 
 import '../mixin_bot_sdk_dart.dart';
 import 'api/account_api.dart';
+import 'api/attachment_api.dart';
 import 'api/circle_api.dart';
+import 'api/conversation_api.dart';
 import 'api/message_api.dart';
 import 'api/provisioning_api.dart';
 import 'api/user_api.dart';
@@ -47,20 +45,20 @@ class Client {
           body = jsonEncode(options.data);
         }
         options.headers['Accept-Language'] ??= 'en_US';
-        options.headers['Authorization'] = 'Bearer ' +
-            signAuthTokenWithEdDSA(
-              userId,
-              sessionId,
-              privateKey,
-              scp,
-              options.method,
-              options.path,
-              body,
-            );
+        options.headers['Authorization'] = 'Bearer ${signAuthTokenWithEdDSA(
+          userId,
+          sessionId,
+          privateKey,
+          scp,
+          options.method,
+          options.path,
+          body,
+        )}';
         handler.next(options);
       },
       onResponse: (Response response, ResponseInterceptorHandler handler) {
-        var error = response.data['error'];
+        // ignore: avoid_dynamic_calls
+        final error = response.data['error'];
         if (error == null) return handler.next(response);
 
         return handler.reject(
@@ -73,10 +71,10 @@ class Client {
         );
       },
       onError: (DioError e, ErrorInterceptorHandler handler) async {
-        if(!{mixinBaseUrl0, mixinBaseUrl1}.contains(dio.options.baseUrl)) {
+        if (!{mixinBaseUrl0, mixinBaseUrl1}.contains(dio.options.baseUrl)) {
           return handler.next(e);
         }
-        if ((e is MixinApiError && e.error.code < 500)) {
+        if (e is MixinApiError && (e.error as MixinError).code < 500) {
           return handler.next(e);
         }
 
@@ -85,7 +83,7 @@ class Client {
             : mixinBaseUrl0;
 
         try {
-          var response = await dio.request(
+          final response = await dio.request(
             e.requestOptions.path,
             data: e.requestOptions.data,
             queryParameters: e.requestOptions.queryParameters,

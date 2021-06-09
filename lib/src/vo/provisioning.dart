@@ -5,18 +5,6 @@ part 'provisioning.g.dart';
 
 @JsonSerializable()
 class Provisioning with EquatableMixin {
-  @JsonKey(name: 'device_id')
-  String deviceId;
-  @JsonKey(name: 'expired_at')
-  DateTime? expiredAt;
-  String secret;
-  String platform;
-  @JsonKey(name: 'provisioning_code')
-  String provisioningCode;
-  @JsonKey(name: 'session_id')
-  String sessionId;
-  @JsonKey(name: 'user_id')
-  String userId;
 
   Provisioning({
     required this.deviceId,
@@ -32,6 +20,19 @@ class Provisioning with EquatableMixin {
       _$ProvisioningFromJson(json);
 
   Map<String, dynamic> toJson() => _$ProvisioningToJson(this);
+
+  @JsonKey(name: 'device_id')
+  String deviceId;
+  @JsonKey(name: 'expired_at')
+  DateTime? expiredAt;
+  String secret;
+  String platform;
+  @JsonKey(name: 'provisioning_code')
+  String provisioningCode;
+  @JsonKey(name: 'session_id')
+  String sessionId;
+  @JsonKey(name: 'user_id')
+  String userId;
 
   @override
   List<Object?> get props => [

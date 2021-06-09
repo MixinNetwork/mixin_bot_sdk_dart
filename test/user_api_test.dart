@@ -6,11 +6,11 @@ import 'config.dart';
 
 void main() {
   group('user apis', () {
-    var client = Client(userId: uid, sessionId: sid, privateKey: private);
+    final client = Client(userId: uid, sessionId: sid, privateKey: private);
 
     test('test getUsers', () async {
       try {
-        var mixinResponse = await client.userApi.getUsers(uids);
+        final mixinResponse = await client.userApi.getUsers(uids);
         print(mixinResponse.data.map((e) => e.toJson()).toList());
       } catch (e) {
         if (e is MixinApiError) {
@@ -20,9 +20,9 @@ void main() {
     });
 
     test('test getUserById', () async {
-      var id = '773e5e77-4107-45c2-b648-8fc722ed77f5';
+      const id = '773e5e77-4107-45c2-b648-8fc722ed77f5';
       try {
-        var mixinResponse = await client.userApi.getUserById(id);
+        final mixinResponse = await client.userApi.getUserById(id);
         print(mixinResponse.data.toJson());
       } catch (e) {
         if (e is MixinApiError) {
@@ -57,7 +57,7 @@ void main() {
 
     test('test blockingUsers', () async {
       try {
-        var mixinResponse = await client.userApi.blockingUsers();
+        final mixinResponse = await client.userApi.blockingUsers();
         print(mixinResponse.data.map((e) => e.toJson()).toList());
       } catch (e) {
         if (e is MixinApiError) {
@@ -68,9 +68,9 @@ void main() {
   });
 
   test('test getSessions', () async {
-    var client = Client(userId: uid, sessionId: sid, privateKey: private);
+    final client = Client(userId: uid, sessionId: sid, privateKey: private);
     try {
-      var mixinResponse = await client.userApi.getSessions(uids);
+      final mixinResponse = await client.userApi.getSessions(uids);
       print(mixinResponse.data.map((e) => e.toJson()).toList());
     } catch (e) {
       if (e is MixinApiError) {

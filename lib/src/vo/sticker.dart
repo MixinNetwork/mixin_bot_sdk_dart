@@ -5,6 +5,24 @@ part 'sticker.g.dart';
 
 @JsonSerializable()
 class Sticker with EquatableMixin {
+
+  Sticker({
+    required this.stickerId,
+    required this.name,
+    required this.assetUrl,
+    required this.assetType,
+    required this.assetWidth,
+    required this.assetHeight,
+    required this.createdAt,
+    this.albumId,
+    this.lastUsedAt,
+  });
+
+  factory Sticker.fromJson(Map<String, dynamic> json) =>
+      _$StickerFromJson(json);
+
+  Map<String, dynamic> toJson() => _$StickerToJson(this);
+
   @JsonKey(name: 'sticker_id')
   String stickerId;
   @JsonKey(name: 'album_id')
@@ -23,23 +41,6 @@ class Sticker with EquatableMixin {
   DateTime createdAt;
   @JsonKey(name: 'last_use_at')
   DateTime? lastUsedAt;
-
-  Sticker({
-    required this.stickerId,
-    this.albumId,
-    required this.name,
-    required this.assetUrl,
-    required this.assetType,
-    required this.assetWidth,
-    required this.assetHeight,
-    required this.createdAt,
-    this.lastUsedAt,
-  });
-
-  factory Sticker.fromJson(Map<String, dynamic> json) =>
-      _$StickerFromJson(json);
-
-  Map<String, dynamic> toJson() => _$StickerToJson(this);
 
   @override
   List<Object?> get props => [

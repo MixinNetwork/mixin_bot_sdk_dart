@@ -5,8 +5,6 @@ part 'signal_key_count.g.dart';
 
 @JsonSerializable()
 class SignalKeyCount with EquatableMixin {
-  @JsonKey(name: 'one_time_pre_keys_count')
-  int preKeyCount;
 
   SignalKeyCount({required this.preKeyCount});
 
@@ -14,6 +12,9 @@ class SignalKeyCount with EquatableMixin {
       _$SignalKeyCountFromJson(json);
 
   Map<String, dynamic> toJson() => _$SignalKeyCountToJson(this);
+
+  @JsonKey(name: 'one_time_pre_keys_count')
+  int preKeyCount;
 
   @override
   List<Object> get props => [preKeyCount];
