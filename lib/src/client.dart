@@ -17,6 +17,7 @@ import 'log_interceptor.dart';
 
 const mixinBaseUrl0 = 'https://api.mixin.one';
 const mixinBaseUrl1 = 'https://mixin-api.zeromesh.net';
+const _kRetryExtraKey = 'retry';
 
 class Client {
   Client({
@@ -75,6 +76,9 @@ class Client {
         if (!{mixinBaseUrl0, mixinBaseUrl1}.contains(dio.options.baseUrl)) {
           return handler.next(e);
         }
+        if (e.requestOptions.extra[_kRetryExtraKey] ?? false) {
+          return handler.next(e);
+        }
         if (e is MixinApiError && (e.error as MixinError).code < 500) {
           return handler.next(e);
         }
@@ -94,6 +98,9 @@ class Client {
               headers: e.requestOptions.headers,
               responseType: e.requestOptions.responseType,
               contentType: e.requestOptions.contentType,
+              extra: {
+                _kRetryExtraKey: true,
+              },
             ),
             onSendProgress: e.requestOptions.onSendProgress,
             onReceiveProgress: e.requestOptions.onReceiveProgress,
