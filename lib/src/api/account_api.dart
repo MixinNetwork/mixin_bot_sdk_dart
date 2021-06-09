@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 
+import '../vo/account.dart';
 import '../vo/mixin_response.dart';
+import '../vo/request/account_request.dart';
 import '../vo/request/logout_request.dart';
 import '../vo/signal_key_count.dart';
 import '../vo/sticker.dart';
@@ -12,8 +14,11 @@ class AccountApi {
 
   final Dio dio;
 
-  Future<MixinResponse<User>> getMe() =>
-      MixinResponse.request<User>(dio.get('/me'));
+  Future<MixinResponse<Account>> getMe() =>
+      MixinResponse.request<Account>(dio.get('/me'));
+
+  Future<MixinResponse<Account>> update(AccountUpdateRequest request) =>
+      MixinResponse.request<Account>(dio.post('/me', data: request));
 
   Future<MixinResponse<List<User>>> getFriends() =>
       MixinResponse.request<List<User>>(dio.get('/friends'));
