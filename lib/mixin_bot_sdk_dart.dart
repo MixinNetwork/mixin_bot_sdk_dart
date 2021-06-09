@@ -25,6 +25,7 @@ export 'src/vo/participant_request.dart';
 export 'src/vo/participant_role.dart';
 export 'src/vo/provisioning.dart';
 export 'src/vo/relationship_request.dart';
+export 'src/vo/request/account_request.dart';
 export 'src/vo/request/logout_request.dart';
 export 'src/vo/request/provisioning_request.dart';
 export 'src/vo/sticker.dart';
