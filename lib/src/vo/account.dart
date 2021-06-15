@@ -83,9 +83,9 @@ class Account with EquatableMixin {
   @JsonKey(name: 'fiat_currency')
   String fiatCurrency;
   @JsonKey(name: 'transfer_notification_threshold')
-  int transferNotificationThreshold;
+  double transferNotificationThreshold;
   @JsonKey(name: 'transfer_confirmation_threshold')
-  int transferConfirmationThreshold;
+  double transferConfirmationThreshold;
 
   Map<String, dynamic> toJson() => _$AccountToJson(this);
 

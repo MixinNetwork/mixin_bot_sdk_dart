@@ -30,9 +30,9 @@ Account _$AccountFromJson(Map<String, dynamic> json) {
     acceptSearchSource: json['accept_search_source'] as String,
     fiatCurrency: json['fiat_currency'] as String,
     transferNotificationThreshold:
-        json['transfer_notification_threshold'] as int,
+        (json['transfer_notification_threshold'] as num).toDouble(),
     transferConfirmationThreshold:
-        json['transfer_confirmation_threshold'] as int,
+        (json['transfer_confirmation_threshold'] as num).toDouble(),
     fullName: json['full_name'] as String?,
     avatarUrl: json['avatar_url'] as String?,
   );
