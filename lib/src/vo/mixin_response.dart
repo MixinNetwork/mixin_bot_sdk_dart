@@ -85,7 +85,7 @@ dynamic _generateJsonForType(type, json) {
     case 'Asset':
       return Asset.fromJson(json);
   }
-  throw Exception('Unknown type $type');
+  return json;
 }
 
 List? _getListFromType(String type) {
