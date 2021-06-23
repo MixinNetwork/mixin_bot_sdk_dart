@@ -1,13 +1,12 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'participant_role.dart';
+import '../participant_role.dart';
 
 part 'participant_request.g.dart';
 
 @JsonSerializable()
 @ParticipantRoleJsonConverter()
 class ParticipantRequest with EquatableMixin {
-
   ParticipantRequest({
     required this.userId,
     this.role,

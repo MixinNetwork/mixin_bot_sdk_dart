@@ -1,15 +1,14 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../mixin_bot_sdk_dart.dart';
-import '../vo/participant_request.dart';
+import '../conversation_category.dart';
+import 'participant_request.dart';
 
 part 'conversation_request.g.dart';
 
 @JsonSerializable()
 @ConversationCategoryJsonConverter()
 class ConversationRequest with EquatableMixin {
-
   ConversationRequest({
     required this.conversationId,
     this.category,

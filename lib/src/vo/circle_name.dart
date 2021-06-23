@@ -5,7 +5,6 @@ part 'circle_name.g.dart';
 
 @JsonSerializable()
 class CircleName with EquatableMixin {
-
   CircleName({
     required this.name,
   });

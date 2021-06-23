@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
 import '../vo/mixin_response.dart';
-import '../vo/relationship_request.dart';
+import '../vo/request/relationship_request.dart';
 import '../vo/user.dart';
 import '../vo/user_session.dart';
 

@@ -1,8 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import './request/participant_request.dart';
 import 'circle_conversation.dart';
 import 'conversation_category.dart';
-import 'participant_request.dart';
 import 'user_session.dart';
 
 part 'conversation_response.g.dart';
@@ -10,7 +11,6 @@ part 'conversation_response.g.dart';
 @JsonSerializable()
 @ConversationCategoryJsonConverter()
 class ConversationResponse with EquatableMixin {
-
   ConversationResponse({
     required this.conversationId,
     required this.name,

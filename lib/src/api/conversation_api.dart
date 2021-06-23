@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 
 import '../../mixin_bot_sdk_dart.dart';
-import '../vo/conversation_request.dart';
 import '../vo/conversation_response.dart';
 import '../vo/mixin_response.dart';
+import '../vo/request/conversation_request.dart';
 
 class ConversationApi {
   ConversationApi({required this.dio});

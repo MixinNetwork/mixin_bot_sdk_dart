@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 
 import '../vo/circle_conversation.dart';
-import '../vo/circle_conversation_request.dart';
 import '../vo/circle_name.dart';
 import '../vo/circle_response.dart';
 import '../vo/mixin_response.dart';
+import '../vo/request/circle_conversation_request.dart';
 
 class CircleApi {
   CircleApi({required this.dio});
