@@ -9,6 +9,7 @@ import 'api/attachment_api.dart';
 import 'api/circle_api.dart';
 import 'api/conversation_api.dart';
 import 'api/message_api.dart';
+import 'api/oauth_api.dart';
 import 'api/provisioning_api.dart';
 import 'api/user_api.dart';
 import 'auth.dart';
@@ -122,6 +123,7 @@ class Client {
     _attachmentApi = AttachmentApi(dio: _dio);
     _circleApi = CircleApi(dio: _dio);
     _assetApi = AssetApi(dio: _dio);
+    _oauthApi = OauthApi(dio: dio);
   }
 
   late Dio _dio;
@@ -133,6 +135,7 @@ class Client {
   late AttachmentApi _attachmentApi;
   late CircleApi _circleApi;
   late AssetApi _assetApi;
+  late OauthApi _oauthApi;
 
   Dio get dio => _dio;
 
@@ -151,4 +154,6 @@ class Client {
   CircleApi get circleApi => _circleApi;
 
   AssetApi get assetApi => _assetApi;
+
+  OauthApi get oauthApi => _oauthApi;
 }
