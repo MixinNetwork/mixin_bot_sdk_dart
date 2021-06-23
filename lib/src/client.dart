@@ -11,6 +11,7 @@ import 'api/conversation_api.dart';
 import 'api/message_api.dart';
 import 'api/oauth_api.dart';
 import 'api/provisioning_api.dart';
+import 'api/snapshot_api.dart';
 import 'api/user_api.dart';
 import 'auth.dart';
 import 'error/mixin_api_error.dart';
@@ -124,6 +125,7 @@ class Client {
     _circleApi = CircleApi(dio: _dio);
     _assetApi = AssetApi(dio: _dio);
     _oauthApi = OauthApi(dio: dio);
+    _snapshotApi = SnapshotApi(dio: dio);
   }
 
   late Dio _dio;
@@ -136,6 +138,7 @@ class Client {
   late CircleApi _circleApi;
   late AssetApi _assetApi;
   late OauthApi _oauthApi;
+  late SnapshotApi _snapshotApi;
 
   Dio get dio => _dio;
 
@@ -156,4 +159,6 @@ class Client {
   AssetApi get assetApi => _assetApi;
 
   OauthApi get oauthApi => _oauthApi;
+
+  SnapshotApi get snapshotApi => _snapshotApi;
 }

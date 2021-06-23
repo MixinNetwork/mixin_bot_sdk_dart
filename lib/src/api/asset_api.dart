@@ -8,6 +8,9 @@ class AssetApi {
 
   final Dio dio;
 
+  Future<MixinResponse<List<Asset>>> getAssets() =>
+      MixinResponse.request<List<Asset>>(dio.get('/assets'));
+
   Future<MixinResponse<Asset>> getAssetById(String id) =>
       MixinResponse.request<Asset>(dio.get('/assets/$id'));
 }
