@@ -5,7 +5,6 @@ part 'circle_response.g.dart';
 
 @JsonSerializable()
 class CircleResponse with EquatableMixin {
-
   CircleResponse({
     required this.circleId,
     required this.name,

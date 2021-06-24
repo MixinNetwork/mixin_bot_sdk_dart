@@ -5,7 +5,6 @@ part 'user_session.g.dart';
 
 @JsonSerializable()
 class UserSession with EquatableMixin {
-
   UserSession(
     this.userId,
     this.sessionId,

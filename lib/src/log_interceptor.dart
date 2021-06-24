@@ -58,8 +58,7 @@ class MixinLogInterceptor extends Interceptor {
   static void Function(Object object) logPrint = print;
 
   @override
-  void onRequest(
-      RequestOptions options, RequestInterceptorHandler handler) {
+  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     logPrint('*** Request ***');
     _printKV('uri', options.uri);
     //options.headers;

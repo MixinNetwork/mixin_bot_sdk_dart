@@ -5,7 +5,6 @@ part 'provisioning.g.dart';
 
 @JsonSerializable()
 class Provisioning with EquatableMixin {
-
   Provisioning({
     required this.deviceId,
     required this.expiredAt,

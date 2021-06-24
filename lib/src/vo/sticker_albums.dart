@@ -5,7 +5,6 @@ part 'sticker_albums.g.dart';
 
 @JsonSerializable()
 class StickerAlbum with EquatableMixin {
-
   StickerAlbum({
     required this.albumId,
     required this.name,

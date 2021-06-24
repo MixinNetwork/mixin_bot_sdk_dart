@@ -5,7 +5,6 @@ part 'app.g.dart';
 
 @JsonSerializable()
 class App with EquatableMixin {
-
   App({
     required this.appId,
     required this.appNumber,

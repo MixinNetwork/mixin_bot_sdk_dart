@@ -5,7 +5,6 @@ part 'blaze_ack_message.g.dart';
 
 @JsonSerializable()
 class BlazeAckMessage with EquatableMixin {
-
   BlazeAckMessage({
     required this.messageId,
     required this.status,

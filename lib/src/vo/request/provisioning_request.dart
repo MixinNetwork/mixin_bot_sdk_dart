@@ -5,7 +5,6 @@ part 'provisioning_request.g.dart';
 
 @JsonSerializable()
 class ProvisioningRequest with EquatableMixin {
-
   ProvisioningRequest({
     required this.userId,
     required this.sessionId,

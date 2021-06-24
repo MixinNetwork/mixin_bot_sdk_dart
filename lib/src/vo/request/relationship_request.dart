@@ -1,14 +1,13 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../mixin_bot_sdk_dart.dart';
+import '../../enum_converter.dart';
 
 part 'relationship_request.g.dart';
 
 @JsonSerializable()
 @RelationshipActionJsonConverter()
 class RelationshipRequest with EquatableMixin {
-
   RelationshipRequest({
     required this.userId,
     required this.action,

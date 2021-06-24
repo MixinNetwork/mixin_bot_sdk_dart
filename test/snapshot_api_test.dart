@@ -7,9 +7,9 @@ import 'config.dart';
 void main() {
   var client = Client(userId: uid, sessionId: sid, privateKey: private);
 
-  test('test getAssetById', () async {
+  test('test getSnapshots', () async {
     try {
-      var mixinResponse = await client.assetApi.getAssetById(btcId);
+      var mixinResponse = await client.snapshotApi.getSnapshots();
       print(mixinResponse.data);
     } catch (e) {
       if (e is MixinApiError) {
@@ -18,9 +18,9 @@ void main() {
     }
   });
 
-  test('test getAssets', () async {
+  test('test getSnapshotById', () async {
     try {
-      var mixinResponse = await client.assetApi.getAssets();
+      var mixinResponse = await client.snapshotApi.getSnapshotById(snapshotId);
       print(mixinResponse.data);
     } catch (e) {
       if (e is MixinApiError) {
@@ -29,9 +29,9 @@ void main() {
     }
   });
 
-  test('test getAssetFee', () async {
+  test('test getSnapshotsByAssetId', () async {
     try {
-      var mixinResponse = await client.assetApi.getAssetFee(btcId);
+      var mixinResponse = await client.snapshotApi.getSnapshotsByAssetId(btcId);
       print(mixinResponse.data);
     } catch (e) {
       if (e is MixinApiError) {
@@ -40,9 +40,10 @@ void main() {
     }
   });
 
-  test('test queryAsset', () async {
+  test('test getSnapshotByTraceId', () async {
     try {
-      var mixinResponse = await client.assetApi.queryAsset('btc');
+      var mixinResponse =
+          await client.snapshotApi.getSnapshotByTraceId(traceId);
       print(mixinResponse.data);
     } catch (e) {
       if (e is MixinApiError) {
@@ -51,9 +52,9 @@ void main() {
     }
   });
 
-  test('test pendingDeposits', () async {
+  test('test getTicker', () async {
     try {
-      var mixinResponse = await client.assetApi.pendingDeposits(btcId);
+      var mixinResponse = await client.snapshotApi.getTicker(btcId);
       print(mixinResponse.data);
     } catch (e) {
       if (e is MixinApiError) {

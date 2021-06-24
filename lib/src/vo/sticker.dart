@@ -5,7 +5,6 @@ part 'sticker.g.dart';
 
 @JsonSerializable()
 class Sticker with EquatableMixin {
-
   Sticker({
     required this.stickerId,
     required this.name,

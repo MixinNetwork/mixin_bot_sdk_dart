@@ -5,7 +5,6 @@ part 'logout_request.g.dart';
 
 @JsonSerializable()
 class LogoutRequest with EquatableMixin {
-
   LogoutRequest(this.sessionId);
 
   factory LogoutRequest.fromJson(Map<String, dynamic> json) =>

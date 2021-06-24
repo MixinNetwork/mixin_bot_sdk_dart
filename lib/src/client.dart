@@ -12,6 +12,7 @@ import 'api/message_api.dart';
 import 'api/oauth_api.dart';
 import 'api/provisioning_api.dart';
 import 'api/snapshot_api.dart';
+import 'api/transfer_api.dart';
 import 'api/user_api.dart';
 import 'auth.dart';
 import 'error/mixin_api_error.dart';
@@ -126,6 +127,7 @@ class Client {
     _assetApi = AssetApi(dio: _dio);
     _oauthApi = OauthApi(dio: dio);
     _snapshotApi = SnapshotApi(dio: dio);
+    _transferApi = TransferApi(dio: dio);
   }
 
   late Dio _dio;
@@ -139,6 +141,7 @@ class Client {
   late AssetApi _assetApi;
   late OauthApi _oauthApi;
   late SnapshotApi _snapshotApi;
+  late TransferApi _transferApi;
 
   Dio get dio => _dio;
 
@@ -161,4 +164,6 @@ class Client {
   OauthApi get oauthApi => _oauthApi;
 
   SnapshotApi get snapshotApi => _snapshotApi;
+
+  TransferApi get transferApi => _transferApi;
 }

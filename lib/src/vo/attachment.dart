@@ -5,7 +5,6 @@ part 'attachment.g.dart';
 
 @JsonSerializable()
 class Attachment with EquatableMixin {
-
   Attachment(
     this.attachmentId,
     this.createdAt, {

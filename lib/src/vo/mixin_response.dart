@@ -8,10 +8,14 @@ import 'asset.dart';
 import 'circle_conversation.dart';
 import 'circle_response.dart';
 import 'conversation_response.dart';
+import 'payment_response.dart';
+import 'pending_deposit.dart';
 import 'provisioning.dart';
 import 'signal_key_count.dart';
+import 'snapshot.dart';
 import 'sticker.dart';
 import 'sticker_albums.dart';
+import 'ticker.dart';
 import 'user.dart';
 
 class MixinResponse<T> with EquatableMixin {
@@ -84,6 +88,16 @@ dynamic _generateJsonForType(type, json) {
       return SignalKeyCount.fromJson(json);
     case 'Asset':
       return Asset.fromJson(json);
+    case 'Snapshot':
+      return Snapshot.fromJson(json);
+    case 'PaymentResponse':
+      return PaymentResponse.fromJson(json);
+    case 'Ticker':
+      return Ticker.fromJson(json);
+    case 'AssetFee':
+      return Asset.fromJson(json);
+    case 'PendingDeposit':
+      return PendingDeposit.fromJson(json);
   }
   return json;
 }
@@ -106,6 +120,10 @@ List? _getListFromType(String type) {
       return <UserSession>[];
     case 'Asset':
       return <Asset>[];
+    case 'Snapshot':
+      return <Snapshot>[];
+    case 'PendingDeposit':
+      return <PendingDeposit>[];
   }
   throw Exception('Unknown type $type');
 }
