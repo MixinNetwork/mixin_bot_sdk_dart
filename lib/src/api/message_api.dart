@@ -9,4 +9,7 @@ class MessageApi {
 
   Future<MixinResponse<dynamic>> acknowledgements(List<BlazeAckMessage> ack) =>
       MixinResponse.request<dynamic>(dio.post('/acknowledgements', data: ack));
+
+  Future<MixinResponse<dynamic>> messageStatusOffset(int offset) =>
+      MixinResponse.request<dynamic>(dio.get('/messages/status/$offset'));
 }
