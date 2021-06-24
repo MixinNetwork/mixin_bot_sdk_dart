@@ -1,6 +1,7 @@
 library mixin_bot_sdk_dart;
 
 export 'src/api/account_api.dart';
+export 'src/api/address_api.dart';
 export 'src/api/asset_api.dart';
 export 'src/api/attachment_api.dart';
 export 'src/api/circle_api.dart';
@@ -18,6 +19,7 @@ export 'src/enum_converter.dart';
 export 'src/error/mixin_api_error.dart';
 export 'src/log_interceptor.dart';
 export 'src/vo/account.dart';
+export 'src/vo/address.dart';
 export 'src/vo/asset.dart';
 export 'src/vo/asset_fee.dart';
 export 'src/vo/attachment.dart';
@@ -34,6 +36,7 @@ export 'src/vo/payment_response.dart';
 export 'src/vo/pending_deposit.dart';
 export 'src/vo/provisioning.dart';
 export 'src/vo/request/account_request.dart';
+export 'src/vo/request/address_request.dart';
 export 'src/vo/request/circle_conversation_request.dart';
 export 'src/vo/request/conversation_request.dart';
 export 'src/vo/request/logout_request.dart';

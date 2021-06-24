@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 
 import '../mixin_bot_sdk_dart.dart';
 import 'api/account_api.dart';
+import 'api/address_api.dart';
 import 'api/asset_api.dart';
 import 'api/attachment_api.dart';
 import 'api/circle_api.dart';
@@ -128,6 +129,7 @@ class Client {
     _oauthApi = OauthApi(dio: dio);
     _snapshotApi = SnapshotApi(dio: dio);
     _transferApi = TransferApi(dio: dio);
+    _addressApi = AddressApi(dio: dio);
   }
 
   late Dio _dio;
@@ -142,6 +144,7 @@ class Client {
   late OauthApi _oauthApi;
   late SnapshotApi _snapshotApi;
   late TransferApi _transferApi;
+  late AddressApi _addressApi;
 
   Dio get dio => _dio;
 
@@ -166,4 +169,6 @@ class Client {
   SnapshotApi get snapshotApi => _snapshotApi;
 
   TransferApi get transferApi => _transferApi;
+
+  AddressApi get addressApi => _addressApi;
 }

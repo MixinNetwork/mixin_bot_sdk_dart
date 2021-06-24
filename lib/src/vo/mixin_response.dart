@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 
 import '../../mixin_bot_sdk_dart.dart';
 import 'account.dart';
+import 'address.dart';
 import 'app.dart';
 import 'asset.dart';
 import 'circle_conversation.dart';
@@ -98,6 +99,8 @@ dynamic _generateJsonForType(type, json) {
       return Asset.fromJson(json);
     case 'PendingDeposit':
       return PendingDeposit.fromJson(json);
+    case 'Address':
+      return Address.fromJson(json);
   }
   return json;
 }
@@ -124,6 +127,8 @@ List? _getListFromType(String type) {
       return <Snapshot>[];
     case 'PendingDeposit':
       return <PendingDeposit>[];
+    case 'Address':
+      return <Address>[];
   }
   throw Exception('Unknown type $type');
 }

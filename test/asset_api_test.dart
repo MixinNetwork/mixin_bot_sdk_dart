@@ -61,4 +61,15 @@ void main() {
       }
     }
   });
+
+  test('test getTopAssets', () async {
+    try {
+      var mixinResponse = await client.assetApi.getTopAssets();
+      print(mixinResponse.data);
+    } catch (e) {
+      if (e is MixinApiError) {
+        print(e.error);
+      }
+    }
+  });
 }

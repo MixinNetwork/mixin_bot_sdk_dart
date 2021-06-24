@@ -14,6 +14,8 @@ final snapshotId = '';
 
 final traceId = '';
 
+final addressId = '';
+
 // var mockRelationshipRequest = RelationshipRequest(
 //     userId: '773e5e77-4107-45c2-b648-8fc722ed77f5',
 //     action: RelationshipAction.add.toString());
@@ -21,3 +23,5 @@ final traceId = '';
 final mockTransferRequest = TransferRequest(assetId: btcId, amount: '100');
 final mockWithdrawalRequest =
     WithdrawalRequest(addressId: '', amount: '100', pin: '', traceId: '');
+
+final mockAddressRequest = AddressRequest(assetId: btcId, pin: '');

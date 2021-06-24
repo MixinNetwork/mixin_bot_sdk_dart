@@ -27,4 +27,7 @@ class AssetApi {
           {String? key, String? tag}) =>
       MixinResponse.request<List<PendingDeposit>>(dio.get(
           '/external/transactions?asset=$assetId&destination=$key&tag=$tag'));
+
+  Future<MixinResponse<List<Asset>>> getTopAssets() =>
+      MixinResponse.request<List<Asset>>(dio.get('/network/assets/top'));
 }
