@@ -24,9 +24,13 @@ class AssetApi {
           dio.get('/network/assets/search/$query'));
 
   Future<MixinResponse<List<PendingDeposit>>> pendingDeposits(String assetId,
-          {String? key, String? tag}) =>
-      MixinResponse.request<List<PendingDeposit>>(dio.get(
-          '/external/transactions?asset=$assetId&destination=$key&tag=$tag'));
+          {String? destination, String? tag}) =>
+      MixinResponse.request<List<PendingDeposit>>(
+          dio.get('/external/transactions', queryParameters: {
+        'asset': assetId,
+        'destination': destination,
+        'tag': tag,
+      }));
 
   Future<MixinResponse<List<Asset>>> getTopAssets() =>
       MixinResponse.request<List<Asset>>(dio.get('/network/assets/top'));
