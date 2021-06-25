@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
 import '../vo/account.dart';
+import '../vo/fiat.dart';
 import '../vo/mixin_response.dart';
 import '../vo/request/account_request.dart';
 import '../vo/request/logout_request.dart';
@@ -41,4 +42,7 @@ class AccountApi {
 
   Future<MixinResponse<Sticker>> getStickerById(String id) =>
       MixinResponse.request<Sticker>(dio.get('/stickers/$id'));
+
+  Future<MixinResponse<List<Fiat>>> getFiats() =>
+      MixinResponse.request<List<Fiat>>(dio.get('/fiats'));
 }

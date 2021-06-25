@@ -75,5 +75,16 @@ void main() {
         }
       }
     });
+
+    test('test getFiats', () async {
+      try {
+        final response = await client.accountApi.getFiats();
+        print(response.data);
+      } catch (e) {
+        if (e is MixinApiError) {
+          print(e.error);
+        }
+      }
+    });
   });
 }

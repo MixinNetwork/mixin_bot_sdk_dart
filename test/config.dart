@@ -25,3 +25,13 @@ final mockWithdrawalRequest =
     WithdrawalRequest(addressId: '', amount: '100', pin: '', traceId: '');
 
 final mockAddressRequest = AddressRequest(assetId: btcId, pin: '');
+
+final multisigId = '';
+final mockPinRequest = PinRequest(pin: '', oldPin: '');
+final mockOpponentMultisig =
+    OpponentMultisig(receivers: <String>['', ''], threshold: 10);
+final mockRawTransactionRequest = RawTransactionRequest(
+    assetId: btcId,
+    opponentMultisig: mockOpponentMultisig,
+    amount: '100',
+    pin: '');

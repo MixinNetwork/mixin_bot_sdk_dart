@@ -9,6 +9,7 @@ import 'asset.dart';
 import 'circle_conversation.dart';
 import 'circle_response.dart';
 import 'conversation_response.dart';
+import 'fiat.dart';
 import 'payment_response.dart';
 import 'pending_deposit.dart';
 import 'provisioning.dart';
@@ -101,6 +102,8 @@ dynamic _generateJsonForType(type, json) {
       return PendingDeposit.fromJson(json);
     case 'Address':
       return Address.fromJson(json);
+    case 'Fiat':
+      return Fiat.fromJson(json);
   }
   return json;
 }
@@ -129,6 +132,8 @@ List? _getListFromType(String type) {
       return <PendingDeposit>[];
     case 'Address':
       return <Address>[];
+    case 'Fiat':
+      return <Fiat>[];
   }
   throw Exception('Unknown type $type');
 }

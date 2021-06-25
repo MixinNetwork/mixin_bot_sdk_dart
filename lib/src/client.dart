@@ -10,6 +10,7 @@ import 'api/attachment_api.dart';
 import 'api/circle_api.dart';
 import 'api/conversation_api.dart';
 import 'api/message_api.dart';
+import 'api/multisig_api.dart';
 import 'api/oauth_api.dart';
 import 'api/provisioning_api.dart';
 import 'api/snapshot_api.dart';
@@ -130,6 +131,7 @@ class Client {
     _snapshotApi = SnapshotApi(dio: dio);
     _transferApi = TransferApi(dio: dio);
     _addressApi = AddressApi(dio: dio);
+    _multisigApi = MultisigApi(dio: dio);
   }
 
   late Dio _dio;
@@ -145,6 +147,7 @@ class Client {
   late SnapshotApi _snapshotApi;
   late TransferApi _transferApi;
   late AddressApi _addressApi;
+  late MultisigApi _multisigApi;
 
   Dio get dio => _dio;
 
@@ -171,4 +174,6 @@ class Client {
   TransferApi get transferApi => _transferApi;
 
   AddressApi get addressApi => _addressApi;
+
+  MultisigApi get multisigApi => _multisigApi;
 }
