@@ -35,7 +35,7 @@ packages:
       name: dart_jsonwebtoken
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.0"
+    version: "2.3.0"
   dio:
     dependency: transitive
     description:
@@ -49,7 +49,7 @@ packages:
       name: ed25519_edwards
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.0"
+    version: "0.2.0"
   enum_to_string:
     dependency: transitive
     description:
@@ -105,7 +105,7 @@ packages:
       name: pointycastle
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.1"
+    version: "3.1.2"
   recase:
     dependency: transitive
     description:
