@@ -104,6 +104,8 @@ dynamic _generateJsonForType(type, json) {
       return Address.fromJson(json);
     case 'Fiat':
       return Fiat.fromJson(json);
+    case 'OauthResponse':
+      return OauthResponse.fromJson(json);
   }
   return json;
 }
