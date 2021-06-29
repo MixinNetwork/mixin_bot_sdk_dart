@@ -31,6 +31,7 @@ class Client {
     String? privateKey,
     String? scp,
     String? baseUrl,
+    String? accessToken,
     BaseOptions? dioOptions,
     JsonDecodeCallback? jsonDecodeCallback,
     Iterable<Interceptor> interceptors = const [],
@@ -52,7 +53,7 @@ class Client {
           body = jsonEncode(options.data);
         }
         options.headers['Accept-Language'] ??= 'en_US';
-        options.headers['Authorization'] = 'Bearer ${signAuthTokenWithEdDSA(
+        accessToken ??= signAuthTokenWithEdDSA(
           userId,
           sessionId,
           privateKey,
@@ -60,7 +61,8 @@ class Client {
           options.method,
           options.path,
           body,
-        )}';
+        );
+        options.headers['Authorization'] = 'Bearer $accessToken';
         handler.next(options);
       },
       onResponse: (Response response, ResponseInterceptorHandler handler) {

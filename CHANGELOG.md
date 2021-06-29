@@ -1,3 +1,6 @@
+## 0.0.4
+Fix oauth API
+
 ## 0.0.3
 Export more vo class
 
