@@ -1,3 +1,6 @@
+## 0.0.5
+Support oauth token
+
 ## 0.0.4
 Fix oauth API
 
