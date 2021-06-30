@@ -53,16 +53,17 @@ class Client {
           body = jsonEncode(options.data);
         }
         options.headers['Accept-Language'] ??= 'en_US';
-        accessToken ??= signAuthTokenWithEdDSA(
-          userId,
-          sessionId,
-          privateKey,
-          scp,
-          options.method,
-          options.path,
-          body,
-        );
-        options.headers['Authorization'] = 'Bearer $accessToken';
+        final authToken = accessToken ??
+            signAuthTokenWithEdDSA(
+              userId,
+              sessionId,
+              privateKey,
+              scp,
+              options.method,
+              options.path,
+              body,
+            );
+        options.headers['Authorization'] = 'Bearer $authToken';
         handler.next(options);
       },
       onResponse: (Response response, ResponseInterceptorHandler handler) {
