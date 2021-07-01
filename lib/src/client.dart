@@ -19,7 +19,6 @@ import 'api/user_api.dart';
 import 'auth.dart';
 import 'error/mixin_api_error.dart';
 import 'log_interceptor.dart';
-import 'util/web/src/web_util_web.dart';
 
 const mixinBaseUrl0 = 'https://api.mixin.one';
 const mixinBaseUrl1 = 'https://mixin-api.zeromesh.net';
@@ -52,12 +51,6 @@ class Client {
         var body = '';
         if (options.data != null) {
           body = jsonEncode(options.data);
-        }
-
-        if (isWeb) {
-          options.headers.remove('Accept-Language');
-        } else {
-          options.headers['Accept-Language'] ??= 'en_US';
         }
 
         final authToken = accessToken ??

@@ -1,5 +1,5 @@
 ## 0.0.6
-No Accept-Language set on web, and update dependencies.
+Delete the default setting Accept-Language en_us, and update dependencies.
 
 ## 0.0.5
 Support oauth token
