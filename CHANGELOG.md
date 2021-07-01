@@ -1,3 +1,6 @@
+## 0.0.6
+No Accept-Language set on web, and update dependencies.
+
 ## 0.0.5
 Support oauth token
 

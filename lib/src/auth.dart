@@ -5,7 +5,7 @@ import 'package:crypto/crypto.dart';
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:uuid/uuid.dart';
 
-import 'crypto_util.dart';
+import 'util/crypto_util.dart';
 
 String signAuthTokenWithRSA(
         String? userId,
