@@ -1,5 +1,8 @@
-## 0.0.6
+## 0.0.7
 Delete the default setting Accept-Language en_us, and update dependencies.
+
+## 0.0.6
+Support oauth token
 
 ## 0.0.5
 Support oauth token
