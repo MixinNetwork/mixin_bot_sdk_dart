@@ -31,6 +31,7 @@ export 'src/vo/circle_response.dart';
 export 'src/vo/conversation.dart';
 export 'src/vo/conversation_category.dart';
 export 'src/vo/conversation_response.dart';
+export 'src/vo/deposit_entry.dart';
 export 'src/vo/fiat.dart';
 export 'src/vo/mixin_error.dart';
 export 'src/vo/mixin_response.dart';

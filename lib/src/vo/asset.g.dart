@@ -23,6 +23,9 @@ Asset _$AssetFromJson(Map<String, dynamic> json) {
     tag: json['tag'] as String?,
     assetKey: json['asset_key'] as String?,
     reserve: json['reserve'] as String?,
+    depositEntries: (json['deposit_entries'] as List<dynamic>?)
+        ?.map((e) => DepositEntry.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 
@@ -42,4 +45,5 @@ Map<String, dynamic> _$AssetToJson(Asset instance) => <String, dynamic>{
       'confirmations': instance.confirmations,
       'asset_key': instance.assetKey,
       'reserve': instance.reserve,
+      'deposit_entries': instance.depositEntries,
     };

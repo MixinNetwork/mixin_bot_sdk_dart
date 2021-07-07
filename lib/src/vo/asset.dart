@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'deposit_entry.dart';
 
 part 'asset.g.dart';
 
@@ -21,6 +22,7 @@ class Asset with EquatableMixin {
     this.tag,
     this.assetKey,
     this.reserve,
+    this.depositEntries,
   });
 
   factory Asset.fromJson(Map<String, dynamic> json) => _$AssetFromJson(json);
@@ -57,6 +59,8 @@ class Asset with EquatableMixin {
   String? assetKey;
   @JsonKey(name: 'reserve')
   String? reserve;
+  @JsonKey(name: 'deposit_entries')
+  List<DepositEntry>? depositEntries;
 
   @override
   List<Object?> get props => [
@@ -75,5 +79,6 @@ class Asset with EquatableMixin {
         confirmations,
         assetKey,
         reserve,
+        depositEntries,
       ];
 }
