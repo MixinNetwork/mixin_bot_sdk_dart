@@ -52,6 +52,7 @@ export 'src/vo/request/raw_transaction_request.dart';
 export 'src/vo/request/relationship_request.dart';
 export 'src/vo/request/transfer_request.dart';
 export 'src/vo/request/withdrawal_request.dart';
+export 'src/vo/snapshot.dart';
 export 'src/vo/sticker.dart';
 export 'src/vo/sticker_albums.dart';
 export 'src/vo/ticker.dart';

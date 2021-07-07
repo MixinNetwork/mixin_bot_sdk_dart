@@ -30,7 +30,7 @@ class Snapshot {
   @JsonKey(name: 'amount')
   String amount;
   @JsonKey(name: 'created_at')
-  String createdAt;
+  DateTime createdAt;
   @JsonKey(name: 'opponent_id')
   String opponentId;
   @JsonKey(name: 'trace_id')
