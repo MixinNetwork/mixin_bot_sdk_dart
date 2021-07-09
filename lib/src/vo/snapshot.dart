@@ -48,3 +48,13 @@ class Snapshot {
 
   Map<String, dynamic> toJson() => _$SnapshotToJson(this);
 }
+
+class SnapshotType {
+  static const transfer = 'transfer';
+  static const deposit = 'deposit';
+  static const withdrawal = 'withdrawal';
+  static const fee = 'fee';
+  static const rebate = 'rebate';
+  static const raw = 'raw';
+  static const pending = 'pending';
+}
