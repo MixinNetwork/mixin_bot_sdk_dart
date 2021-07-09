@@ -32,19 +32,19 @@ class Snapshot {
   @JsonKey(name: 'created_at')
   DateTime createdAt;
   @JsonKey(name: 'opponent_id')
-  String opponentId;
+  String? opponentId;
   @JsonKey(name: 'trace_id')
-  String traceId;
+  String? traceId;
   @JsonKey(name: 'transaction_hash')
   String? transactionHash;
   @JsonKey(name: 'sender')
-  String sender;
+  String? sender;
   @JsonKey(name: 'receiver')
-  String receiver;
+  String? receiver;
   @JsonKey(name: 'memo')
-  String memo;
+  String? memo;
   @JsonKey(name: 'confirmations')
-  int confirmations;
+  int? confirmations;
 
   Map<String, dynamic> toJson() => _$SnapshotToJson(this);
 }

@@ -13,13 +13,13 @@ Snapshot _$SnapshotFromJson(Map<String, dynamic> json) {
     json['asset_id'] as String,
     json['amount'] as String,
     DateTime.parse(json['created_at'] as String),
-    json['opponent_id'] as String,
-    json['trace_id'] as String,
+    json['opponent_id'] as String?,
+    json['trace_id'] as String?,
     json['transaction_hash'] as String?,
-    json['sender'] as String,
-    json['receiver'] as String,
-    json['memo'] as String,
-    json['confirmations'] as int,
+    json['sender'] as String?,
+    json['receiver'] as String?,
+    json['memo'] as String?,
+    json['confirmations'] as int?,
   );
 }
 
