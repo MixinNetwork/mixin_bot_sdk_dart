@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:collection/collection.dart';
-import 'package:mixin_bot_sdk_dart/src/crypto_util.dart';
+import 'package:mixin_bot_sdk_dart/src/util/crypto_util.dart';
 import 'package:test/test.dart';
 
 void main() {
