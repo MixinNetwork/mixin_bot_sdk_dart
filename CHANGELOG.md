@@ -1,3 +1,6 @@
+## 0.0.8
+More message type
+
 ## 0.0.7
 Delete the default setting Accept-Language en_us, and update dependencies.
 
