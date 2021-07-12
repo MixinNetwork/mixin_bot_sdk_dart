@@ -1,4 +1,4 @@
-extension StringExtension on String {
+extension UuidHashcodeExtension on String {
   int uuidHashcode() {
     final components = split('-');
     assert(components.length == 5);
