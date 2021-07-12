@@ -20,7 +20,7 @@ export 'src/error/api_error_code.dart';
 export 'src/error/mixin_api_error.dart';
 export 'src/log_interceptor.dart';
 export 'src/util/crypto_util.dart';
-export 'src/util/string_extenson.dart';
+export 'src/util/string_extension.dart';
 export 'src/vo/account.dart';
 export 'src/vo/address.dart';
 export 'src/vo/asset.dart';
