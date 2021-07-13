@@ -41,7 +41,8 @@ class SnapshotApi {
       MixinResponse.request<Snapshot>(dio.get('/snapshots/trace/$traceId'));
 
   Future<MixinResponse<Ticker>> getTicker(String assetId, {String? offset}) =>
-      MixinResponse.request<Ticker>(dio.get('/ticker', queryParameters: {
+      MixinResponse.request<Ticker>(
+          dio.get('/network/ticker', queryParameters: {
         'asset': assetId,
         'offset': offset,
       }));
