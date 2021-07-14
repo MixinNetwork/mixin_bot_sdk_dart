@@ -34,7 +34,7 @@ class Address with EquatableMixin {
   @JsonKey(name: 'label')
   String label;
   @JsonKey(name: 'updated_at')
-  String updatedAt;
+  DateTime updatedAt;
   @JsonKey(name: 'reserve')
   String reserve;
   @JsonKey(name: 'fee')
