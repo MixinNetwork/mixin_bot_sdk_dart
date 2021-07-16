@@ -10,16 +10,15 @@ class MultisigApi {
   final Dio dio;
 
   Future<MixinResponse<void>> sign(String id, PinRequest request) =>
-      MixinResponse.request<void>(
-          dio.post('/multisigs/$id/sign', data: request));
+      MixinResponse.requestVoid(dio.post('/multisigs/$id/sign', data: request));
 
   Future<MixinResponse<void>> unlock(String id, PinRequest request) =>
-      MixinResponse.request<void>(
+      MixinResponse.requestVoid(
           dio.post('/multisigs/$id/unlock', data: request));
 
   Future<MixinResponse<void>> cancel(String id) =>
-      MixinResponse.request<void>(dio.post('/multisigs/$id/cancel'));
+      MixinResponse.requestVoid(dio.post('/multisigs/$id/cancel'));
 
   Future<MixinResponse<void>> transaction(RawTransactionRequest request) =>
-      MixinResponse.request<void>(dio.post('/transactions', data: request));
+      MixinResponse.requestVoid(dio.post('/transactions', data: request));
 }

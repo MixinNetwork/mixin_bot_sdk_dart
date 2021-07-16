@@ -15,34 +15,59 @@ class AccountApi {
 
   final Dio dio;
 
-  Future<MixinResponse<Account>> getMe() =>
-      MixinResponse.request<Account>(dio.get('/me'));
+  Future<MixinResponse<Account>> getMe() => MixinResponse.request<Account>(
+        dio.get('/me'),
+        (json) => Account.fromJson(json),
+      );
 
   Future<MixinResponse<Account>> update(AccountUpdateRequest request) =>
-      MixinResponse.request<Account>(dio.post('/me', data: request));
+      MixinResponse.request<Account>(
+        dio.post('/me', data: request),
+        (json) => Account.fromJson(json),
+      );
 
-  Future<MixinResponse<List<User>>> getFriends() =>
-      MixinResponse.request<List<User>>(dio.get('/friends'));
+  Future<MixinResponse<List<User>>> getFriends() => MixinResponse.requestList(
+        dio.get('/friends'),
+        (json) => User.fromJson(json),
+      );
 
   Future<MixinResponse<SignalKeyCount>> getSignalKeyCount() =>
-      MixinResponse.request<SignalKeyCount>(dio.get('/signal/keys/count'));
+      MixinResponse.request<SignalKeyCount>(
+        dio.get('/signal/keys/count'),
+        (json) => SignalKeyCount.fromJson(json),
+      );
 
   Future<MixinResponse<void>> pushSignalKeys(
           Map<String, dynamic> signalKeysRequest) =>
-      MixinResponse.request(dio.post('/signal/keys', data: signalKeysRequest));
+      MixinResponse.requestVoid(
+          dio.post('/signal/keys', data: signalKeysRequest));
 
   Future<MixinResponse<dynamic>> logout(LogoutRequest request) =>
-      MixinResponse.request<dynamic>(dio.post('/logout', data: request));
+      MixinResponse.request<dynamic>(
+        dio.post('/logout', data: request),
+        (json) => json,
+      );
 
   Future<MixinResponse<List<StickerAlbum>>> getStickerAlbums() =>
-      MixinResponse.request<List<StickerAlbum>>(dio.get('/stickers/albums'));
+      MixinResponse.requestList(
+        dio.get('/stickers/albums'),
+        (json) => StickerAlbum.fromJson(json),
+      );
 
   Future<MixinResponse<List<Sticker>>> getStickersByAlbumId(String id) =>
-      MixinResponse.request<List<Sticker>>(dio.get('/stickers/albums/$id'));
+      MixinResponse.requestList(
+        dio.get('/stickers/albums/$id'),
+        (json) => Sticker.fromJson(json),
+      );
 
   Future<MixinResponse<Sticker>> getStickerById(String id) =>
-      MixinResponse.request<Sticker>(dio.get('/stickers/$id'));
+      MixinResponse.request<Sticker>(
+        dio.get('/stickers/$id'),
+        (json) => Sticker.fromJson(json),
+      );
 
-  Future<MixinResponse<List<Fiat>>> getFiats() =>
-      MixinResponse.request<List<Fiat>>(dio.get('/fiats'));
+  Future<MixinResponse<List<Fiat>>> getFiats() => MixinResponse.requestList(
+        dio.get('/fiats'),
+        (json) => Fiat.fromJson(json),
+      );
 }

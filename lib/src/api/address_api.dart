@@ -10,15 +10,23 @@ class AddressApi {
   final Dio dio;
 
   Future<MixinResponse<List<Address>>> getAddressesByAssetId(String assetId) =>
-      MixinResponse.request<List<Address>>(
-          dio.get('/assets/$assetId/addresses'));
+      MixinResponse.requestList(
+        dio.get('/assets/$assetId/addresses'),
+        (json) => Address.fromJson(json),
+      );
 
   Future<MixinResponse<Address>> addAddress(AddressRequest request) =>
-      MixinResponse.request<Address>(dio.post('/addresses', data: request));
+      MixinResponse.request<Address>(
+        dio.post('/addresses', data: request),
+        (json) => Address.fromJson(json),
+      );
 
   Future<MixinResponse<Address>> getAddressById(String id) =>
-      MixinResponse.request<Address>(dio.get('/addresses/$id'));
+      MixinResponse.request<Address>(
+        dio.get('/addresses/$id'),
+        (json) => Address.fromJson(json),
+      );
 
   Future<MixinResponse<void>> deleteAddressById(String id, String pin) =>
-      MixinResponse.request<void>(dio.post('/addresses/$id/delete', data: pin));
+      MixinResponse.requestVoid(dio.post('/addresses/$id/delete', data: pin));
 }

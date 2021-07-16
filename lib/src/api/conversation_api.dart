@@ -13,36 +13,52 @@ class ConversationApi {
   Future<MixinResponse<ConversationResponse>> createConversation(
           ConversationRequest request) =>
       MixinResponse.request<ConversationResponse>(
-          dio.post('/conversations', data: request));
+        dio.post('/conversations', data: request),
+        (json) => ConversationResponse.fromJson(json),
+      );
 
   Future<MixinResponse<ConversationResponse>> update(
           String conversationId, ConversationRequest request) =>
       MixinResponse.request<ConversationResponse>(
-          dio.post('/conversations/$conversationId', data: request));
+        dio.post('/conversations/$conversationId', data: request),
+        (json) => ConversationResponse.fromJson(json),
+      );
 
   Future<MixinResponse<ConversationResponse>> exit(String conversationId) =>
       MixinResponse.request<ConversationResponse>(
-          dio.post('/conversations/$conversationId/exit'));
+        dio.post('/conversations/$conversationId/exit'),
+        (json) => ConversationResponse.fromJson(json),
+      );
 
   Future<MixinResponse<ConversationResponse>> getConversation(String id) =>
       MixinResponse.request<ConversationResponse>(
-          dio.get('/conversations/$id'));
+        dio.get('/conversations/$id'),
+        (json) => ConversationResponse.fromJson(json),
+      );
 
   Future<MixinResponse<ConversationResponse>> updateConversation(String id) =>
       MixinResponse.request<ConversationResponse>(
-          dio.get('/conversations/$id'));
+        dio.get('/conversations/$id'),
+        (json) => ConversationResponse.fromJson(json),
+      );
 
   Future<MixinResponse<ConversationResponse>> participants(
           String id, String action, List<ParticipantRequest> requests) =>
       MixinResponse.request<ConversationResponse>(
-          dio.post('/conversations/$id/participants/$action', data: requests));
+        dio.post('/conversations/$id/participants/$action', data: requests),
+        (json) => ConversationResponse.fromJson(json),
+      );
 
   Future<MixinResponse<ConversationResponse>> mute(
           String id, ConversationRequest request) =>
       MixinResponse.request<ConversationResponse>(
-          dio.post('/conversations/$id/mute', data: request));
+        dio.post('/conversations/$id/mute', data: request),
+        (json) => ConversationResponse.fromJson(json),
+      );
 
   Future<MixinResponse<ConversationResponse>> rotate(String id) =>
       MixinResponse.request<ConversationResponse>(
-          dio.post('/conversations/$id/rotate'));
+        dio.post('/conversations/$id/rotate'),
+        (json) => ConversationResponse.fromJson(json),
+      );
 }

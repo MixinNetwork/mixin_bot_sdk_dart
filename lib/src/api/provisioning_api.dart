@@ -12,12 +12,19 @@ class ProvisioningApi {
 
   Future<MixinResponse<Provisioning>> getProvisioningId(String deviceId) =>
       MixinResponse.request<Provisioning>(
-          dio.post('/provisionings', data: {'device': deviceId}));
+        dio.post('/provisionings', data: {'device': deviceId}),
+        (json) => Provisioning.fromJson(json),
+      );
 
   Future<MixinResponse<Provisioning>> getProvisioning(String deviceId) =>
-      MixinResponse.request<Provisioning>(dio.get('/provisionings/$deviceId'));
+      MixinResponse.request<Provisioning>(
+        dio.get('/provisionings/$deviceId'),
+        (json) => Provisioning.fromJson(json),
+      );
 
   Future<MixinResponse<Account>> verifyProvisioning(ProvisioningRequest data) =>
       MixinResponse.request<Account>(
-          dio.post('/provisionings/verify', data: data));
+        dio.post('/provisionings/verify', data: data),
+        (json) => Account.fromJson(json),
+      );
 }
