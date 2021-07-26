@@ -1,3 +1,6 @@
+## 0.1.0
+More sticker API
+
 ## 0.0.8
 More message type
 
