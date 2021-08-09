@@ -21,6 +21,12 @@ class UserApi {
         (json) => User.fromJson(json),
       );
 
+  Future<MixinResponse<User>> search(String query) =>
+      MixinResponse.request<User>(
+        dio.get('/search/$query'),
+        (json) => User.fromJson(json),
+      );
+
   Future<MixinResponse<List<User>>> getUsers(List<String> ids) =>
       MixinResponse.requestList(
         dio.post('/users/fetch', data: ids),
