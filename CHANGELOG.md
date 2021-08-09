@@ -1,8 +1,8 @@
+## 0.1.1
+Add search user API
+
 ## 0.1.0
 More sticker API
-
-## 0.0.9
-Add search user API
 
 ## 0.0.8
 More message type
