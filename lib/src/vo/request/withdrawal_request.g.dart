@@ -6,16 +6,15 @@ part of 'withdrawal_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-WithdrawalRequest _$WithdrawalRequestFromJson(Map<String, dynamic> json) {
-  return WithdrawalRequest(
-    addressId: json['address_id'] as String,
-    amount: json['amount'] as String,
-    pin: json['pin'] as String,
-    traceId: json['trace_id'] as String,
-    memo: json['memo'] as String?,
-    fee: json['fee'] as String?,
-  );
-}
+WithdrawalRequest _$WithdrawalRequestFromJson(Map<String, dynamic> json) =>
+    WithdrawalRequest(
+      addressId: json['address_id'] as String,
+      amount: json['amount'] as String,
+      pin: json['pin'] as String,
+      traceId: json['trace_id'] as String,
+      memo: json['memo'] as String?,
+      fee: json['fee'] as String?,
+    );
 
 Map<String, dynamic> _$WithdrawalRequestToJson(WithdrawalRequest instance) =>
     <String, dynamic>{

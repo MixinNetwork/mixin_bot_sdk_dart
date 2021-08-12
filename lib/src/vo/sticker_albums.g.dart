@@ -6,18 +6,16 @@ part of 'sticker_albums.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-StickerAlbum _$StickerAlbumFromJson(Map<String, dynamic> json) {
-  return StickerAlbum(
-    albumId: json['album_id'] as String,
-    name: json['name'] as String,
-    iconUrl: json['icon_url'] as String,
-    createdAt: DateTime.parse(json['created_at'] as String),
-    updateAt: DateTime.parse(json['update_at'] as String),
-    userId: json['user_id'] as String,
-    category: json['category'] as String,
-    description: json['description'] as String,
-  );
-}
+StickerAlbum _$StickerAlbumFromJson(Map<String, dynamic> json) => StickerAlbum(
+      albumId: json['album_id'] as String,
+      name: json['name'] as String,
+      iconUrl: json['icon_url'] as String,
+      createdAt: DateTime.parse(json['created_at'] as String),
+      updateAt: DateTime.parse(json['update_at'] as String),
+      userId: json['user_id'] as String,
+      category: json['category'] as String,
+      description: json['description'] as String,
+    );
 
 Map<String, dynamic> _$StickerAlbumToJson(StickerAlbum instance) =>
     <String, dynamic>{

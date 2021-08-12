@@ -26,7 +26,7 @@ class CircleConversation with EquatableMixin {
   String? userId;
   @JsonKey(name: 'created_at')
   DateTime createdAt;
-  String pinTime;
+  String? pinTime;
 
   @override
   List<Object?> get props => [

@@ -6,21 +6,19 @@ part of 'sticker.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Sticker _$StickerFromJson(Map<String, dynamic> json) {
-  return Sticker(
-    stickerId: json['sticker_id'] as String,
-    name: json['name'] as String,
-    assetUrl: json['asset_url'] as String,
-    assetType: json['asset_type'] as String,
-    assetWidth: json['asset_width'] as int,
-    assetHeight: json['asset_height'] as int,
-    createdAt: DateTime.parse(json['created_at'] as String),
-    albumId: json['album_id'] as String?,
-    lastUsedAt: json['last_use_at'] == null
-        ? null
-        : DateTime.parse(json['last_use_at'] as String),
-  );
-}
+Sticker _$StickerFromJson(Map<String, dynamic> json) => Sticker(
+      stickerId: json['sticker_id'] as String,
+      name: json['name'] as String,
+      assetUrl: json['asset_url'] as String,
+      assetType: json['asset_type'] as String,
+      assetWidth: json['asset_width'] as int,
+      assetHeight: json['asset_height'] as int,
+      createdAt: DateTime.parse(json['created_at'] as String),
+      albumId: json['album_id'] as String?,
+      lastUsedAt: json['last_use_at'] == null
+          ? null
+          : DateTime.parse(json['last_use_at'] as String),
+    );
 
 Map<String, dynamic> _$StickerToJson(Sticker instance) => <String, dynamic>{
       'sticker_id': instance.stickerId,

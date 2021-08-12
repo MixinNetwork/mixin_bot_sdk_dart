@@ -7,17 +7,16 @@ part of 'raw_transaction_request.dart';
 // **************************************************************************
 
 RawTransactionRequest _$RawTransactionRequestFromJson(
-    Map<String, dynamic> json) {
-  return RawTransactionRequest(
-    assetId: json['asset_id'] as String,
-    opponentMultisig: OpponentMultisig.fromJson(
-        json['opponent_multisig'] as Map<String, dynamic>),
-    amount: json['amount'] as String,
-    pin: json['pin'] as String,
-    traceId: json['trace_id'] as String?,
-    memo: json['memo'] as String?,
-  );
-}
+        Map<String, dynamic> json) =>
+    RawTransactionRequest(
+      assetId: json['asset_id'] as String,
+      opponentMultisig: OpponentMultisig.fromJson(
+          json['opponent_multisig'] as Map<String, dynamic>),
+      amount: json['amount'] as String,
+      pin: json['pin'] as String,
+      traceId: json['trace_id'] as String?,
+      memo: json['memo'] as String?,
+    );
 
 Map<String, dynamic> _$RawTransactionRequestToJson(
         RawTransactionRequest instance) =>
@@ -30,13 +29,12 @@ Map<String, dynamic> _$RawTransactionRequestToJson(
       'memo': instance.memo,
     };
 
-OpponentMultisig _$OpponentMultisigFromJson(Map<String, dynamic> json) {
-  return OpponentMultisig(
-    receivers:
-        (json['receivers'] as List<dynamic>).map((e) => e as String).toList(),
-    threshold: json['threshold'] as int,
-  );
-}
+OpponentMultisig _$OpponentMultisigFromJson(Map<String, dynamic> json) =>
+    OpponentMultisig(
+      receivers:
+          (json['receivers'] as List<dynamic>).map((e) => e as String).toList(),
+      threshold: json['threshold'] as int,
+    );
 
 Map<String, dynamic> _$OpponentMultisigToJson(OpponentMultisig instance) =>
     <String, dynamic>{

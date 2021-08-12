@@ -6,11 +6,10 @@ part of 'payment_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PaymentResponse _$PaymentResponseFromJson(Map<String, dynamic> json) {
-  return PaymentResponse(
-    status: _$enumDecode(_$PaymentStatusEnumMap, json['status']),
-  );
-}
+PaymentResponse _$PaymentResponseFromJson(Map<String, dynamic> json) =>
+    PaymentResponse(
+      status: _$enumDecode(_$PaymentStatusEnumMap, json['status']),
+    );
 
 Map<String, dynamic> _$PaymentResponseToJson(PaymentResponse instance) =>
     <String, dynamic>{

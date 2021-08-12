@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import '../vo/account.dart';
 import '../vo/mixin_response.dart';
 import '../vo/provisioning.dart';
+import '../vo/provisioning_id.dart';
 import '../vo/request/provisioning_request.dart';
 
 class ProvisioningApi {
@@ -10,10 +11,10 @@ class ProvisioningApi {
 
   final Dio dio;
 
-  Future<MixinResponse<Provisioning>> getProvisioningId(String deviceId) =>
-      MixinResponse.request<Provisioning>(
+  Future<MixinResponse<ProvisioningId>> getProvisioningId(String deviceId) =>
+      MixinResponse.request<ProvisioningId>(
         dio.post('/provisionings', data: {'device': deviceId}),
-        (json) => Provisioning.fromJson(json),
+        (json) => ProvisioningId.fromJson(json),
       );
 
   Future<MixinResponse<Provisioning>> getProvisioning(String deviceId) =>

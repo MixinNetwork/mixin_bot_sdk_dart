@@ -8,8 +8,10 @@ part of 'circle_conversation_request.dart';
 
 CircleConversationRequest _$CircleConversationRequestFromJson(
     Map<String, dynamic> json) {
-  $checkKeys(json,
-      disallowNullValues: const ['conversation_id', 'action', 'user_id']);
+  $checkKeys(
+    json,
+    disallowNullValues: const ['conversation_id', 'action', 'user_id'],
+  );
   return CircleConversationRequest(
     conversationId: json['conversation_id'] as String,
     action: _$enumDecode(_$CircleConversationActionEnumMap, json['action']),
