@@ -6,13 +6,12 @@ part of 'sticker_message.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-StickerMessage _$StickerMessageFromJson(Map<String, dynamic> json) {
-  return StickerMessage(
-    json['sticker_id'] as String,
-    json['album_id'] as String?,
-    json['name'] as String?,
-  );
-}
+StickerMessage _$StickerMessageFromJson(Map<String, dynamic> json) =>
+    StickerMessage(
+      json['sticker_id'] as String,
+      json['album_id'] as String?,
+      json['name'] as String?,
+    );
 
 Map<String, dynamic> _$StickerMessageToJson(StickerMessage instance) =>
     <String, dynamic>{

@@ -48,6 +48,7 @@ export 'src/vo/participant_role.dart';
 export 'src/vo/payment_response.dart';
 export 'src/vo/pending_deposit.dart';
 export 'src/vo/provisioning.dart';
+export 'src/vo/provisioning_id.dart';
 export 'src/vo/request/account_request.dart';
 export 'src/vo/request/address_request.dart';
 export 'src/vo/request/circle_conversation_request.dart';

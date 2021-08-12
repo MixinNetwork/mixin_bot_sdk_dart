@@ -6,15 +6,14 @@ part of 'circle_conversation.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CircleConversation _$CircleConversationFromJson(Map<String, dynamic> json) {
-  return CircleConversation(
-    conversationId: json['conversation_id'] as String,
-    circleId: json['circle_id'] as String,
-    createdAt: DateTime.parse(json['created_at'] as String),
-    pinTime: json['pinTime'] as String,
-    userId: json['user_id'] as String?,
-  );
-}
+CircleConversation _$CircleConversationFromJson(Map<String, dynamic> json) =>
+    CircleConversation(
+      conversationId: json['conversation_id'] as String,
+      circleId: json['circle_id'] as String,
+      createdAt: DateTime.parse(json['created_at'] as String),
+      pinTime: json['pinTime'] as String?,
+      userId: json['user_id'] as String?,
+    );
 
 Map<String, dynamic> _$CircleConversationToJson(CircleConversation instance) =>
     <String, dynamic>{

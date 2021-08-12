@@ -6,11 +6,10 @@ part of 'signal_key_count.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-SignalKeyCount _$SignalKeyCountFromJson(Map<String, dynamic> json) {
-  return SignalKeyCount(
-    preKeyCount: json['one_time_pre_keys_count'] as int,
-  );
-}
+SignalKeyCount _$SignalKeyCountFromJson(Map<String, dynamic> json) =>
+    SignalKeyCount(
+      preKeyCount: json['one_time_pre_keys_count'] as int,
+    );
 
 Map<String, dynamic> _$SignalKeyCountToJson(SignalKeyCount instance) =>
     <String, dynamic>{

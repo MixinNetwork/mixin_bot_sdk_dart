@@ -6,23 +6,22 @@ part of 'attachment_message.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AttachmentMessage _$AttachmentMessageFromJson(Map<String, dynamic> json) {
-  return AttachmentMessage(
-    json['key'],
-    json['digest'],
-    json['attachment_id'] as String,
-    json['mime_type'] as String,
-    json['size'] as int,
-    json['name'] as String?,
-    json['width'] as int?,
-    json['height'] as int?,
-    json['thumbnail'] as String?,
-    json['duration'] as int?,
-    json['waveform'],
-    json['caption'] as String?,
-    json['created_at'] as String?,
-  );
-}
+AttachmentMessage _$AttachmentMessageFromJson(Map<String, dynamic> json) =>
+    AttachmentMessage(
+      json['key'],
+      json['digest'],
+      json['attachment_id'] as String,
+      json['mime_type'] as String,
+      json['size'] as int,
+      json['name'] as String?,
+      json['width'] as int?,
+      json['height'] as int?,
+      json['thumbnail'] as String?,
+      json['duration'] as int?,
+      json['waveform'],
+      json['caption'] as String?,
+      json['created_at'] as String?,
+    );
 
 Map<String, dynamic> _$AttachmentMessageToJson(AttachmentMessage instance) =>
     <String, dynamic>{

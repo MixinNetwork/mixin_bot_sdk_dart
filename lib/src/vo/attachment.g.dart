@@ -6,14 +6,12 @@ part of 'attachment.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Attachment _$AttachmentFromJson(Map<String, dynamic> json) {
-  return Attachment(
-    json['attachment_id'] as String,
-    json['created_at'] as String,
-    uploadUrl: json['upload_url'] as String?,
-    viewUrl: json['view_url'] as String?,
-  );
-}
+Attachment _$AttachmentFromJson(Map<String, dynamic> json) => Attachment(
+      json['attachment_id'] as String,
+      json['created_at'] as String,
+      uploadUrl: json['upload_url'] as String?,
+      viewUrl: json['view_url'] as String?,
+    );
 
 Map<String, dynamic> _$AttachmentToJson(Attachment instance) =>
     <String, dynamic>{

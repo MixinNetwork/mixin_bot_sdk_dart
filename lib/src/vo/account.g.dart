@@ -6,37 +6,35 @@ part of 'account.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Account _$AccountFromJson(Map<String, dynamic> json) {
-  return Account(
-    userId: json['user_id'] as String,
-    identityNumber: json['identity_number'] as String,
-    phone: json['phone'] as String,
-    biography: json['biography'] as String,
-    relationship: json['relationship'] as String,
-    muteUntil: json['mute_until'] as String,
-    createdAt: DateTime.parse(json['created_at'] as String),
-    isVerified: json['is_verified'] as bool,
-    isScam: json['is_scam'] as bool,
-    sessionId: json['session_id'] as String,
-    pinToken: json['pin_token'] as String,
-    pinTokenBase64: json['pin_token_base64'] as String,
-    codeId: json['code_id'] as String,
-    codeUrl: json['code_url'] as String,
-    deviceStatus: json['device_status'] as String,
-    hasPin: json['has_pin'] as bool,
-    hasEmergencyContact: json['has_emergency_contact'] as bool,
-    receiveMessageSource: json['receive_message_source'] as String,
-    acceptConversationSource: json['accept_conversation_source'] as String,
-    acceptSearchSource: json['accept_search_source'] as String,
-    fiatCurrency: json['fiat_currency'] as String,
-    transferNotificationThreshold:
-        (json['transfer_notification_threshold'] as num).toDouble(),
-    transferConfirmationThreshold:
-        (json['transfer_confirmation_threshold'] as num).toDouble(),
-    fullName: json['full_name'] as String?,
-    avatarUrl: json['avatar_url'] as String?,
-  );
-}
+Account _$AccountFromJson(Map<String, dynamic> json) => Account(
+      userId: json['user_id'] as String,
+      identityNumber: json['identity_number'] as String,
+      phone: json['phone'] as String,
+      biography: json['biography'] as String,
+      relationship: json['relationship'] as String,
+      muteUntil: json['mute_until'] as String,
+      createdAt: DateTime.parse(json['created_at'] as String),
+      isVerified: json['is_verified'] as bool,
+      isScam: json['is_scam'] as bool,
+      sessionId: json['session_id'] as String,
+      pinToken: json['pin_token'] as String,
+      pinTokenBase64: json['pin_token_base64'] as String,
+      codeId: json['code_id'] as String,
+      codeUrl: json['code_url'] as String,
+      deviceStatus: json['device_status'] as String,
+      hasPin: json['has_pin'] as bool,
+      hasEmergencyContact: json['has_emergency_contact'] as bool,
+      receiveMessageSource: json['receive_message_source'] as String,
+      acceptConversationSource: json['accept_conversation_source'] as String,
+      acceptSearchSource: json['accept_search_source'] as String,
+      fiatCurrency: json['fiat_currency'] as String,
+      transferNotificationThreshold:
+          (json['transfer_notification_threshold'] as num).toDouble(),
+      transferConfirmationThreshold:
+          (json['transfer_confirmation_threshold'] as num).toDouble(),
+      fullName: json['full_name'] as String?,
+      avatarUrl: json['avatar_url'] as String?,
+    );
 
 Map<String, dynamic> _$AccountToJson(Account instance) => <String, dynamic>{
       'user_id': instance.userId,

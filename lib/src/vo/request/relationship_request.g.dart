@@ -6,14 +6,13 @@ part of 'relationship_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-RelationshipRequest _$RelationshipRequestFromJson(Map<String, dynamic> json) {
-  return RelationshipRequest(
-    userId: json['user_id'] as String,
-    action: const RelationshipActionJsonConverter()
-        .fromJson(json['action'] as String?),
-    fullName: json['full_name'] as String?,
-  );
-}
+RelationshipRequest _$RelationshipRequestFromJson(Map<String, dynamic> json) =>
+    RelationshipRequest(
+      userId: json['user_id'] as String,
+      action: const RelationshipActionJsonConverter()
+          .fromJson(json['action'] as String?),
+      fullName: json['full_name'] as String?,
+    );
 
 Map<String, dynamic> _$RelationshipRequestToJson(
         RelationshipRequest instance) =>

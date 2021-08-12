@@ -6,22 +6,20 @@ part of 'snapshot.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Snapshot _$SnapshotFromJson(Map<String, dynamic> json) {
-  return Snapshot(
-    json['snapshot_id'] as String,
-    json['type'] as String,
-    json['asset_id'] as String,
-    json['amount'] as String,
-    DateTime.parse(json['created_at'] as String),
-    json['opponent_id'] as String?,
-    json['trace_id'] as String?,
-    json['transaction_hash'] as String?,
-    json['sender'] as String?,
-    json['receiver'] as String?,
-    json['memo'] as String?,
-    json['confirmations'] as int?,
-  );
-}
+Snapshot _$SnapshotFromJson(Map<String, dynamic> json) => Snapshot(
+      json['snapshot_id'] as String,
+      json['type'] as String,
+      json['asset_id'] as String,
+      json['amount'] as String,
+      DateTime.parse(json['created_at'] as String),
+      json['opponent_id'] as String?,
+      json['trace_id'] as String?,
+      json['transaction_hash'] as String?,
+      json['sender'] as String?,
+      json['receiver'] as String?,
+      json['memo'] as String?,
+      json['confirmations'] as int?,
+    );
 
 Map<String, dynamic> _$SnapshotToJson(Snapshot instance) => <String, dynamic>{
       'snapshot_id': instance.snapshotId,

@@ -6,11 +6,10 @@ part of 'logout_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-LogoutRequest _$LogoutRequestFromJson(Map<String, dynamic> json) {
-  return LogoutRequest(
-    json['session_id'] as String,
-  );
-}
+LogoutRequest _$LogoutRequestFromJson(Map<String, dynamic> json) =>
+    LogoutRequest(
+      json['session_id'] as String,
+    );
 
 Map<String, dynamic> _$LogoutRequestToJson(LogoutRequest instance) =>
     <String, dynamic>{

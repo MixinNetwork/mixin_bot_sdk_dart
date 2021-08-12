@@ -6,12 +6,10 @@ part of 'deposit_entry.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-DepositEntry _$DepositEntryFromJson(Map<String, dynamic> json) {
-  return DepositEntry(
-    destination: json['destination'] as String,
-    tag: json['tag'] as String?,
-  );
-}
+DepositEntry _$DepositEntryFromJson(Map<String, dynamic> json) => DepositEntry(
+      destination: json['destination'] as String,
+      tag: json['tag'] as String?,
+    );
 
 Map<String, dynamic> _$DepositEntryToJson(DepositEntry instance) =>
     <String, dynamic>{

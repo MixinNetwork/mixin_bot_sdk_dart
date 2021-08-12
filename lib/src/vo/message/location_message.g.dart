@@ -6,15 +6,14 @@ part of 'location_message.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-LocationMessage _$LocationMessageFromJson(Map<String, dynamic> json) {
-  return LocationMessage(
-    (json['latitude'] as num).toDouble(),
-    (json['longitude'] as num).toDouble(),
-    json['name'] as String,
-    json['address'] as String,
-    json['venue_type'] as String,
-  );
-}
+LocationMessage _$LocationMessageFromJson(Map<String, dynamic> json) =>
+    LocationMessage(
+      (json['latitude'] as num).toDouble(),
+      (json['longitude'] as num).toDouble(),
+      json['name'] as String,
+      json['address'] as String,
+      json['venue_type'] as String,
+    );
 
 Map<String, dynamic> _$LocationMessageToJson(LocationMessage instance) =>
     <String, dynamic>{

@@ -7,7 +7,10 @@ part of 'circle_name.dart';
 // **************************************************************************
 
 CircleName _$CircleNameFromJson(Map<String, dynamic> json) {
-  $checkKeys(json, disallowNullValues: const ['name']);
+  $checkKeys(
+    json,
+    disallowNullValues: const ['name'],
+  );
   return CircleName(
     name: json['name'] as String,
   );

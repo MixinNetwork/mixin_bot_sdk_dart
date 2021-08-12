@@ -1,3 +1,9 @@
+## 0.2.0
+Fix some api cause NPE.
+1. `getProvisioningId` return `ProvisioningId` instead of `Provisioning`.
+2. class `Provisioning` field: `platform` `provisioningCode` `sessionId` `userId` to nullable.
+3. class `CircleConversation` field: `pinTime` to nullable.
+
 ## 0.1.1
 Add search user API
 

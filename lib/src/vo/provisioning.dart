@@ -25,13 +25,13 @@ class Provisioning with EquatableMixin {
   @JsonKey(name: 'expired_at')
   DateTime? expiredAt;
   String secret;
-  String platform;
+  String? platform;
   @JsonKey(name: 'provisioning_code')
-  String provisioningCode;
+  String? provisioningCode;
   @JsonKey(name: 'session_id')
-  String sessionId;
+  String? sessionId;
   @JsonKey(name: 'user_id')
-  String userId;
+  String? userId;
 
   @override
   List<Object?> get props => [

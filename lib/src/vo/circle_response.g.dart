@@ -7,8 +7,10 @@ part of 'circle_response.dart';
 // **************************************************************************
 
 CircleResponse _$CircleResponseFromJson(Map<String, dynamic> json) {
-  $checkKeys(json,
-      disallowNullValues: const ['circle_id', 'name', 'created_at']);
+  $checkKeys(
+    json,
+    disallowNullValues: const ['circle_id', 'name', 'created_at'],
+  );
   return CircleResponse(
     circleId: json['circle_id'] as String,
     name: json['name'] as String,
