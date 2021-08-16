@@ -1,3 +1,6 @@
+## 0.2.1
+Fix location message
+
 ## 0.2.0
 Fix some api cause NPE.
 1. `getProvisioningId` return `ProvisioningId` instead of `Provisioning`.
