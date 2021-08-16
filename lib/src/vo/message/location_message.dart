@@ -15,11 +15,11 @@ class LocationMessage {
   @JsonKey(name: 'longitude')
   double longitude;
   @JsonKey(name: 'name')
-  String name;
+  String? name;
   @JsonKey(name: 'address')
-  String address;
+  String? address;
   @JsonKey(name: 'venue_type')
-  String venueType;
+  String? venueType;
 
   Map<String, dynamic> toJson() => _$LocationMessageToJson(this);
 }
