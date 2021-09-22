@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 
+import '../../mixin_bot_sdk_dart.dart';
 import '../vo/account.dart';
+import '../vo/code_type_interface.dart';
 import '../vo/fiat.dart';
 import '../vo/mixin_response.dart';
 import '../vo/request/account_request.dart';
@@ -69,5 +71,24 @@ class AccountApi {
   Future<MixinResponse<List<Fiat>>> getFiats() => MixinResponse.requestList(
         dio.get('/fiats'),
         (json) => Fiat.fromJson(json),
+      );
+
+  Future<MixinResponse<CodeTypeInterface?>> code(String id) =>
+      MixinResponse.request<CodeTypeInterface?>(
+        dio.get('/codes/$id'),
+        (json) {
+          try {
+            final jsonObject = json as Map<String, dynamic>;
+            final type = jsonObject['type'] as String;
+            switch (type) {
+              case 'user':
+                return User.fromJson(json);
+              case 'conversation':
+                return ConversationResponse.fromJson(json);
+            }
+          } catch (_) {
+            return null;
+          }
+        },
       );
 }

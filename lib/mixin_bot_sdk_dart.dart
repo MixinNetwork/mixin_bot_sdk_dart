@@ -29,6 +29,7 @@ export 'src/vo/attachment.dart';
 export 'src/vo/blaze_ack_message.dart';
 export 'src/vo/circle_name.dart';
 export 'src/vo/circle_response.dart';
+export 'src/vo/code_type_interface.dart';
 export 'src/vo/conversation.dart';
 export 'src/vo/conversation_category.dart';
 export 'src/vo/conversation_response.dart';

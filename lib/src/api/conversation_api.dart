@@ -24,11 +24,9 @@ class ConversationApi {
         (json) => ConversationResponse.fromJson(json),
       );
 
-  Future<MixinResponse<ConversationResponse>> exit(String conversationId) =>
-      MixinResponse.request<ConversationResponse>(
-        dio.post('/conversations/$conversationId/exit'),
-        (json) => ConversationResponse.fromJson(json),
-      );
+  Future<MixinResponse<void>> exit(String conversationId) =>
+      MixinResponse.requestVoid(
+          dio.post('/conversations/$conversationId/exit'));
 
   Future<MixinResponse<ConversationResponse>> getConversation(String id) =>
       MixinResponse.request<ConversationResponse>(
@@ -59,6 +57,12 @@ class ConversationApi {
   Future<MixinResponse<ConversationResponse>> rotate(String id) =>
       MixinResponse.request<ConversationResponse>(
         dio.post('/conversations/$id/rotate'),
+        (json) => ConversationResponse.fromJson(json),
+      );
+
+  Future<MixinResponse<ConversationResponse>> join(String id) =>
+      MixinResponse.request(
+        dio.post('/conversations/$id/join'),
         (json) => ConversationResponse.fromJson(json),
       );
 }

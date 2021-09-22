@@ -1,3 +1,10 @@
+## 0.2.2
+Add `AccountApi.code` and `ConversationApi.join` API.
+
+`ConversationApi.exit` return type change to void. 
+
+remove `EnumToString`, change to use top level function: `enumConvertToString`, `fromStringToEnum`
+
 ## 0.2.1
 Fix location message
 
