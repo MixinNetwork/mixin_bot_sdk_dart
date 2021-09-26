@@ -24,7 +24,6 @@ class User with EquatableMixin, CodeTypeInterface {
     this.createdAt,
     this.hasPin,
     this.app,
-    this.appId,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
@@ -55,8 +54,6 @@ class User with EquatableMixin, CodeTypeInterface {
   bool? hasPin;
   @JsonKey(name: 'app')
   App? app;
-  @JsonKey(name: 'app_id')
-  String? appId;
   @JsonKey(name: 'is_scam')
   bool isScam;
 
@@ -74,7 +71,6 @@ class User with EquatableMixin, CodeTypeInterface {
         muteUntil,
         hasPin,
         app,
-        appId,
         isScam,
       ];
 }
