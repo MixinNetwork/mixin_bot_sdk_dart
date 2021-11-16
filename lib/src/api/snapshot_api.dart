@@ -1,8 +1,6 @@
 import 'package:dio/dio.dart';
 
 import '../../mixin_bot_sdk_dart.dart';
-import '../vo/snapshot.dart';
-import '../vo/ticker.dart';
 
 class SnapshotApi {
   SnapshotApi({required this.dio});
@@ -17,7 +15,7 @@ class SnapshotApi {
           String? destination,
           String? tag}) =>
       MixinResponse.requestList(
-        dio.get('/snapshots', queryParameters: {
+        dio.get('/snapshots', queryParameters: <String, dynamic>{
           'asset': assetId,
           'offset': offset,
           'limit': limit,
@@ -37,7 +35,7 @@ class SnapshotApi {
   Future<MixinResponse<List<Snapshot>>> getSnapshotsByAssetId(String id,
           {String? offset, int limit = 30}) =>
       MixinResponse.requestList(
-        dio.get('/assets/$id/snapshots', queryParameters: {
+        dio.get('/assets/$id/snapshots', queryParameters: <String, dynamic>{
           'offset': offset,
           'limit': limit,
         }),
@@ -52,7 +50,7 @@ class SnapshotApi {
 
   Future<MixinResponse<Ticker>> getTicker(String assetId, {String? offset}) =>
       MixinResponse.request(
-        dio.get('/network/ticker', queryParameters: {
+        dio.get('/network/ticker', queryParameters: <String, dynamic>{
           'asset': assetId,
           'offset': offset,
         }),

@@ -3,22 +3,6 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 
 import '../mixin_bot_sdk_dart.dart';
-import 'api/account_api.dart';
-import 'api/address_api.dart';
-import 'api/asset_api.dart';
-import 'api/attachment_api.dart';
-import 'api/circle_api.dart';
-import 'api/conversation_api.dart';
-import 'api/message_api.dart';
-import 'api/multisig_api.dart';
-import 'api/oauth_api.dart';
-import 'api/provisioning_api.dart';
-import 'api/snapshot_api.dart';
-import 'api/transfer_api.dart';
-import 'api/user_api.dart';
-import 'auth.dart';
-import 'error/mixin_api_error.dart';
-import 'log_interceptor.dart';
 
 const mixinBaseUrl0 = 'https://api.mixin.one';
 const mixinBaseUrl1 = 'https://mixin-api.zeromesh.net';
@@ -67,15 +51,14 @@ class Client {
         handler.next(options);
       },
       onResponse: (Response response, ResponseInterceptorHandler handler) {
-        // ignore: avoid_dynamic_calls
-        final error = response.data['error'];
+        final dynamic error = (response.data as Map)['error'];
         if (error == null) return handler.next(response);
 
         return handler.reject(
           MixinApiError(
             requestOptions: response.requestOptions,
             response: response,
-            error: MixinError.fromJson(error),
+            error: MixinError.fromJson(error as Map<String, dynamic>),
           ),
           true,
         );
@@ -84,7 +67,7 @@ class Client {
         if (!{mixinBaseUrl0, mixinBaseUrl1}.contains(dio.options.baseUrl)) {
           return handler.next(e);
         }
-        if (e.requestOptions.extra[_kRetryExtraKey] ?? false) {
+        if ((e.requestOptions.extra[_kRetryExtraKey] as bool?) ?? false) {
           return handler.next(e);
         }
         if (e is MixinApiError && (e.error as MixinError).code < 500) {
@@ -96,7 +79,7 @@ class Client {
             : mixinBaseUrl0;
 
         try {
-          final response = await dio.request(
+          final response = await dio.request<dynamic>(
             e.requestOptions.path,
             data: e.requestOptions.data,
             queryParameters: e.requestOptions.queryParameters,
@@ -106,7 +89,7 @@ class Client {
               headers: e.requestOptions.headers,
               responseType: e.requestOptions.responseType,
               contentType: e.requestOptions.contentType,
-              extra: {
+              extra: <String, dynamic>{
                 _kRetryExtraKey: true,
               },
             ),

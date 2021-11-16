@@ -1,7 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:recase/recase.dart';
 
-bool _isEnumItem(enumItem) {
+bool _isEnumItem(dynamic enumItem) {
   final splitEnum = enumItem.toString().split('.');
   return splitEnum.length > 1 &&
       splitEnum[0] == enumItem.runtimeType.toString();

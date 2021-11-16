@@ -1,8 +1,6 @@
 import 'package:dio/dio.dart';
 
 import '../../mixin_bot_sdk_dart.dart';
-import '../vo/request/pin_request.dart';
-import '../vo/request/raw_transaction_request.dart';
 
 class MultisigApi {
   MultisigApi({required this.dio});
