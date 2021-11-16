@@ -1,9 +1,6 @@
 import 'package:dio/dio.dart';
 
 import '../../mixin_bot_sdk_dart.dart';
-import '../vo/asset.dart';
-import '../vo/asset_fee.dart';
-import '../vo/pending_deposit.dart';
 
 class AssetApi {
   AssetApi({required this.dio});
@@ -36,7 +33,7 @@ class AssetApi {
   Future<MixinResponse<List<PendingDeposit>>> pendingDeposits(String assetId,
           {String? destination, String? tag}) =>
       MixinResponse.requestList(
-        dio.get('/external/transactions', queryParameters: {
+        dio.get('/external/transactions', queryParameters: <String, dynamic>{
           'asset': assetId,
           'destination': destination,
           'tag': tag,

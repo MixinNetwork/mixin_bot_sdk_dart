@@ -76,7 +76,7 @@ class MixinLogInterceptor extends Interceptor {
     }
     if (_requestHeader) {
       logPrint('headers:');
-      options.headers.forEach((key, v) => _printKV(' $key', v));
+      options.headers.forEach((key, dynamic v) => _printKV(' $key', v));
     }
     if (_requestBody) {
       _printKV('data isEmpty', options.data?.toString().trim().isEmpty ?? true);
@@ -134,7 +134,7 @@ class MixinLogInterceptor extends Interceptor {
     logPrint('$key: $v');
   }
 
-  void _printAll(msg) {
+  void _printAll(dynamic msg) {
     msg.toString().split('\n').forEach(logPrint);
   }
 }

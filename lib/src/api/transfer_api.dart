@@ -1,10 +1,6 @@
 import 'package:dio/dio.dart';
 
 import '../../mixin_bot_sdk_dart.dart';
-import '../vo/payment_response.dart';
-import '../vo/request/transfer_request.dart';
-import '../vo/request/withdrawal_request.dart';
-import '../vo/snapshot.dart';
 
 class TransferApi {
   TransferApi({required this.dio});

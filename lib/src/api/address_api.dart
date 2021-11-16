@@ -1,8 +1,6 @@
 import 'package:dio/dio.dart';
 
 import '../../mixin_bot_sdk_dart.dart';
-import '../vo/address.dart';
-import '../vo/request/address_request.dart';
 
 class AddressApi {
   AddressApi({required this.dio});

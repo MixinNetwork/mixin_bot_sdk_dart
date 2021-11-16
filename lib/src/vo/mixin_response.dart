@@ -6,32 +6,35 @@ class MixinResponse<T> with EquatableMixin {
     this.data,
   );
 
-  factory MixinResponse.fromJson(
-      Map<String, dynamic> json, T Function(dynamic) parser) {
-    final dataJson = json['data'];
-    final dynamic data = dataJson == null ? null : parser(dataJson);
+  factory MixinResponse._fromJson(
+      Map<String, dynamic> json, T Function(Map<String, dynamic>) parser) {
+    final dataJson = json['data'] as Map<String, dynamic>;
+    final data = parser(dataJson);
     return MixinResponse<T>(data);
   }
 
   T data;
 
   static Future<MixinResponse<T>> request<T>(
-      Future<Response> future, T Function(dynamic) parser) async {
-    final response = (await future).data;
-    return MixinResponse<T>.fromJson(response, parser);
+      Future<Response<Map<String, dynamic>>> future,
+      T Function(Map<String, dynamic>) parser) async {
+    final response = (await future).data!;
+    return MixinResponse<T>._fromJson(response, parser);
   }
 
   static Future<MixinResponse<List<T>>> requestList<T>(
-      Future<Response> future, T Function(dynamic) parser) async {
-    final response = (await future).data as Map<String, dynamic>;
-    final dataJsonList = response['data'];
-    assert(dataJsonList is List);
-    return MixinResponse<List<T>>(
-        (dataJsonList as List).map((e) => parser(e)).toList());
+      Future<Response<Map<String, dynamic>>> future,
+      T Function(Map<String, dynamic>) parser) async {
+    final response = (await future).data!;
+    final dataJsonList = response['data'] as List<dynamic>;
+    return MixinResponse<List<T>>(dataJsonList
+        .map((dynamic e) => parser(e as Map<String, dynamic>))
+        .toList());
   }
 
   static Future<MixinResponse<void>> requestVoid(
-      Future<Response> future) async {
+    Future<Response<Map<String, dynamic>>> future,
+  ) async {
     await future;
     return MixinResponse(null);
   }

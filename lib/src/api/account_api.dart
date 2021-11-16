@@ -1,16 +1,6 @@
 import 'package:dio/dio.dart';
 
 import '../../mixin_bot_sdk_dart.dart';
-import '../vo/account.dart';
-import '../vo/code_type_interface.dart';
-import '../vo/fiat.dart';
-import '../vo/mixin_response.dart';
-import '../vo/request/account_request.dart';
-import '../vo/request/logout_request.dart';
-import '../vo/signal_key_count.dart';
-import '../vo/sticker.dart';
-import '../vo/sticker_albums.dart';
-import '../vo/user.dart';
 
 class AccountApi {
   AccountApi({required this.dio});
@@ -78,7 +68,7 @@ class AccountApi {
         dio.get('/codes/$id'),
         (json) {
           try {
-            final jsonObject = json as Map<String, dynamic>;
+            final jsonObject = json;
             final type = jsonObject['type'] as String;
             switch (type) {
               case 'user':
