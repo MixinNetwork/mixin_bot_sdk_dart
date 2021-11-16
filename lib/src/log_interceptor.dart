@@ -15,6 +15,7 @@ class MixinLogInterceptor extends Interceptor {
             httpLogLevel == HttpLogLevel.body,
         _error = httpLogLevel != HttpLogLevel.none;
 
+  // ignore: avoid_setters_without_getters
   set httpLogLevel(HttpLogLevel httpLogLevel) {
     _request = httpLogLevel != HttpLogLevel.none;
     _requestHeader = httpLogLevel == HttpLogLevel.all ||
