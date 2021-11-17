@@ -7,14 +7,14 @@ class CollectibleApi {
 
   final Dio dio;
 
-  Future<MixinResponse<CollectibleOutput>> getOutputs(
-    String state,
-    String offset,
-    int limit,
-    String members,
-    int threshold,
-  ) =>
-      MixinResponse.request<CollectibleOutput>(
+  Future<MixinResponse<List<CollectibleOutput>>> getOutputs({
+    required String members,
+    required int threshold,
+    String? state,
+    String? offset,
+    int limit = 500,
+  }) =>
+      MixinResponse.requestList<CollectibleOutput>(
         dio.get(
           '/collectibles/outputs',
           queryParameters: <String, dynamic>{
@@ -28,9 +28,7 @@ class CollectibleApi {
         (json) => CollectibleOutput.fromJson(json),
       );
 
-  Future<MixinResponse<CollectibleToken>> getToken(
-    String tokenId,
-  ) =>
+  Future<MixinResponse<CollectibleToken>> getToken(String tokenId) =>
       MixinResponse.request<CollectibleToken>(
         dio.get('/collectibles/tokens/$tokenId'),
         (json) => CollectibleToken.fromJson(json),
