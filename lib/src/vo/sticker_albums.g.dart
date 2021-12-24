@@ -15,6 +15,7 @@ StickerAlbum _$StickerAlbumFromJson(Map<String, dynamic> json) => StickerAlbum(
       userId: json['user_id'] as String,
       category: json['category'] as String,
       description: json['description'] as String,
+      banner: json['banner'] as String?,
     );
 
 Map<String, dynamic> _$StickerAlbumToJson(StickerAlbum instance) =>
@@ -27,4 +28,5 @@ Map<String, dynamic> _$StickerAlbumToJson(StickerAlbum instance) =>
       'user_id': instance.userId,
       'category': instance.category,
       'description': instance.description,
+      'banner': instance.banner,
     };
