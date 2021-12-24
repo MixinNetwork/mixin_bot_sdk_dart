@@ -1,3 +1,6 @@
+## 0.2.3
+Add `StickerAlbum.banner`
+
 ## 0.2.2
 Add `AccountApi.code` and `ConversationApi.join` API.
 

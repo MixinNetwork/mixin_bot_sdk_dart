@@ -14,6 +14,7 @@ class StickerAlbum with EquatableMixin {
     required this.userId,
     required this.category,
     required this.description,
+    this.banner,
   });
 
   factory StickerAlbum.fromJson(Map<String, dynamic> json) =>
@@ -37,9 +38,11 @@ class StickerAlbum with EquatableMixin {
   String category;
   @JsonKey(name: 'description')
   String description;
+  @JsonKey(name: 'banner')
+  String? banner;
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         albumId,
         name,
         iconUrl,
@@ -47,6 +50,7 @@ class StickerAlbum with EquatableMixin {
         updateAt,
         userId,
         category,
-        description
+        description,
+        banner,
       ];
 }
