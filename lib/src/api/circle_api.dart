@@ -36,11 +36,8 @@ class CircleApi {
         (json) => CircleResponse.fromJson(json),
       );
 
-  Future<MixinResponse<dynamic>> deleteCircle(String id) =>
-      MixinResponse.request<dynamic>(
-        dio.post('/circles/$id/delete'),
-        (json) => json,
-      );
+  Future<MixinResponse<void>> deleteCircle(String id) =>
+      MixinResponse.requestVoid(dio.post('/circles/$id/delete'));
 
   Future<MixinResponse<List<CircleConversation>>> updateCircleConversations(
           String id,
