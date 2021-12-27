@@ -1,5 +1,8 @@
-## 0.2.3
-Add `StickerAlbum.banner`
+## 0.2.5
+Fix parse json.
+
+## 0.2.4
+Add `StickerAlbum.banner`.
 
 ## 0.2.2
 Add `AccountApi.code` and `ConversationApi.join` API.
