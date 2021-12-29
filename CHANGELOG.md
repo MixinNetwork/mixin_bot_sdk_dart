@@ -1,3 +1,6 @@
+## 0.2.6
+Add `AccountApi.addSticker`.
+
 ## 0.2.5
 Fix parse json.
 

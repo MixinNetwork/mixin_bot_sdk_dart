@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
 import '../../mixin_bot_sdk_dart.dart';
+import '../vo/request/sticker_request.dart';
 
 class AccountApi {
   AccountApi({required this.dio});
@@ -52,6 +53,12 @@ class AccountApi {
   Future<MixinResponse<Sticker>> getStickerById(String id) =>
       MixinResponse.request<Sticker>(
         dio.get('/stickers/$id'),
+        (json) => Sticker.fromJson(json),
+      );
+
+  Future<MixinResponse<Sticker>> addSticker(StickerRequest request) =>
+      MixinResponse.request<Sticker>(
+        dio.post('/stickers/favorite/add', data: request),
         (json) => Sticker.fromJson(json),
       );
 
