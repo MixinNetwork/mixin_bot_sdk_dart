@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 
 import '../../mixin_bot_sdk_dart.dart';
-import '../vo/request/sticker_request.dart';
 
 class AccountApi {
   AccountApi({required this.dio});
