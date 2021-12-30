@@ -55,6 +55,12 @@ class AccountApi {
         (json) => Sticker.fromJson(json),
       );
 
+  Future<MixinResponse<Sticker>> addSticker(StickerRequest request) =>
+      MixinResponse.request<Sticker>(
+        dio.post('/stickers/favorite/add', data: request),
+        (json) => Sticker.fromJson(json),
+      );
+
   Future<MixinResponse<List<Fiat>>> getFiats() => MixinResponse.requestList(
         dio.get('/fiats'),
         (json) => Fiat.fromJson(json),
