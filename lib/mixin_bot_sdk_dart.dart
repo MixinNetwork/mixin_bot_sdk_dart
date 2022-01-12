@@ -65,6 +65,7 @@ export 'src/vo/request/pin_request.dart';
 export 'src/vo/request/provisioning_request.dart';
 export 'src/vo/request/raw_transaction_request.dart';
 export 'src/vo/request/relationship_request.dart';
+export 'src/vo/request/sticker_request.dart';
 export 'src/vo/request/transfer_request.dart';
 export 'src/vo/request/withdrawal_request.dart';
 export 'src/vo/signal_key_count.dart';

@@ -34,11 +34,8 @@ class AccountApi {
       MixinResponse.requestVoid(
           dio.post('/signal/keys', data: signalKeysRequest));
 
-  Future<MixinResponse<dynamic>> logout(LogoutRequest request) =>
-      MixinResponse.request<dynamic>(
-        dio.post('/logout', data: request),
-        (json) => json,
-      );
+  Future<MixinResponse<void>> logout(LogoutRequest request) =>
+      MixinResponse.requestVoid(dio.post('/logout', data: request));
 
   Future<MixinResponse<List<StickerAlbum>>> getStickerAlbums() =>
       MixinResponse.requestList(
@@ -55,6 +52,12 @@ class AccountApi {
   Future<MixinResponse<Sticker>> getStickerById(String id) =>
       MixinResponse.request<Sticker>(
         dio.get('/stickers/$id'),
+        (json) => Sticker.fromJson(json),
+      );
+
+  Future<MixinResponse<Sticker>> addSticker(StickerRequest request) =>
+      MixinResponse.request<Sticker>(
+        dio.post('/stickers/favorite/add', data: request),
         (json) => Sticker.fromJson(json),
       );
 
@@ -79,6 +82,7 @@ class AccountApi {
           } catch (_) {
             return null;
           }
+          return null;
         },
       );
 }
