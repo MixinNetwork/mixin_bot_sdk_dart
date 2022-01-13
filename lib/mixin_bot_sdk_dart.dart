@@ -31,6 +31,7 @@ export 'src/vo/blaze_ack_message.dart';
 export 'src/vo/circle_name.dart';
 export 'src/vo/circle_response.dart';
 export 'src/vo/code_type_interface.dart';
+export 'src/vo/collectible_collection.dart';
 export 'src/vo/collectible_output.dart';
 export 'src/vo/collectible_token.dart';
 export 'src/vo/collectible_token_meta.dart';

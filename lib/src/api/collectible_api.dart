@@ -33,4 +33,11 @@ class CollectibleApi {
         dio.get('/collectibles/tokens/$tokenId'),
         (json) => CollectibleToken.fromJson(json),
       );
+
+  Future<MixinResponse<CollectibleCollection>> collections(
+          String collectionId) =>
+      MixinResponse.request<CollectibleCollection>(
+        dio.get('/collectibles/collections/$collectionId'),
+        (json) => CollectibleCollection.fromJson(json),
+      );
 }

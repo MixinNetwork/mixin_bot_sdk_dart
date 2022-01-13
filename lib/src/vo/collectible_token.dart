@@ -16,6 +16,9 @@ class CollectibleToken with EquatableMixin {
     this.nfo,
     this.meta,
     this.createdAt,
+    this.receivers,
+    this.receiversThreshold,
+    this.collectionId,
   );
 
   factory CollectibleToken.fromJson(Map<String, dynamic> json) =>
@@ -33,12 +36,22 @@ class CollectibleToken with EquatableMixin {
   String token;
   @JsonKey(name: 'mixin_id')
   String mixinId;
+
+  @JsonKey(name: 'collection_id')
+  String collectionId;
+
   @JsonKey(name: 'nfo')
   String nfo;
   @JsonKey(name: 'meta')
   CollectibleTokenMeta meta;
   @JsonKey(name: 'created_at')
   String createdAt;
+
+  @JsonKey(name: 'receivers')
+  List<String>? receivers;
+
+  @JsonKey(name: 'receivers_threshold')
+  int receiversThreshold;
 
   @override
   List<Object?> get props => [
@@ -50,5 +63,8 @@ class CollectibleToken with EquatableMixin {
         nfo,
         meta,
         createdAt,
+        receivers,
+        receiversThreshold,
+        collectionId,
       ];
 }

@@ -16,6 +16,9 @@ CollectibleToken _$CollectibleTokenFromJson(Map<String, dynamic> json) =>
       json['nfo'] as String,
       CollectibleTokenMeta.fromJson(json['meta'] as Map<String, dynamic>),
       json['created_at'] as String,
+      (json['receivers'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      json['receivers_threshold'] as int,
+      json['collection_id'] as String,
     );
 
 Map<String, dynamic> _$CollectibleTokenToJson(CollectibleToken instance) =>
@@ -25,7 +28,10 @@ Map<String, dynamic> _$CollectibleTokenToJson(CollectibleToken instance) =>
       'group': instance.group,
       'token': instance.token,
       'mixin_id': instance.mixinId,
+      'collection_id': instance.collectionId,
       'nfo': instance.nfo,
       'meta': instance.meta,
       'created_at': instance.createdAt,
+      'receivers': instance.receivers,
+      'receivers_threshold': instance.receiversThreshold,
     };
