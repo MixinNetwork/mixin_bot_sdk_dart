@@ -43,6 +43,12 @@ class AccountApi {
         (json) => StickerAlbum.fromJson(json),
       );
 
+  Future<MixinResponse<StickerAlbum>> getStickerAlbum(String id) =>
+      MixinResponse.request(
+        dio.get('/albums/$id'),
+        (json) => StickerAlbum.fromJson(json),
+      );
+
   Future<MixinResponse<List<Sticker>>> getStickersByAlbumId(String id) =>
       MixinResponse.requestList(
         dio.get('/stickers/albums/$id'),
