@@ -1,3 +1,6 @@
+## 0.2.7
+Add `AccountApi.getStickerAlbum`
+
 ## 0.2.6
 Add `AccountApi.addSticker`.
 
