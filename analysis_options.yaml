@@ -53,4 +53,5 @@ linter:
     use_setters_to_change_properties: true
     curly_braces_in_flow_control_structures: true
     sort_pub_dependencies: false
+    require_trailing_commas: false
 

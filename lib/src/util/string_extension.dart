@@ -1,7 +1,7 @@
 extension UuidHashcodeExtension on String {
   int uuidHashcode() {
     final components = split('-');
-    assert(components.length == 5);
+    assert(components.length == 5, 'bad length');
     final mostSigBits = (int.parse(components[0], radix: 16) << 32) |
         (int.parse(components[1], radix: 16) << 16) |
         (int.parse(components[2], radix: 16));
