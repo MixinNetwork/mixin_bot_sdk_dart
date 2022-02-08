@@ -1,3 +1,6 @@
+## 0.2.8
+Update dependencies
+
 ## 0.2.7
 Add `AccountApi.getStickerAlbum`
 
