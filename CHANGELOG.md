@@ -1,3 +1,6 @@
+## 0.2.9
+add user favorite app api.
+
 ## 0.2.8
 Update dependencies
 
