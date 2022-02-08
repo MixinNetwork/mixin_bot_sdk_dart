@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 
+import '../vo/favorite_app.dart';
 import '../vo/mixin_response.dart';
 import '../vo/request/relationship_request.dart';
 import '../vo/user.dart';
@@ -55,5 +56,15 @@ class UserApi {
       MixinResponse.requestList(
         dio.post('/sessions/fetch', data: ids),
         (json) => UserSession.fromJson(json),
+      );
+
+  Future<MixinResponse<List<FavoriteApp>>> getUserFavoriteApps(String userId) =>
+      MixinResponse.requestList(
+        dio.get('/users/$userId/apps/favorite'),
+        (json) => FavoriteApp.fromJson(json),
+      );
+
+  Future<void> removeFavoriteApp(String appId) => MixinResponse.requestVoid(
+        dio.post('/apps/$appId/unfavorite'),
       );
 }
