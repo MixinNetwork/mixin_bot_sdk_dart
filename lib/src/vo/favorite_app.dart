@@ -6,7 +6,8 @@ part 'favorite_app.g.dart';
 class FavoriteApp {
   FavoriteApp(this.appId, this.userId, this.createdAt);
 
-  factory FavoriteApp.fromJson(Map<String, dynamic> json) => _$FavoriteAppFromJson(json);
+  factory FavoriteApp.fromJson(Map<String, dynamic> json) =>
+      _$FavoriteAppFromJson(json);
 
   @JsonKey(name: 'app_id')
   final String appId;
@@ -16,7 +17,6 @@ class FavoriteApp {
 
   @JsonKey(name: 'created_at')
   final DateTime createdAt;
-
 
   Map<String, dynamic> toJson() => _$FavoriteAppToJson(this);
 }

@@ -1,3 +1,6 @@
+## 0.2.10
+fix `StickerRequest` 
+
 ## 0.2.9
 add user favorite app api.
 
