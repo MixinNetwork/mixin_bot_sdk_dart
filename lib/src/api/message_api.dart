@@ -10,6 +10,10 @@ class MessageApi {
   Future<MixinResponse<void>> acknowledgements(List<BlazeAckMessage> ack) =>
       MixinResponse.requestVoid(dio.post('/acknowledgements', data: ack));
 
-  Future<MixinResponse<void>> messageStatusOffset(int offset) =>
-      MixinResponse.requestVoid(dio.get('/messages/status/$offset'));
+  Future<MixinResponse<List<BlazeMessageData>>> messageStatusOffset(
+          int offset) =>
+      MixinResponse.requestList<BlazeMessageData>(
+        dio.get('/messages/status/$offset'),
+        (json) => BlazeMessageData.fromJson(json),
+      );
 }

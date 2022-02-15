@@ -1,8 +1,13 @@
+## 0.2.11
+Fix `MessageApi.messageStatusOffset`
+Add `BlazeMessageData`
+Add `MessageStatus`
+
 ## 0.2.10
-fix `StickerRequest` 
+Fix `StickerRequest` 
 
 ## 0.2.9
-add user favorite app api.
+Add user favorite app api.
 
 ## 0.2.8
 Update dependencies
