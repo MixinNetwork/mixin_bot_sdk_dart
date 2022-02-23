@@ -15,6 +15,7 @@ class StickerAlbum with EquatableMixin {
     required this.category,
     required this.description,
     this.banner,
+    this.isVerified = false,
   });
 
   factory StickerAlbum.fromJson(Map<String, dynamic> json) =>
@@ -40,8 +41,8 @@ class StickerAlbum with EquatableMixin {
   String description;
   @JsonKey(name: 'banner')
   String? banner;
-  @JsonKey(name: 'is_verified')
-  bool? isVerified;
+  @JsonKey(name: 'is_verified', defaultValue: false)
+  bool isVerified;
 
   @override
   List<Object?> get props => [
