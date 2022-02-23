@@ -40,6 +40,8 @@ class StickerAlbum with EquatableMixin {
   String description;
   @JsonKey(name: 'banner')
   String? banner;
+  @JsonKey(name: 'is_verified')
+  bool? isVerified;
 
   @override
   List<Object?> get props => [

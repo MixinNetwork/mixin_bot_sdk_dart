@@ -16,7 +16,7 @@ StickerAlbum _$StickerAlbumFromJson(Map<String, dynamic> json) => StickerAlbum(
       category: json['category'] as String,
       description: json['description'] as String,
       banner: json['banner'] as String?,
-    );
+    )..isVerified = json['is_verified'] as bool?;
 
 Map<String, dynamic> _$StickerAlbumToJson(StickerAlbum instance) =>
     <String, dynamic>{
@@ -29,4 +29,5 @@ Map<String, dynamic> _$StickerAlbumToJson(StickerAlbum instance) =>
       'category': instance.category,
       'description': instance.description,
       'banner': instance.banner,
+      'is_verified': instance.isVerified,
     };
