@@ -91,4 +91,17 @@ class AccountApi {
           return null;
         },
       );
+
+  Future<MixinResponse<VerificationResponse>> verification(
+          VerificationRequest request) =>
+      MixinResponse.request<VerificationResponse>(
+        dio.post('/verifications', data: request),
+        (json) => VerificationResponse.fromJson(json),
+      );
+
+  Future<MixinResponse<Account>> create(String id, AccountRequest request) =>
+      MixinResponse.request<Account>(
+        dio.post('/verifications/$id', data: request),
+        (json) => Account.fromJson(json),
+      );
 }

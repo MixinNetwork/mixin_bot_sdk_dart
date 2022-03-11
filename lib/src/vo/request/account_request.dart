@@ -4,53 +4,57 @@ import 'package:json_annotation/json_annotation.dart';
 part 'account_request.g.dart';
 
 @JsonSerializable()
-class AccountUpdateRequest with EquatableMixin {
-  AccountUpdateRequest({
-    this.fullName,
-    this.avatarBase64,
-    this.receiveMessageSource,
-    this.acceptConversationSource,
-    this.acceptSearchSource,
-    this.biography,
-    this.fiatCurrency,
-    this.transferNotificationThreshold,
-    this.transferConfirmationThreshold,
+class AccountRequest extends Equatable {
+  const AccountRequest({
+    required this.platform,
+    required this.platformVersion,
+    required this.appVersion,
+    required this.packageName,
+    required this.purpose,
+    this.code,
+    this.notificationToken,
+    this.registrationId,
+    this.pin,
+    this.sessionSecret,
   });
 
-  factory AccountUpdateRequest.fromJson(Map<String, dynamic> json) =>
-      _$AccountUpdateRequestFromJson(json);
+  factory AccountRequest.fromJson(Map<String, dynamic> json) =>
+      _$AccountRequestFromJson(json);
 
-  @JsonKey(name: 'full_name')
-  final String? fullName;
-  @JsonKey(name: 'avatar_base64')
-  final String? avatarBase64;
-  @JsonKey(name: 'receive_message_source')
-  final String? receiveMessageSource;
-  @JsonKey(name: 'accept_conversation_source')
-  final String? acceptConversationSource;
-  @JsonKey(name: 'accept_search_source')
-  final String? acceptSearchSource;
-  @JsonKey(name: 'biography')
-  final String? biography;
-  @JsonKey(name: 'fiat_currency')
-  final String? fiatCurrency;
-  @JsonKey(name: 'transfer_notification_threshold')
-  final double? transferNotificationThreshold;
-  @JsonKey(name: 'transfer_confirmation_threshold')
-  final double? transferConfirmationThreshold;
+  @JsonKey(name: 'code')
+  final String? code;
+  @JsonKey(name: 'notification_token')
+  final String? notificationToken;
+  @JsonKey(name: 'registration_id')
+  final int? registrationId;
+  @JsonKey(name: 'platform')
+  final String platform;
+  @JsonKey(name: 'platform_version')
+  final String platformVersion;
+  @JsonKey(name: 'app_version')
+  final String appVersion;
+  @JsonKey(name: 'package_name')
+  final String packageName;
+  @JsonKey(name: 'purpose')
+  final String purpose;
+  @JsonKey(name: 'pin')
+  final String? pin;
+  @JsonKey(name: 'session_secret')
+  final String? sessionSecret;
 
   @override
   List<Object?> get props => [
-        fullName,
-        avatarBase64,
-        receiveMessageSource,
-        acceptConversationSource,
-        acceptSearchSource,
-        biography,
-        fiatCurrency,
-        transferNotificationThreshold,
-        transferConfirmationThreshold,
+        code,
+        notificationToken,
+        registrationId,
+        platform,
+        platformVersion,
+        appVersion,
+        packageName,
+        purpose,
+        pin,
+        sessionSecret,
       ];
 
-  Map<String, dynamic> toJson() => _$AccountUpdateRequestToJson(this);
+  Map<String, dynamic> toJson() => _$AccountRequestToJson(this);
 }
