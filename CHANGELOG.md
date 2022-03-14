@@ -1,3 +1,7 @@
+## 0.2.13
+
+Add login with phone number api.
+
 ## 0.2.12
 Add `StickerAlbum.isVerified`
 
