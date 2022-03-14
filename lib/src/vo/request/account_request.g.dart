@@ -12,7 +12,7 @@ AccountRequest _$AccountRequestFromJson(Map<String, dynamic> json) =>
       platformVersion: json['platform_version'] as String,
       appVersion: json['app_version'] as String,
       packageName: json['package_name'] as String,
-      purpose: json['purpose'] as String,
+      purpose: $enumDecode(_$VerificationPurposeEnumMap, json['purpose']),
       code: json['code'] as String?,
       notificationToken: json['notification_token'] as String?,
       registrationId: json['registration_id'] as int?,
@@ -29,7 +29,12 @@ Map<String, dynamic> _$AccountRequestToJson(AccountRequest instance) =>
       'platform_version': instance.platformVersion,
       'app_version': instance.appVersion,
       'package_name': instance.packageName,
-      'purpose': instance.purpose,
+      'purpose': _$VerificationPurposeEnumMap[instance.purpose],
       'pin': instance.pin,
       'session_secret': instance.sessionSecret,
     };
+
+const _$VerificationPurposeEnumMap = {
+  VerificationPurpose.session: 'SESSION',
+  VerificationPurpose.phone: 'PHONE',
+};

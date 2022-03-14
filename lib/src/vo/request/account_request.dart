@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+import 'verification_request.dart';
+
 part 'account_request.g.dart';
 
 @JsonSerializable()
@@ -36,7 +38,7 @@ class AccountRequest extends Equatable {
   @JsonKey(name: 'package_name')
   final String packageName;
   @JsonKey(name: 'purpose')
-  final String purpose;
+  final VerificationPurpose purpose;
   @JsonKey(name: 'pin')
   final String? pin;
   @JsonKey(name: 'session_secret')
