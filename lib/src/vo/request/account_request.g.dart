@@ -6,32 +6,35 @@ part of 'account_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AccountUpdateRequest _$AccountUpdateRequestFromJson(
-        Map<String, dynamic> json) =>
-    AccountUpdateRequest(
-      fullName: json['full_name'] as String?,
-      avatarBase64: json['avatar_base64'] as String?,
-      receiveMessageSource: json['receive_message_source'] as String?,
-      acceptConversationSource: json['accept_conversation_source'] as String?,
-      acceptSearchSource: json['accept_search_source'] as String?,
-      biography: json['biography'] as String?,
-      fiatCurrency: json['fiat_currency'] as String?,
-      transferNotificationThreshold:
-          (json['transfer_notification_threshold'] as num?)?.toDouble(),
-      transferConfirmationThreshold:
-          (json['transfer_confirmation_threshold'] as num?)?.toDouble(),
+AccountRequest _$AccountRequestFromJson(Map<String, dynamic> json) =>
+    AccountRequest(
+      platform: json['platform'] as String,
+      platformVersion: json['platform_version'] as String,
+      appVersion: json['app_version'] as String,
+      packageName: json['package_name'] as String,
+      purpose: $enumDecode(_$VerificationPurposeEnumMap, json['purpose']),
+      code: json['code'] as String?,
+      notificationToken: json['notification_token'] as String?,
+      registrationId: json['registration_id'] as int?,
+      pin: json['pin'] as String?,
+      sessionSecret: json['session_secret'] as String?,
     );
 
-Map<String, dynamic> _$AccountUpdateRequestToJson(
-        AccountUpdateRequest instance) =>
+Map<String, dynamic> _$AccountRequestToJson(AccountRequest instance) =>
     <String, dynamic>{
-      'full_name': instance.fullName,
-      'avatar_base64': instance.avatarBase64,
-      'receive_message_source': instance.receiveMessageSource,
-      'accept_conversation_source': instance.acceptConversationSource,
-      'accept_search_source': instance.acceptSearchSource,
-      'biography': instance.biography,
-      'fiat_currency': instance.fiatCurrency,
-      'transfer_notification_threshold': instance.transferNotificationThreshold,
-      'transfer_confirmation_threshold': instance.transferConfirmationThreshold,
+      'code': instance.code,
+      'notification_token': instance.notificationToken,
+      'registration_id': instance.registrationId,
+      'platform': instance.platform,
+      'platform_version': instance.platformVersion,
+      'app_version': instance.appVersion,
+      'package_name': instance.packageName,
+      'purpose': _$VerificationPurposeEnumMap[instance.purpose],
+      'pin': instance.pin,
+      'session_secret': instance.sessionSecret,
     };
+
+const _$VerificationPurposeEnumMap = {
+  VerificationPurpose.session: 'SESSION',
+  VerificationPurpose.phone: 'PHONE',
+};
