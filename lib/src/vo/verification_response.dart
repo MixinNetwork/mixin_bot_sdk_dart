@@ -10,6 +10,7 @@ class VerificationResponse extends Equatable {
     required this.id,
     this.hasEmergencyContact = false,
     this.contactId,
+    this.deactivatedAt,
   });
 
   factory VerificationResponse.fromJson(Map<String, dynamic> json) =>
@@ -27,12 +28,16 @@ class VerificationResponse extends Equatable {
   @JsonKey(name: 'contact_id')
   final String? contactId;
 
+  @JsonKey(name: 'deactivated_at')
+  final String? deactivatedAt;
+
   @override
   List<Object?> get props => [
         type,
         id,
         hasEmergencyContact,
         contactId,
+        deactivatedAt,
       ];
 
   Map<String, dynamic> toJson() => _$VerificationResponseToJson(this);
