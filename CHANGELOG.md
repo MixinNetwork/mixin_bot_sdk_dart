@@ -1,3 +1,7 @@
+## 0.2.14
+
+Add `VerificationResponse.deactivatedAt`.
+
 ## 0.2.13
 
 Add login with phone number api.
