@@ -58,6 +58,7 @@ export 'src/vo/request/account_update_request.dart';
 export 'src/vo/request/address_request.dart';
 export 'src/vo/request/circle_conversation_request.dart';
 export 'src/vo/request/conversation_request.dart';
+export 'src/vo/request/disappear_request.dart';
 export 'src/vo/request/logout_request.dart';
 export 'src/vo/request/oauth_request.dart';
 export 'src/vo/request/participant_request.dart';

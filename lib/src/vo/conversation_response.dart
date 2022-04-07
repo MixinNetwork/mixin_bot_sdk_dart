@@ -23,6 +23,7 @@ class ConversationResponse with EquatableMixin, CodeTypeInterface {
     required this.muteUntil,
     required this.announcement,
     required this.creatorId,
+    required this.expireIn,
     this.participantSessions,
     this.circles,
   });
@@ -57,6 +58,9 @@ class ConversationResponse with EquatableMixin, CodeTypeInterface {
   @JsonKey(name: 'mute_until')
   String muteUntil;
 
+  @JsonKey(name: 'expire_in', defaultValue: 0)
+  int expireIn;
+
   @override
   List<Object?> get props => [
         conversationId,
@@ -69,5 +73,6 @@ class ConversationResponse with EquatableMixin, CodeTypeInterface {
         participantSessions,
         circles,
         muteUntil,
+        expireIn,
       ];
 }
