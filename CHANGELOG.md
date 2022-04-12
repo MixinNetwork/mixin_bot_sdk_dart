@@ -1,3 +1,31 @@
+## 0.2.14
+
+Add `VerificationResponse.deactivatedAt`.
+
+## 0.2.13
+
+Add login with phone number api.
+
+## 0.2.12
+Add `StickerAlbum.isVerified`
+
+## 0.2.11
+Fix `MessageApi.messageStatusOffset`
+Add `BlazeMessageData`
+Add `MessageStatus`
+
+## 0.2.10
+Fix `StickerRequest` 
+
+## 0.2.9
+Add user favorite app api.
+
+## 0.2.8
+Update dependencies
+
+## 0.2.7
+Add `AccountApi.getStickerAlbum`
+
 ## 0.2.6
 Add `AccountApi.addSticker`.
 

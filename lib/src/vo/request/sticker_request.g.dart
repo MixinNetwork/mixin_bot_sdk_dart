@@ -8,12 +8,12 @@ part of 'sticker_request.dart';
 
 StickerRequest _$StickerRequestFromJson(Map<String, dynamic> json) =>
     StickerRequest(
-      dataBase64: json['dataBase64'] as String?,
-      stickerId: json['stickerId'] as String?,
+      dataBase64: json['data_base64'] as String?,
+      stickerId: json['sticker_id'] as String?,
     );
 
 Map<String, dynamic> _$StickerRequestToJson(StickerRequest instance) =>
     <String, dynamic>{
-      'dataBase64': instance.dataBase64,
-      'stickerId': instance.stickerId,
+      'data_base64': instance.dataBase64,
+      'sticker_id': instance.stickerId,
     };
