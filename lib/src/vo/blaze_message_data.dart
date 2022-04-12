@@ -19,6 +19,7 @@ class BlazeMessageData {
     this.representativeId,
     this.quoteMessageId,
     this.sessionId,
+    this.expireIn,
   );
 
   factory BlazeMessageData.fromJson(Map<String, dynamic> json) =>
@@ -50,6 +51,9 @@ class BlazeMessageData {
   String sessionId;
   @JsonKey(name: 'silent')
   bool? silent;
+
+  @JsonKey(name: 'expire_in', defaultValue: 0)
+  int expireIn;
 
   Map<String, dynamic> toJson() => _$BlazeMessageDataToJson(this);
 
