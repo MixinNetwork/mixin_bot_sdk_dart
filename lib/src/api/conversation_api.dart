@@ -63,10 +63,10 @@ class ConversationApi {
         (json) => ConversationResponse.fromJson(json),
       );
 
-  Future<MixinResponse<ConversationResponse>> disappear(String id, ConversationRequest request) =>
+  Future<MixinResponse<ConversationResponse>> disappear(
+          String id, DisappearRequest request) =>
       MixinResponse.request<ConversationResponse>(
         dio.post('/conversations/$id/disappear', data: request),
         (json) => ConversationResponse.fromJson(json),
       );
-
 }
