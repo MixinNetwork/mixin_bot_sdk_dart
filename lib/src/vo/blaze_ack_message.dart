@@ -8,6 +8,7 @@ class BlazeAckMessage with EquatableMixin {
   BlazeAckMessage({
     required this.messageId,
     required this.status,
+    required this.expireAt,
   });
 
   factory BlazeAckMessage.fromJson(Map<String, dynamic> json) =>
@@ -19,10 +20,13 @@ class BlazeAckMessage with EquatableMixin {
   String messageId;
   @JsonKey(name: 'status')
   String status;
+  @JsonKey(name: 'expire_at')
+  int? expireAt;
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         messageId,
         status,
+        expireAt,
       ];
 }
