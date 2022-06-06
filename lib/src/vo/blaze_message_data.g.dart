@@ -20,6 +20,7 @@ BlazeMessageData _$BlazeMessageDataFromJson(Map<String, dynamic> json) =>
       json['representative_id'] as String?,
       json['quote_message_id'] as String?,
       json['session_id'] as String,
+      json['expire_in'] as int? ?? 0,
     )..silent = json['silent'] as bool?;
 
 Map<String, dynamic> _$BlazeMessageDataToJson(BlazeMessageData instance) =>
@@ -37,6 +38,7 @@ Map<String, dynamic> _$BlazeMessageDataToJson(BlazeMessageData instance) =>
       'quote_message_id': instance.quoteMessageId,
       'session_id': instance.sessionId,
       'silent': instance.silent,
+      'expire_in': instance.expireIn,
     };
 
 const _$MessageStatusEnumMap = {

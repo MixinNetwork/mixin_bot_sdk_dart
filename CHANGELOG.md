@@ -1,3 +1,7 @@
+## 0.2.15
+
+* Add `ConversationApi.disappear`.
+
 ## 0.2.14
 
 Add `VerificationResponse.deactivatedAt`.
