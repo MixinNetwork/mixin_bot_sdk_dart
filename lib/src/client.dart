@@ -50,7 +50,8 @@ class Client {
         options.headers['Authorization'] = 'Bearer $authToken';
         handler.next(options);
       },
-      onResponse: (Response response, ResponseInterceptorHandler handler) {
+      onResponse:
+          (Response<dynamic> response, ResponseInterceptorHandler handler) {
         final dynamic error = (response.data as Map)['error'];
         if (error == null) return handler.next(response);
 

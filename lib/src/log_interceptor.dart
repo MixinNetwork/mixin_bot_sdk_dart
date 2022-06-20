@@ -90,7 +90,8 @@ class MixinLogInterceptor extends Interceptor {
   }
 
   @override
-  void onResponse(Response response, ResponseInterceptorHandler handler) {
+  void onResponse(
+      Response<dynamic> response, ResponseInterceptorHandler handler) {
     logPrint('*** Response ***');
     _printResponse(response);
     handler.next(response);
@@ -111,7 +112,7 @@ class MixinLogInterceptor extends Interceptor {
     handler.next(err);
   }
 
-  void _printResponse(Response response) {
+  void _printResponse(Response<dynamic> response) {
     _printKV('uri', response.requestOptions.uri);
     if (_responseHeader) {
       _printKV('statusCode', response.statusCode);
