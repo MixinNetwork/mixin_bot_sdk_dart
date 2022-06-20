@@ -23,7 +23,7 @@ dependencies:
 
 dev_dependencies:
   test: ^1.17.9
-  very_good_analysis: ^2.1.2
+  very_good_analysis: ">=2.1.2 <4.0.0"
 #  pedantic: ^1.11.0
   build_runner: any
   json_serializable: ^6.1.4
