@@ -45,6 +45,10 @@ class Snapshot {
   String? memo;
   @JsonKey(name: 'confirmations')
   int? confirmations;
+  @JsonKey(name: 'snapshot_hash')
+  String? snapshotHash;
+  @JsonKey(name: 'snapshot_at')
+  DateTime? snapshotAt;
 
   Map<String, dynamic> toJson() => _$SnapshotToJson(this);
 }

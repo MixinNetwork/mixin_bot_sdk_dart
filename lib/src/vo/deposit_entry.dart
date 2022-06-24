@@ -8,6 +8,7 @@ class DepositEntry with EquatableMixin {
   DepositEntry({
     required this.destination,
     this.tag,
+    this.properties,
   });
 
   factory DepositEntry.fromJson(Map<String, dynamic> json) =>
@@ -19,7 +20,9 @@ class DepositEntry with EquatableMixin {
   String destination;
   @JsonKey(name: 'tag')
   String? tag;
+  @JsonKey(name: 'properties')
+  List<String>? properties;
 
   @override
-  List<Object?> get props => [destination, tag];
+  List<Object?> get props => [destination, tag, properties];
 }
