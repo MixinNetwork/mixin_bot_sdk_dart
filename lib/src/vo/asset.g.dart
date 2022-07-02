@@ -18,14 +18,13 @@ Asset _$AssetFromJson(Map<String, dynamic> json) => Asset(
       changeBtc: json['change_btc'] as String,
       changeUsd: json['change_usd'] as String,
       confirmations: json['confirmations'] as int,
-      destination: json['destination'] as String?,
       tag: json['tag'] as String?,
       assetKey: json['asset_key'] as String?,
       reserve: json['reserve'] as String?,
       depositEntries: (json['deposit_entries'] as List<dynamic>?)
           ?.map((e) => DepositEntry.fromJson(e as Map<String, dynamic>))
           .toList(),
-    );
+    )..destination = json['destination'] as String?;
 
 Map<String, dynamic> _$AssetToJson(Asset instance) => <String, dynamic>{
       'asset_id': instance.assetId,
