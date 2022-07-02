@@ -19,7 +19,9 @@ class DepositEntry with EquatableMixin {
   String destination;
   @JsonKey(name: 'tag')
   String? tag;
+  @JsonKey(name: 'properties')
+  List<String>? properties;
 
   @override
-  List<Object?> get props => [destination, tag];
+  List<Object?> get props => [destination, tag, properties];
 }
