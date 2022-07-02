@@ -18,7 +18,6 @@ class Asset with EquatableMixin {
     required this.changeBtc,
     required this.changeUsd,
     required this.confirmations,
-    this.destination,
     this.tag,
     this.assetKey,
     this.reserve,
@@ -39,6 +38,7 @@ class Asset with EquatableMixin {
   String iconUrl;
   @JsonKey(name: 'balance')
   String balance;
+  @Deprecated('Use depositEntries')
   @JsonKey(name: 'destination')
   String? destination;
   @JsonKey(name: 'tag')
@@ -69,7 +69,6 @@ class Asset with EquatableMixin {
         name,
         iconUrl,
         balance,
-        destination,
         tag,
         priceBtc,
         priceUsd,
