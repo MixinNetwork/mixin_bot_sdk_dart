@@ -20,6 +20,7 @@ export 'src/enum_converter.dart';
 export 'src/error/api_error_code.dart';
 export 'src/error/mixin_api_error.dart';
 export 'src/log_interceptor.dart';
+export 'src/pin.dart';
 export 'src/util/crypto_util.dart';
 export 'src/util/string_extension.dart';
 export 'src/vo/account.dart';

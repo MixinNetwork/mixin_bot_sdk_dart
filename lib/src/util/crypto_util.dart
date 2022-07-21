@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:convert/convert.dart';
@@ -62,4 +63,13 @@ FieldElement _edwardsToMontgomeryX(FieldElement y) {
 
   FeMul(outX, outX, oneMinusY);
   return outX;
+}
+
+Uint8List randBytes(int n) {
+  final generator = Random.secure();
+  final random = Uint8List(n);
+  for (var i = 0; i < random.length; i++) {
+    random[i] = generator.nextInt(255);
+  }
+  return random;
 }
