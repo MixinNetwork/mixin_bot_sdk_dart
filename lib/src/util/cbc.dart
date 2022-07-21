@@ -12,6 +12,7 @@ Uint8List aesCbcEncrypt(Uint8List key, Uint8List iv, Uint8List plaintext) {
   while (offset < paddedPlaintext.length) {
     offset += cbc.processBlock(paddedPlaintext, offset, cipherText, offset);
   }
+  // ignore: prefer_asserts_with_message
   assert(offset == paddedPlaintext.length);
   return cipherText;
 }
@@ -25,6 +26,7 @@ Uint8List aesCbcDecrypt(Uint8List key, Uint8List iv, Uint8List cipherText) {
   while (offset < cipherText.length) {
     offset += cbc.processBlock(cipherText, offset, paddedPlainText, offset);
   }
+  // ignore: prefer_asserts_with_message
   assert(offset == cipherText.length);
   return unpad(paddedPlainText);
 }
