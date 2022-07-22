@@ -104,4 +104,28 @@ class AccountApi {
         dio.post('/verifications/$id', data: request),
         (json) => Account.fromJson(json),
       );
+
+  Future<MixinResponse<User>> verifyPin(String pin) =>
+      MixinResponse.request<User>(
+        dio.post('pin/verify', data: PinRequest(pin: pin)),
+        (json) => User.fromJson(json),
+      );
+
+  Future<MixinResponse<User>> createPin(String pin) =>
+      MixinResponse.request<User>(
+        dio.post('pin/update', data: PinRequest(pin: pin)),
+        (json) => User.fromJson(json),
+      );
+
+  Future<MixinResponse<Account>> updatePin(PinRequest request) =>
+      MixinResponse.request<Account>(
+        dio.post('pin/update', data: request),
+        (json) => Account.fromJson(json),
+      );
+
+  Future<MixinResponse<User>> createUsers(AccountRequest request) =>
+      MixinResponse.request<User>(
+        dio.post('/users', data: request),
+        (json) => User.fromJson(json),
+      );
 }
