@@ -1,5 +1,4 @@
 import 'dart:typed_data';
-
 import 'package:pointycastle/export.dart';
 
 Uint8List aesCbcEncrypt(Uint8List key, Uint8List iv, Uint8List plaintext) {
