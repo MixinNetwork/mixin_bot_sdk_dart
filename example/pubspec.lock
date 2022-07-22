@@ -176,5 +176,12 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.4"
+  x25519:
+    dependency: transitive
+    description:
+      name: x25519
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.1"
 sdks:
   dart: ">=2.16.0-100.0.dev <3.0.0"
