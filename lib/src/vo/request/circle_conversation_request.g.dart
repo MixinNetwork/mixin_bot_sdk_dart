@@ -23,7 +23,7 @@ Map<String, dynamic> _$CircleConversationRequestToJson(
     CircleConversationRequest instance) {
   final val = <String, dynamic>{
     'conversation_id': instance.conversationId,
-    'action': _$CircleConversationActionEnumMap[instance.action],
+    'action': _$CircleConversationActionEnumMap[instance.action]!,
   };
 
   void writeNotNull(String key, dynamic value) {

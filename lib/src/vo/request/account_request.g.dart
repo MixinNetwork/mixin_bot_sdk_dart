@@ -29,7 +29,7 @@ Map<String, dynamic> _$AccountRequestToJson(AccountRequest instance) =>
       'platform_version': instance.platformVersion,
       'app_version': instance.appVersion,
       'package_name': instance.packageName,
-      'purpose': _$VerificationPurposeEnumMap[instance.purpose],
+      'purpose': _$VerificationPurposeEnumMap[instance.purpose]!,
       'pin': instance.pin,
       'session_secret': instance.sessionSecret,
     };

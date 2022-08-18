@@ -5,18 +5,20 @@ part 'snapshot.g.dart';
 @JsonSerializable()
 class Snapshot {
   Snapshot(
-      this.snapshotId,
-      this.type,
-      this.assetId,
-      this.amount,
-      this.createdAt,
-      this.opponentId,
-      this.traceId,
-      this.transactionHash,
-      this.sender,
-      this.receiver,
-      this.memo,
-      this.confirmations);
+    this.snapshotId,
+    this.type,
+    this.assetId,
+    this.amount,
+    this.createdAt,
+    this.opponentId,
+    this.traceId,
+    this.transactionHash,
+    this.sender,
+    this.receiver,
+    this.memo,
+    this.confirmations,
+    this.state,
+  );
 
   factory Snapshot.fromJson(Map<String, dynamic> json) =>
       _$SnapshotFromJson(json);
@@ -49,6 +51,8 @@ class Snapshot {
   String? snapshotHash;
   @JsonKey(name: 'snapshot_at')
   DateTime? snapshotAt;
+  @JsonKey(name: 'state')
+  String? state;
 
   Map<String, dynamic> toJson() => _$SnapshotToJson(this);
 }

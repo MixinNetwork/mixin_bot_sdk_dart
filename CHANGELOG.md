@@ -1,3 +1,7 @@
+## 0.3.1
+
+* add `state` field to `Snapshot` class.
+
 ## 0.3.0
 
 ## 0.2.16

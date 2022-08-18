@@ -13,7 +13,7 @@ PaymentResponse _$PaymentResponseFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$PaymentResponseToJson(PaymentResponse instance) =>
     <String, dynamic>{
-      'status': _$PaymentStatusEnumMap[instance.status],
+      'status': _$PaymentStatusEnumMap[instance.status]!,
     };
 
 const _$PaymentStatusEnumMap = {

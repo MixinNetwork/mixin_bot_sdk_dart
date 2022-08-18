@@ -30,7 +30,7 @@ Map<String, dynamic> _$BlazeMessageDataToJson(BlazeMessageData instance) =>
       'message_id': instance.messageId,
       'category': instance.category,
       'data': instance.data,
-      'status': _$MessageStatusEnumMap[instance.status],
+      'status': _$MessageStatusEnumMap[instance.status]!,
       'created_at': instance.createdAt.toIso8601String(),
       'updated_at': instance.updatedAt.toIso8601String(),
       'source': instance.source,

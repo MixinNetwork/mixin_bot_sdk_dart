@@ -19,6 +19,7 @@ Snapshot _$SnapshotFromJson(Map<String, dynamic> json) => Snapshot(
       json['receiver'] as String?,
       json['memo'] as String?,
       json['confirmations'] as int?,
+      json['state'] as String?,
     )
       ..snapshotHash = json['snapshot_hash'] as String?
       ..snapshotAt = json['snapshot_at'] == null
@@ -40,4 +41,5 @@ Map<String, dynamic> _$SnapshotToJson(Snapshot instance) => <String, dynamic>{
       'confirmations': instance.confirmations,
       'snapshot_hash': instance.snapshotHash,
       'snapshot_at': instance.snapshotAt?.toIso8601String(),
+      'state': instance.state,
     };
