@@ -29,4 +29,5 @@ Map<String, dynamic> _$VerificationRequestToJson(
 const _$VerificationPurposeEnumMap = {
   VerificationPurpose.session: 'SESSION',
   VerificationPurpose.phone: 'PHONE',
+  VerificationPurpose.deactivated: 'DEACTIVATED',
 };

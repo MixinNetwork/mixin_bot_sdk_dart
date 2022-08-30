@@ -1,3 +1,7 @@
+## 0.3.2
+* fix invalid account api pin request path.
+* add `deactiveVerification` and `deactive` account api.
+
 ## 0.3.1
 
 * add `state` field to `Snapshot` class.

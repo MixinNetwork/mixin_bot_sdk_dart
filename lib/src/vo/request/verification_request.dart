@@ -48,4 +48,6 @@ enum VerificationPurpose {
   session,
   @JsonValue('PHONE')
   phone,
+  @JsonValue('DEACTIVATED')
+  deactivated,
 }
