@@ -107,19 +107,19 @@ class AccountApi {
 
   Future<MixinResponse<User>> verifyPin(String pin) =>
       MixinResponse.request<User>(
-        dio.post('pin/verify', data: PinRequest(pin: pin)),
+        dio.post('/pin/verify', data: PinRequest(pin: pin).toJson()),
         (json) => User.fromJson(json),
       );
 
   Future<MixinResponse<User>> createPin(String pin) =>
       MixinResponse.request<User>(
-        dio.post('pin/update', data: PinRequest(pin: pin)),
+        dio.post('/pin/update', data: PinRequest(pin: pin)),
         (json) => User.fromJson(json),
       );
 
   Future<MixinResponse<Account>> updatePin(PinRequest request) =>
       MixinResponse.request<Account>(
-        dio.post('pin/update', data: request),
+        dio.post('/pin/update', data: request),
         (json) => Account.fromJson(json),
       );
 
@@ -128,4 +128,19 @@ class AccountApi {
         dio.post('/users', data: request),
         (json) => User.fromJson(json),
       );
+
+  Future<MixinResponse<VerificationResponse>> deactiveVerification(
+    String id,
+    String code,
+  ) =>
+      MixinResponse.request<VerificationResponse>(
+        dio.post('/verifications/$id', data: {
+          'code': code,
+          'purpose': VerificationPurpose.deactivated.name.toUpperCase(),
+        }),
+        (json) => VerificationResponse.fromJson(json),
+      );
+
+  Future<MixinResponse<void>> deactive(DeactivateRequest request) =>
+      MixinResponse.requestVoid(dio.post('/me/deactivate', data: request));
 }

@@ -4,8 +4,8 @@ import 'package:dio/dio.dart';
 
 import '../mixin_bot_sdk_dart.dart';
 
-const mixinBaseUrl0 = 'https://api.mixin.one';
-const mixinBaseUrl1 = 'https://mixin-api.zeromesh.net';
+const mixinBaseUrl0 = 'https://api.mixin.zone';
+const mixinBaseUrl1 = 'https://api.mixin.zone';
 const _kRetryExtraKey = 'retry';
 
 class Client {
