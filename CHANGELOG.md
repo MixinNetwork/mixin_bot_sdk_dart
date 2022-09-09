@@ -1,3 +1,6 @@
+## 0.3.3
+* add `codeId` and `codeUrl` field to `User` type.
+
 ## 0.3.2
 * fix invalid account api pin request path.
 * add `deactiveVerification` and `deactive` account api.
