@@ -24,6 +24,8 @@ class User with EquatableMixin, CodeTypeInterface {
     this.createdAt,
     this.hasPin,
     this.app,
+    this.codeId,
+    this.codeUrl,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
@@ -57,6 +59,11 @@ class User with EquatableMixin, CodeTypeInterface {
   @JsonKey(name: 'is_scam')
   bool isScam;
 
+  @JsonKey(name: 'code_id')
+  String? codeId;
+  @JsonKey(name: 'code_url')
+  String? codeUrl;
+
   @override
   List<Object?> get props => [
         userId,
@@ -72,5 +79,7 @@ class User with EquatableMixin, CodeTypeInterface {
         hasPin,
         app,
         isScam,
+        codeId,
+        codeUrl,
       ];
 }
