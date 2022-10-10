@@ -11,8 +11,8 @@ String? enumConvertToString(dynamic enumItem) {
   if (enumItem == null) return null;
   assert(_isEnumItem(enumItem),
       '$enumItem of type ${enumItem.runtimeType.toString()} is not an enum item');
-  final _tmp = enumItem.toString().split('.')[1];
-  return _tmp;
+  final tmp = enumItem.toString().split('.')[1];
+  return tmp;
 }
 
 T? fromStringToEnum<T>(List<T?>? enumValues, String? value) {

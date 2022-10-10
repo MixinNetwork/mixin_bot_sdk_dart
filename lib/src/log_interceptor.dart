@@ -116,7 +116,7 @@ class MixinLogInterceptor extends Interceptor {
     _printKV('uri', response.requestOptions.uri);
     if (_responseHeader) {
       _printKV('statusCode', response.statusCode);
-      if (response.isRedirect == true) {
+      if (response.isRedirect ?? false) {
         _printKV('redirect', response.realUri);
       }
 
