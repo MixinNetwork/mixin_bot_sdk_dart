@@ -1,3 +1,6 @@
+## 0.3.4
+* add feeAssetId to `Address` and `Asset` response.
+
 ## 0.3.3
 * add `codeId` and `codeUrl` field to `User` type.
 

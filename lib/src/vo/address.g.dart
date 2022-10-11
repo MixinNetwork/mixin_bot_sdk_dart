@@ -17,6 +17,7 @@ Address _$AddressFromJson(Map<String, dynamic> json) => Address(
       fee: json['fee'] as String,
       tag: json['tag'] as String?,
       dust: json['dust'] as String,
+      feeAssetId: json['fee_asset_id'] as String?,
     );
 
 Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
@@ -30,4 +31,5 @@ Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
       'fee': instance.fee,
       'tag': instance.tag,
       'dust': instance.dust,
+      'fee_asset_id': instance.feeAssetId,
     };
