@@ -16,6 +16,7 @@ class Address with EquatableMixin {
     required this.fee,
     required this.tag,
     required this.dust,
+    required this.feeAssetId,
   });
 
   factory Address.fromJson(Map<String, dynamic> json) =>
@@ -44,6 +45,9 @@ class Address with EquatableMixin {
   @JsonKey(name: 'dust')
   String dust;
 
+  @JsonKey(name: 'fee_asset_id')
+  String feeAssetId;
+
   @override
   List<Object?> get props => [
         addressId,
@@ -56,5 +60,6 @@ class Address with EquatableMixin {
         fee,
         tag,
         dust,
+        feeAssetId,
       ];
 }

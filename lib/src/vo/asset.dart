@@ -18,6 +18,7 @@ class Asset with EquatableMixin {
     required this.changeBtc,
     required this.changeUsd,
     required this.confirmations,
+    required this.feeAssetId,
     this.tag,
     this.assetKey,
     this.reserve,
@@ -62,6 +63,9 @@ class Asset with EquatableMixin {
   @JsonKey(name: 'deposit_entries')
   List<DepositEntry>? depositEntries;
 
+  @JsonKey(name: 'fee_asset_id')
+  String feeAssetId;
+
   @override
   List<Object?> get props => [
         assetId,
@@ -79,5 +83,6 @@ class Asset with EquatableMixin {
         assetKey,
         reserve,
         depositEntries,
+        feeAssetId,
       ];
 }
