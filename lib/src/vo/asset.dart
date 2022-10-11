@@ -18,11 +18,11 @@ class Asset with EquatableMixin {
     required this.changeBtc,
     required this.changeUsd,
     required this.confirmations,
+    required this.feeAssetId,
     this.tag,
     this.assetKey,
     this.reserve,
     this.depositEntries,
-    this.feeAssetId,
   });
 
   factory Asset.fromJson(Map<String, dynamic> json) => _$AssetFromJson(json);
@@ -64,7 +64,7 @@ class Asset with EquatableMixin {
   List<DepositEntry>? depositEntries;
 
   @JsonKey(name: 'fee_asset_id')
-  String? feeAssetId;
+  String feeAssetId;
 
   @override
   List<Object?> get props => [

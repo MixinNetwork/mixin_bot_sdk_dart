@@ -46,7 +46,7 @@ class Address with EquatableMixin {
   String dust;
 
   @JsonKey(name: 'fee_asset_id')
-  String? feeAssetId;
+  String feeAssetId;
 
   @override
   List<Object?> get props => [
