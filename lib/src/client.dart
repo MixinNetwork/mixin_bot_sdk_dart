@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:collection/collection.dart';
 import 'package:dio/dio.dart';
 
 import '../mixin_bot_sdk_dart.dart';
@@ -44,7 +45,7 @@ class Client {
               privateKey,
               scp,
               options.method,
-              options.path,
+              options.uri.toString().substring(options.baseUrl.length),
               body,
             );
         options.headers['Authorization'] = 'Bearer $authToken';
