@@ -26,5 +26,8 @@ class AddressApi {
       );
 
   Future<MixinResponse<void>> deleteAddressById(String id, String pin) =>
-      MixinResponse.requestVoid(dio.post('/addresses/$id/delete', data: pin));
+      MixinResponse.requestVoid(dio.post(
+        '/addresses/$id/delete',
+        data: {'pin': pin},
+      ));
 }
