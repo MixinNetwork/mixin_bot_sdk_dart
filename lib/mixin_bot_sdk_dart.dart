@@ -43,6 +43,7 @@ export 'src/vo/conversation_response.dart';
 export 'src/vo/deposit_entry.dart';
 export 'src/vo/favorite_app.dart';
 export 'src/vo/fiat.dart';
+export 'src/vo/log_response.dart';
 export 'src/vo/message/app_button.dart';
 export 'src/vo/message/app_card.dart';
 export 'src/vo/message/attachment_message.dart';
