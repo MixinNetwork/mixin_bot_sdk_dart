@@ -150,7 +150,7 @@ class AccountApi {
     int? limit,
   }) =>
       MixinResponse.requestList<LogResponse>(
-        dio.get('logs', queryParameters: {
+        dio.get('/logs', queryParameters: {
           'category': category,
           'offset': offset,
           'limit': limit,
