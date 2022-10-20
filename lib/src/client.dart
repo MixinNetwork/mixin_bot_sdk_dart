@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:collection/collection.dart';
 import 'package:dio/dio.dart';
 
 import '../mixin_bot_sdk_dart.dart';
