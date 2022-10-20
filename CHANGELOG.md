@@ -1,3 +1,8 @@
+## 0.3.5
+* add pin logs api
+* fix delete address api
+* fix sign token
+
 ## 0.3.4
 * add feeAssetId to `Address` and `Asset` response.
 
