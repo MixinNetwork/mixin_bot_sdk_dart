@@ -144,11 +144,9 @@ packages:
   dart_jsonwebtoken:
     dependency: "direct main"
     description:
-      path: "."
-      ref: "31d04c56ca86c2e316c526f9120a74a4de97ed32"
-      resolved-ref: "31d04c56ca86c2e316c526f9120a74a4de97ed32"
-      url: "https://github.com/Tougee/dart_jsonwebtoken"
-    source: git
+      name: dart_jsonwebtoken
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "2.4.2"
   dart_style:
     dependency: transitive

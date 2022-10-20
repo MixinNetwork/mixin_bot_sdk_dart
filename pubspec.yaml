@@ -8,10 +8,7 @@ environment:
 
 dependencies:
   convert: ^3.0.1
-  dart_jsonwebtoken:
-    git:
-      url: https://github.com/Tougee/dart_jsonwebtoken
-      ref: 31d04c56ca86c2e316c526f9120a74a4de97ed32
+  dart_jsonwebtoken: ^2.3.2
   sprintf: ">=6.0.0 <8.0.0"
   uuid: ^3.0.4
   dio: ^4.0.0
