@@ -44,7 +44,7 @@ class Client {
               privateKey,
               scp,
               options.method,
-              options.path,
+              options.uri.toString().substring(options.baseUrl.length),
               body,
             );
         options.headers['Authorization'] = 'Bearer $authToken';

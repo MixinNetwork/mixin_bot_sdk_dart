@@ -143,4 +143,18 @@ class AccountApi {
 
   Future<MixinResponse<void>> deactive(DeactivateRequest request) =>
       MixinResponse.requestVoid(dio.post('/me/deactivate', data: request));
+
+  Future<MixinResponse<List<LogResponse>>> pinLogs({
+    String? category,
+    String? offset,
+    int? limit,
+  }) =>
+      MixinResponse.requestList<LogResponse>(
+        dio.get('/logs', queryParameters: {
+          'category': category,
+          'offset': offset,
+          'limit': limit,
+        }),
+        (json) => LogResponse.fromJson(json),
+      );
 }
