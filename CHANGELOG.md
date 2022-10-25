@@ -1,3 +1,7 @@
+## 0.3.6
+* add outputApi.
+* add collectibleApi.requests
+
 ## 0.3.5
 * add pin logs api
 * fix delete address api

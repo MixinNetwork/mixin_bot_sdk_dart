@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 
 import '../../mixin_bot_sdk_dart.dart';
-import '../vo/collectible_request.dart';
 
 class CollectibleApi {
   CollectibleApi({required this.dio});
