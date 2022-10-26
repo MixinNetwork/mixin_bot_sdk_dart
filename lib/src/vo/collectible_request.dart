@@ -1,11 +1,13 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import 'code_type_interface.dart';
+
 part 'collectible_request.g.dart';
 
 enum CollectibleRequestAction { sign, unlock }
 
 @JsonSerializable()
-class CollectibleRequest {
+class CollectibleRequest implements CodeTypeInterface {
   CollectibleRequest(
     this.type,
     this.requestId,
