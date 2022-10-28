@@ -40,4 +40,16 @@ class CollectibleApi {
         dio.get('/collectibles/collections/$collectionId'),
         (json) => CollectibleCollection.fromJson(json),
       );
+
+  Future<MixinResponse<CollectibleRequest>> requests(
+    CollectibleRequestAction action,
+    String raw,
+  ) =>
+      MixinResponse.request<CollectibleRequest>(
+        dio.post('/collectibles/requests', data: {
+          'action': action.name,
+          'raw': raw,
+        }),
+        (json) => CollectibleRequest.fromJson(json),
+      );
 }

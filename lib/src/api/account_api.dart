@@ -84,6 +84,8 @@ class AccountApi {
                 return User.fromJson(json);
               case 'conversation':
                 return ConversationResponse.fromJson(json);
+              case 'non_fungible_request':
+                return CollectibleRequest.fromJson(json);
             }
           } catch (_) {
             return null;

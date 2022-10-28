@@ -1,3 +1,8 @@
+## 0.3.6
+* add outputApi.
+* add collectibleApi.requests
+* code api support non_fungible_request
+
 ## 0.3.5
 * add pin logs api
 * fix delete address api

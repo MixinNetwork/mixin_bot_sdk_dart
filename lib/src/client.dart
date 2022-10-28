@@ -120,6 +120,7 @@ class Client {
     _addressApi = AddressApi(dio: dio);
     _multisigApi = MultisigApi(dio: dio);
     _collectibleApi = CollectibleApi(dio: dio);
+    _outputApi = OutputApi(dio: dio);
   }
 
   late Dio _dio;
@@ -137,6 +138,7 @@ class Client {
   late AddressApi _addressApi;
   late MultisigApi _multisigApi;
   late CollectibleApi _collectibleApi;
+  late OutputApi _outputApi;
 
   Dio get dio => _dio;
 
@@ -167,4 +169,6 @@ class Client {
   MultisigApi get multisigApi => _multisigApi;
 
   CollectibleApi get collectibleApi => _collectibleApi;
+
+  OutputApi get outputApi => _outputApi;
 }
