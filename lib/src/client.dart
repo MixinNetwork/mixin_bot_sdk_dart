@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 
 import '../mixin_bot_sdk_dart.dart';
-import 'api/output_api.dart';
 
 const mixinBaseUrl0 = 'https://api.mixin.one';
 const mixinBaseUrl1 = 'https://mixin-api.zeromesh.net';
