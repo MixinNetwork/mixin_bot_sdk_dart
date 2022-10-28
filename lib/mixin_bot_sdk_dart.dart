@@ -10,6 +10,7 @@ export 'src/api/conversation_api.dart';
 export 'src/api/message_api.dart';
 export 'src/api/multisig_api.dart';
 export 'src/api/oauth_api.dart';
+export 'src/api/output_api.dart';
 export 'src/api/provisioning_api.dart';
 export 'src/api/snapshot_api.dart';
 export 'src/api/transfer_api.dart';
