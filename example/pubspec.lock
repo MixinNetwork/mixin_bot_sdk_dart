@@ -21,28 +21,28 @@ packages:
       name: collection
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.15.0"
+    version: "1.17.0"
   convert:
     dependency: transitive
     description:
       name: convert
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.1"
+    version: "3.1.1"
   crypto:
     dependency: transitive
     description:
       name: crypto
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.1"
+    version: "3.0.2"
   dart_jsonwebtoken:
     dependency: transitive
     description:
       name: dart_jsonwebtoken
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.4.1"
+    version: "2.5.0"
   dio:
     dependency: transitive
     description:
@@ -112,7 +112,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.3.5"
+    version: "0.3.6"
   path:
     dependency: transitive
     description:
@@ -126,7 +126,7 @@ packages:
       name: pointycastle
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.6.1"
+    version: "3.6.2"
   recase:
     dependency: transitive
     description:
@@ -184,4 +184,4 @@ packages:
     source: hosted
     version: "0.1.1"
 sdks:
-  dart: ">=2.16.0-100.0.dev <3.0.0"
+  dart: ">=2.18.0 <3.0.0"
