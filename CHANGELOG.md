@@ -1,3 +1,7 @@
+## 0.3.7
+* update dependency version
+* account_api#code add multisig_request, authorization, payment object.
+
 ## 0.3.6
 * add outputApi.
 * add collectibleApi.requests

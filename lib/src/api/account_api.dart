@@ -86,6 +86,12 @@ class AccountApi {
                 return ConversationResponse.fromJson(json);
               case 'non_fungible_request':
                 return CollectibleRequest.fromJson(json);
+              case 'multisig_request':
+                return MultisigsResponse.fromJson(json);
+              case 'authorization':
+                return AuthorizationResponse.fromJson(json);
+              case 'payment':
+                return PaymentCodeResponse.fromJson(json);
             }
           } catch (_) {
             return null;
