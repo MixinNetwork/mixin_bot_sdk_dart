@@ -13,7 +13,7 @@ class TransferApi {
         (json) => Snapshot.fromJson(json),
       );
 
-  Future<MixinResponse<PaymentResponse>> pay(TransferRequest request) =>
+  Future<MixinResponse<PaymentResponse>> pay(PaymentRequest request) =>
       MixinResponse.request<PaymentResponse>(
         dio.post('/payments', data: request),
         (json) => PaymentResponse.fromJson(json),
