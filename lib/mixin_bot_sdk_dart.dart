@@ -77,6 +77,7 @@ export 'src/vo/request/logout_request.dart';
 export 'src/vo/request/oauth_request.dart';
 export 'src/vo/request/output_request.dart';
 export 'src/vo/request/participant_request.dart';
+export 'src/vo/request/payment_request.dart';
 export 'src/vo/request/pin_request.dart';
 export 'src/vo/request/provisioning_request.dart';
 export 'src/vo/request/raw_transaction_request.dart';
