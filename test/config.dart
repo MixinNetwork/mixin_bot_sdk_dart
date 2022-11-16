@@ -21,6 +21,7 @@ final addressId = '';
 //     action: RelationshipAction.add.toString());
 
 final mockTransferRequest = TransferRequest(assetId: btcId, amount: '100');
+final mockPaymentRequest = PaymentRequest(assetId: btcId, amount: '100');
 final mockWithdrawalRequest =
     WithdrawalRequest(addressId: '', amount: '100', pin: '', traceId: '');
 

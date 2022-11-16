@@ -21,7 +21,7 @@ void main() {
 
   test('test pay', () async {
     try {
-      var mixinResponse = await client.transferApi.pay(mockTransferRequest);
+      var mixinResponse = await client.transferApi.pay(mockPaymentRequest);
       print(mixinResponse.data);
     } catch (e) {
       if (e is MixinApiError) {
