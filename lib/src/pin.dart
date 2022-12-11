@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:x25519/x25519.dart';
 import 'package:fixnum/fixnum.dart';
+import 'package:x25519/x25519.dart';
 
 import 'util/cbc.dart';
 import 'util/crypto_util.dart';
