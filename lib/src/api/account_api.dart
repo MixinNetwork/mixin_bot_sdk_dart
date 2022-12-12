@@ -18,6 +18,12 @@ class AccountApi {
         (json) => Account.fromJson(json),
       );
 
+  Future<MixinResponse<Account>> preferences(AccountUpdateRequest request) =>
+      MixinResponse.request<Account>(
+        dio.post('/me/preferences', data: request),
+        (json) => Account.fromJson(json),
+      );
+
   Future<MixinResponse<List<User>>> getFriends() => MixinResponse.requestList(
         dio.get('/friends'),
         (json) => User.fromJson(json),
