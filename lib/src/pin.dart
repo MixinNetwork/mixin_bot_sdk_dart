@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:fixnum/fixnum.dart';
 import 'package:x25519/x25519.dart';
 
 import 'util/cbc.dart';
@@ -31,12 +32,10 @@ String encryptPinWithIv(
   final keyBytes = X25519(curvePrivKey, public);
 
   final pinBytes = Uint8List.fromList(utf8.encode(pin));
-  final timeBytes = Uint8List(8);
-  final iteratorBytes = Uint8List(8);
-  // pin+time+iterator
-  timeBytes.buffer.asByteData().setUint64(0, nowSec, Endian.little);
-  iteratorBytes.buffer.asByteData().setUint64(0, iterator, Endian.little);
+  final timeBytes = Int64(nowSec).toBytes();
+  final iteratorBytes = Int64(iterator).toBytes();
 
+  // pin+time+iterator
   final plaintext = Uint8List.fromList(pinBytes + timeBytes + iteratorBytes);
   final ciphertext = aesCbcEncrypt(keyBytes, iv, plaintext);
   return base64Url.encode(iv + ciphertext);
