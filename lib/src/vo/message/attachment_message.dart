@@ -1,8 +1,11 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../util/json_int_converter.dart';
+
 part 'attachment_message.g.dart';
 
 @JsonSerializable()
+@JsonStringToInt()
 class AttachmentMessage {
   AttachmentMessage(
     this.key,

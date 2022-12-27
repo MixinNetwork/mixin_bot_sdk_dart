@@ -12,12 +12,12 @@ AttachmentMessage _$AttachmentMessageFromJson(Map<String, dynamic> json) =>
       json['digest'],
       json['attachment_id'] as String,
       json['mime_type'] as String,
-      json['size'] as int,
+      const JsonStringToInt().fromJson(json['size']),
       json['name'] as String?,
-      json['width'] as int?,
-      json['height'] as int?,
+      const JsonStringToInt().fromJson(json['width']),
+      const JsonStringToInt().fromJson(json['height']),
       json['thumbnail'] as String?,
-      json['duration'] as int?,
+      const JsonStringToInt().fromJson(json['duration']),
       json['waveform'],
       json['caption'] as String?,
       json['created_at'] as String?,
@@ -29,13 +29,22 @@ Map<String, dynamic> _$AttachmentMessageToJson(AttachmentMessage instance) =>
       'digest': dynamicToJson(instance.digest),
       'attachment_id': instance.attachmentId,
       'mime_type': instance.mimeType,
-      'size': instance.size,
+      'size': const JsonStringToInt().toJson(instance.size),
       'name': instance.name,
-      'width': instance.width,
-      'height': instance.height,
+      'width': _$JsonConverterToJson<dynamic, int>(
+          instance.width, const JsonStringToInt().toJson),
+      'height': _$JsonConverterToJson<dynamic, int>(
+          instance.height, const JsonStringToInt().toJson),
       'thumbnail': instance.thumbnail,
-      'duration': instance.duration,
+      'duration': _$JsonConverterToJson<dynamic, int>(
+          instance.duration, const JsonStringToInt().toJson),
       'waveform': dynamicToJson(instance.waveform),
       'caption': instance.caption,
       'created_at': instance.createdAt,
     };
+
+Json? _$JsonConverterToJson<Json, Value>(
+  Value? value,
+  Json? Function(Value value) toJson,
+) =>
+    value == null ? null : toJson(value);
