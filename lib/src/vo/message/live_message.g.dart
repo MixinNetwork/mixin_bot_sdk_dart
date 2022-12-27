@@ -7,8 +7,8 @@ part of 'live_message.dart';
 // **************************************************************************
 
 LiveMessage _$LiveMessageFromJson(Map<String, dynamic> json) => LiveMessage(
-      json['width'] as int,
-      json['height'] as int,
+      const JsonStringToInt().fromJson(json['width']),
+      const JsonStringToInt().fromJson(json['height']),
       json['thumb_url'] as String,
       json['url'] as String,
       json['shareable'] as bool? ?? true,
@@ -16,8 +16,8 @@ LiveMessage _$LiveMessageFromJson(Map<String, dynamic> json) => LiveMessage(
 
 Map<String, dynamic> _$LiveMessageToJson(LiveMessage instance) =>
     <String, dynamic>{
-      'width': instance.width,
-      'height': instance.height,
+      'width': const JsonStringToInt().toJson(instance.width),
+      'height': const JsonStringToInt().toJson(instance.height),
       'thumb_url': instance.thumbUrl,
       'url': instance.url,
       'shareable': instance.shareable,

@@ -1,8 +1,11 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../util/json_int_converter.dart';
+
 part 'live_message.g.dart';
 
 @JsonSerializable()
+@JsonStringToInt()
 class LiveMessage {
   // ignore: avoid_positional_boolean_parameters
   LiveMessage(this.width, this.height, this.thumbUrl, this.url, this.shareable);
