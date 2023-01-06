@@ -61,6 +61,7 @@ class AttachmentMessage {
   String? caption;
   @JsonKey(name: 'created_at')
   String? createdAt;
+  bool? shareable;
 
   Map<String, dynamic> toJson() => _$AttachmentMessageToJson(this);
 }

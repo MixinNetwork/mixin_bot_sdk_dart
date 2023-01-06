@@ -21,7 +21,7 @@ AttachmentMessage _$AttachmentMessageFromJson(Map<String, dynamic> json) =>
       json['waveform'],
       json['caption'] as String?,
       json['created_at'] as String?,
-    );
+    )..shareable = json['shareable'] as bool?;
 
 Map<String, dynamic> _$AttachmentMessageToJson(AttachmentMessage instance) =>
     <String, dynamic>{
@@ -41,6 +41,7 @@ Map<String, dynamic> _$AttachmentMessageToJson(AttachmentMessage instance) =>
       'waveform': dynamicToJson(instance.waveform),
       'caption': instance.caption,
       'created_at': instance.createdAt,
+      'shareable': instance.shareable,
     };
 
 Json? _$JsonConverterToJson<Json, Value>(

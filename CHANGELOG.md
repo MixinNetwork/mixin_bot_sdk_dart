@@ -1,3 +1,7 @@
+## 0.3.10
+
+* Add `AttachmentMessage.shareable`.
+
 ## 0.3.9
 
 * `LiveMessage` and `AttachmentMessage` fromJson now can accept string for int field.
