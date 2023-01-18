@@ -6,7 +6,8 @@ part 'ghost_key.g.dart';
 class GhostKey {
   GhostKey(this.type, this.mask, this.keys);
 
-  factory GhostKey.fromJson(Map<String, dynamic> json) => _$GhostKeyFromJson(json);
+  factory GhostKey.fromJson(Map<String, dynamic> json) =>
+      _$GhostKeyFromJson(json);
 
   final String type;
   final String mask;

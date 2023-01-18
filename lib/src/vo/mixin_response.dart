@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart';
+import 'package:diox/diox.dart';
 import 'package:equatable/equatable.dart';
 
 class MixinResponse<T> with EquatableMixin {

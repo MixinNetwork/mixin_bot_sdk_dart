@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart';
+import 'package:diox/diox.dart';
 
 import '../vo/attachment.dart';
 import '../vo/mixin_response.dart';

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:dio/dio.dart';
+import 'package:diox/diox.dart';
 
 import '../mixin_bot_sdk_dart.dart';
 
@@ -71,7 +71,9 @@ class Client {
         if ((e.requestOptions.extra[_kRetryExtraKey] as bool?) ?? false) {
           return handler.next(e);
         }
-        if (e is MixinApiError && (e.error as MixinError).code < 500) {
+        if (e is MixinApiError &&
+            e.error != null &&
+            (e.error! as MixinError).code < 500) {
           return handler.next(e);
         }
 

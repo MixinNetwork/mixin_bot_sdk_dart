@@ -18,5 +18,4 @@ class OutputRequest {
   final String? hint;
 
   Map<String, dynamic> toJson() => _$OutputRequestToJson(this);
-
 }
