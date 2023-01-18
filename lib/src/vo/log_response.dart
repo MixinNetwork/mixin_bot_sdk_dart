@@ -13,7 +13,8 @@ class LogResponse with EquatableMixin {
     required this.createdAt,
   });
 
-  factory LogResponse.fromJson(Map<String, dynamic> json) => _$LogResponseFromJson(json);
+  factory LogResponse.fromJson(Map<String, dynamic> json) =>
+      _$LogResponseFromJson(json);
 
   @JsonKey(name: 'type')
   final String type;
@@ -34,10 +35,10 @@ class LogResponse with EquatableMixin {
 
   @override
   List<Object?> get props => [
-    type,
-    logId,
-    code,
-    ipAddress,
-    createdAt,
-  ];
+        type,
+        logId,
+        code,
+        ipAddress,
+        createdAt,
+      ];
 }

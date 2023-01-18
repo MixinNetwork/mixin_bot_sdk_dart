@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart';
+import 'package:diox/diox.dart';
 
 import '../../mixin_bot_sdk_dart.dart';
 
@@ -7,7 +7,8 @@ class OutputApi {
 
   final Dio dio;
 
-  Future<MixinResponse<List<GhostKey>>> loadGhostKeys(List<OutputRequest> request) =>
+  Future<MixinResponse<List<GhostKey>>> loadGhostKeys(
+          List<OutputRequest> request) =>
       MixinResponse.requestList<GhostKey>(
         dio.post(
           '/outputs',

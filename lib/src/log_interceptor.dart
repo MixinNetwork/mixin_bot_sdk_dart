@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart';
+import 'package:diox/diox.dart';
 
 enum HttpLogLevel { none, body, headers, all }
 
@@ -116,7 +116,7 @@ class MixinLogInterceptor extends Interceptor {
     _printKV('uri', response.requestOptions.uri);
     if (_responseHeader) {
       _printKV('statusCode', response.statusCode);
-      if (response.isRedirect ?? false) {
+      if (response.isRedirect) {
         _printKV('redirect', response.realUri);
       }
 

@@ -10,7 +10,7 @@ bool _isEnumItem(dynamic enumItem) {
 String? enumConvertToString(dynamic enumItem) {
   if (enumItem == null) return null;
   assert(_isEnumItem(enumItem),
-      '$enumItem of type ${enumItem.runtimeType.toString()} is not an enum item');
+      '$enumItem of type ${enumItem.runtimeType} is not an enum item');
   final tmp = enumItem.toString().split('.')[1];
   return tmp;
 }
