@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:diox/diox.dart';
+import 'package:dio/dio.dart';
 
 import '../mixin_bot_sdk_dart.dart';
 
@@ -24,8 +24,10 @@ class Client {
     _dio = Dio(dioOptions);
     _dio.options.baseUrl = baseUrl ?? mixinBaseUrl0;
     _dio.options.responseType = ResponseType.json;
-    (dio.transformer as DefaultTransformer).jsonDecodeCallback =
-        jsonDecodeCallback;
+    final transformer = dio.transformer;
+    if (transformer is SyncTransformer && jsonDecodeCallback != null) {
+      transformer.jsonDecodeCallback = jsonDecodeCallback;
+    }
     _dio.interceptors.addAll(interceptors);
     _dio.interceptors.add(InterceptorsWrapper(
       onRequest: (

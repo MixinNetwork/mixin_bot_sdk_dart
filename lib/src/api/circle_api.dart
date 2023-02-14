@@ -1,4 +1,4 @@
-import 'package:diox/diox.dart';
+import 'package:dio/dio.dart';
 
 import '../vo/circle_conversation.dart';
 import '../vo/circle_name.dart';
