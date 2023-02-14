@@ -1,4 +1,4 @@
-import 'package:diox/diox.dart';
+import 'package:dio/dio.dart';
 
 enum HttpLogLevel { none, body, headers, all }
 

@@ -1,4 +1,4 @@
-import 'package:diox/diox.dart';
+import 'package:dio/dio.dart';
 
 import '../../mixin_bot_sdk_dart.dart';
 

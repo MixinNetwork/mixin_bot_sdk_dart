@@ -1,3 +1,11 @@
+## 0.3.12
+
+* Upgrade `dio` to `5.0.0` version.
+
+## 0.3.11
+
+* Upgrade `dio` to `diox`.
+
 ## 0.3.10
 
 * Add `AttachmentMessage.shareable`.
