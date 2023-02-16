@@ -46,4 +46,10 @@ class AssetApi {
         dio.get('/network/assets/top'),
         (json) => Asset.fromJson(json),
       );
+
+  Future<MixinResponse<AssetPrecision>> getAssetPrecisionById(String id) =>
+      MixinResponse.request<AssetPrecision>(
+        dio.get('/assets/$id'),
+        (json) => AssetPrecision.fromJson(json),
+      );
 }

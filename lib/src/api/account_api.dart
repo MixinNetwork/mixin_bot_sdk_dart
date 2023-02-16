@@ -171,4 +171,24 @@ class AccountApi {
         }),
         (json) => LogResponse.fromJson(json),
       );
+
+  Future<MixinResponse<List<String>>> getExternalSchemes() =>
+      MixinResponse.request<List<String>>(
+        dio.get('/external/schemes'),
+        (json) => List<String>.from(json as List<dynamic>),
+      );
+
+  Future<MixinResponse<AddressFee>> getExternalAddressFee({
+    required String assetId,
+    required String destination,
+    String? tag,
+  }) =>
+      MixinResponse.request<AddressFee>(
+        dio.get('/external/addresses/check', queryParameters: {
+          'asset': assetId,
+          'destination': destination,
+          'tag': tag,
+        }),
+        (json) => AddressFee.fromJson(json),
+      );
 }
