@@ -24,6 +24,7 @@ class Client {
     _dio = Dio(dioOptions);
     _dio.options.baseUrl = baseUrl ?? mixinBaseUrl0;
     _dio.options.responseType = ResponseType.json;
+    _dio.options.contentType = Headers.jsonContentType;
     final transformer = dio.transformer;
     if (transformer is SyncTransformer && jsonDecodeCallback != null) {
       transformer.jsonDecodeCallback = jsonDecodeCallback;
