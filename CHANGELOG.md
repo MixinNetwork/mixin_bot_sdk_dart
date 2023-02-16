@@ -1,3 +1,7 @@
+## 0.3.13
+
+* Set `'application/json; charset=utf-8''` to `dio.contentType`.
+
 ## 0.3.12
 
 * Upgrade `dio` to `5.0.0` version.
