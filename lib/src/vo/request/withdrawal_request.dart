@@ -6,10 +6,10 @@ part 'withdrawal_request.g.dart';
 @JsonSerializable()
 class WithdrawalRequest with EquatableMixin {
   WithdrawalRequest({
-    required this.addressId,
     required this.amount,
     required this.pin,
     required this.traceId,
+    this.addressId,
     this.memo,
     this.fee,
     this.assetId,
@@ -23,7 +23,7 @@ class WithdrawalRequest with EquatableMixin {
   Map<String, dynamic> toJson() => _$WithdrawalRequestToJson(this);
 
   @JsonKey(name: 'address_id')
-  String addressId;
+  String? addressId;
   @JsonKey(name: 'amount')
   String amount;
   @JsonKey(name: 'pin')
