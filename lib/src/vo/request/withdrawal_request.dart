@@ -12,6 +12,9 @@ class WithdrawalRequest with EquatableMixin {
     required this.traceId,
     this.memo,
     this.fee,
+    this.assetId,
+    this.destination,
+    this.tag,
   });
 
   factory WithdrawalRequest.fromJson(Map<String, dynamic> json) =>
@@ -31,6 +34,10 @@ class WithdrawalRequest with EquatableMixin {
   String? memo;
   @JsonKey(name: 'fee')
   String? fee;
+  @JsonKey(name: 'asset_id')
+  String? assetId;
+  String? destination;
+  String? tag;
 
   @override
   List<Object?> get props => [
@@ -40,5 +47,8 @@ class WithdrawalRequest with EquatableMixin {
         traceId,
         memo,
         fee,
+        assetId,
+        destination,
+        tag,
       ];
 }

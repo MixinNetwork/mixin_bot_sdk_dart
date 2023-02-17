@@ -21,6 +21,8 @@ PaymentRequest _$PaymentRequestFromJson(Map<String, dynamic> json) =>
       pinBase64: json['pin_base64'] as String?,
       traceId: json['trace_id'] as String?,
       memo: json['memo'] as String?,
+      destination: json['destination'] as String?,
+      rawPaymentUrl: json['raw_payment_url'] as String?,
     );
 
 Map<String, dynamic> _$PaymentRequestToJson(PaymentRequest instance) =>
@@ -35,4 +37,6 @@ Map<String, dynamic> _$PaymentRequestToJson(PaymentRequest instance) =>
       'pin_base64': instance.pinBase64,
       'trace_id': instance.traceId,
       'memo': instance.memo,
+      'destination': instance.destination,
+      'raw_payment_url': instance.rawPaymentUrl,
     };

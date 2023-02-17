@@ -17,6 +17,8 @@ class PaymentRequest {
     this.pinBase64,
     this.traceId,
     this.memo,
+    this.destination,
+    this.rawPaymentUrl,
   });
 
   factory PaymentRequest.fromJson(Map<String, dynamic> json) =>
@@ -51,6 +53,11 @@ class PaymentRequest {
 
   @JsonKey(name: 'memo')
   final String? memo;
+
+  final String? destination;
+
+  @JsonKey(name: 'raw_payment_url')
+  final String? rawPaymentUrl;
 
   Map<String, dynamic> toJson() => _$PaymentRequestToJson(this);
 }
