@@ -1,5 +1,3 @@
-library mixin_bot_sdk_dart;
-
 export 'src/api/account_api.dart';
 export 'src/api/address_api.dart';
 export 'src/api/asset_api.dart';
