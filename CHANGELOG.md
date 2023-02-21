@@ -1,3 +1,11 @@
+## 0.3.14
+
+* `acount_api` add `getExternalSchemes`.
+* `acount_api` add `getExternalAddressFee`.
+* `asset_api` add `getAssetPrecisionById`.
+* `PaymentRequest` add `destination` and `rawPaymentUrl` field.
+* `WithdrawalRequest` update `addressId` to optional, add `assetId`,`destination`,`tag` field.
+
 ## 0.3.13
 
 * Set `'application/json; charset=utf-8''` to `dio.contentType`.
