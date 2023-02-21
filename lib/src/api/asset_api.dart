@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
 import '../../mixin_bot_sdk_dart.dart';
+import '../vo/chain.dart';
 
 class AssetApi {
   AssetApi({required this.dio});
@@ -51,5 +52,16 @@ class AssetApi {
       MixinResponse.request<AssetPrecision>(
         dio.get('/assets/$id'),
         (json) => AssetPrecision.fromJson(json),
+      );
+
+  Future<MixinResponse<List<Chain>>> getChains() => MixinResponse.requestList(
+        dio.get('/network/chains'),
+        (json) => Chain.fromJson(json),
+      );
+
+  Future<MixinResponse<Chain>> getChain(String chainId) =>
+      MixinResponse.request<Chain>(
+        dio.get('/network/chains/$chainId'),
+        (json) => Chain.fromJson(json),
       );
 }
