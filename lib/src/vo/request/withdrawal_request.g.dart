@@ -8,10 +8,10 @@ part of 'withdrawal_request.dart';
 
 WithdrawalRequest _$WithdrawalRequestFromJson(Map<String, dynamic> json) =>
     WithdrawalRequest(
-      addressId: json['address_id'] as String,
       amount: json['amount'] as String,
       pin: json['pin'] as String,
       traceId: json['trace_id'] as String,
+      addressId: json['address_id'] as String?,
       memo: json['memo'] as String?,
       fee: json['fee'] as String?,
       assetId: json['asset_id'] as String?,

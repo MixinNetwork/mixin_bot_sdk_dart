@@ -1,3 +1,7 @@
+## 0.3.15
+
+* `asset_api` add `getChain` and `getChains`.
+
 ## 0.3.14
 
 * `acount_api` add `getExternalSchemes`.
