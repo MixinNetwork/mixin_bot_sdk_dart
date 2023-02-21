@@ -6,12 +6,15 @@ part 'withdrawal_request.g.dart';
 @JsonSerializable()
 class WithdrawalRequest with EquatableMixin {
   WithdrawalRequest({
-    required this.addressId,
     required this.amount,
     required this.pin,
     required this.traceId,
+    this.addressId,
     this.memo,
     this.fee,
+    this.assetId,
+    this.destination,
+    this.tag,
   });
 
   factory WithdrawalRequest.fromJson(Map<String, dynamic> json) =>
@@ -20,7 +23,7 @@ class WithdrawalRequest with EquatableMixin {
   Map<String, dynamic> toJson() => _$WithdrawalRequestToJson(this);
 
   @JsonKey(name: 'address_id')
-  String addressId;
+  String? addressId;
   @JsonKey(name: 'amount')
   String amount;
   @JsonKey(name: 'pin')
@@ -31,6 +34,10 @@ class WithdrawalRequest with EquatableMixin {
   String? memo;
   @JsonKey(name: 'fee')
   String? fee;
+  @JsonKey(name: 'asset_id')
+  String? assetId;
+  String? destination;
+  String? tag;
 
   @override
   List<Object?> get props => [
@@ -40,5 +47,8 @@ class WithdrawalRequest with EquatableMixin {
         traceId,
         memo,
         fee,
+        assetId,
+        destination,
+        tag,
       ];
 }

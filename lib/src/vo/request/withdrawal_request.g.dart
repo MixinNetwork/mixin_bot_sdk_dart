@@ -14,6 +14,9 @@ WithdrawalRequest _$WithdrawalRequestFromJson(Map<String, dynamic> json) =>
       traceId: json['trace_id'] as String,
       memo: json['memo'] as String?,
       fee: json['fee'] as String?,
+      assetId: json['asset_id'] as String?,
+      destination: json['destination'] as String?,
+      tag: json['tag'] as String?,
     );
 
 Map<String, dynamic> _$WithdrawalRequestToJson(WithdrawalRequest instance) =>
@@ -24,4 +27,7 @@ Map<String, dynamic> _$WithdrawalRequestToJson(WithdrawalRequest instance) =>
       'trace_id': instance.traceId,
       'memo': instance.memo,
       'fee': instance.fee,
+      'asset_id': instance.assetId,
+      'destination': instance.destination,
+      'tag': instance.tag,
     };
