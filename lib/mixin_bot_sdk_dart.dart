@@ -70,6 +70,7 @@ export 'src/vo/provisioning_id.dart';
 export 'src/vo/request/account_request.dart';
 export 'src/vo/request/account_update_request.dart';
 export 'src/vo/request/address_request.dart';
+export 'src/vo/request/authorize_request.dart';
 export 'src/vo/request/circle_conversation_request.dart';
 export 'src/vo/request/conversation_request.dart';
 export 'src/vo/request/deactivate_request.dart';

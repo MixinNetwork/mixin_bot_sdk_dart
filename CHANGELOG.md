@@ -1,3 +1,7 @@
+## 0.3.16
+
+* `oauth_api` add `authorize`, `authorizations` and `deAuthorize`.
+
 ## 0.3.15
 
 * `asset_api` add `getChain` and `getChains`.

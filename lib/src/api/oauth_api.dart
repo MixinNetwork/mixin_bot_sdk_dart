@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
-import '../vo/mixin_response.dart';
-import '../vo/oauth_response.dart';
-import '../vo/request/oauth_request.dart';
+
+import '../../mixin_bot_sdk_dart.dart';
 
 class OauthApi {
   OauthApi({required this.dio});
@@ -12,5 +11,30 @@ class OauthApi {
       MixinResponse.request<OauthResponse>(
         dio.post('/oauth/token', data: request),
         (json) => OauthResponse.fromJson(json),
+      );
+
+  Future<MixinResponse<AuthorizationResponse>> authorize(
+          AuthorizeRequest request) =>
+      MixinResponse.request<AuthorizationResponse>(
+        dio.post('/oauth/authorize', data: request),
+        (json) => AuthorizationResponse.fromJson(json),
+      );
+
+  Future<MixinResponse<List<AuthorizationResponse>>> authorizations(
+    String? appId,
+  ) =>
+      MixinResponse.requestList(
+        dio.get(
+          '/authorizations',
+          queryParameters: {
+            if (appId != null) 'app': appId,
+          },
+        ),
+        (json) => AuthorizationResponse.fromJson(json),
+      );
+
+  Future<MixinResponse<void>> deAuthorize(String clientId) =>
+      MixinResponse.requestVoid(
+        dio.post('/oauth/cancel', data: {'client_id': clientId}),
       );
 }
