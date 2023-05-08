@@ -27,7 +27,6 @@ export 'src/vo/address.dart';
 export 'src/vo/address_fee.dart';
 export 'src/vo/asset.dart';
 export 'src/vo/asset_fee.dart';
-export 'src/vo/asset_precision.dart';
 export 'src/vo/attachment.dart';
 export 'src/vo/authorization_response.dart';
 export 'src/vo/blaze_ack_message.dart';
