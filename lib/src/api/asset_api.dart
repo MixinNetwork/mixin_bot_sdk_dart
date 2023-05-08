@@ -46,4 +46,15 @@ class AssetApi {
         dio.get('/network/assets/top'),
         Asset.fromJson,
       );
+
+  Future<MixinResponse<List<Chain>>> getChains() => MixinResponse.requestList(
+        dio.get('/network/chains'),
+        (json) => Chain.fromJson(json),
+      );
+
+  Future<MixinResponse<Chain>> getChain(String chainId) =>
+      MixinResponse.request<Chain>(
+        dio.get('/network/chains/$chainId'),
+        (json) => Chain.fromJson(json),
+      );
 }

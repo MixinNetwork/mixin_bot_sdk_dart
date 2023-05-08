@@ -4,6 +4,14 @@
 * Add `precision` to `Asset` class;
 * Update minimum version is 2.15.0;
 
+## 0.3.16
+
+* `oauth_api` add `authorize`, `authorizations` and `deAuthorize`.
+
+## 0.3.15
+
+* `asset_api` add `getChain` and `getChains`.
+
 ## 0.3.14
 
 * `acount_api` add `getExternalSchemes`.
