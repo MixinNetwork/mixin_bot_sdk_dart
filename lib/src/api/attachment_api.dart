@@ -11,12 +11,12 @@ class AttachmentApi {
   Future<MixinResponse<Attachment>> getAttachment(String id) =>
       MixinResponse.request<Attachment>(
         dio.get('/attachments/$id'),
-        (json) => Attachment.fromJson(json),
+        Attachment.fromJson,
       );
 
   Future<MixinResponse<Attachment>> postAttachment() =>
       MixinResponse.request<Attachment>(
         dio.post('/attachments'),
-        (json) => Attachment.fromJson(json),
+        Attachment.fromJson,
       );
 }

@@ -23,13 +23,13 @@ class SnapshotApi {
           'destination': destination,
           'tag': tag,
         }),
-        (json) => Snapshot.fromJson(json),
+        Snapshot.fromJson,
       );
 
   Future<MixinResponse<Snapshot>> getSnapshotById(String id) =>
       MixinResponse.request<Snapshot>(
         dio.get('/snapshots/$id'),
-        (json) => Snapshot.fromJson(json),
+        Snapshot.fromJson,
       );
 
   Future<MixinResponse<List<Snapshot>>> getSnapshotsByAssetId(String id,
@@ -39,13 +39,13 @@ class SnapshotApi {
           'offset': offset,
           'limit': limit,
         }),
-        (json) => Snapshot.fromJson(json),
+        Snapshot.fromJson,
       );
 
   Future<MixinResponse<Snapshot>> getSnapshotByTraceId(String traceId) =>
       MixinResponse.request(
         dio.get('/snapshots/trace/$traceId'),
-        (json) => Snapshot.fromJson(json),
+        Snapshot.fromJson,
       );
 
   Future<MixinResponse<Ticker>> getTicker(String assetId, {String? offset}) =>
@@ -54,6 +54,6 @@ class SnapshotApi {
           'asset': assetId,
           'offset': offset,
         }),
-        (json) => Ticker.fromJson(json),
+        Ticker.fromJson,
       );
 }

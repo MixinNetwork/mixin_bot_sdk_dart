@@ -11,6 +11,6 @@ class OauthApi {
   Future<MixinResponse<OauthResponse>> post(OauthRequest request) =>
       MixinResponse.request<OauthResponse>(
         dio.post('/oauth/token', data: request),
-        (json) => OauthResponse.fromJson(json),
+        OauthResponse.fromJson,
       );
 }

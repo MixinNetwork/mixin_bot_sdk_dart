@@ -14,6 +14,6 @@ class OutputApi {
           '/outputs',
           data: request.map((e) => e.toJson()).toList(),
         ),
-        (json) => GhostKey.fromJson(json),
+        GhostKey.fromJson,
       );
 }

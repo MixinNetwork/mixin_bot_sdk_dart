@@ -25,20 +25,20 @@ class CollectibleApi {
             'threshold': threshold,
           },
         ),
-        (json) => CollectibleOutput.fromJson(json),
+        CollectibleOutput.fromJson,
       );
 
   Future<MixinResponse<CollectibleToken>> getToken(String tokenId) =>
       MixinResponse.request<CollectibleToken>(
         dio.get('/collectibles/tokens/$tokenId'),
-        (json) => CollectibleToken.fromJson(json),
+        CollectibleToken.fromJson,
       );
 
   Future<MixinResponse<CollectibleCollection>> collections(
           String collectionId) =>
       MixinResponse.request<CollectibleCollection>(
         dio.get('/collectibles/collections/$collectionId'),
-        (json) => CollectibleCollection.fromJson(json),
+        CollectibleCollection.fromJson,
       );
 
   Future<MixinResponse<CollectibleRequest>> requests(
@@ -50,6 +50,6 @@ class CollectibleApi {
           'action': action.name,
           'raw': raw,
         }),
-        (json) => CollectibleRequest.fromJson(json),
+        CollectibleRequest.fromJson,
       );
 }

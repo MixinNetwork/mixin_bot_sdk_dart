@@ -13,55 +13,55 @@ class UserApi {
 
   Future<MixinResponse<User>> getMe() => MixinResponse.request<User>(
         dio.get('/me'),
-        (json) => User.fromJson(json),
+        User.fromJson,
       );
 
   Future<MixinResponse<User>> getUserById(String id) =>
       MixinResponse.request<User>(
         dio.get('/users/$id'),
-        (json) => User.fromJson(json),
+        User.fromJson,
       );
 
   Future<MixinResponse<User>> search(String query) =>
       MixinResponse.request<User>(
         dio.get('/search/$query'),
-        (json) => User.fromJson(json),
+        User.fromJson,
       );
 
   Future<MixinResponse<List<User>>> getUsers(List<String> ids) =>
       MixinResponse.requestList(
         dio.post('/users/fetch', data: ids),
-        (json) => User.fromJson(json),
+        User.fromJson,
       );
 
   Future<MixinResponse<User>> relationships(RelationshipRequest request) =>
       MixinResponse.request<User>(
         dio.post('/relationships', data: request),
-        (json) => User.fromJson(json),
+        User.fromJson,
       );
 
   Future<MixinResponse<User>> report(RelationshipRequest request) =>
       MixinResponse.request<User>(
         dio.post('/reports', data: request),
-        (json) => User.fromJson(json),
+        User.fromJson,
       );
 
   Future<MixinResponse<List<User>>> blockingUsers() =>
       MixinResponse.requestList(
         dio.get('/blocking_users'),
-        (json) => User.fromJson(json),
+        User.fromJson,
       );
 
   Future<MixinResponse<List<UserSession>>> getSessions(List<String> ids) =>
       MixinResponse.requestList(
         dio.post('/sessions/fetch', data: ids),
-        (json) => UserSession.fromJson(json),
+        UserSession.fromJson,
       );
 
   Future<MixinResponse<List<FavoriteApp>>> getUserFavoriteApps(String userId) =>
       MixinResponse.requestList(
         dio.get('/users/$userId/apps/favorite'),
-        (json) => FavoriteApp.fromJson(json),
+        FavoriteApp.fromJson,
       );
 
   Future<void> removeFavoriteApp(String appId) => MixinResponse.requestVoid(
