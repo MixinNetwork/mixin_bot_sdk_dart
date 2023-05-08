@@ -12,7 +12,7 @@ dependencies:
   sprintf: ">=6.0.0 <8.0.0"
   uuid: ^3.0.4
   dio: ^5.0.0
-  json_annotation: ^4.0.1
+  json_annotation: ^4.8.0
   crypto: ^3.0.1
   meta: ^1.4.0
   equatable: ^2.0.3
