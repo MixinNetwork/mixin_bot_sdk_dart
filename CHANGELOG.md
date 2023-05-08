@@ -1,3 +1,9 @@
+## 0.3.15
+
+* Remove `AssetApi.getAssetPrecisionById`;
+* Add `precision` to `Asset` class;
+* Update minimum version is 2.15.0;
+
 ## 0.3.14
 
 * `acount_api` add `getExternalSchemes`.
