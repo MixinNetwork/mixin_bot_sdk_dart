@@ -9,25 +9,25 @@ class AssetApi {
 
   Future<MixinResponse<List<Asset>>> getAssets() => MixinResponse.requestList(
         dio.get('/assets'),
-        (json) => Asset.fromJson(json),
+        Asset.fromJson,
       );
 
   Future<MixinResponse<Asset>> getAssetById(String id) =>
       MixinResponse.request<Asset>(
         dio.get('/assets/$id'),
-        (json) => Asset.fromJson(json),
+        Asset.fromJson,
       );
 
   Future<MixinResponse<AssetFee>> getAssetFee(String id) =>
       MixinResponse.request<AssetFee>(
         dio.get('/assets/$id/fee'),
-        (json) => AssetFee.fromJson(json),
+        AssetFee.fromJson,
       );
 
   Future<MixinResponse<List<Asset>>> queryAsset(String query) =>
       MixinResponse.requestList(
         dio.get('/network/assets/search/$query'),
-        (json) => Asset.fromJson(json),
+        Asset.fromJson,
       );
 
   Future<MixinResponse<List<PendingDeposit>>> pendingDeposits(String assetId,
@@ -38,29 +38,23 @@ class AssetApi {
           'destination': destination,
           'tag': tag,
         }),
-        (json) => PendingDeposit.fromJson(json),
+        PendingDeposit.fromJson,
       );
 
   Future<MixinResponse<List<Asset>>> getTopAssets() =>
       MixinResponse.requestList(
         dio.get('/network/assets/top'),
-        (json) => Asset.fromJson(json),
-      );
-
-  Future<MixinResponse<AssetPrecision>> getAssetPrecisionById(String id) =>
-      MixinResponse.request<AssetPrecision>(
-        dio.get('/assets/$id'),
-        (json) => AssetPrecision.fromJson(json),
+        Asset.fromJson,
       );
 
   Future<MixinResponse<List<Chain>>> getChains() => MixinResponse.requestList(
         dio.get('/network/chains'),
-        (json) => Chain.fromJson(json),
+        Chain.fromJson,
       );
 
   Future<MixinResponse<Chain>> getChain(String chainId) =>
       MixinResponse.request<Chain>(
         dio.get('/network/chains/$chainId'),
-        (json) => Chain.fromJson(json),
+        Chain.fromJson,
       );
 }

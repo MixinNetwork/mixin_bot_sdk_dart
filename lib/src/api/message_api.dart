@@ -14,6 +14,6 @@ class MessageApi {
           int offset) =>
       MixinResponse.requestList<BlazeMessageData>(
         dio.get('/messages/status/$offset'),
-        (json) => BlazeMessageData.fromJson(json),
+        BlazeMessageData.fromJson,
       );
 }

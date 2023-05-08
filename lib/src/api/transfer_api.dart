@@ -10,18 +10,18 @@ class TransferApi {
   Future<MixinResponse<Snapshot>> transfer(TransferRequest request) =>
       MixinResponse.request<Snapshot>(
         dio.post('/transfers', data: request),
-        (json) => Snapshot.fromJson(json),
+        Snapshot.fromJson,
       );
 
   Future<MixinResponse<PaymentResponse>> pay(PaymentRequest request) =>
       MixinResponse.request<PaymentResponse>(
         dio.post('/payments', data: request),
-        (json) => PaymentResponse.fromJson(json),
+        PaymentResponse.fromJson,
       );
 
   Future<MixinResponse<Snapshot>> withdrawal(WithdrawalRequest request) =>
       MixinResponse.request<Snapshot>(
         dio.post('/withdrawals', data: request),
-        (json) => Snapshot.fromJson(json),
+        Snapshot.fromJson,
       );
 }

@@ -19,6 +19,7 @@ Asset _$AssetFromJson(Map<String, dynamic> json) => Asset(
       changeUsd: json['change_usd'] as String,
       confirmations: json['confirmations'] as int,
       feeAssetId: json['fee_asset_id'] as String,
+      precision: json['precision'] as int,
       tag: json['tag'] as String?,
       assetKey: json['asset_key'] as String?,
       reserve: json['reserve'] as String?,
@@ -45,4 +46,5 @@ Map<String, dynamic> _$AssetToJson(Asset instance) => <String, dynamic>{
       'reserve': instance.reserve,
       'deposit_entries': instance.depositEntries,
       'fee_asset_id': instance.feeAssetId,
+      'precision': instance.precision,
     };

@@ -1,3 +1,9 @@
+## 0.3.17
+
+* Remove `AssetApi.getAssetPrecisionById`;
+* Add `precision` to `Asset` class;
+* Update minimum version is 2.15.0;
+
 ## 0.3.16
 
 * `oauth_api` add `authorize`, `authorizations` and `deAuthorize`.

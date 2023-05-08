@@ -9,30 +9,30 @@ class AccountApi {
 
   Future<MixinResponse<Account>> getMe() => MixinResponse.request<Account>(
         dio.get('/me'),
-        (json) => Account.fromJson(json),
+        Account.fromJson,
       );
 
   Future<MixinResponse<Account>> update(AccountUpdateRequest request) =>
       MixinResponse.request<Account>(
         dio.post('/me', data: request),
-        (json) => Account.fromJson(json),
+        Account.fromJson,
       );
 
   Future<MixinResponse<Account>> preferences(AccountUpdateRequest request) =>
       MixinResponse.request<Account>(
         dio.post('/me/preferences', data: request),
-        (json) => Account.fromJson(json),
+        Account.fromJson,
       );
 
   Future<MixinResponse<List<User>>> getFriends() => MixinResponse.requestList(
         dio.get('/friends'),
-        (json) => User.fromJson(json),
+        User.fromJson,
       );
 
   Future<MixinResponse<SignalKeyCount>> getSignalKeyCount() =>
       MixinResponse.request<SignalKeyCount>(
         dio.get('/signal/keys/count'),
-        (json) => SignalKeyCount.fromJson(json),
+        SignalKeyCount.fromJson,
       );
 
   Future<MixinResponse<void>> pushSignalKeys(
@@ -46,36 +46,36 @@ class AccountApi {
   Future<MixinResponse<List<StickerAlbum>>> getStickerAlbums() =>
       MixinResponse.requestList(
         dio.get('/stickers/albums'),
-        (json) => StickerAlbum.fromJson(json),
+        StickerAlbum.fromJson,
       );
 
   Future<MixinResponse<StickerAlbum>> getStickerAlbum(String id) =>
       MixinResponse.request(
         dio.get('/albums/$id'),
-        (json) => StickerAlbum.fromJson(json),
+        StickerAlbum.fromJson,
       );
 
   Future<MixinResponse<List<Sticker>>> getStickersByAlbumId(String id) =>
       MixinResponse.requestList(
         dio.get('/stickers/albums/$id'),
-        (json) => Sticker.fromJson(json),
+        Sticker.fromJson,
       );
 
   Future<MixinResponse<Sticker>> getStickerById(String id) =>
       MixinResponse.request<Sticker>(
         dio.get('/stickers/$id'),
-        (json) => Sticker.fromJson(json),
+        Sticker.fromJson,
       );
 
   Future<MixinResponse<Sticker>> addSticker(StickerRequest request) =>
       MixinResponse.request<Sticker>(
         dio.post('/stickers/favorite/add', data: request),
-        (json) => Sticker.fromJson(json),
+        Sticker.fromJson,
       );
 
   Future<MixinResponse<List<Fiat>>> getFiats() => MixinResponse.requestList(
         dio.get('/fiats'),
-        (json) => Fiat.fromJson(json),
+        Fiat.fromJson,
       );
 
   Future<MixinResponse<CodeTypeInterface?>> code(String id) =>
@@ -110,37 +110,37 @@ class AccountApi {
           VerificationRequest request) =>
       MixinResponse.request<VerificationResponse>(
         dio.post('/verifications', data: request),
-        (json) => VerificationResponse.fromJson(json),
+        VerificationResponse.fromJson,
       );
 
   Future<MixinResponse<Account>> create(String id, AccountRequest request) =>
       MixinResponse.request<Account>(
         dio.post('/verifications/$id', data: request),
-        (json) => Account.fromJson(json),
+        Account.fromJson,
       );
 
   Future<MixinResponse<User>> verifyPin(String pin) =>
       MixinResponse.request<User>(
         dio.post('/pin/verify', data: PinRequest(pin: pin).toJson()),
-        (json) => User.fromJson(json),
+        User.fromJson,
       );
 
   Future<MixinResponse<User>> createPin(String pin) =>
       MixinResponse.request<User>(
         dio.post('/pin/update', data: PinRequest(pin: pin)),
-        (json) => User.fromJson(json),
+        User.fromJson,
       );
 
   Future<MixinResponse<Account>> updatePin(PinRequest request) =>
       MixinResponse.request<Account>(
         dio.post('/pin/update', data: request),
-        (json) => Account.fromJson(json),
+        Account.fromJson,
       );
 
   Future<MixinResponse<User>> createUsers(AccountRequest request) =>
       MixinResponse.request<User>(
         dio.post('/users', data: request),
-        (json) => User.fromJson(json),
+        User.fromJson,
       );
 
   Future<MixinResponse<VerificationResponse>> deactiveVerification(
@@ -152,7 +152,7 @@ class AccountApi {
           'code': code,
           'purpose': VerificationPurpose.deactivated.name.toUpperCase(),
         }),
-        (json) => VerificationResponse.fromJson(json),
+        VerificationResponse.fromJson,
       );
 
   Future<MixinResponse<void>> deactive(DeactivateRequest request) =>
@@ -169,7 +169,7 @@ class AccountApi {
           'offset': offset,
           'limit': limit,
         }),
-        (json) => LogResponse.fromJson(json),
+        LogResponse.fromJson,
       );
 
   Future<MixinResponse<List<String>>> getExternalSchemes() =>
@@ -189,6 +189,6 @@ class AccountApi {
           'destination': destination,
           'tag': tag,
         }),
-        (json) => AddressFee.fromJson(json),
+        AddressFee.fromJson,
       );
 }
