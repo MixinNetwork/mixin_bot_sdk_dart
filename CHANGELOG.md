@@ -1,3 +1,7 @@
+## 0.4.0
+
+* Requires Dart 3.0 or later.
+
 ## 0.3.17
 
 * Remove `AssetApi.getAssetPrecisionById`;
