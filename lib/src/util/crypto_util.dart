@@ -18,10 +18,8 @@ Uint8List decodeBase64(String str) {
         break;
       case 2:
         output += '==';
-        break;
       case 3:
         output += '=';
-        break;
       default:
         throw Exception('Illegal base64url string!"');
     }
