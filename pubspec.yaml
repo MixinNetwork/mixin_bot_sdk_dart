@@ -4,16 +4,16 @@ version: 0.3.17
 homepage: https://github.com/MixinNetwork/mixin_bot_sdk_dart
 
 environment:
-  sdk: ">=2.15.0 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
-  convert: ^3.0.1
-  dart_jsonwebtoken: ^2.6.2
+  convert: ^3.1.1
+  dart_jsonwebtoken: ^2.7.1
   sprintf: ">=6.0.0 <8.0.0"
   uuid: ^3.0.4
-  dio: ^5.0.0
+  dio: ^5.1.2
   json_annotation: ^4.8.0
-  crypto: ^3.0.1
+  crypto: ^3.0.3
   meta: ^1.4.0
   equatable: ^2.0.3
   enum_to_string: ^2.0.1
@@ -21,12 +21,12 @@ dependencies:
   ed25519_edwards: ^0.3.1
   collection: ^1.15.0
   x25519: ^0.1.1
-  pointycastle: ^3.6.1
+  pointycastle: ^3.7.3
   fixnum: ^1.0.1
 
 dev_dependencies:
   test: ^1.17.9
-  very_good_analysis: ^4.0.0+1
+  very_good_analysis: ^5.0.0+1
 #  pedantic: ^1.11.0
   build_runner: any
   json_serializable: ^6.1.4

@@ -1,6 +1,6 @@
 name: example
 environment:
-  sdk: '>=2.10.0 <3.0.0'
+  sdk: '>=3.0.0 <4.0.0'
 dependencies:
   mixin_bot_sdk_dart:
     path: ../
