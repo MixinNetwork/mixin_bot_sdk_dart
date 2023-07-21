@@ -98,7 +98,7 @@ class MixinLogInterceptor extends Interceptor {
   }
 
   @override
-  void onError(DioError err, ErrorInterceptorHandler handler) {
+  void onError(DioException err, ErrorInterceptorHandler handler) {
     if (_error) {
       logPrint('*** DioError ***:');
       logPrint('uri: ${err.requestOptions.uri}');

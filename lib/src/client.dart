@@ -67,7 +67,7 @@ class Client {
           true,
         );
       },
-      onError: (DioError e, ErrorInterceptorHandler handler) async {
+      onError: (DioException e, ErrorInterceptorHandler handler) async {
         if (!{mixinBaseUrl0, mixinBaseUrl1}.contains(dio.options.baseUrl)) {
           return handler.next(e);
         }
@@ -104,7 +104,7 @@ class Client {
           );
           return handler.resolve(response);
         } catch (error) {
-          return handler.reject(error is DioError ? error : e);
+          return handler.reject(error is DioException ? error : e);
         }
       },
     ));

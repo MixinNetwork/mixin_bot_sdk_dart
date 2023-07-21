@@ -27,6 +27,7 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
           : App.fromJson(json['app'] as Map<String, dynamic>),
       codeId: json['code_id'] as String?,
       codeUrl: json['code_url'] as String?,
+      isDeactivated: json['is_deactivated'] as bool?,
     );
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
@@ -46,4 +47,5 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'is_scam': instance.isScam,
       'code_id': instance.codeId,
       'code_url': instance.codeUrl,
+      'is_deactivated': instance.isDeactivated,
     };

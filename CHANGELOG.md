@@ -1,3 +1,7 @@
+## 0.4.1
+
+* Add `isDeactivated` to `User class;
+
 ## 0.4.0
 
 * Requires Dart 3.0 or later.
