@@ -21,7 +21,7 @@ MultisigsResponse _$MultisigsResponseFromJson(Map<String, dynamic> json) =>
       json['state'] as String,
       json['transaction_hash'] as String,
       json['raw_transaction'] as String,
-      json['created_at'] as String,
+      DateTime.parse(json['created_at'] as String),
       json['memo'] as String?,
     );
 
@@ -40,6 +40,6 @@ Map<String, dynamic> _$MultisigsResponseToJson(MultisigsResponse instance) =>
       'state': instance.state,
       'transaction_hash': instance.transactionHash,
       'raw_transaction': instance.rawTransaction,
-      'created_at': instance.createdAt,
+      'created_at': instance.createdAt.toIso8601String(),
       'memo': instance.memo,
     };

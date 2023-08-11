@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import 'code_type_interface.dart';
+import '../code_type_interface.dart';
 
 part 'collectible_request.g.dart';
 

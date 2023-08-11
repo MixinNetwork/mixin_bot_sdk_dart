@@ -10,7 +10,7 @@ void main() {
   test('test sign', () async {
     try {
       var mixinResponse =
-          await client.multisigApi.sign(multisigId, mockPinRequest);
+          await client.multisigApi.sign(multisigId, mockPinRequest.pin);
     } catch (e) {
       if (e is MixinApiError) {
         print(e.error);
@@ -21,7 +21,7 @@ void main() {
   test('test unlock', () async {
     try {
       var mixinResponse =
-          await client.multisigApi.unlock(multisigId, mockPinRequest);
+          await client.multisigApi.unlock(multisigId, mockPinRequest.pin);
     } catch (e) {
       if (e is MixinApiError) {
         print(e.error);

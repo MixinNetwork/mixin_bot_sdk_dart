@@ -32,6 +32,8 @@ class MultisigsResponse implements CodeTypeInterface {
   final String codeId;
   @JsonKey(name: 'request_id')
   final String requestId;
+
+  /// sign | unlock
   final String action;
   @JsonKey(name: 'user_id')
   final String userId;
@@ -41,13 +43,15 @@ class MultisigsResponse implements CodeTypeInterface {
   final List<String> senders;
   final List<String> receivers;
   final int threshold;
+
+  /// signed | initial | unlocked
   final String state;
   @JsonKey(name: 'transaction_hash')
   final String transactionHash;
   @JsonKey(name: 'raw_transaction')
   final String rawTransaction;
   @JsonKey(name: 'created_at')
-  final String createdAt;
+  final DateTime createdAt;
   final String? memo;
 
   Map<String, dynamic> toJson() => _$MultisigsResponseToJson(this);
