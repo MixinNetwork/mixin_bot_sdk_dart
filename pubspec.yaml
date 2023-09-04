@@ -10,7 +10,7 @@ dependencies:
   convert: ^3.1.1
   dart_jsonwebtoken: ^2.7.1
   sprintf: ">=6.0.0 <8.0.0"
-  uuid: ^3.0.4
+  uuid: ">=3.0.4 <5.0.0"
   dio: ^5.1.2
   json_annotation: ^4.8.1
   crypto: ^3.0.3
