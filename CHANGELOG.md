@@ -1,3 +1,7 @@
+## 0.4.2
+
+* add token api
+
 ## 0.4.1
 
 * Add `isDeactivated` to `User class;
