@@ -119,6 +119,7 @@ class Client {
     _attachmentApi = AttachmentApi(dio: _dio);
     _circleApi = CircleApi(dio: _dio);
     _assetApi = AssetApi(dio: _dio);
+    _tokenApi = TokenApi(dio: _dio);
     _oauthApi = OauthApi(dio: dio);
     _snapshotApi = SnapshotApi(dio: dio);
     _transferApi = TransferApi(dio: dio);
@@ -137,6 +138,7 @@ class Client {
   late AttachmentApi _attachmentApi;
   late CircleApi _circleApi;
   late AssetApi _assetApi;
+  late TokenApi _tokenApi;
   late OauthApi _oauthApi;
   late SnapshotApi _snapshotApi;
   late TransferApi _transferApi;
@@ -162,6 +164,8 @@ class Client {
   CircleApi get circleApi => _circleApi;
 
   AssetApi get assetApi => _assetApi;
+
+  TokenApi get tokenApi => _tokenApi;
 
   OauthApi get oauthApi => _oauthApi;
 

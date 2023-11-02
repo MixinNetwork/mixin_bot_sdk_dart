@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import '../../mixin_bot_sdk_dart.dart';
 
 class TokenApi {
-  TokenApi(this.dio);
+  TokenApi({required this.dio});
 
   final Dio dio;
 
