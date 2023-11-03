@@ -1,3 +1,7 @@
+## 0.4.3
+
+* safe_snapshot add deposit and withdrawal field
+
 ## 0.4.2
 
 * add token api

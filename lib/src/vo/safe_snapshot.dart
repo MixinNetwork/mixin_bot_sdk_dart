@@ -1,6 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+import 'safe_deposit.dart';
+import 'safe_withdrawal.dart';
+
 part 'safe_snapshot.g.dart';
 
 @JsonSerializable()
@@ -19,6 +22,8 @@ class SafeSnapshot with EquatableMixin {
     required this.confirmations,
     required this.openingBalance,
     required this.closingBalance,
+    this.deposit,
+    this.withdrawal,
   });
 
   factory SafeSnapshot.fromJson(Map<String, dynamic> json) =>
@@ -50,6 +55,10 @@ class SafeSnapshot with EquatableMixin {
   final String? openingBalance;
   @JsonKey(name: 'closing_balance')
   final String? closingBalance;
+  @JsonKey(name: 'deposit')
+  final SafeDeposit? deposit;
+  @JsonKey(name: 'withdrawal')
+  final SafeWithdrawal? withdrawal;
 
   Map<String, dynamic> toJson() => _$SafeSnapshotToJson(this);
 
@@ -68,5 +77,7 @@ class SafeSnapshot with EquatableMixin {
         confirmations,
         openingBalance,
         closingBalance,
+        deposit,
+        withdrawal,
       ];
 }

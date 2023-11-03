@@ -20,6 +20,12 @@ SafeSnapshot _$SafeSnapshotFromJson(Map<String, dynamic> json) => SafeSnapshot(
       confirmations: json['confirmations'] as int?,
       openingBalance: json['opening_balance'] as String?,
       closingBalance: json['closing_balance'] as String?,
+      deposit: json['deposit'] == null
+          ? null
+          : SafeDeposit.fromJson(json['deposit'] as Map<String, dynamic>),
+      withdrawal: json['withdrawal'] == null
+          ? null
+          : SafeWithdrawal.fromJson(json['withdrawal'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$SafeSnapshotToJson(SafeSnapshot instance) =>
@@ -37,4 +43,6 @@ Map<String, dynamic> _$SafeSnapshotToJson(SafeSnapshot instance) =>
       'confirmations': instance.confirmations,
       'opening_balance': instance.openingBalance,
       'closing_balance': instance.closingBalance,
+      'deposit': instance.deposit,
+      'withdrawal': instance.withdrawal,
     };
