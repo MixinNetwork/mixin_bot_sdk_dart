@@ -127,6 +127,7 @@ class Client {
     _multisigApi = MultisigApi(dio: dio);
     _collectibleApi = CollectibleApi(dio: dio);
     _outputApi = OutputApi(dio: dio);
+    _utxoApi = UtxoApi(dio: dio);
   }
 
   late Dio _dio;
@@ -146,6 +147,7 @@ class Client {
   late MultisigApi _multisigApi;
   late CollectibleApi _collectibleApi;
   late OutputApi _outputApi;
+  late UtxoApi _utxoApi;
 
   Dio get dio => _dio;
 
@@ -180,4 +182,6 @@ class Client {
   CollectibleApi get collectibleApi => _collectibleApi;
 
   OutputApi get outputApi => _outputApi;
+
+  UtxoApi get utxoApi => _utxoApi;
 }

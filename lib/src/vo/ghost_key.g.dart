@@ -17,3 +17,14 @@ Map<String, dynamic> _$GhostKeyToJson(GhostKey instance) => <String, dynamic>{
       'mask': instance.mask,
       'keys': instance.keys,
     };
+
+SafeGhostKey _$SafeGhostKeyFromJson(Map<String, dynamic> json) => SafeGhostKey(
+      mask: json['mask'] as String,
+      keys: (json['keys'] as List<dynamic>).map((e) => e as String).toList(),
+    );
+
+Map<String, dynamic> _$SafeGhostKeyToJson(SafeGhostKey instance) =>
+    <String, dynamic>{
+      'mask': instance.mask,
+      'keys': instance.keys,
+    };

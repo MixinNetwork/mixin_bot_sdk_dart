@@ -6,6 +6,7 @@ import 'package:convert/convert.dart';
 import 'package:crypto/crypto.dart';
 // ignore: implementation_imports
 import 'package:ed25519_edwards/src/edwards25519.dart';
+import 'package:uuid/uuid.dart';
 
 Uint8List decodeBase64(String str) {
   try {
@@ -70,4 +71,14 @@ Uint8List randBytes(int n) {
     random[i] = generator.nextInt(255);
   }
   return random;
+}
+
+/// Static factory to retrieve a type 3(name based) UUID based on the given
+/// byte array.
+/// The same as java.util.UUID.nameUUIDFromBytes.
+UuidValue nameUuidFromBytes(List<int> name) {
+  final bytes = md5.convert(name).bytes;
+  bytes[6] = (bytes[6] & 0x0f) | 0x30;
+  bytes[8] = (bytes[8] & 0x3f) | 0x80;
+  return UuidValue.fromList(bytes);
 }
