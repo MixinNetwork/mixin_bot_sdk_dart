@@ -48,4 +48,9 @@ Future<void> main() async {
   final tx = buildSafeTransaction(
       utoxs: utxos, rs: recipients, gs: ghosts, extra: 'test-memo');
   print('tx: $tx');
+
+  final raw = encodeSafeTransaction(tx);
+  print('raw: $raw');
+
+
 }

@@ -1,8 +1,11 @@
+// ignore_for_file: cascade_invocations
 import 'dart:convert';
 
+import 'package:convert/convert.dart';
 import 'package:decimal/decimal.dart';
 
 import '../../mixin_bot_sdk_dart.dart';
+import 'encoder.dart';
 import 'multisigs.dart';
 
 class SafeTransactionRecipient {
@@ -23,11 +26,48 @@ class SafeTransactionRecipient {
   final String? tag;
 }
 
+class DepositData {
+  DepositData({
+    required this.chain,
+    required this.asset,
+    required this.transaction,
+    required this.index,
+    required this.amount,
+  });
+
+  final String chain;
+  final String asset;
+  final String transaction;
+  final BigInt index;
+  final int amount;
+}
+
+class MintData {
+  MintData({
+    required this.group,
+    required this.batch,
+    required this.amount,
+  });
+
+  final String group;
+  final BigInt batch;
+  final int amount;
+}
+
 class Input {
-  Input({required this.hash, required this.index});
+  Input({
+    required this.hash,
+    required this.index,
+    this.genesis,
+    this.deposit,
+    this.mint,
+  });
 
   final String hash;
   final int index;
+  final String? genesis;
+  final DepositData? deposit;
+  final MintData? mint;
 }
 
 enum OutputType {
@@ -176,3 +216,39 @@ SafeTransaction buildSafeTransaction({
     outputs: outputs,
   );
 }
+
+const _kMagic = [0x77, 0x77];
+
+String encodeSafeTransaction(
+  SafeTransaction tx, {
+  List<Map<int, String>> sigs = const [],
+}) {
+  final encoder = Encoder()
+    ..write(_kMagic)
+    ..write([0x00, tx.version])
+    ..write(hex.decode(tx.asset));
+
+  encoder.writeInt(tx.inputs.length);
+  for (final input in tx.inputs) {
+    encoder.encodeInput(input);
+  }
+
+  encoder.writeInt(tx.outputs.length);
+  for (final output in tx.outputs) {
+    encoder.encodeOutput(output);
+  }
+
+  encoder.writeInt(0);
+  final extra = utf8.encode(tx.extra);
+  encoder.writeUint32(extra.length);
+  encoder.write(extra);
+
+  encoder.writeInt(sigs.length);
+  for (final sig in sigs) {
+    encoder.encodeSignature(sig);
+  }
+
+  return encoder.toHex();
+}
+
+
