@@ -1,12 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'output.dart';
+part of 'safe_utxo_output.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Output _$OutputFromJson(Map<String, dynamic> json) => Output(
+SafeUtxoOutput _$SafeUtxoOutputFromJson(Map<String, dynamic> json) =>
+    SafeUtxoOutput(
       outputId: json['output_id'] as String,
       transactionHash: json['transaction_hash'] as String,
       outputIndex: json['output_index'] as int,
@@ -28,7 +29,8 @@ Output _$OutputFromJson(Map<String, dynamic> json) => Output(
       spentAt: json['spent_at'] as String,
     );
 
-Map<String, dynamic> _$OutputToJson(Output instance) => <String, dynamic>{
+Map<String, dynamic> _$SafeUtxoOutputToJson(SafeUtxoOutput instance) =>
+    <String, dynamic>{
       'output_id': instance.outputId,
       'transaction_hash': instance.transactionHash,
       'output_index': instance.outputIndex,

@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:mixin_bot_sdk_dart/mixin_bot_sdk_dart.dart';
-import 'package:mixin_bot_sdk_dart/src/error/mixin_api_error.dart';
 
 void main() {
   testProvisioningId();

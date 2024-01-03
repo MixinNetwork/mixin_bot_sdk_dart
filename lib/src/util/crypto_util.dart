@@ -2,10 +2,12 @@ import 'dart:convert';
 import 'dart:math';
 import 'dart:typed_data';
 
+import 'package:base_x/base_x.dart';
 import 'package:convert/convert.dart';
 import 'package:crypto/crypto.dart';
 // ignore: implementation_imports
 import 'package:ed25519_edwards/src/edwards25519.dart';
+import 'package:pointycastle/export.dart' as pc;
 import 'package:uuid/uuid.dart';
 
 Uint8List decodeBase64(String str) {
@@ -82,3 +84,17 @@ UuidValue nameUuidFromBytes(List<int> name) {
   bytes[8] = (bytes[8] & 0x3f) | 0x80;
   return UuidValue.fromList(bytes);
 }
+
+Uint8List sha3Hash(Uint8List data, {int length = 256}) {
+  final digest = pc.SHA3Digest(length);
+  return digest.process(data);
+}
+
+String hashMembers(List<String> memberIds) {
+  final sorted = memberIds.toList()..sort();
+  final bytes = utf8.encode(sorted.join());
+  return hex.encode(pc.SHA3Digest(256).process(bytes));
+}
+
+final base58 =
+    BaseXCodec('123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz');

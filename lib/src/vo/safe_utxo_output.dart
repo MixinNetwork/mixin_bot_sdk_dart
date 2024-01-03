@@ -1,10 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'output.g.dart';
+part 'safe_utxo_output.g.dart';
 
 @JsonSerializable()
-class Output {
-  const Output({
+class SafeUtxoOutput {
+  const SafeUtxoOutput({
     required this.outputId,
     required this.transactionHash,
     required this.outputIndex,
@@ -25,7 +25,8 @@ class Output {
     required this.spentAt,
   });
 
-  factory Output.fromJson(Map<String, dynamic> json) => _$OutputFromJson(json);
+  factory SafeUtxoOutput.fromJson(Map<String, dynamic> json) =>
+      _$SafeUtxoOutputFromJson(json);
 
   @JsonKey(name: 'output_id')
   final String outputId;
@@ -81,7 +82,7 @@ class Output {
   @JsonKey(name: 'spent_at')
   final String spentAt;
 
-  Map<String, dynamic> toJson() => _$OutputToJson(this);
+  Map<String, dynamic> toJson() => _$SafeUtxoOutputToJson(this);
 }
 
 enum OutputState {

@@ -16,22 +16,23 @@ class UtxoApi {
   /// needs to access the UTXO list API to get all the UTXO and add them up to
   /// get the balance of the relevant asset account.
   ///
+  /// [members] member user id list
   /// [offset] The offset of this API is not using time, because all UTXO
   /// in Mixin Sequencer have a unique numeric sequence number sequence,
   /// which can be used directly to sort more conveniently.
-  Future<MixinResponse<List<Output>>> getOutputs({
-    required String members,
+  Future<MixinResponse<List<SafeUtxoOutput>>> getOutputs({
+    required List<String> members,
     required int threshold,
     int? offset,
     int limit = 500,
     String? state,
     String? asset,
   }) =>
-      MixinResponse.requestList<Output>(
+      MixinResponse.requestList<SafeUtxoOutput>(
         dio.get(
           '/safe/outputs',
           queryParameters: {
-            'members': members,
+            'members': hashMembers(members),
             'threshold': threshold,
             'offset': offset,
             'limit': limit,
@@ -39,7 +40,7 @@ class UtxoApi {
             'asset': asset,
           },
         ),
-        Output.fromJson,
+        SafeUtxoOutput.fromJson,
       );
 
   /// https://developers.mixin.one/docs/api/safe-apis#get-a-recharge-address
