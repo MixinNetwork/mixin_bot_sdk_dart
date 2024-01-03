@@ -98,3 +98,13 @@ String hashMembers(List<String> memberIds) {
 
 final base58 =
     BaseXCodec('123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz');
+
+Uint8List sha256Hash(Uint8List data) {
+  final digest = pc.SHA256Digest();
+  return digest.process(data);
+}
+
+Uint8List sha512Hash(Uint8List data) {
+  final digest = pc.SHA512Digest();
+  return digest.process(data);
+}

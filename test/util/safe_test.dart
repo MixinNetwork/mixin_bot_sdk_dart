@@ -65,5 +65,9 @@ void main() {
         spentAt: '',
       ),
     ];
+
+    final signedRaw = signSafeTransaction(
+        tx: tx, utxos: utxos, views: views, privateKey: priv);
+    expect(signedRaw, raw2);
   });
 }

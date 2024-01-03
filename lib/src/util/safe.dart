@@ -1,10 +1,14 @@
 // ignore_for_file: cascade_invocations
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:convert/convert.dart';
 import 'package:decimal/decimal.dart';
+import 'package:edwards25519/edwards25519.dart' show Scalar, Point;
+import 'package:thirds/blake3.dart';
 
 import '../../mixin_bot_sdk_dart.dart';
+import '../crypto/key.dart';
 import 'encoder.dart';
 import 'multisigs.dart';
 
@@ -251,4 +255,41 @@ String encodeSafeTransaction(
   return encoder.toHex();
 }
 
+String signSafeTransaction({
+  required SafeTransaction tx,
+  required List<SafeUtxoOutput> utxos,
+  required List<String> views,
+  required String privateKey,
+}) {
+  final raw = encodeSafeTransaction(tx);
+  final msg = Uint8List.fromList(blake3(hex.decode(raw)));
 
+  final spenty =
+      sha512Hash(Uint8List.fromList(hex.decode(privateKey.substring(0, 64))));
+
+  final y = Scalar()..setBytesWithClamping(spenty.sublist(0, 32));
+  final signaturesMap = <Map<int, String>>[];
+  for (var i = 0; i < tx.inputs.length; i++) {
+    final input = tx.inputs[i];
+    final utxo = utxos[i];
+
+    if (utxo.transactionHash != input.hash || utxo.outputIndex != input.index) {
+      throw Exception('invalid input: $input');
+    }
+
+    final view = hex.decode(views[i]);
+    final x = Scalar()..setCanonicalBytes(view);
+    final t = Scalar()..add(x, y);
+    final key = PrivateKey(t.Bytes());
+    final index = utxo.keys.indexOf(key.publicKey().hexString());
+    if (index == -1) {
+      throw Exception(
+          'invalid public key for the input: $input, ${key.publicKey().hexString()}');
+    }
+    final sigs = <int, String>{};
+    final sig = key.sign(msg);
+    sigs[index] = sig.toHexString();
+    signaturesMap.add(sigs);
+  }
+  return encodeSafeTransaction(tx, sigs: signaturesMap);
+}
