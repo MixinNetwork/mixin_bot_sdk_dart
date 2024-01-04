@@ -28,16 +28,4 @@ void main() {
       }
     }
   });
-
-  test('test withdrawal', () async {
-    try {
-      final mixinResponse =
-          await client.transferApi.withdrawal(mockWithdrawalRequest);
-      testPrint(mixinResponse.data);
-    } catch (e) {
-      if (e is MixinApiError) {
-        testPrint(e.error);
-      }
-    }
-  });
 }

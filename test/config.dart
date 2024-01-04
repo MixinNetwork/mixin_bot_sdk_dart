@@ -22,8 +22,6 @@ const addressId = '';
 
 final mockTransferRequest = TransferRequest(assetId: btcId, amount: '100');
 final mockPaymentRequest = PaymentRequest(assetId: btcId, amount: '100');
-final mockWithdrawalRequest =
-    WithdrawalRequest(addressId: '', amount: '100', pin: '', traceId: '');
 
 final mockAddressRequest = AddressRequest(assetId: btcId, pin: '');
 

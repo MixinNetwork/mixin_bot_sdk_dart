@@ -93,7 +93,6 @@ export 'src/vo/request/sticker_request.dart';
 export 'src/vo/request/transaction_request.dart';
 export 'src/vo/request/transfer_request.dart';
 export 'src/vo/request/verification_request.dart';
-export 'src/vo/request/withdrawal_request.dart';
 export 'src/vo/safe_deposit.dart';
 export 'src/vo/safe_deposit_entry.dart';
 export 'src/vo/safe_snapshot.dart';
