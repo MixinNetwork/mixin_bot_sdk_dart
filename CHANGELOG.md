@@ -1,3 +1,7 @@
+## 1.0.0
+
+* add utxo api
+
 ## 0.4.3
 
 * safe_snapshot add deposit and withdrawal field
