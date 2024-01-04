@@ -4,7 +4,7 @@ import 'dart:typed_data';
 
 import 'package:convert/convert.dart';
 import 'package:decimal/decimal.dart';
-import 'package:edwards25519/edwards25519.dart' show Scalar, Point;
+import 'package:edwards25519/edwards25519.dart' show Scalar;
 import 'package:thirds/blake3.dart';
 
 import '../../mixin_bot_sdk_dart.dart';

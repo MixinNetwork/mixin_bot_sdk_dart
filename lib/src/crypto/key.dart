@@ -12,8 +12,31 @@ class PrivateKey {
   final Uint8List bytes;
 
   Uint8List sign(Uint8List message) {
+    final digest1 = sha512Hash(Uint8List.sublistView(bytes, 0, 32));
+    final messageDigest = sha512Hash(Uint8List.fromList([
+      ...Uint8List.sublistView(digest1, 32),
+      ...message,
+    ]));
+
+    final z = Scalar()..setUniformBytes(messageDigest);
+    final r = (Point.newIdentityPoint()..scalarBaseMult(z)).Bytes();
+
     final pub = _publicKey();
-    return ed.sign(ed.PrivateKey(bytes + pub), message);
+
+    final hramDigest = sha512Hash(Uint8List.fromList([
+      ...r,
+      ...pub,
+      ...message,
+    ]));
+
+    final x = Scalar()..setUniformBytes(hramDigest);
+    final y = Scalar()..setCanonicalBytes(bytes);
+    final s = Scalar()..multiplyAdd(x, y, z);
+
+    return Uint8List.fromList([
+      ...r,
+      ...s.Bytes(),
+    ]);
   }
 
   Uint8List _publicKey() {

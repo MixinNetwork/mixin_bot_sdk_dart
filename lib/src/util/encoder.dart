@@ -207,7 +207,7 @@ class Encoder {
     writeInt(ss.length);
     ss.forEach((s) {
       writeUint16(s.key);
-      write(utf8.encode(s.value));
+      write(hex.decode(s.value));
     });
   }
 
