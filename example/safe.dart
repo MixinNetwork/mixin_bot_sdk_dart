@@ -1,25 +1,56 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:collection/collection.dart';
+import 'package:convert/convert.dart';
 import 'package:decimal/decimal.dart';
+import 'package:ed25519_edwards/ed25519_edwards.dart' as ed;
 import 'package:mixin_bot_sdk_dart/mixin_bot_sdk_dart.dart';
 import 'package:uuid/uuid.dart';
 
-late Client client;
+const botUserId = '';
+const botSessionId = '';
+const botSessionPrivateKey = '';
+const botSpendKey = '';
+
+late final privateKey = base64Encode(ed
+    .newKeyFromSeed(Uint8List.fromList(hex.decode(botSessionPrivateKey)))
+    .bytes);
+late final spendKey =
+    ed.newKeyFromSeed(Uint8List.fromList(hex.decode(botSpendKey)));
+
+late Client client = Client(
+  privateKey: privateKey,
+  sessionId: botSessionId,
+  userId: botUserId,
+);
 
 Future<void> main() async {
-  // destination
-  const members = ['7766b24c-1a03-4c3a-83a3-b4358266875d'];
+  await transferToUser(
+    userId: 'cfb018b0-eaf7-40ec-9e07-28a5158f1269',
+    amount: '1',
+    // CNB
+    asset: '965e5c6e-434c-3fa9-b780-c50f43cd955c',
+  );
+}
+
+Future<void> transferToUser({
+  required String userId,
+  required String amount,
+  required String asset,
+}) async {
   const threshold = 1;
   final recipients = [
     buildSafeTransactionRecipient(
-      members: members,
+      members: [userId],
       threshold: threshold,
       amount: '1',
     )
   ];
 
   // get unspent utxos
-  final outputs = (await client.utxoApi
-          .getOutputs(members: [], threshold: 1, state: 'unspent'))
+  final outputs = (await client.utxoApi.getOutputs(
+          members: [botUserId], threshold: 1, state: 'unspent', asset: asset))
       .data;
 
   final (change, utxos) = getUnsentOutputsForRecipients(outputs, recipients);
@@ -52,5 +83,30 @@ Future<void> main() async {
   final raw = encodeSafeTransaction(tx);
   print('raw: $raw');
 
+  // verify safe transaction
+  final requestId = Uuid().v4();
+  final verifiedTx = (await client.utxoApi.transactionRequest(
+    [
+      TransactionRequest(
+        requestId: requestId,
+        raw: raw,
+      )
+    ],
+  ))
+      .data[0];
+  print('verifiedTx: $verifiedTx');
 
+  // sign safe transaction with the private key registered in the safe
+  final signedRaw = signSafeTransaction(
+    tx: tx,
+    utxos: utxos,
+    views: verifiedTx.views!,
+    privateKey: hex.encode(spendKey.bytes),
+  );
+  print('signedRaw: $signedRaw');
+
+  final sentTx = (await client.utxoApi.transactions(
+          [TransactionRequest(raw: signedRaw, requestId: requestId)]))
+      .data;
+  print('sentTx: $sentTx');
 }

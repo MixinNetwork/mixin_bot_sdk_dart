@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../mixin_bot_sdk_dart.dart';
@@ -7,7 +8,7 @@ import '../../mixin_bot_sdk_dart.dart';
 part 'transaction_response.g.dart';
 
 @JsonSerializable()
-class TransactionResponse {
+class TransactionResponse with EquatableMixin {
   TransactionResponse({
     required this.type,
     required this.requestId,
@@ -72,7 +73,7 @@ class TransactionResponse {
   @JsonKey(name: 'snapshot_at')
   final String snapshotAt;
   @JsonKey(name: 'views')
-  final List<String> views;
+  final List<String>? views;
 
   String getSnapshotId() {
     if (snapshotId == null || snapshotId!.isEmpty) {
@@ -80,4 +81,27 @@ class TransactionResponse {
     }
     return snapshotId!;
   }
+
+  @override
+  List<Object?> get props => [
+        type,
+        requestId,
+        userId,
+        amount,
+        transactionHash,
+        snapshotId,
+        asset,
+        sendersHash,
+        sendersThreshold,
+        senders,
+        signers,
+        extra,
+        state,
+        rawTransaction,
+        createdAt,
+        updatedAt,
+        snapshotHash,
+        snapshotAt,
+        views,
+      ];
 }

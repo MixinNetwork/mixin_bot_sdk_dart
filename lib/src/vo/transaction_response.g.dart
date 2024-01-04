@@ -28,7 +28,8 @@ TransactionResponse _$TransactionResponseFromJson(Map<String, dynamic> json) =>
       updatedAt: json['updated_at'] as String,
       snapshotHash: json['snapshot_hash'] as String,
       snapshotAt: json['snapshot_at'] as String,
-      views: (json['views'] as List<dynamic>).map((e) => e as String).toList(),
+      views:
+          (json['views'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$TransactionResponseToJson(

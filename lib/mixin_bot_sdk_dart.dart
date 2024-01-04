@@ -17,6 +17,7 @@ export 'src/api/user_api.dart';
 export 'src/api/utxo_api.dart';
 export 'src/auth.dart';
 export 'src/client.dart';
+export 'src/crypto/key.dart';
 export 'src/enum_converter.dart';
 export 'src/error/api_error_code.dart';
 export 'src/error/mixin_api_error.dart';

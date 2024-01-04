@@ -126,9 +126,9 @@ class UtxoApi {
   ///
   /// Note that both the input and output of this API are arrays,
   /// which is for the convenience of batch verification of transactions.
-  Future<MixinResponse<List<TransactionResponse>>> transactionRequest({
-    required List<TransactionRequest> transactionRequests,
-  }) =>
+  Future<MixinResponse<List<TransactionResponse>>> transactionRequest(
+    List<TransactionRequest> transactionRequests,
+  ) =>
       MixinResponse.requestList<TransactionResponse>(
         dio.post(
           '/safe/transaction/requests',
@@ -151,9 +151,9 @@ class UtxoApi {
   /// but we do not recommend this operation, because if it is sent directly,
   /// Sequencer cannot correctly index this transaction and cannot provide transaction
   /// and snapshot query services.
-  Future<MixinResponse<List<TransactionResponse>>> transactions({
-    required List<TransactionRequest> transactionRequests,
-  }) =>
+  Future<MixinResponse<List<TransactionResponse>>> transactions(
+    List<TransactionRequest> transactionRequests,
+  ) =>
       MixinResponse.requestList<TransactionResponse>(
         dio.post(
           '/safe/transactions',

@@ -194,7 +194,7 @@ SafeTransaction buildSafeTransaction({
   final outputs = <Output>[];
   for (var i = 0; i < rs.length; i++) {
     final recipient = rs[i];
-    if (recipient.destination != null || recipient.destination!.isNotEmpty) {
+    if (recipient.destination != null && recipient.destination!.isNotEmpty) {
       outputs.add(Output(
           type: OutputType.withdrawalSubmit,
           amount: recipient.amount,
