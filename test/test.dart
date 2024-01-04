@@ -1,7 +1,8 @@
 import 'dart:io';
 
 import 'package:mixin_bot_sdk_dart/mixin_bot_sdk_dart.dart';
-import 'package:mixin_bot_sdk_dart/src/error/mixin_api_error.dart';
+
+import 'config.dart';
 
 void main() {
   testProvisioningId();
@@ -12,10 +13,10 @@ Future<void> testProvisioningId() async {
   try {
     final mixinResponse = await client.provisioningApi
         .getProvisioningId(Platform.operatingSystem);
-    print(mixinResponse.data.toJson());
+    testPrint(mixinResponse.data.toJson());
   } catch (e) {
     if (e is MixinApiError) {
-      print(e.error.toJson());
+      testPrint(e.error);
     }
   }
 }

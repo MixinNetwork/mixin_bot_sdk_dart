@@ -2,10 +2,13 @@ import 'dart:convert';
 import 'dart:math';
 import 'dart:typed_data';
 
+import 'package:base_x/base_x.dart';
 import 'package:convert/convert.dart';
 import 'package:crypto/crypto.dart';
 // ignore: implementation_imports
 import 'package:ed25519_edwards/src/edwards25519.dart';
+import 'package:pointycastle/export.dart' as pc;
+import 'package:uuid/uuid.dart';
 
 Uint8List decodeBase64(String str) {
   try {
@@ -70,4 +73,38 @@ Uint8List randBytes(int n) {
     random[i] = generator.nextInt(255);
   }
   return random;
+}
+
+/// Static factory to retrieve a type 3(name based) UUID based on the given
+/// byte array.
+/// The same as java.util.UUID.nameUUIDFromBytes.
+UuidValue nameUuidFromBytes(List<int> name) {
+  final bytes = md5.convert(name).bytes;
+  bytes[6] = (bytes[6] & 0x0f) | 0x30;
+  bytes[8] = (bytes[8] & 0x3f) | 0x80;
+  return UuidValue.fromList(bytes);
+}
+
+Uint8List sha3Hash(Uint8List data, {int length = 256}) {
+  final digest = pc.SHA3Digest(length);
+  return digest.process(data);
+}
+
+String hashMembers(List<String> memberIds) {
+  final sorted = memberIds.toList()..sort();
+  final bytes = utf8.encode(sorted.join());
+  return hex.encode(pc.SHA3Digest(256).process(bytes));
+}
+
+final base58 =
+    BaseXCodec('123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz');
+
+Uint8List sha256Hash(Uint8List data) {
+  final digest = pc.SHA256Digest();
+  return digest.process(data);
+}
+
+Uint8List sha512Hash(Uint8List data) {
+  final digest = pc.SHA512Digest();
+  return digest.process(data);
 }

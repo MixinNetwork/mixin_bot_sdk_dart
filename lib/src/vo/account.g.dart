@@ -22,6 +22,7 @@ Account _$AccountFromJson(Map<String, dynamic> json) => Account(
       codeId: json['code_id'] as String,
       codeUrl: json['code_url'] as String,
       deviceStatus: json['device_status'] as String,
+      hasSafe: json['has_safe'] as bool,
       hasPin: json['has_pin'] as bool,
       hasEmergencyContact: json['has_emergency_contact'] as bool,
       receiveMessageSource: json['receive_message_source'] as String,
@@ -32,6 +33,8 @@ Account _$AccountFromJson(Map<String, dynamic> json) => Account(
           (json['transfer_notification_threshold'] as num).toDouble(),
       transferConfirmationThreshold:
           (json['transfer_confirmation_threshold'] as num).toDouble(),
+      tipCounter: json['tip_counter'] as int,
+      tipKeyBase64: json['tip_key_base64'] as String,
       fullName: json['full_name'] as String?,
       avatarUrl: json['avatar_url'] as String?,
     );
@@ -54,6 +57,7 @@ Map<String, dynamic> _$AccountToJson(Account instance) => <String, dynamic>{
       'code_id': instance.codeId,
       'code_url': instance.codeUrl,
       'device_status': instance.deviceStatus,
+      'has_safe': instance.hasSafe,
       'has_pin': instance.hasPin,
       'has_emergency_contact': instance.hasEmergencyContact,
       'receive_message_source': instance.receiveMessageSource,
@@ -62,4 +66,6 @@ Map<String, dynamic> _$AccountToJson(Account instance) => <String, dynamic>{
       'fiat_currency': instance.fiatCurrency,
       'transfer_notification_threshold': instance.transferNotificationThreshold,
       'transfer_confirmation_threshold': instance.transferConfirmationThreshold,
+      'tip_counter': instance.tipCounter,
+      'tip_key_base64': instance.tipKeyBase64,
     };

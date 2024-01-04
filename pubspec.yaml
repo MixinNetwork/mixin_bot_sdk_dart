@@ -23,6 +23,10 @@ dependencies:
   x25519: ^0.1.1
   pointycastle: ^3.7.3
   fixnum: ^1.0.1
+  base_x: ^2.0.1
+  decimal: ^2.3.3
+  thirds: ^0.2.0-alpha.1
+  edwards25519: ^1.0.4
 
 dev_dependencies:
   test: ^1.17.9

@@ -21,6 +21,7 @@ class Account with EquatableMixin {
     required this.codeId,
     required this.codeUrl,
     required this.deviceStatus,
+    required this.hasSafe,
     required this.hasPin,
     required this.hasEmergencyContact,
     required this.receiveMessageSource,
@@ -29,6 +30,8 @@ class Account with EquatableMixin {
     required this.fiatCurrency,
     required this.transferNotificationThreshold,
     required this.transferConfirmationThreshold,
+    required this.tipCounter,
+    required this.tipKeyBase64,
     this.fullName,
     this.avatarUrl,
   });
@@ -70,6 +73,8 @@ class Account with EquatableMixin {
   String codeUrl;
   @JsonKey(name: 'device_status')
   String deviceStatus;
+  @JsonKey(name: 'has_safe')
+  bool hasSafe;
   @JsonKey(name: 'has_pin')
   bool hasPin;
   @JsonKey(name: 'has_emergency_contact')
@@ -86,6 +91,11 @@ class Account with EquatableMixin {
   double transferNotificationThreshold;
   @JsonKey(name: 'transfer_confirmation_threshold')
   double transferConfirmationThreshold;
+
+  @JsonKey(name: 'tip_counter')
+  int tipCounter;
+  @JsonKey(name: 'tip_key_base64')
+  String tipKeyBase64;
 
   Map<String, dynamic> toJson() => _$AccountToJson(this);
 
@@ -108,6 +118,7 @@ class Account with EquatableMixin {
         codeId,
         codeUrl,
         deviceStatus,
+        hasSafe,
         hasPin,
         hasEmergencyContact,
         receiveMessageSource,
@@ -115,5 +126,7 @@ class Account with EquatableMixin {
         acceptSearchSource,
         fiatCurrency,
         transferConfirmationThreshold,
+        tipCounter,
+        tipKeyBase64,
       ];
 }

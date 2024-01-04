@@ -1,3 +1,5 @@
+import 'package:convert/convert.dart';
+
 extension UuidHashcodeExtension on String {
   int uuidHashcode() {
     final components = split('-');
@@ -10,4 +12,8 @@ extension UuidHashcodeExtension on String {
     final hilo = mostSigBits ^ leastSigBits;
     return (hilo >> 32) ^ hilo.toSigned(32);
   }
+}
+
+extension HexEncoder on List<int> {
+  String toHexString() => hex.encode(this);
 }

@@ -15,10 +15,6 @@ analyzer:
     # custom
     - 'lib/generated/**'
     - '**.g.dart'
-    # test
-    - 'test/**'
-    # workaround for https://github.com/dart-lang/sdk/issues/42910
-    - 'example/**'
 
 linter:
   rules:

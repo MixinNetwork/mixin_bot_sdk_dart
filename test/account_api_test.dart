@@ -1,5 +1,4 @@
 import 'package:mixin_bot_sdk_dart/mixin_bot_sdk_dart.dart';
-import 'package:mixin_bot_sdk_dart/src/client.dart';
 import 'package:test/test.dart';
 
 import 'config.dart';
@@ -15,10 +14,10 @@ void main() {
     test('test getMe', () async {
       try {
         final resp = await client.accountApi.getMe();
-        print(resp.data.toJson());
+        testPrint(resp.data.toJson());
       } catch (e) {
         if (e is MixinApiError) {
-          print(e.error);
+          testPrint(e.error);
         }
       }
     });
@@ -26,10 +25,10 @@ void main() {
     test('test getSignalCountKey', () async {
       try {
         final resp = await client.accountApi.getSignalKeyCount();
-        print(resp.data.toString());
+        testPrint(resp.data.toString());
       } catch (e) {
         if (e is MixinApiError) {
-          print(e.error);
+          testPrint(e.error);
         }
       }
     });
@@ -39,7 +38,7 @@ void main() {
         await client.accountApi.logout(LogoutRequest(sid)).then((response) {});
       } catch (e) {
         if (e is MixinApiError) {
-          print(e.error);
+          testPrint(e.error);
         }
       }
     });
@@ -68,10 +67,10 @@ void main() {
             'key_id': 11000934,
             'pub_key': 'Bbs8UjA3rAMNueNWZrdqZJ7exRxTQOaVsJFQ5jeiHn0p'
           }
-        }).then((response) => {print('response: $response')});
+        }).then((response) => {testPrint('response: $response')});
       } catch (e) {
         if (e is MixinApiError) {
-          print(e.error);
+          testPrint(e.error);
         }
       }
     });
@@ -79,10 +78,10 @@ void main() {
     test('test getFiats', () async {
       try {
         final response = await client.accountApi.getFiats();
-        print(response.data);
+        testPrint(response.data);
       } catch (e) {
         if (e is MixinApiError) {
-          print(e.error);
+          testPrint(e.error);
         }
       }
     });
