@@ -8,13 +8,13 @@ const private =
 
 final uids = <String>['773e5e77-4107-45c2-b648-8fc722ed77f5'];
 
-final btcId = 'c6d0c728-2624-429b-8e0d-d9d19b6592fa';
+const btcId = 'c6d0c728-2624-429b-8e0d-d9d19b6592fa';
 
-final snapshotId = '';
+const snapshotId = '';
 
-final traceId = '';
+const traceId = '';
 
-final addressId = '';
+const addressId = '';
 
 // var mockRelationshipRequest = RelationshipRequest(
 //     userId: '773e5e77-4107-45c2-b648-8fc722ed77f5',
@@ -27,7 +27,7 @@ final mockWithdrawalRequest =
 
 final mockAddressRequest = AddressRequest(assetId: btcId, pin: '');
 
-final multisigId = '';
+const multisigId = '';
 final mockPinRequest = PinRequest(pin: '', oldPin: '');
 final mockOpponentMultisig =
     OpponentMultisig(receivers: <String>['', ''], threshold: 10);
@@ -36,3 +36,8 @@ final mockRawTransactionRequest = RawTransactionRequest(
     opponentMultisig: mockOpponentMultisig,
     amount: '100',
     pin: '');
+
+void testPrint(Object? object) {
+  // ignore: avoid_print
+  print(object);
+}

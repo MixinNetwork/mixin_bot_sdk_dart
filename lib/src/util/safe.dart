@@ -8,7 +8,6 @@ import 'package:edwards25519/edwards25519.dart' show Scalar;
 import 'package:thirds/blake3.dart';
 
 import '../../mixin_bot_sdk_dart.dart';
-import '../crypto/key.dart';
 import 'encoder.dart';
 import 'multisigs.dart';
 

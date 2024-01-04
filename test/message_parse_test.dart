@@ -1,5 +1,5 @@
-import 'package:test/test.dart';
 import 'package:mixin_bot_sdk_dart/mixin_bot_sdk_dart.dart';
+import 'package:test/test.dart';
 
 void main() {
   test('parse attachment message', () {

@@ -5,27 +5,14 @@ import 'dart:typed_data';
 import 'package:convert/convert.dart';
 import 'package:decimal/decimal.dart';
 import 'package:pointycastle/src/utils.dart';
-import 'package:uuid/uuid.dart';
 
 import 'safe.dart';
 
 const int _kMaximumEncodingInt = 0xffff;
-const int AggregatedSignaturePrefix = 0xff01;
+// const int _kAggregatedSignaturePrefix = 0xff01;
 
 final Uint8List magic = Uint8List.fromList([0x77, 0x77]);
 final Uint8List empty = Uint8List.fromList([0x00, 0x00]);
-
-Uint8List putUvarInt(int x) {
-  final buf = <int>[];
-  var i = 0;
-  while (x >= 0x80) {
-    buf.add(x | 0x80);
-    x >>= 7;
-    i++;
-  }
-  buf.add(x);
-  return Uint8List.fromList(buf);
-}
 
 BigInt _amountToEthUnit(String amount, {int decimals = 8}) {
   final a = Decimal.parse(amount);
@@ -96,14 +83,6 @@ class Encoder {
     write(bytes);
   }
 
-  // TODO convert array like to array
-  void writeUUID(String id) {
-    final uuid = Uuid.parse(id);
-    for (var i = 0; i < uuid.length; i += 1) {
-      write(Uint8List.fromList([uuid[i]]));
-    }
-  }
-
   void encodeInput(Input input) {
     final i = input;
     write(hex.decode(i.hash));
@@ -156,51 +135,12 @@ class Encoder {
     if (w == null) {
       write(empty);
     } else {
-      // TODO... not check...
+      // TODO(BIN): not check...
       write(magic);
       writeUtf8String(w.address);
       writeUtf8String(w.tag);
     }
   }
-
-  // void encodeAggregatedSignature(Map<String, dynamic> js) {
-  //   writeInt(MaximumEncodingInt);
-  //   writeInt(AggregatedSignaturePrefix);
-  //   write(Uint8List.fromList(List<int>.from(js['signature'], growable: false)));
-  //
-  //   if ((js['signers'] as List).isEmpty) {
-  //     write(Uint8List.fromList([0x00]));
-  //     writeInt(0);
-  //     return;
-  //   }
-  //
-  //   (js['signers'] as List).forEach((m, i) {
-  //     if (i > 0 && m <= (js['signers'] as List)[i - 1]) {
-  //       throw Exception('signers not sorted');
-  //     }
-  //     if (m > MaximumEncodingInt) {
-  //       throw Exception('signer overflow');
-  //     }
-  //   });
-  //
-  //   final max = (js['signers'] as List)[(js['signers'] as List).length - 1];
-  //
-  //   if ((((max ~/ 8) + 1) ~/ 1) > (js['signature'] as List).length * 2) {
-  //     // TODO... not check...
-  //     write(Uint8List.fromList([0x01]));
-  //     writeInt((js['signature'] as List).length);
-  //     (js['signers'] as List).forEach((m) => writeInt(m as int));
-  //     return;
-  //   }
-  //
-  //   final masks = Uint8List((((max ~/ 8) + 1) ~/ 1).toInt());
-  //   (js['signers'] as List).forEach((m) {
-  //     masks[(m ~/ 8).toInt()] ^= 1 << (m % 8).toInt();
-  //   });
-  //   write(Uint8List.fromList([0x00]));
-  //   writeInt(masks.length);
-  //   write(masks);
-  // }
 
   void encodeSignature(Map<int, String> sm) {
     final ss = sm.entries.toList()..sort((a, b) => a.key.compareTo(b.key));

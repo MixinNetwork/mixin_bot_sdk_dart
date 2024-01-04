@@ -176,9 +176,12 @@ void main() {
     ]);
 
     final curve25519PrivateKey = privateKeyToCurve25519(privateKey);
-    assert(const ListEquality().equals(curve25519PrivateKey, targetPrivate));
+    assert(
+        const ListEquality<int>().equals(curve25519PrivateKey, targetPrivate),
+        'curve25519PrivateKey: $curve25519PrivateKey, targetPrivate: $targetPrivate');
 
     final curve25519PublicKey = publicKeyToCurve25519(publicKey);
-    assert(const ListEquality().equals(curve25519PublicKey, targetPublic));
+    assert(const ListEquality<int>().equals(curve25519PublicKey, targetPublic),
+        'curve25519PublicKey: $curve25519PublicKey, targetPublic: $targetPublic');
   });
 }
