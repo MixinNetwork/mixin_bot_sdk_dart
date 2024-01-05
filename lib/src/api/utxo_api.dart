@@ -268,7 +268,7 @@ class UtxoApi {
   ///
   /// [userId] destination user uuid
   /// [spendKey] spend key hex
-  Future<List<TransactionResponse>> transferToUser({
+  Future<List<TransactionResponse>> transactionToUser({
     required String userId,
     required String amount,
     required String asset,

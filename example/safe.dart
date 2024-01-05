@@ -31,7 +31,7 @@ Future<void> main() async {
   );
   print('cnb balance: ${balance}');
 
-  client.utxoApi.transferToUser(
+  client.utxoApi.transactionToUser(
     userId: 'cfb018b0-eaf7-40ec-9e07-28a5158f1269',
     amount: '1',
     asset: cnb,
