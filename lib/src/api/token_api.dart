@@ -73,19 +73,21 @@ class TokenApi {
         SafeSnapshot.fromJson,
       );
 
-  Future<MixinResponse<List<PendingDeposit>>> pendingDeposits(
+  Future<MixinResponse<List<SafePendingDeposit>>> pendingDeposits(
     String assetId, {
     String? destination,
     String? tag,
   }) =>
-      MixinResponse.requestList<PendingDeposit>(
-        dio.get('/safe/external/transactions',
-            queryParameters: <String, dynamic>{
-              'asset': assetId,
-              'destination': destination,
-              'tag': tag,
-            }),
-        PendingDeposit.fromJson,
+      MixinResponse.requestList<SafePendingDeposit>(
+        dio.get(
+          '/safe/deposits',
+          queryParameters: <String, dynamic>{
+            'asset': assetId,
+            'destination': destination,
+            'tag': tag,
+          },
+        ),
+        SafePendingDeposit.fromJson,
       );
 
   Future<MixinResponse<SafeSnapshot>> getTrace(String traceId) =>

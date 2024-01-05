@@ -1,9 +1,10 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'safe_utxo_output.g.dart';
 
 @JsonSerializable()
-class SafeUtxoOutput {
+class SafeUtxoOutput with EquatableMixin {
   const SafeUtxoOutput({
     required this.outputId,
     required this.transactionHash,
@@ -83,6 +84,28 @@ class SafeUtxoOutput {
   final String spentAt;
 
   Map<String, dynamic> toJson() => _$SafeUtxoOutputToJson(this);
+
+  @override
+  List<Object?> get props => [
+        outputId,
+        transactionHash,
+        outputIndex,
+        asset,
+        sequence,
+        amount,
+        mask,
+        keys,
+        receivers,
+        receiversHash,
+        receiversThreshold,
+        extra,
+        state,
+        createdAt,
+        updatedAt,
+        signedBy,
+        signedAt,
+        spentAt,
+      ];
 }
 
 enum OutputState {
