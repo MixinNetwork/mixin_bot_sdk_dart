@@ -7,8 +7,6 @@ import '../../mixin_bot_sdk_dart.dart';
 
 const _kLimit = 500;
 
-sealed class UtxoException {}
-
 class UtxoApi {
   UtxoApi({required this.dio, required String? userId}) : _userId = userId;
 
@@ -250,13 +248,19 @@ class UtxoApi {
       assert(latestSequence != null, 'latestSequence is null');
     }
     if (outputsAmount < desiredAmount) {
-      throw Exception('not enough outputs. $outputsAmount < $desiredAmount');
+      throw NotEnoughOutputsException();
     }
     assert(() {
       final outputIds = outputs.map((e) => e.outputId).toSet();
       assert(outputIds.length == outputs.length, 'outputs is not unique.');
       return true;
     }(), 'check outputs if valid');
+
+    const maxUtxoCount = 256;
+    if (outputs.length >= maxUtxoCount) {
+      throw MaxCountNotEnoughUtxoException();
+    }
+
     return (outputs, outputsAmount - desiredAmount);
   }
 
