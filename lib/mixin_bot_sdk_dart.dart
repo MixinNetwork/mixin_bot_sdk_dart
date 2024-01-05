@@ -95,6 +95,7 @@ export 'src/vo/request/transfer_request.dart';
 export 'src/vo/request/verification_request.dart';
 export 'src/vo/safe_deposit.dart';
 export 'src/vo/safe_deposit_entry.dart';
+export 'src/vo/safe_pending_deposit.dart';
 export 'src/vo/safe_snapshot.dart';
 export 'src/vo/safe_utxo_output.dart';
 export 'src/vo/safe_withdrawal.dart';
