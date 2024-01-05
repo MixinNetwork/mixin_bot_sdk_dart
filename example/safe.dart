@@ -5,10 +5,7 @@ import 'package:convert/convert.dart';
 import 'package:ed25519_edwards/ed25519_edwards.dart' as ed;
 import 'package:mixin_bot_sdk_dart/mixin_bot_sdk_dart.dart';
 
-const botUserId = '';
-const botSessionId = '';
-const botSessionPrivateKey = '';
-const botSpendKey = '';
+import 'constants.dart';
 
 late final privateKey = base64Encode(ed
     .newKeyFromSeed(Uint8List.fromList(hex.decode(botSessionPrivateKey)))
