@@ -82,7 +82,7 @@ UuidValue nameUuidFromBytes(List<int> name) {
   final bytes = md5.convert(name).bytes;
   bytes[6] = (bytes[6] & 0x0f) | 0x30;
   bytes[8] = (bytes[8] & 0x3f) | 0x80;
-  return UuidValue.fromList(bytes);
+  return UuidValue.fromList(Uint8List.fromList(bytes));
 }
 
 Uint8List sha3Hash(Uint8List data, {int length = 256}) {
