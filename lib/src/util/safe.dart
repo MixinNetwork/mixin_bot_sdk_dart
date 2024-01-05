@@ -146,34 +146,38 @@ SafeTransactionRecipient buildSafeTransactionRecipient({
           MixAddress(members: members, threshold: threshold).toAddress(),
     );
 
-(Decimal, List<SafeUtxoOutput>) getUnsentOutputsForRecipients(
+/// Get unspent utxos for recipients.
+///
+/// return param1: the amount that we need to get more utxos
+///
+(Decimal, List<SafeUtxoOutput>) getUnspentOutputsForTransaction(
   List<SafeUtxoOutput> outputs,
-  List<SafeTransactionRecipient> recipients,
+  Decimal desiredAmount,
 ) {
-  final totalOutput = recipients.fold(
-      Decimal.zero, (value, element) => value + Decimal.parse(element.amount));
-  var totalInput = Decimal.zero;
-  for (var i = 0; i < outputs.length; i++) {
-    final o = outputs[i];
+  var candidatesAmount = Decimal.zero;
+  final candidates = <SafeUtxoOutput>[];
+  for (final o in outputs) {
     if (o.state != OutputState.unspent.name) {
       continue;
     }
-    totalInput += Decimal.parse(o.amount);
-    if (totalInput < totalOutput) {
-      continue;
+    candidates.add(o);
+    candidatesAmount += Decimal.parse(o.amount);
+
+    if (candidatesAmount >= desiredAmount) {
+      // we get enough utxos
+      break;
     }
-    return (totalInput - totalOutput, outputs.sublist(0, i + 1));
   }
-  throw Exception('not enough utxo');
+  return (candidatesAmount, candidates);
 }
 
 SafeTransaction buildSafeTransaction({
-  required List<SafeUtxoOutput> utoxs,
+  required List<SafeUtxoOutput> utxos,
   required List<SafeTransactionRecipient> rs,
   required List<SafeGhostKey> gs,
   required String extra,
 }) {
-  if (utoxs.isEmpty) {
+  if (utxos.isEmpty) {
     throw Exception('utxo list is empty');
   }
   if (utf8.encode(extra).length > 512) {
@@ -181,7 +185,7 @@ SafeTransaction buildSafeTransaction({
   }
   var asset = '';
   final inputs = <Input>[];
-  for (final utxo in utoxs) {
+  for (final utxo in utxos) {
     if (asset.isEmpty) {
       asset = utxo.asset;
     } else if (asset != utxo.asset) {

@@ -127,7 +127,7 @@ class Client {
     _multisigApi = MultisigApi(dio: dio);
     _collectibleApi = CollectibleApi(dio: dio);
     _outputApi = OutputApi(dio: dio);
-    _utxoApi = UtxoApi(dio: dio);
+    _utxoApi = UtxoApi(dio: dio, userId: userId);
   }
 
   late Dio _dio;
