@@ -78,7 +78,7 @@ class Encoder {
   }
 
   void writeBigInt(BigInt i) {
-    final bytes = encodeBigInt(i);
+    final bytes = encodeBigIntAsUnsigned(i.abs());
     writeInt(bytes.length);
     write(bytes);
   }
