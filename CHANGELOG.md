@@ -1,3 +1,7 @@
+## 1.0.2
+
+* fix tx encoder
+
 ## 1.0.1
 
 * add utxo api
