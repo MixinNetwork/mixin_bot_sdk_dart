@@ -92,8 +92,8 @@ Uint8List sha3Hash(Uint8List data, {int length = 256}) {
 
 String hashMembers(List<String> memberIds) {
   final sorted = memberIds.toList()..sort();
-  final bytes = utf8.encode(sorted.join());
-  return hex.encode(pc.SHA3Digest(256).process(Uint8List.fromList(bytes)));
+  final bytes = const Utf8Encoder().convert(sorted.join());
+  return hex.encode(pc.SHA3Digest(256).process(bytes));
 }
 
 final base58 =
