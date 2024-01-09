@@ -1,3 +1,7 @@
+## 1.0.3
+
+* fix not compat with dart 3.0
+
 ## 1.0.2
 
 * fix tx encoder
