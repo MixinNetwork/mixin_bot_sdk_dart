@@ -23,13 +23,13 @@ class UtxoApi {
   /// needs to access the UTXO list API to get all the UTXO and add them up to
   /// get the balance of the relevant asset account.
   ///
-  /// [members] member user id list
+  /// [members] member user id list. null or empty for current user.
   /// [offset] The offset of this API is not using time, because all UTXO
   /// in Mixin Sequencer have a unique numeric sequence number sequence,
   /// which can be used directly to sort more conveniently.
   Future<MixinResponse<List<SafeUtxoOutput>>> getOutputs({
-    required List<String> members,
     required int threshold,
+    List<String>? members,
     int? offset,
     int limit = _kLimit,
     String? state,
@@ -39,7 +39,8 @@ class UtxoApi {
         dio.get(
           '/safe/outputs',
           queryParameters: {
-            'members': hashMembers(members),
+            if (members != null && members.isNotEmpty)
+              'members': hashMembers(members),
             'threshold': threshold,
             'offset': offset,
             'limit': limit,
@@ -185,8 +186,8 @@ class UtxoApi {
 
   Future<String> assetBalance({
     required String assetId,
-    required List<String> members,
     required int threshold,
+    List<String>? members,
   }) async {
     final outputs = <SafeUtxoOutput>[];
     int? latestSequence;
