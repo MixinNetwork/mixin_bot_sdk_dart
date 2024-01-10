@@ -1,3 +1,6 @@
+import 'dart:typed_data';
+
+import 'package:convert/convert.dart';
 import 'package:dio/dio.dart';
 
 import '../../mixin_bot_sdk_dart.dart';
@@ -119,9 +122,18 @@ class AccountApi {
         Account.fromJson,
       );
 
-  Future<MixinResponse<User>> verifyPin(String pin) =>
+  Future<MixinResponse<User>> verifyPin(
+    String pin, {
+    int? timestamp,
+  }) =>
       MixinResponse.request<User>(
-        dio.post('/pin/verify', data: PinRequest(pin: pin).toJson()),
+        dio.post(
+          '/pin/verify',
+          data: PinRequest(
+            pin: pin,
+            timestamp: timestamp,
+          ).toJson(),
+        ),
         User.fromJson,
       );
 
@@ -133,10 +145,11 @@ class AccountApi {
 
   Future<MixinResponse<Account>> updatePin(PinRequest request) =>
       MixinResponse.request<Account>(
-        dio.post('/pin/update', data: request),
+        dio.post('/pin/update', data: request.toJson()),
         Account.fromJson,
       );
 
+  @Deprecated('use userApi#createUser')
   Future<MixinResponse<User>> createUsers(AccountRequest request) =>
       MixinResponse.request<User>(
         dio.post('/users', data: request),
@@ -191,4 +204,37 @@ class AccountApi {
         }),
         AddressFee.fromJson,
       );
+
+  Future<Account> updateTipPin({
+    required String legacyPin,
+    required String pinTokenBase64,
+    required String sessionKeyBase64,
+    required String tipPublicKeyHex,
+  }) async {
+    final iterator = DateTime.now().millisecondsSinceEpoch * 1000000;
+    final encryptedLegacyPin = encryptPin(
+      legacyPin,
+      pinTokenBase64,
+      sessionKeyBase64,
+      iterator,
+    );
+    final tipPublicKey = hex.decode(tipPublicKeyHex);
+    if (tipPublicKey.length != 32) {
+      throw ArgumentError(
+          'Invalid tip public key size: ${tipPublicKey.length}');
+    }
+    const pinSuffix = [0, 0, 0, 0, 0, 0, 0, 1];
+    final newEncryptedPin = encryptBytesPin(
+      pinTokenBase64: pinTokenBase64,
+      privateKeyBase64: sessionKeyBase64,
+      target: Uint8List.fromList(tipPublicKey + pinSuffix),
+      iterator: iterator + 1,
+    );
+
+    final data = await updatePin(PinRequest(
+      pin: newEncryptedPin,
+      oldPin: encryptedLegacyPin,
+    ));
+    return data.data;
+  }
 }

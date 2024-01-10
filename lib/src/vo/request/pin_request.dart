@@ -8,6 +8,7 @@ class PinRequest with EquatableMixin {
   PinRequest({
     required this.pin,
     this.oldPin,
+    this.timestamp,
   });
 
   factory PinRequest.fromJson(Map<String, dynamic> json) =>
@@ -16,13 +17,16 @@ class PinRequest with EquatableMixin {
   Map<String, dynamic> toJson() => _$PinRequestToJson(this);
 
   @JsonKey(name: 'pin')
-  String pin;
+  final String pin;
   @JsonKey(name: 'old_pin')
-  String? oldPin;
+  final String? oldPin;
+  @JsonKey(name: 'timestamp')
+  final int? timestamp;
 
   @override
   List<Object?> get props => [
         pin,
         oldPin,
+        timestamp,
       ];
 }

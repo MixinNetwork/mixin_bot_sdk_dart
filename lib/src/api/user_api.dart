@@ -1,10 +1,6 @@
 import 'package:dio/dio.dart';
 
-import '../vo/favorite_app.dart';
-import '../vo/mixin_response.dart';
-import '../vo/request/relationship_request.dart';
-import '../vo/user.dart';
-import '../vo/user_session.dart';
+import '../../mixin_bot_sdk_dart.dart';
 
 class UserApi {
   UserApi({required this.dio});
@@ -66,5 +62,24 @@ class UserApi {
 
   Future<void> removeFavoriteApp(String appId) => MixinResponse.requestVoid(
         dio.post('/apps/$appId/unfavorite'),
+      );
+
+  /// Create Network Users. Only application user can create network users.
+  ///
+  /// [sessionSecret] Ed25519 Public Key in Base64
+  /// [fullName] display name
+  Future<MixinResponse<Account>> createUsers({
+    required String fullName,
+    required String sessionSecret,
+  }) =>
+      MixinResponse.request<Account>(
+        dio.post(
+          '/users',
+          data: {
+            'full_name': fullName,
+            'session_secret': sessionSecret,
+          },
+        ),
+        Account.fromJson,
       );
 }

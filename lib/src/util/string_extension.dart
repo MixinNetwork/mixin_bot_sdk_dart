@@ -1,6 +1,11 @@
-import 'package:convert/convert.dart';
+import 'dart:convert' as c1;
+import 'dart:typed_data';
 
-extension UuidHashcodeExtension on String {
+import 'package:convert/convert.dart' as c2;
+
+import 'crypto_util.dart' as util;
+
+extension StringHash on String {
   int uuidHashcode() {
     final components = split('-');
     assert(components.length == 5, 'bad length');
@@ -12,8 +17,19 @@ extension UuidHashcodeExtension on String {
     final hilo = mostSigBits ^ leastSigBits;
     return (hilo >> 32) ^ hilo.toSigned(32);
   }
+
+  Uint8List toBytes() => const c1.Utf8Encoder().convert(this);
+
+  Uint8List sha3Hash([int length = 256]) =>
+      util.sha3Hash(toBytes(), length: length);
+
+  Uint8List sha256() => util.sha256Hash(toBytes());
 }
 
 extension HexEncoder on List<int> {
-  String toHexString() => hex.encode(this);
+  String toHexString() => c2.hex.encode(this);
+
+  String base64UrlEncode() => c1.base64UrlEncode(this);
+
+  String base64Encode() => c1.base64Encode(this);
 }

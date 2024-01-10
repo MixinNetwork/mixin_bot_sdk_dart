@@ -28,6 +28,7 @@ export 'src/util/address.dart';
 export 'src/util/crypto_util.dart';
 export 'src/util/safe.dart';
 export 'src/util/string_extension.dart';
+export 'src/util/tip.dart';
 export 'src/vo/account.dart';
 export 'src/vo/address.dart';
 export 'src/vo/address_fee.dart';
