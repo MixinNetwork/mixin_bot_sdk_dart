@@ -7,7 +7,6 @@ import 'package:decimal/decimal.dart';
 import 'package:pointycastle/src/utils.dart';
 
 import '../../mixin_bot_sdk_dart.dart';
-import 'safe.dart';
 
 const int _kMaximumEncodingInt = 0xffff;
 // const int _kAggregatedSignaturePrefix = 0xff01;
