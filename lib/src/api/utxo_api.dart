@@ -1,6 +1,9 @@
+import 'dart:typed_data';
+
 import 'package:collection/collection.dart';
 import 'package:decimal/decimal.dart';
 import 'package:dio/dio.dart';
+import 'package:ed25519_edwards/ed25519_edwards.dart' as ed;
 import 'package:uuid/uuid.dart';
 
 import '../../mixin_bot_sdk_dart.dart';
@@ -8,11 +11,10 @@ import '../../mixin_bot_sdk_dart.dart';
 const _kLimit = 500;
 
 class UtxoApi {
-  UtxoApi({required this.dio, required String? userId}) : _userId = userId;
+  UtxoApi(this._accountApi, {required this.dio});
 
   final Dio dio;
-
-  final String? _userId;
+  final AccountApi _accountApi;
 
   /// https://developers.mixin.one/docs/api/safe-apis#get-utxo-list
   ///
@@ -88,7 +90,6 @@ class UtxoApi {
     required String publicKey,
     required String signature,
     required String pin,
-    required String salt,
   }) =>
       MixinResponse.request<Account>(
         dio.post(
@@ -97,7 +98,6 @@ class UtxoApi {
             'public_key': publicKey,
             'signature': signature,
             'pin_base64': pin,
-            'salt_base64': salt,
           },
         ),
         Account.fromJson,
@@ -218,17 +218,12 @@ class UtxoApi {
     required int threshold,
     required Decimal desiredAmount,
   }) async {
-    final fromUserId = _userId;
-    if (fromUserId == null || fromUserId.isEmpty) {
-      throw Exception('client user id is empty');
-    }
     int? latestSequence;
     final outputs = <SafeUtxoOutput>[];
     var outputsAmount = Decimal.zero;
     while (true) {
       const limit = 100;
       final data = (await getOutputs(
-        members: [fromUserId],
         threshold: threshold,
         asset: asset,
         state: OutputState.unspent.name,
@@ -277,10 +272,6 @@ class UtxoApi {
     int threshold = 1,
     String? memo,
   }) async {
-    final fromUserId = _userId;
-    if (fromUserId == null || fromUserId.isEmpty) {
-      throw Exception('client user id is empty');
-    }
     final (utxos, change) = await _getEnoughOutputsForTransaction(
       asset: asset,
       threshold: threshold,
@@ -346,5 +337,41 @@ class UtxoApi {
       [TransactionRequest(raw: signedRaw, requestId: requestId)],
     );
     return sentTx.data;
+  }
+
+  Future<Account> registerSafe({
+    required String userId,
+    required Uint8List tipPrivateKey,
+    required String pinTokenBase64,
+    required String sessionPrivateKeyBase64,
+  }) async {
+    final safePublicKeyHex =
+        ed.public(ed.PrivateKey(tipPrivateKey)).bytes.toHexString();
+
+    final me = (await _accountApi.getMe()).data;
+    if (me.hasSafe) {
+      // already has safe.
+      return me;
+    }
+
+    final pin = encryptTipPin(
+      pinTokenBase64: pinTokenBase64,
+      privateKeyBase64: sessionPrivateKeyBase64,
+      signTarget: TipBody.forSequencerRegister(
+              userId: userId, publicKey: safePublicKeyHex)
+          .bytes,
+      tipPrivateKey: tipPrivateKey,
+    );
+
+    final signature = ed
+        .sign(ed.PrivateKey(tipPrivateKey), userId.sha3Hash())
+        .base64RawUrlEncode();
+
+    final response = await registerPublicKey(
+      publicKey: safePublicKeyHex,
+      signature: signature,
+      pin: pin,
+    );
+    return response.data;
   }
 }

@@ -1,3 +1,8 @@
+## 1.0.4
+
+* make `getOutputs()` members parameter nullable
+* add tip pin update apis
+
 ## 1.0.3
 
 * fix not compat with dart 3.0

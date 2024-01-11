@@ -104,7 +104,7 @@ class Client {
           );
           return handler.resolve(response);
         } catch (error) {
-          return handler.reject(error is DioException ? error : e);
+          return handler.reject(e);
         }
       },
     ));
@@ -127,7 +127,7 @@ class Client {
     _multisigApi = MultisigApi(dio: dio);
     _collectibleApi = CollectibleApi(dio: dio);
     _outputApi = OutputApi(dio: dio);
-    _utxoApi = UtxoApi(dio: dio, userId: userId);
+    _utxoApi = UtxoApi(accountApi, dio: dio);
   }
 
   late Dio _dio;
@@ -173,6 +173,7 @@ class Client {
 
   SnapshotApi get snapshotApi => _snapshotApi;
 
+  @Deprecated('mixin has migrated to safe, use utxoApi instead.')
   TransferApi get transferApi => _transferApi;
 
   AddressApi get addressApi => _addressApi;

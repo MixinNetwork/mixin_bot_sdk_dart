@@ -7,14 +7,12 @@ class TransferApi {
 
   final Dio dio;
 
-  // deprecated
   Future<MixinResponse<Snapshot>> transfer(TransferRequest request) =>
       MixinResponse.request<Snapshot>(
         dio.post('/transfers', data: request),
         Snapshot.fromJson,
       );
 
-  // deprecated
   Future<MixinResponse<PaymentResponse>> pay(PaymentRequest request) =>
       MixinResponse.request<PaymentResponse>(
         dio.post('/payments', data: request),
