@@ -6,7 +6,7 @@ import 'package:convert/convert.dart';
 import 'package:decimal/decimal.dart';
 import 'package:pointycastle/src/utils.dart';
 
-import 'safe.dart';
+import '../../mixin_bot_sdk_dart.dart';
 
 const int _kMaximumEncodingInt = 0xffff;
 // const int _kAggregatedSignaturePrefix = 0xff01;
@@ -83,6 +83,31 @@ class Encoder {
     write(bytes);
   }
 
+  void encodeTransaction(SafeTransaction tx) {
+    write(magic);
+    write([0x00, tx.version]);
+    write(hex.decode(tx.asset));
+
+    writeInt(tx.inputs.length);
+    for (final input in tx.inputs) {
+      encodeInput(input);
+    }
+
+    writeInt(tx.outputs.length);
+    for (final output in tx.outputs) {
+      encodeOutput(output);
+    }
+
+    writeInt(tx.reference.length);
+    for (final ref in tx.reference) {
+      write(hex.decode(ref));
+    }
+
+    final extra = utf8.encode(tx.extra);
+    writeUint32(extra.length);
+    write(extra);
+  }
+
   void encodeInput(Input input) {
     final i = input;
     write(hex.decode(i.hash));
@@ -120,12 +145,12 @@ class Encoder {
     final o = output;
     write([0x00, o.type?.value ?? 0]);
     writeBigInt(_amountToEthUnit(o.amount));
-    writeInt(o.keys!.length);
-    for (final key in o.keys!) {
+    writeInt(o.keys.length);
+    for (final key in o.keys) {
       write(hex.decode(key));
     }
 
-    write(hex.decode(o.mask ?? ''));
+    write(o.mask?.hexToBytes() ?? Uint8List(32));
 
     final script = hex.decode(o.script ?? '');
     writeInt(script.length);
@@ -135,7 +160,6 @@ class Encoder {
     if (w == null) {
       write(empty);
     } else {
-      // TODO(BIN): not check...
       write(magic);
       writeUtf8String(w.address);
       writeUtf8String(w.tag);
@@ -150,6 +174,8 @@ class Encoder {
       write(hex.decode(s.value));
     });
   }
+
+  Uint8List toBytes() => Uint8List.fromList(_buf);
 
   String toHex() => hex.encode(_buf);
 }

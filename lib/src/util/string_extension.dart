@@ -20,6 +20,8 @@ extension StringHash on String {
 
   Uint8List toBytes() => const c1.Utf8Encoder().convert(this);
 
+  Uint8List hexToBytes() => Uint8List.fromList(c2.hex.decode(this));
+
   Uint8List sha3Hash([int length = 256]) =>
       util.sha3Hash(toBytes(), length: length);
 
