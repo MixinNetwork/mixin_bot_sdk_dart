@@ -10,6 +10,7 @@ import 'common.dart';
 /// Samples for upgrade legacy pin to safe
 void main() async {
   final sessionKey = ed.generateKey();
+  print(sessionKey.privateKey.bytes.base64Encode());
 
   final sessionSecret = base64Encode(sessionKey.publicKey.bytes);
   final user = (await client.userApi.createUsers(
@@ -42,8 +43,9 @@ void main() async {
     DateTime.now().millisecondsSinceEpoch * 1000000,
   ));
 
-  // update tip pin
+  // update tip pin, please keep the keyPair and save
   final keyPair = ed.generateKey();
+  print(keyPair.privateKey.bytes.base64Encode());
   await userClient.accountApi.updateTipPin(
     legacyPin: '000000',
     pinTokenBase64: user.pinToken,
