@@ -32,4 +32,12 @@ extension HexEncoder on List<int> {
   String base64UrlEncode() => c1.base64UrlEncode(this);
 
   String base64Encode() => c1.base64Encode(this);
+
+  String base64RawUrlEncode() {
+    final encoded = c1.base64UrlEncode(this);
+    // remove trailing ==
+    final index = encoded.indexOf('=');
+    if (index == -1) return encoded;
+    return encoded.substring(0, index);
+  }
 }

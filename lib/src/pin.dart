@@ -5,8 +5,8 @@ import 'package:ed25519_edwards/ed25519_edwards.dart' as ed;
 import 'package:fixnum/fixnum.dart';
 import 'package:x25519/x25519.dart';
 
+import '../mixin_bot_sdk_dart.dart';
 import 'util/cbc.dart';
-import 'util/crypto_util.dart';
 
 String encryptPin(
   String pin,
@@ -63,7 +63,7 @@ String encryptBytesPin({
   assert(iv.length == 16, 'iv length must be 16');
 
   final cipherText = aesCbcEncrypt(keyBytes, iv, Uint8List.fromList(plaintext));
-  return base64Encode(iv + cipherText);
+  return (iv + cipherText).base64RawUrlEncode();
 }
 
 String encryptTipPin({

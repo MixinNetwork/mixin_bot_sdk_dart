@@ -364,8 +364,8 @@ class UtxoApi {
     );
 
     final signature = ed
-        .sign(ed.PrivateKey(tipPrivateKey), hashMembers([userId]).toBytes())
-        .base64UrlEncode();
+        .sign(ed.PrivateKey(tipPrivateKey), userId.sha3Hash())
+        .base64RawUrlEncode();
 
     final response = await registerPublicKey(
       publicKey: safePublicKeyHex,
