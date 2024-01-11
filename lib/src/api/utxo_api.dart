@@ -4,6 +4,7 @@ import 'package:collection/collection.dart';
 import 'package:decimal/decimal.dart';
 import 'package:dio/dio.dart';
 import 'package:ed25519_edwards/ed25519_edwards.dart' as ed;
+import 'package:thirds/blake3.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../mixin_bot_sdk_dart.dart';
@@ -11,10 +12,11 @@ import '../../mixin_bot_sdk_dart.dart';
 const _kLimit = 500;
 
 class UtxoApi {
-  UtxoApi(this._accountApi, {required this.dio});
+  UtxoApi(this._accountApi, this._tokenApi, {required this.dio});
 
   final Dio dio;
   final AccountApi _accountApi;
+  final TokenApi _tokenApi;
 
   /// https://developers.mixin.one/docs/api/safe-apis#get-utxo-list
   ///
@@ -279,13 +281,13 @@ class UtxoApi {
     );
 
     final recipients = [
-      buildSafeTransactionRecipient(
+      UserTransactionRecipient(
         members: [userId],
         threshold: threshold,
         amount: amount,
       ),
       if (change > Decimal.zero)
-        buildSafeTransactionRecipient(
+        UserTransactionRecipient(
           members: utxos[0].receivers,
           threshold: utxos[0].receiversThreshold,
           amount: change.toString(),
@@ -373,5 +375,236 @@ class UtxoApi {
       pin: pin,
     );
     return response.data;
+  }
+
+  Future<void> withdrawalToAddress({
+    required String asset,
+    required String destination,
+    required String spendKey,
+    required String amount,
+    String? tag,
+    String? memo,
+  }) async {
+    final token = (await _tokenApi.getAssetById(asset)).data;
+    final chain = token.chainId == token.assetId
+        ? token
+        : (await _tokenApi.getAssetById(token.chainId)).data;
+
+    final feeResponse =
+        (await _tokenApi.getFees(asset: asset, destination: destination)).data;
+    final fee =
+        feeResponse.firstWhereOrNull((element) => element.assetId == asset);
+    if (fee == null) {
+      throw Exception('fee not found: $asset $feeResponse');
+    }
+
+    const mixinFeeUserId = '674d6776-d600-4346-af46-58e77d8df185';
+
+    await _withdrawTransaction(
+      feeReceiverId: mixinFeeUserId,
+      feeAsset: chain.assetId,
+      feeAmount: Decimal.parse(fee.amount),
+      asset: asset,
+      amount: Decimal.parse(amount),
+      destination: destination,
+      tag: tag,
+      spendKey: spendKey,
+    );
+  }
+
+  Future<List<TransactionResponse>> _withdrawTransaction({
+    required String feeReceiverId,
+    required String feeAsset,
+    required Decimal feeAmount,
+    required String asset,
+    required Decimal amount,
+    required String destination,
+    required String? tag,
+    required String spendKey,
+    int threshold = 1,
+    String? memo,
+  }) async {
+    final isFeeDifferenceAsset = feeAsset != asset;
+
+    if (isFeeDifferenceAsset) {
+      final (utxos, change) = await _getEnoughOutputsForTransaction(
+        asset: asset,
+        threshold: threshold,
+        desiredAmount: amount,
+      );
+
+      final (feeUtxos, feeChange) = await _getEnoughOutputsForTransaction(
+        asset: feeAsset,
+        threshold: threshold,
+        desiredAmount: feeAmount,
+      );
+
+      final ghosts = (await ghostKey([
+        // fee
+        GhostKeyRequest(
+            receivers: [feeReceiverId], hint: const Uuid().v4(), index: 0),
+        // change
+        if (change > Decimal.zero)
+          GhostKeyRequest(
+              receivers: utxos[0].receivers, hint: const Uuid().v4(), index: 1),
+        // fee change
+        if (feeChange > Decimal.zero)
+          GhostKeyRequest(
+            receivers: feeUtxos[0].receivers,
+            hint: const Uuid().v4(),
+            index: 1,
+          ),
+      ]))
+          .data;
+
+      final feeGhostKey = ghosts[0];
+      final changeGhostKey = (change > Decimal.zero) ? ghosts[1] : null;
+      final feeChangeGhostKey = (feeChange > Decimal.zero)
+          ? ((change > Decimal.zero) ? ghosts[2] : ghosts[1])
+          : null;
+
+      final withdrawalTx = buildSafeTransaction(
+        utxos: utxos,
+        rs: [
+          WithdrawalTransactionRecipient(
+            destination: destination,
+            tag: tag,
+            amount: amount.toString(),
+          ),
+          if (change > Decimal.zero)
+            UserTransactionRecipient(
+              members: utxos[0].receivers,
+              threshold: utxos[0].receiversThreshold,
+              amount: change.toString(),
+            ),
+        ],
+        gs: [
+          null /* first is for withdrawal */,
+          if (change > Decimal.zero) changeGhostKey!,
+        ],
+        extra: memo ?? '',
+      );
+      final withdrawTxRaw = encodeSafeTransaction(withdrawalTx);
+
+      final feeTx = buildSafeTransaction(
+        utxos: feeUtxos,
+        rs: [
+          UserTransactionRecipient(
+            members: [feeReceiverId],
+            threshold: threshold,
+            amount: feeAmount.toString(),
+          ),
+          if (feeChange > Decimal.zero)
+            UserTransactionRecipient(
+              members: feeUtxos[0].receivers,
+              threshold: feeUtxos[0].receiversThreshold,
+              amount: feeChange.toString(),
+            ),
+        ],
+        gs: [
+          feeGhostKey,
+          if (feeChange > Decimal.zero) feeChangeGhostKey!,
+        ],
+        extra: memo ?? '',
+        reference: blake3Hex(withdrawTxRaw.hexToBytes()),
+      );
+      final feeTxRaw = encodeSafeTransaction(feeTx);
+
+      final withdrawalRequestId = const Uuid().v4();
+      final feeRequestId = const Uuid().v4();
+      final requestResponse = (await transactionRequest([
+        TransactionRequest(requestId: withdrawalRequestId, raw: withdrawTxRaw),
+        TransactionRequest(requestId: feeRequestId, raw: feeTxRaw),
+      ]))
+          .data;
+      if (requestResponse.isEmpty) {
+        throw Exception('Parameter exception');
+      } else if (requestResponse.first.state == OutputState.unspent.name) {
+        throw Exception('Transfer is already paid');
+      }
+
+      final withdrawalData = requestResponse
+          .firstWhere((element) => element.requestId == feeRequestId);
+      final feeData = requestResponse
+          .firstWhere((element) => element.requestId == withdrawalRequestId);
+
+      final singedWithdrawalRaw = signSafeTransaction(
+        tx: withdrawalTx,
+        utxos: utxos,
+        views: withdrawalData.views!,
+        privateKey: spendKey,
+      );
+      final singedFeeRaw = signSafeTransaction(
+        tx: feeTx,
+        utxos: feeUtxos,
+        views: feeData.views!,
+        privateKey: spendKey,
+      );
+      final sentTx = await transactions([
+        TransactionRequest(
+            raw: singedWithdrawalRaw, requestId: withdrawalRequestId),
+        TransactionRequest(raw: singedFeeRaw, requestId: feeRequestId),
+      ]);
+      return sentTx.data;
+    } else {
+      final (utxos, change) = await _getEnoughOutputsForTransaction(
+        asset: asset,
+        threshold: threshold,
+        desiredAmount: amount + feeAmount,
+      );
+
+      final ghosts = (await ghostKey([
+        // fee
+        GhostKeyRequest(
+            receivers: [feeReceiverId], hint: const Uuid().v4(), index: 1),
+        // fee change
+        if (change > Decimal.zero)
+          GhostKeyRequest(
+              receivers: utxos[0].receivers, hint: const Uuid().v4(), index: 2),
+      ]))
+          .data;
+
+      final tx = buildSafeTransaction(
+        utxos: utxos,
+        rs: [
+          WithdrawalTransactionRecipient(
+            destination: destination,
+            tag: tag,
+            amount: amount.toString(),
+          ),
+          UserTransactionRecipient(
+            members: [feeReceiverId],
+            threshold: threshold,
+            amount: feeAmount.toString(),
+          ),
+          if (change > Decimal.zero)
+            UserTransactionRecipient(
+              members: utxos[0].receivers,
+              threshold: utxos[0].receiversThreshold,
+              amount: change.toString(),
+            ),
+        ],
+        gs: [null /* first is for withdrawal */, ...ghosts],
+        extra: memo ?? '',
+      );
+
+      final raw = encodeSafeTransaction(tx);
+      final requestId = const Uuid().v4();
+      final verifiedTx = (await transactionRequest(
+        [TransactionRequest(requestId: requestId, raw: raw)],
+      ))
+          .data
+          .first;
+      final signedRaw = signSafeTransaction(
+        tx: tx,
+        utxos: utxos,
+        views: verifiedTx.views!,
+        privateKey: spendKey,
+      );
+      final sentTx = await transactions(
+        [TransactionRequest(raw: signedRaw, requestId: requestId)],
+      );
+      return sentTx.data;
+    }
   }
 }

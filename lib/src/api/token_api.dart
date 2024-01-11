@@ -19,6 +19,20 @@ class TokenApi {
         Token.fromJson,
       );
 
+  Future<MixinResponse<List<AssetFee>>> getFees({
+    required String asset,
+    required String destination,
+  }) =>
+      MixinResponse.requestList<AssetFee>(
+        dio.get(
+          '/safe/assets/$asset/fee',
+          queryParameters: {
+            'destination': destination,
+          },
+        ),
+        AssetFee.fromJson,
+      );
+
   Future<MixinResponse<List<SafeSnapshot>>> getSnapshotsByAssetId(
     String id, {
     String? offset,

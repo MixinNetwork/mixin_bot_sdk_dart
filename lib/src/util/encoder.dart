@@ -83,6 +83,27 @@ class Encoder {
     write(bytes);
   }
 
+  void encodeTransaction(SafeTransaction tx) {
+    write(magic);
+    write([0x00, tx.version]);
+    write(hex.decode(tx.asset));
+
+    writeInt(tx.inputs.length);
+    for (final input in tx.inputs) {
+      encodeInput(input);
+    }
+
+    writeInt(tx.outputs.length);
+    for (final output in tx.outputs) {
+      encodeOutput(output);
+    }
+
+    writeInt(0);
+    final extra = utf8.encode(tx.extra);
+    writeUint32(extra.length);
+    write(extra);
+  }
+
   void encodeInput(Input input) {
     final i = input;
     write(hex.decode(i.hash));
@@ -135,7 +156,6 @@ class Encoder {
     if (w == null) {
       write(empty);
     } else {
-      // TODO(BIN): not check...
       write(magic);
       writeUtf8String(w.address);
       writeUtf8String(w.tag);
@@ -150,6 +170,8 @@ class Encoder {
       write(hex.decode(s.value));
     });
   }
+
+  Uint8List toBytes() => Uint8List.fromList(_buf);
 
   String toHex() => hex.encode(_buf);
 }
