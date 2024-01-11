@@ -2,6 +2,7 @@
 
 * make `getOutputs()` members parameter nullable
 * add tip pin update apis
+* support withdrawal
 
 ## 1.0.3
 
