@@ -98,7 +98,11 @@ class Encoder {
       encodeOutput(output);
     }
 
-    writeInt(0);
+    writeInt(tx.reference.length);
+    for (final ref in tx.reference) {
+      write(hex.decode(ref));
+    }
+
     final extra = utf8.encode(tx.extra);
     writeUint32(extra.length);
     write(extra);
