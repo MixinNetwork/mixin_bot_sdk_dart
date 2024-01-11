@@ -392,8 +392,8 @@ class UtxoApi {
 
     final feeResponse =
         (await _tokenApi.getFees(asset: asset, destination: destination)).data;
-    final fee =
-        feeResponse.firstWhereOrNull((element) => element.assetId == asset);
+    final fee = feeResponse
+        .firstWhereOrNull((element) => element.assetId == chain.assetId);
     if (fee == null) {
       throw Exception('fee not found: $asset $feeResponse');
     }

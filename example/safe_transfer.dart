@@ -10,10 +10,11 @@ Future<void> main() async {
   );
   print('cnb balance: ${balance}');
 
-  client.utxoApi.transactionToUser(
+  await client.utxoApi.transactionToUser(
     userId: 'cfb018b0-eaf7-40ec-9e07-28a5158f1269',
-    amount: '1',
+    amount: '0.0001',
     asset: cnb,
     spendKey: hex.encode(spendKey.bytes),
+    memo: 'test transfer',
   );
 }

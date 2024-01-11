@@ -25,7 +25,7 @@ class TokenApi {
   }) =>
       MixinResponse.requestList<AssetFee>(
         dio.get(
-          '/safe/assets/$asset/fee',
+          '/safe/assets/$asset/fees',
           queryParameters: {
             'destination': destination,
           },
