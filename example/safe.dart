@@ -2,7 +2,6 @@ import 'package:convert/convert.dart';
 
 import 'common.dart';
 
-
 Future<void> main() async {
   const cnb = '965e5c6e-434c-3fa9-b780-c50f43cd955c';
   final balance = await client.utxoApi.assetBalance(
