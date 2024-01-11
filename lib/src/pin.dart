@@ -39,7 +39,7 @@ String encryptPinWithIv(
   // pin+time+iterator
   final plaintext = Uint8List.fromList(pinBytes + timeBytes + iteratorBytes);
   final ciphertext = aesCbcEncrypt(keyBytes, iv, plaintext);
-  return base64Encode(iv + ciphertext);
+  return (iv + ciphertext).base64RawUrlEncode();
 }
 
 String encryptBytesPin({
