@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'ghost_key.g.dart';
@@ -17,7 +18,7 @@ class GhostKey {
 }
 
 @JsonSerializable()
-class SafeGhostKey {
+class SafeGhostKey with EquatableMixin {
   SafeGhostKey({
     required this.mask,
     required this.keys,
@@ -35,4 +36,7 @@ class SafeGhostKey {
   final List<String> keys;
 
   Map<String, dynamic> toJson() => _$SafeGhostKeyToJson(this);
+
+  @override
+  List<Object?> get props => [mask, keys];
 }

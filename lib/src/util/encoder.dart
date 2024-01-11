@@ -6,6 +6,7 @@ import 'package:convert/convert.dart';
 import 'package:decimal/decimal.dart';
 import 'package:pointycastle/src/utils.dart';
 
+import '../../mixin_bot_sdk_dart.dart';
 import 'safe.dart';
 
 const int _kMaximumEncodingInt = 0xffff;
@@ -145,12 +146,12 @@ class Encoder {
     final o = output;
     write([0x00, o.type?.value ?? 0]);
     writeBigInt(_amountToEthUnit(o.amount));
-    writeInt(o.keys!.length);
-    for (final key in o.keys!) {
+    writeInt(o.keys.length);
+    for (final key in o.keys) {
       write(hex.decode(key));
     }
 
-    write(hex.decode(o.mask ?? ''));
+    write(o.mask?.hexToBytes() ?? Uint8List(32));
 
     final script = hex.decode(o.script ?? '');
     writeInt(script.length);

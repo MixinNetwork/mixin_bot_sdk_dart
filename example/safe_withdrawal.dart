@@ -3,18 +3,17 @@ import 'package:convert/convert.dart';
 import 'common.dart';
 
 Future<void> main() async {
-  const cnb = '965e5c6e-434c-3fa9-b780-c50f43cd955c';
   final balance = await client.utxoApi.assetBalance(
-    assetId: cnb,
+    assetId: Token.tronUSDT.assetId,
     threshold: 1,
   );
-  print('cnb balance: ${balance}');
+  print('balance: ${balance}');
 
   await client.utxoApi.withdrawalToAddress(
-    amount: '0.1',
-    asset: cnb,
+    amount: '0.01',
+    asset: Token.tronUSDT.assetId,
     spendKey: hex.encode(spendKey.bytes),
-    destination: '0x5c7D3326f103691F13a427cF29E531b9E5D733E5',
+    destination: 'TAXE98CMomoA28MtNpfxUutCBq2i4bDbRv',
     memo: 'test withdrawal',
   );
 }

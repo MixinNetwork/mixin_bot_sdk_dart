@@ -519,14 +519,14 @@ class UtxoApi {
           .data;
       if (requestResponse.isEmpty) {
         throw Exception('Parameter exception');
-      } else if (requestResponse.first.state == OutputState.unspent.name) {
+      } else if (requestResponse.first.state != OutputState.unspent.name) {
         throw Exception('Transfer is already paid');
       }
 
       final withdrawalData = requestResponse
-          .firstWhere((element) => element.requestId == feeRequestId);
-      final feeData = requestResponse
           .firstWhere((element) => element.requestId == withdrawalRequestId);
+      final feeData = requestResponse
+          .firstWhere((element) => element.requestId == feeRequestId);
 
       final singedWithdrawalRaw = signSafeTransaction(
         tx: withdrawalTx,

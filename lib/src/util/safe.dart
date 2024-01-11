@@ -107,7 +107,7 @@ class Output {
   Output({
     required this.type,
     required this.amount,
-    this.keys,
+    this.keys = const [],
     this.withdrawal,
     this.script,
     this.mask,
@@ -115,7 +115,7 @@ class Output {
 
   final OutputType? type;
   final String amount;
-  final List<String>? keys;
+  final List<String> keys;
   final WithdrawalData? withdrawal;
   final String? script;
   final String? mask;
@@ -282,7 +282,7 @@ String signSafeTransaction({
     final index = utxo.keys.indexOf(key.publicKey().hexString());
     if (index == -1) {
       throw Exception(
-          'invalid public key for the input: $input, ${key.publicKey().hexString()}');
+          'invalid public key for the input: $i ${utxo.keys}, ${key.publicKey().hexString()}');
     }
     final sigs = <int, String>{};
     final sig = key.sign(msg);
