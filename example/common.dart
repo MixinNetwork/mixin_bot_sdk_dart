@@ -17,7 +17,7 @@ late Client client = Client(
   privateKey: privateKey,
   sessionId: botSessionId,
   userId: botUserId,
-);
+)..dio.options.extra['retry'] = true;
 
 const tronUSDT = 'b91e18ff-a9ae-3dc7-8679-e935d9a4b34b';
 const cnb = '965e5c6e-434c-3fa9-b780-c50f43cd955c';

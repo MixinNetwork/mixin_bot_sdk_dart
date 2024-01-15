@@ -248,6 +248,7 @@ class UtxoApi {
     required String asset,
     required int threshold,
     required Decimal desiredAmount,
+    List<String> members = const [],
   }) async {
     int? latestSequence;
     final outputs = <SafeUtxoOutput>[];
@@ -258,6 +259,7 @@ class UtxoApi {
         threshold: threshold,
         asset: asset,
         state: OutputState.unspent.name,
+        members: members,
         limit: limit,
         offset: latestSequence == null ? null : latestSequence + 1,
       ))
@@ -293,29 +295,38 @@ class UtxoApi {
 
   /// Send a tx to mixin user.
   ///
-  /// [userId] destination user uuid
+  /// [receiverIds] destination user uuid list
+  /// [senderIds] sender user uuid list
+  ///
   /// [spendKey] spend key hex
+  ///
   Future<List<TransactionResponse>> transactionToUser({
-    required String userId,
+    required List<String> receiverIds,
     required String amount,
     required String asset,
     required String spendKey,
+    List<String> senderIds = const [],
     int threshold = 1,
     String? memo,
   }) async {
+    assert(receiverIds.isNotEmpty, 'receiverIds is empty');
+    receiverIds = receiverIds.toList()..sort();
+
     final (utxos, change) = await _getEnoughOutputsForTransaction(
       asset: asset,
       threshold: threshold,
       desiredAmount: Decimal.parse(amount),
+      members: senderIds,
     );
 
     final recipients = [
       UserTransactionRecipient(
-        members: [userId],
+        members: receiverIds,
         threshold: threshold,
         amount: amount,
       ),
       if (change > Decimal.zero)
+        // change
         UserTransactionRecipient(
           members: utxos[0].receivers,
           threshold: utxos[0].receiversThreshold,
@@ -634,6 +645,27 @@ class UtxoApi {
         [TransactionRequest(raw: signedRaw, requestId: requestId)],
       );
       return sentTx.data;
+    }
+  }
+
+  Future<List<TransactionResponse>> transactionToMixAddress({
+    required MixAddress address,
+    required String amount,
+    required String spendKey,
+    required String asset,
+  }) async {
+    assert(address.members.isNotEmpty, 'members is empty');
+    switch (address.memberType) {
+      case MixMemberType.uuid:
+        return transactionToUser(
+          receiverIds: address.members,
+          amount: amount,
+          asset: asset,
+          spendKey: spendKey,
+        );
+      case MixMemberType.xin:
+        assert(address.members.length == 1, 'members length is not 1');
+        throw UnimplementedError();
     }
   }
 }

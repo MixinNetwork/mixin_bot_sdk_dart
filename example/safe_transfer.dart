@@ -9,8 +9,9 @@ Future<void> main() async {
   );
   print('cnb balance: ${balance}');
 
+  // transaction to one user
   await client.utxoApi.transactionToUser(
-    userId: 'cfb018b0-eaf7-40ec-9e07-28a5158f1269',
+    receiverIds: ['cfb018b0-eaf7-40ec-9e07-28a5158f1269'],
     amount: '0.0001',
     asset: Token.cnb.assetId,
     spendKey: hex.encode(spendKey.bytes),
