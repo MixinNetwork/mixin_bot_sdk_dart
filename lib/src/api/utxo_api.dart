@@ -186,6 +186,35 @@ class UtxoApi {
         TransactionResponse.fromJson,
       );
 
+  Future<MixinResponse<TransactionResponse>> getMultisigs(String requestId) =>
+      MixinResponse.request<TransactionResponse>(
+        dio.get(
+          '/safe/multisigs/$requestId',
+        ),
+        TransactionResponse.fromJson,
+      );
+
+  Future<MixinResponse<TransactionResponse>> signTransactionMultisigs(
+    String requestId,
+    TransactionRequest request,
+  ) =>
+      MixinResponse.request<TransactionResponse>(
+        dio.post(
+          '/safe/multisigs/$requestId/sign',
+          data: request.toJson(),
+        ),
+        TransactionResponse.fromJson,
+      );
+
+  Future<MixinResponse<TransactionResponse>> unlockTransactionMultisigs(
+          String requestId) =>
+      MixinResponse.request<TransactionResponse>(
+        dio.post(
+          '/safe/multisigs/$requestId/unlock',
+        ),
+        TransactionResponse.fromJson,
+      );
+
   Future<String> assetBalance({
     required String assetId,
     required int threshold,
