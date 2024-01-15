@@ -1,3 +1,8 @@
+## 1.1.0
+
+* improve transaction to multi uuid receiver
+* add transaction to MixAddress
+
 ## 1.0.4
 
 * make `getOutputs()` members parameter nullable
