@@ -4,7 +4,6 @@ import 'package:convert/convert.dart';
 import 'package:crypto/crypto.dart';
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:uuid/uuid.dart';
-import 'util/crypto_util.dart';
 
 String signAuthTokenWithRSA(
         String? userId,
@@ -20,25 +19,25 @@ String signAuthTokenWithRSA(
 String signAuthTokenWithEdDSA(
         String? userId,
         String? sessionId,
-        String? privateKey,
+        String? sessionPrivatateKey,
         String? scp,
         String method,
         String uri,
         String body) =>
     _signAuthenticationToken(
-        userId, sessionId, privateKey, scp, method, uri, body, false);
+        userId, sessionId, sessionPrivatateKey, scp, method, uri, body, false);
 
 String _signAuthenticationToken(
   String? userId,
   String? sessionId,
-  String? privateKey,
+  String? sessionPrivatateKey,
   String? scp,
   String method,
   String uri,
   String body,
   bool isRSA,
 ) {
-  if ([userId, sessionId, privateKey]
+  if ([userId, sessionId, sessionPrivatateKey]
       .any((element) => element?.isEmpty ?? true)) {
     return '';
   }
@@ -59,6 +58,6 @@ String _signAuthenticationToken(
     'scp': scp ?? 'FULL',
   });
 
-  final privateBytes = decodeBase64(privateKey!);
+  final privateBytes = hex.decode(sessionPrivatateKey!);
   return jwt.sign(EdDSAPrivateKey(privateBytes), algorithm: JWTAlgorithm.EdDSA);
 }

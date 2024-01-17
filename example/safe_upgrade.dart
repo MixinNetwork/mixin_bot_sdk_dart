@@ -21,7 +21,7 @@ void main() async {
   print(user.userId);
 
   final userClient = Client(
-    privateKey: base64Encode(sessionKey.privateKey.bytes),
+    sessionPrivateKey: base64Encode(sessionKey.privateKey.bytes),
     sessionId: user.sessionId,
     userId: user.userId,
   );

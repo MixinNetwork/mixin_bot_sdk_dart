@@ -8,7 +8,7 @@ void main() {
     final client = Client(
       userId: uid,
       sessionId: sid,
-      privateKey: private,
+      sessionPrivateKey: private,
     );
 
     test('test getMe', () async {

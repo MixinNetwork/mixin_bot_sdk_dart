@@ -5,14 +5,13 @@ import 'package:dio/dio.dart';
 import '../mixin_bot_sdk_dart.dart';
 
 const mixinBaseUrl0 = 'https://api.mixin.one';
-const mixinBaseUrl1 = 'https://mixin-api.zeromesh.net';
 const _kRetryExtraKey = 'retry';
 
 class Client {
   Client({
     String? userId,
     String? sessionId,
-    String? privateKey,
+    String? sessionPrivateKey,
     String? scp,
     String? baseUrl,
     String? accessToken,
@@ -44,7 +43,7 @@ class Client {
             signAuthTokenWithEdDSA(
               userId,
               sessionId,
-              privateKey,
+              sessionPrivateKey,
               scp,
               options.method,
               options.uri.toString().substring(options.baseUrl.length),
@@ -68,9 +67,6 @@ class Client {
         );
       },
       onError: (DioException e, ErrorInterceptorHandler handler) async {
-        if (!{mixinBaseUrl0, mixinBaseUrl1}.contains(dio.options.baseUrl)) {
-          return handler.next(e);
-        }
         if ((e.requestOptions.extra[_kRetryExtraKey] as bool?) ?? false) {
           return handler.next(e);
         }
@@ -79,10 +75,6 @@ class Client {
             (e.error! as MixinError).code < 500) {
           return handler.next(e);
         }
-
-        dio.options.baseUrl = dio.options.baseUrl == mixinBaseUrl0
-            ? mixinBaseUrl1
-            : mixinBaseUrl0;
 
         try {
           final response = await dio.request<dynamic>(
