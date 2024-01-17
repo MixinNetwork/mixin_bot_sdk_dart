@@ -1,4 +1,4 @@
-import 'dart:convert';
+import 'package:convert/convert.dart';
 import 'dart:math' as math;
 import 'dart:typed_data';
 
@@ -12,7 +12,7 @@ void main() async {
   final sessionKey = ed.generateKey();
   print(sessionKey.privateKey.bytes.base64Encode());
 
-  final sessionSecret = base64Encode(sessionKey.publicKey.bytes);
+  final sessionSecret = sessionKey.publicKey.bytes.base64RawUrlEncode();
   final user = (await client.userApi.createUsers(
     fullName: 'User_${math.Random().nextInt(10)}',
     sessionSecret: sessionSecret,
@@ -21,7 +21,7 @@ void main() async {
   print(user.userId);
 
   final userClient = Client(
-    sessionPrivateKey: base64Encode(sessionKey.privateKey.bytes),
+    sessionPrivateKey: hex.encode(sessionKey.privateKey.bytes),
     sessionId: user.sessionId,
     userId: user.userId,
   );
@@ -41,7 +41,7 @@ void main() async {
   await userClient.accountApi.verifyPin(
     encryptTipPin(
       pinTokenBase64: user.pinToken,
-      privateKeyBase64: base64Encode(sessionKey.privateKey.bytes),
+      privateKeyBase64: sessionKey.privateKey.bytes.base64RawUrlEncode(),
       iterator: timestamp,
       tipPrivateKey: Uint8List.fromList(keyPair.privateKey.bytes),
       signTarget: TipBody.forVerify(timestamp).bytes,
