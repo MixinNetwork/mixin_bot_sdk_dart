@@ -18,6 +18,7 @@ void main() async {
     sessionSecret: sessionSecret,
   ))
       .data;
+  print(user.userId);
 
   final userClient = Client(
     privateKey: base64Encode(sessionKey.privateKey.bytes),
@@ -25,29 +26,11 @@ void main() async {
     userId: user.userId,
   );
 
-  // create user pin
-  await userClient.accountApi.createPin(
-    encryptPin(
-      '000000',
-      user.pinToken,
-      base64Encode(sessionKey.privateKey.bytes),
-      DateTime.now().millisecondsSinceEpoch * 1000000,
-    ),
-  );
-
-  // verify user pin
-  await userClient.accountApi.verifyPin(encryptPin(
-    '000000',
-    user.pinToken,
-    base64Encode(sessionKey.privateKey.bytes),
-    DateTime.now().millisecondsSinceEpoch * 1000000,
-  ));
-
-  // update tip pin, please keep the keyPair and save
+  // update or setup tip pin, please keep the keyPair and save
   final keyPair = ed.generateKey();
   print(keyPair.privateKey.bytes.base64Encode());
   await userClient.accountApi.updateTipPin(
-    legacyPin: '000000',
+    legacyPin: '',
     pinTokenBase64: user.pinToken,
     sessionKeyBase64: sessionKey.privateKey.bytes.base64Encode(),
     tipPublicKeyHex: keyPair.publicKey.bytes.toHexString(),

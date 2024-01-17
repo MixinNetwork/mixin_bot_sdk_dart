@@ -212,12 +212,15 @@ class AccountApi {
     required String tipPublicKeyHex,
   }) async {
     final iterator = DateTime.now().millisecondsSinceEpoch * 1000000;
-    final encryptedLegacyPin = encryptPin(
-      legacyPin,
-      pinTokenBase64,
-      sessionKeyBase64,
-      iterator,
-    );
+    var encryptedLegacyPin = '';
+    if (legacyPin.isNotEmpty) {
+      encryptedLegacyPin = encryptPin(
+        legacyPin,
+        pinTokenBase64,
+        sessionKeyBase64,
+        iterator,
+      );
+    }
     final tipPublicKey = hex.decode(tipPublicKeyHex);
     if (tipPublicKey.length != 32) {
       throw ArgumentError(
