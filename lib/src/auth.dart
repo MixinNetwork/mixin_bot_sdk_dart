@@ -19,25 +19,27 @@ String signAuthTokenWithRSA(
 String signAuthTokenWithEdDSA(
         String? userId,
         String? sessionId,
-        String? sessionPrivatateKey,
+        String? sessionPrivateKey,
         String? scp,
         String method,
         String uri,
-        String body) =>
+        String body,
+        {String? aud}) =>
     _signAuthenticationToken(
-        userId, sessionId, sessionPrivatateKey, scp, method, uri, body, false);
+        userId, sessionId, sessionPrivateKey, scp, method, uri, body, false,
+        aud: aud);
 
 String _signAuthenticationToken(
-  String? userId,
-  String? sessionId,
-  String? sessionPrivatateKey,
-  String? scp,
-  String method,
-  String uri,
-  String body,
-  bool isRSA,
-) {
-  if ([userId, sessionId, sessionPrivatateKey]
+    String? userId,
+    String? sessionId,
+    String? sessionPrivateKey,
+    String? scp,
+    String method,
+    String uri,
+    String body,
+    bool isRSA,
+    {String? aud}) {
+  if ([userId, sessionId, sessionPrivateKey]
       .any((element) => element?.isEmpty ?? true)) {
     return '';
   }
@@ -58,6 +60,10 @@ String _signAuthenticationToken(
     'scp': scp ?? 'FULL',
   });
 
-  final privateBytes = hex.decode(sessionPrivatateKey!);
+  if (aud != null) {
+    jwt.audience = Audience([aud]);
+  }
+
+  final privateBytes = hex.decode(sessionPrivateKey!);
   return jwt.sign(EdDSAPrivateKey(privateBytes), algorithm: JWTAlgorithm.EdDSA);
 }
