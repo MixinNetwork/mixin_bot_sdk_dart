@@ -424,6 +424,7 @@ class UtxoApi {
     required String amount,
     String? tag,
     String? memo,
+    bool preferAssetFeeOverChainFee = false,
   }) async {
     final token = (await _tokenApi.getAssetById(asset)).data;
     final chain = token.chainId == token.assetId
@@ -432,8 +433,13 @@ class UtxoApi {
 
     final feeResponse =
         (await _tokenApi.getFees(asset: asset, destination: destination)).data;
-    final fee = feeResponse
+    late final assetFee =
+        feeResponse.firstWhereOrNull((element) => element.assetId == asset);
+    late final chainFee = feeResponse
         .firstWhereOrNull((element) => element.assetId == chain.assetId);
+
+    final fee =
+        (preferAssetFeeOverChainFee && assetFee != null) ? assetFee : chainFee;
     if (fee == null) {
       throw Exception('fee not found: $asset $feeResponse');
     }
