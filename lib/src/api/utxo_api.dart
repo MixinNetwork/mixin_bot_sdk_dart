@@ -448,7 +448,7 @@ class UtxoApi {
 
     return _withdrawTransaction(
       feeReceiverId: mixinFeeUserId,
-      feeAsset: chain.assetId,
+      feeAsset: fee.assetId,
       feeAmount: Decimal.parse(fee.amount),
       asset: asset,
       amount: Decimal.parse(amount),
