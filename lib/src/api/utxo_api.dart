@@ -417,7 +417,7 @@ class UtxoApi {
     return response.data;
   }
 
-  Future<void> withdrawalToAddress({
+  Future<List<TransactionResponse>> withdrawalToAddress({
     required String asset,
     required String destination,
     required String spendKey,
