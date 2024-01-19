@@ -440,7 +440,7 @@ class UtxoApi {
 
     const mixinFeeUserId = '674d6776-d600-4346-af46-58e77d8df185';
 
-    await _withdrawTransaction(
+    return _withdrawTransaction(
       feeReceiverId: mixinFeeUserId,
       feeAsset: chain.assetId,
       feeAmount: Decimal.parse(fee.amount),
