@@ -308,6 +308,7 @@ class UtxoApi {
     List<String> senderIds = const [],
     int threshold = 1,
     String? memo,
+    String? transactionRequestId,
   }) async {
     assert(receiverIds.isNotEmpty, 'receiverIds is empty');
     receiverIds = receiverIds.toList()..sort();
@@ -355,7 +356,7 @@ class UtxoApi {
     );
     // verify safe transaction
     final raw = encodeSafeTransaction(tx);
-    final requestId = const Uuid().v4();
+    final requestId = transactionRequestId ?? const Uuid().v4();
     final verifiedTx = (await transactionRequest(
       [
         TransactionRequest(
@@ -424,6 +425,7 @@ class UtxoApi {
     required String amount,
     String? tag,
     String? memo,
+    String? transactionRequestId,
   }) async {
     final token = (await _tokenApi.getAssetById(asset)).data;
     final chain = token.chainId == token.assetId
@@ -449,6 +451,7 @@ class UtxoApi {
       destination: destination,
       tag: tag,
       spendKey: spendKey,
+      transactionRequestId: transactionRequestId,
     );
   }
 
@@ -463,6 +466,7 @@ class UtxoApi {
     required String spendKey,
     int threshold = 1,
     String? memo,
+    String? transactionRequestId,
   }) async {
     final isFeeDifferenceAsset = feeAsset != asset;
 
@@ -629,7 +633,7 @@ class UtxoApi {
       );
 
       final raw = encodeSafeTransaction(tx);
-      final requestId = const Uuid().v4();
+      final requestId = transactionRequestId ?? const Uuid().v4();
       final verifiedTx = (await transactionRequest(
         [TransactionRequest(requestId: requestId, raw: raw)],
       ))
@@ -653,6 +657,7 @@ class UtxoApi {
     required String amount,
     required String spendKey,
     required String asset,
+    String? transactionRequestId,
   }) async {
     assert(address.members.isNotEmpty, 'members is empty');
     switch (address.memberType) {
@@ -662,6 +667,7 @@ class UtxoApi {
           amount: amount,
           asset: asset,
           spendKey: spendKey,
+          transactionRequestId: transactionRequestId,
         );
       case MixMemberType.xin:
         assert(address.members.length == 1, 'members length is not 1');
