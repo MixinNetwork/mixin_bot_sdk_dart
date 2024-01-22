@@ -424,6 +424,7 @@ class UtxoApi {
     required String amount,
     String? tag,
     String? memo,
+    String? transactionRequestId,
   }) async {
     final token = (await _tokenApi.getAssetById(asset)).data;
     final chain = token.chainId == token.assetId
@@ -449,6 +450,7 @@ class UtxoApi {
       destination: destination,
       tag: tag,
       spendKey: spendKey,
+      transactionRequestId: transactionRequestId,
     );
   }
 
@@ -463,6 +465,7 @@ class UtxoApi {
     required String spendKey,
     int threshold = 1,
     String? memo,
+    String? transactionRequestId,
   }) async {
     final isFeeDifferenceAsset = feeAsset != asset;
 
@@ -629,7 +632,7 @@ class UtxoApi {
       );
 
       final raw = encodeSafeTransaction(tx);
-      final requestId = const Uuid().v4();
+      final requestId = transactionRequestId ?? const Uuid().v4();
       final verifiedTx = (await transactionRequest(
         [TransactionRequest(requestId: requestId, raw: raw)],
       ))
