@@ -308,7 +308,7 @@ class UtxoApi {
     List<String> senderIds = const [],
     int threshold = 1,
     String? memo,
-    String? requestId,
+    String? transactionRequestId,
   }) async {
     assert(receiverIds.isNotEmpty, 'receiverIds is empty');
     receiverIds = receiverIds.toList()..sort();
@@ -356,7 +356,7 @@ class UtxoApi {
     );
     // verify safe transaction
     final raw = encodeSafeTransaction(tx);
-    requestId ??= const Uuid().v4();
+    final requestId = transactionRequestId ?? const Uuid().v4();
     final verifiedTx = (await transactionRequest(
       [
         TransactionRequest(
@@ -657,7 +657,7 @@ class UtxoApi {
     required String amount,
     required String spendKey,
     required String asset,
-    String? requestId,
+    String? transactionRequestId,
   }) async {
     assert(address.members.isNotEmpty, 'members is empty');
     switch (address.memberType) {
@@ -667,7 +667,7 @@ class UtxoApi {
           amount: amount,
           asset: asset,
           spendKey: spendKey,
-          requestId: requestId,
+          transactionRequestId: transactionRequestId,
         );
       case MixMemberType.xin:
         assert(address.members.length == 1, 'members length is not 1');
