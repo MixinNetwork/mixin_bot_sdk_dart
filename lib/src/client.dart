@@ -5,7 +5,6 @@ import 'package:dio/dio.dart';
 import '../mixin_bot_sdk_dart.dart';
 
 const mixinBaseUrl0 = 'https://api.mixin.one';
-const _kRetryExtraKey = 'retry';
 
 class Client {
   Client({
@@ -65,39 +64,6 @@ class Client {
           ),
           true,
         );
-      },
-      onError: (DioException e, ErrorInterceptorHandler handler) async {
-        if ((e.requestOptions.extra[_kRetryExtraKey] as bool?) ?? false) {
-          return handler.next(e);
-        }
-        if (e is MixinApiError &&
-            e.error != null &&
-            (e.error! as MixinError).code < 500) {
-          return handler.next(e);
-        }
-
-        try {
-          final response = await dio.request<dynamic>(
-            e.requestOptions.path,
-            data: e.requestOptions.data,
-            queryParameters: e.requestOptions.queryParameters,
-            cancelToken: e.requestOptions.cancelToken,
-            options: Options(
-              method: e.requestOptions.method,
-              headers: e.requestOptions.headers,
-              responseType: e.requestOptions.responseType,
-              contentType: e.requestOptions.contentType,
-              extra: <String, dynamic>{
-                _kRetryExtraKey: true,
-              },
-            ),
-            onSendProgress: e.requestOptions.onSendProgress,
-            onReceiveProgress: e.requestOptions.onReceiveProgress,
-          );
-          return handler.resolve(response);
-        } catch (error) {
-          return handler.reject(e);
-        }
       },
     ));
     if (httpLogLevel != null) {
