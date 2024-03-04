@@ -1,3 +1,15 @@
+## 1.2.0
+
+**BREAKING CHANGE**
+
+* Remove fallback to `zeromesh` host when api errored.
+* Introduce `Key` class to replace `String spendKey` and `String sessionPrivateKey`
+
+**Other**
+
+* allow preference for asset fee.
+* allow traceId specification
+
 ## 1.1.0
 
 * improve transaction to multi uuid receiver
