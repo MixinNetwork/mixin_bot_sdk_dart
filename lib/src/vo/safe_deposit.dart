@@ -7,6 +7,7 @@ part 'safe_deposit.g.dart';
 class SafeDeposit with EquatableMixin {
   SafeDeposit({
     required this.depositHash,
+    required this.sender,
   });
 
   factory SafeDeposit.fromJson(Map<String, dynamic> json) =>
@@ -15,8 +16,11 @@ class SafeDeposit with EquatableMixin {
   @JsonKey(name: 'deposit_hash')
   final String depositHash;
 
+  @JsonKey(name: 'sender', defaultValue: '')
+  final String sender;
+
   @override
-  List<Object?> get props => [depositHash];
+  List<Object?> get props => [depositHash, sender];
 
   Map<String, dynamic> toJson() => _$SafeDepositToJson(this);
 }
