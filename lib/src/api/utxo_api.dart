@@ -304,7 +304,7 @@ class UtxoApi {
     required List<String> receiverIds,
     required String amount,
     required String asset,
-    required String spendKey,
+    required Key spendKey,
     List<String> senderIds = const [],
     int threshold = 1,
     String? memo,
@@ -421,7 +421,7 @@ class UtxoApi {
   Future<List<TransactionResponse>> withdrawalToAddress({
     required String asset,
     required String destination,
-    required String spendKey,
+    required Key spendKey,
     required String amount,
     String? tag,
     String? memo,
@@ -469,7 +469,7 @@ class UtxoApi {
     required Decimal amount,
     required String destination,
     required String? tag,
-    required String spendKey,
+    required Key spendKey,
     int threshold = 1,
     String? memo,
     String? transactionRequestId,
@@ -661,7 +661,7 @@ class UtxoApi {
   Future<List<TransactionResponse>> transactionToMixAddress({
     required MixAddress address,
     required String amount,
-    required String spendKey,
+    required Key spendKey,
     required String asset,
     String? transactionRequestId,
   }) async {

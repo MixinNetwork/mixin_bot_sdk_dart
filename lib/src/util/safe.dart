@@ -257,13 +257,14 @@ String signSafeTransaction({
   required SafeTransaction tx,
   required List<SafeUtxoOutput> utxos,
   required List<String> views,
-  required String privateKey,
+  required Key privateKey,
 }) {
   final raw = encodeSafeTransaction(tx);
   final msg = Uint8List.fromList(blake3(hex.decode(raw)));
 
-  final spenty =
-      sha512Hash(Uint8List.fromList(hex.decode(privateKey.substring(0, 64))));
+  assert(privateKey.raw.length >= 32,
+      'invalid private key length: ${privateKey.raw.length}');
+  final spenty = sha512Hash(privateKey.raw.sublist(0, 32));
 
   final y = Scalar()..setBytesWithClamping(spenty.sublist(0, 32));
   final signaturesMap = <Map<int, String>>[];

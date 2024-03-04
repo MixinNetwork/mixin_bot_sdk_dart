@@ -1,22 +1,25 @@
-import 'dart:typed_data';
-
-import 'package:convert/convert.dart';
-import 'package:ed25519_edwards/ed25519_edwards.dart' as ed;
 import 'package:mixin_bot_sdk_dart/mixin_bot_sdk_dart.dart';
 
 import 'constants.dart';
 
-late final privateKey = hex.encode(ed
-    .newKeyFromSeed(Uint8List.fromList(hex.decode(botSessionPrivateKey)))
-    .bytes);
-late final spendKey =
-    ed.newKeyFromSeed(Uint8List.fromList(hex.decode(botSpendKey)));
+late final privateKey = () {
+  if (botSessionPrivateKey.isEmpty) {
+    throw Exception('botSessionPrivateKey is not configured');
+  }
+  return Key.fromHexSeed(botSessionPrivateKey);
+}();
+late final spendKey = () {
+  if (botSpendKey.isEmpty) {
+    throw Exception('botSpendPrivateKey is not configured');
+  }
+  return Key.fromHexSeed(botSpendKey);
+}();
 
 late Client client = Client(
   sessionPrivateKey: privateKey,
   sessionId: botSessionId,
   userId: botUserId,
-)..dio.options.extra['retry'] = true;
+);
 
 const tronUSDT = 'b91e18ff-a9ae-3dc7-8679-e935d9a4b34b';
 const cnb = '965e5c6e-434c-3fa9-b780-c50f43cd955c';

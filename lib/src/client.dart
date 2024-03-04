@@ -10,7 +10,7 @@ class Client {
   Client({
     String? userId,
     String? sessionId,
-    String? sessionPrivateKey,
+    Key? sessionPrivateKey,
     String? scp,
     String? baseUrl,
     String? accessToken,

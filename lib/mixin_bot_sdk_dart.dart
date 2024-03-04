@@ -26,6 +26,7 @@ export 'src/log_interceptor.dart';
 export 'src/pin.dart';
 export 'src/util/address.dart';
 export 'src/util/crypto_util.dart';
+export 'src/util/key.dart';
 export 'src/util/safe.dart';
 export 'src/util/string_extension.dart';
 export 'src/util/tip.dart';

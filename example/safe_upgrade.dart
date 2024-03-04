@@ -1,10 +1,10 @@
-import 'package:convert/convert.dart';
 import 'dart:math' as math;
 import 'dart:typed_data';
 
+import 'package:convert/convert.dart';
 import 'package:ed25519_edwards/ed25519_edwards.dart' as ed;
-import '../lib/mixin_bot_sdk_dart.dart';
 
+import '../lib/mixin_bot_sdk_dart.dart';
 import 'common.dart';
 
 /// Samples for upgrade legacy pin to safe
@@ -21,7 +21,8 @@ void main() async {
   print(user.sessionId);
 
   final userClient = Client(
-    sessionPrivateKey: hex.encode(sessionKey.privateKey.bytes),
+    sessionPrivateKey:
+        Key.fromRaw(Uint8List.fromList(sessionKey.privateKey.bytes)),
     sessionId: user.sessionId,
     userId: user.userId,
   );

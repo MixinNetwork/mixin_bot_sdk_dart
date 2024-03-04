@@ -1,5 +1,3 @@
-import 'package:convert/convert.dart';
-
 import 'common.dart';
 
 Future<void> main() async {
@@ -14,7 +12,7 @@ Future<void> main() async {
     receiverIds: ['cfb018b0-eaf7-40ec-9e07-28a5158f1269'],
     amount: '0.0001',
     asset: Token.cnb.assetId,
-    spendKey: hex.encode(spendKey.bytes),
+    spendKey: spendKey,
     memo: 'test transfer',
   );
 }

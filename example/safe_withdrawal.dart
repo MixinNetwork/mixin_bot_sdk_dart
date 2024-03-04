@@ -1,5 +1,3 @@
-import 'package:convert/convert.dart';
-
 import 'common.dart';
 
 Future<void> main() async {
@@ -12,7 +10,7 @@ Future<void> main() async {
   await client.utxoApi.withdrawalToAddress(
     amount: '0.01',
     asset: Token.tronUSDT.assetId,
-    spendKey: hex.encode(spendKey.bytes),
+    spendKey: spendKey,
     destination: 'TAXE98CMomoA28MtNpfxUutCBq2i4bDbRv',
     memo: 'test withdrawal',
   );

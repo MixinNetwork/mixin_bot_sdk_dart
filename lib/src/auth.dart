@@ -5,42 +5,35 @@ import 'package:crypto/crypto.dart';
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:uuid/uuid.dart';
 
-String signAuthTokenWithRSA(
-        String? userId,
-        String? sessionId,
-        String? privateKey,
-        String? scp,
-        String method,
-        String uri,
-        String body) =>
+import '../mixin_bot_sdk_dart.dart';
+
+String signAuthTokenWithRSA(String? userId, String? sessionId, Key? privateKey,
+        String? scp, String method, String uri, String body) =>
     _signAuthenticationToken(
         userId, sessionId, privateKey, scp, method, uri, body, true);
 
-String signAuthTokenWithEdDSA(
-        String? userId,
-        String? sessionId,
-        String? sessionPrivateKey,
-        String? scp,
-        String method,
-        String uri,
-        String body,
+String signAuthTokenWithEdDSA(String? userId, String? sessionId,
+        Key? privateKey, String? scp, String method, String uri, String body,
         {String? aud}) =>
     _signAuthenticationToken(
-        userId, sessionId, sessionPrivateKey, scp, method, uri, body, false,
+        userId, sessionId, privateKey, scp, method, uri, body, false,
         aud: aud);
 
 String _signAuthenticationToken(
     String? userId,
     String? sessionId,
-    String? sessionPrivateKey,
+    Key? privateKey,
     String? scp,
     String method,
     String uri,
     String body,
     bool isRSA,
     {String? aud}) {
-  if ([userId, sessionId, sessionPrivateKey]
-      .any((element) => element?.isEmpty ?? true)) {
+  if ([userId, sessionId].any((element) => element?.isEmpty ?? true)) {
+    return '';
+  }
+
+  if (privateKey == null) {
     return '';
   }
 
@@ -64,6 +57,8 @@ String _signAuthenticationToken(
     jwt.audience = Audience([aud]);
   }
 
-  final privateBytes = hex.decode(sessionPrivateKey!);
-  return jwt.sign(EdDSAPrivateKey(privateBytes), algorithm: JWTAlgorithm.EdDSA);
+  return jwt.sign(
+    EdDSAPrivateKey(privateKey.raw),
+    algorithm: JWTAlgorithm.EdDSA,
+  );
 }
