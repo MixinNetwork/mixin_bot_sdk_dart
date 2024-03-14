@@ -76,6 +76,11 @@ class AccountApi {
         Sticker.fromJson,
       );
 
+  Future<MixinResponse<void>> removeSticker(List<String> ids) =>
+      MixinResponse.requestVoid(
+        dio.post('/stickers/favorite/remove', data: ids),
+      );
+
   Future<MixinResponse<List<Fiat>>> getFiats() => MixinResponse.requestList(
         dio.get('/fiats'),
         Fiat.fromJson,

@@ -1,3 +1,7 @@
+## 1.2.1
+
+* add removeSticker api
+
 ## 1.2.0
 
 **BREAKING CHANGE**
