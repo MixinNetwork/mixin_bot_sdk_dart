@@ -1,3 +1,7 @@
+## 1.2.3
+
+* `Token` add `collection_hash` field.
+
 ## 1.2.2
 
 * add inscription item and collection api
