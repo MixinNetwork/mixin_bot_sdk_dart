@@ -1,3 +1,7 @@
+## 1.2.2
+
+* add inscription item and collection api
+
 ## 1.2.1
 
 * add removeSticker api
