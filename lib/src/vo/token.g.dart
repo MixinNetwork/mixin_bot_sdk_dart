@@ -20,6 +20,7 @@ Token _$TokenFromJson(Map<String, dynamic> json) => Token(
       confirmations: (json['confirmations'] as num).toInt(),
       assetKey: json['asset_key'] as String,
       dust: json['dust'] as String,
+      collectionHash: json['collection_hash'] as String?,
     );
 
 Map<String, dynamic> _$TokenToJson(Token instance) => <String, dynamic>{
@@ -36,4 +37,5 @@ Map<String, dynamic> _$TokenToJson(Token instance) => <String, dynamic>{
       'confirmations': instance.confirmations,
       'asset_key': instance.assetKey,
       'dust': instance.dust,
+      'collection_hash': instance.collectionHash,
     };

@@ -19,6 +19,7 @@ class Token with EquatableMixin {
     required this.confirmations,
     required this.assetKey,
     required this.dust,
+    this.collectionHash,
   });
 
   factory Token.fromJson(Map<String, dynamic> json) => _$TokenFromJson(json);
@@ -49,6 +50,8 @@ class Token with EquatableMixin {
   final String assetKey;
   @JsonKey(name: 'dust')
   final String dust;
+  @JsonKey(name: 'collection_hash')
+  final String? collectionHash;
 
   Map<String, dynamic> toJson() => _$TokenToJson(this);
 
@@ -67,5 +70,6 @@ class Token with EquatableMixin {
         confirmations,
         assetKey,
         dust,
+        collectionHash,
       ];
 }
