@@ -33,7 +33,7 @@ OpponentMultisig _$OpponentMultisigFromJson(Map<String, dynamic> json) =>
     OpponentMultisig(
       receivers:
           (json['receivers'] as List<dynamic>).map((e) => e as String).toList(),
-      threshold: json['threshold'] as int,
+      threshold: (json['threshold'] as num).toInt(),
     );
 
 Map<String, dynamic> _$OpponentMultisigToJson(OpponentMultisig instance) =>

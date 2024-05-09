@@ -15,7 +15,7 @@ AccountRequest _$AccountRequestFromJson(Map<String, dynamic> json) =>
       purpose: $enumDecode(_$VerificationPurposeEnumMap, json['purpose']),
       code: json['code'] as String?,
       notificationToken: json['notification_token'] as String?,
-      registrationId: json['registration_id'] as int?,
+      registrationId: (json['registration_id'] as num?)?.toInt(),
       pin: json['pin'] as String?,
       sessionSecret: json['session_secret'] as String?,
     );

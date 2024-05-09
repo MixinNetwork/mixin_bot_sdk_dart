@@ -11,7 +11,7 @@ Chain _$ChainFromJson(Map<String, dynamic> json) => Chain(
       name: json['name'] as String,
       symbol: json['symbol'] as String,
       iconUrl: json['icon_url'] as String,
-      threshold: json['threshold'] as int,
+      threshold: (json['threshold'] as num).toInt(),
     );
 
 Map<String, dynamic> _$ChainToJson(Chain instance) => <String, dynamic>{

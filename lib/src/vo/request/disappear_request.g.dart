@@ -8,7 +8,7 @@ part of 'disappear_request.dart';
 
 DisappearRequest _$DisappearRequestFromJson(Map<String, dynamic> json) =>
     DisappearRequest(
-      duration: json['duration'] as int,
+      duration: (json['duration'] as num).toInt(),
     );
 
 Map<String, dynamic> _$DisappearRequestToJson(DisappearRequest instance) =>

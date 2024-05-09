@@ -16,7 +16,7 @@ ProvisioningRequest _$ProvisioningRequestFromJson(Map<String, dynamic> json) =>
       platformVersion: json['platform_version'] as String,
       appVersion: json['app_version'] as String,
       purpose: json['purpose'] as String,
-      registrationId: json['registration_id'] as int,
+      registrationId: (json['registration_id'] as num).toInt(),
     );
 
 Map<String, dynamic> _$ProvisioningRequestToJson(

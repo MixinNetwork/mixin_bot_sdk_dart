@@ -14,7 +14,7 @@ SafePendingDeposit _$SafePendingDepositFromJson(Map<String, dynamic> json) =>
       tag: json['tag'] as String?,
       transactionHash: json['transaction_hash'] as String,
       amount: json['amount'] as String,
-      confirmations: json['confirmations'] as int,
+      confirmations: (json['confirmations'] as num).toInt(),
       createdAt: json['created_at'] as String,
     );
 

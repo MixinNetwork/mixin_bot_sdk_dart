@@ -10,7 +10,7 @@ Conversation _$ConversationFromJson(Map<String, dynamic> json) => Conversation(
       conversationId: json['conversation_id'] as String,
       createdAt: DateTime.parse(json['created_at'] as String),
       status: const ConversationStatusJsonConverter()
-          .fromJson(json['status'] as int?),
+          .fromJson((json['status'] as num?)?.toInt()),
       name: json['name'] as String?,
       ownerId: json['owner_id'] as String?,
       category: const ConversationCategoryJsonConverter()
@@ -22,7 +22,7 @@ Conversation _$ConversationFromJson(Map<String, dynamic> json) => Conversation(
           : DateTime.parse(json['pin_time'] as String),
       lastMessageId: json['last_message_id'] as String?,
       lastReadMessageId: json['last_read_message_id'] as String?,
-      unseenMessageCount: json['unseen_message_count'] as int?,
+      unseenMessageCount: (json['unseen_message_count'] as num?)?.toInt(),
       draft: json['draft'] as String?,
       muteUntil: json['mute_until'] as String?,
     );

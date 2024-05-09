@@ -22,7 +22,7 @@ ConversationResponse _$ConversationResponseFromJson(
       muteUntil: json['mute_until'] as String,
       announcement: json['announcement'] as String,
       creatorId: json['creator_id'] as String,
-      expireIn: json['expire_in'] as int? ?? 0,
+      expireIn: (json['expire_in'] as num?)?.toInt() ?? 0,
       participantSessions: (json['participant_sessions'] as List<dynamic>?)
           ?.map((e) => UserSession.fromJson(e as Map<String, dynamic>))
           .toList(),

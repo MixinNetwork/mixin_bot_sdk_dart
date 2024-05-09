@@ -10,7 +10,7 @@ OutputRequest _$OutputRequestFromJson(Map<String, dynamic> json) =>
     OutputRequest(
       receivers:
           (json['receivers'] as List<dynamic>).map((e) => e as String).toList(),
-      index: json['index'] as int,
+      index: (json['index'] as num).toInt(),
       hint: json['hint'] as String?,
     );
 

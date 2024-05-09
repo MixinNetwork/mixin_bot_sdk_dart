@@ -17,7 +17,7 @@ ConversationRequest _$ConversationRequestFromJson(Map<String, dynamic> json) =>
       participants: (json['participants'] as List<dynamic>?)
           ?.map((e) => ParticipantRequest.fromJson(e as Map<String, dynamic>))
           .toList(),
-      duration: json['duration'] as int?,
+      duration: (json['duration'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$ConversationRequestToJson(

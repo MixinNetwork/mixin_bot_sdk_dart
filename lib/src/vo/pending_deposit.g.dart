@@ -13,8 +13,8 @@ PendingDeposit _$PendingDepositFromJson(Map<String, dynamic> json) =>
       transactionHash: json['transaction_hash'] as String,
       sender: json['sender'] as String,
       amount: json['amount'] as String,
-      confirmations: json['confirmations'] as int,
-      threshold: json['threshold'] as int,
+      confirmations: (json['confirmations'] as num).toInt(),
+      threshold: (json['threshold'] as num).toInt(),
       createdAt: DateTime.parse(json['created_at'] as String),
     );
 

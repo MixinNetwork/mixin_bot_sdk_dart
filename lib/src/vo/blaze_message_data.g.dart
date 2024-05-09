@@ -20,7 +20,7 @@ BlazeMessageData _$BlazeMessageDataFromJson(Map<String, dynamic> json) =>
       json['representative_id'] as String?,
       json['quote_message_id'] as String?,
       json['session_id'] as String,
-      json['expire_in'] as int? ?? 0,
+      (json['expire_in'] as num?)?.toInt() ?? 0,
     )..silent = json['silent'] as bool?;
 
 Map<String, dynamic> _$BlazeMessageDataToJson(BlazeMessageData instance) =>
