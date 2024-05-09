@@ -24,6 +24,7 @@ class SafeSnapshot with EquatableMixin {
     required this.closingBalance,
     this.deposit,
     this.withdrawal,
+    this.inscriptionHash,
   });
 
   factory SafeSnapshot.fromJson(Map<String, dynamic> json) =>
@@ -59,6 +60,8 @@ class SafeSnapshot with EquatableMixin {
   final SafeDeposit? deposit;
   @JsonKey(name: 'withdrawal')
   final SafeWithdrawal? withdrawal;
+  @JsonKey(name: 'inscription_hash')
+  final String? inscriptionHash;
 
   Map<String, dynamic> toJson() => _$SafeSnapshotToJson(this);
 
@@ -79,5 +82,6 @@ class SafeSnapshot with EquatableMixin {
         closingBalance,
         deposit,
         withdrawal,
+        inscriptionHash,
       ];
 }

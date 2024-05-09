@@ -17,7 +17,7 @@ Token _$TokenFromJson(Map<String, dynamic> json) => Token(
       chainId: json['chain_id'] as String,
       changeUsd: json['change_usd'] as String,
       changeBtc: json['change_btc'] as String,
-      confirmations: json['confirmations'] as int,
+      confirmations: (json['confirmations'] as num).toInt(),
       assetKey: json['asset_key'] as String,
       dust: json['dust'] as String,
     );

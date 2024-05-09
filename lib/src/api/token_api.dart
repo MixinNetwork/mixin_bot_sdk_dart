@@ -109,4 +109,17 @@ class TokenApi {
         dio.get('/safe/snapshots/trace/$traceId'),
         SafeSnapshot.fromJson,
       );
+
+  Future<MixinResponse<InscriptionCollection>> getInscriptionCollection(
+          String id) =>
+      MixinResponse.request<InscriptionCollection>(
+        dio.get('/safe/inscriptions/collections/$id'),
+        InscriptionCollection.fromJson,
+      );
+
+  Future<MixinResponse<InscriptionItem>> getInscriptionItem(String id) =>
+      MixinResponse.request(
+        dio.get('/safe/inscriptions/items/$id'),
+        InscriptionItem.fromJson,
+      );
 }

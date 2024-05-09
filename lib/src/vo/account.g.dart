@@ -33,7 +33,7 @@ Account _$AccountFromJson(Map<String, dynamic> json) => Account(
           (json['transfer_notification_threshold'] as num).toDouble(),
       transferConfirmationThreshold:
           (json['transfer_confirmation_threshold'] as num).toDouble(),
-      tipCounter: json['tip_counter'] as int,
+      tipCounter: (json['tip_counter'] as num).toInt(),
       tipKeyBase64: json['tip_key_base64'] as String,
       fullName: json['full_name'] as String?,
       avatarUrl: json['avatar_url'] as String?,

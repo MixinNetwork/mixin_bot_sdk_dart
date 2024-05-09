@@ -10,7 +10,7 @@ BlazeAckMessage _$BlazeAckMessageFromJson(Map<String, dynamic> json) =>
     BlazeAckMessage(
       messageId: json['message_id'] as String,
       status: json['status'] as String,
-      expireAt: json['expire_at'] as int?,
+      expireAt: (json['expire_at'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$BlazeAckMessageToJson(BlazeAckMessage instance) =>

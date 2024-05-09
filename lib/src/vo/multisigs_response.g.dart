@@ -17,7 +17,7 @@ MultisigsResponse _$MultisigsResponseFromJson(Map<String, dynamic> json) =>
       json['amount'] as String,
       (json['senders'] as List<dynamic>).map((e) => e as String).toList(),
       (json['receivers'] as List<dynamic>).map((e) => e as String).toList(),
-      json['threshold'] as int,
+      (json['threshold'] as num).toInt(),
       json['state'] as String,
       json['transaction_hash'] as String,
       json['raw_transaction'] as String,

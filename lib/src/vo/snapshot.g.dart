@@ -18,7 +18,7 @@ Snapshot _$SnapshotFromJson(Map<String, dynamic> json) => Snapshot(
       json['sender'] as String?,
       json['receiver'] as String?,
       json['memo'] as String?,
-      json['confirmations'] as int?,
+      (json['confirmations'] as num?)?.toInt(),
       json['state'] as String?,
     )
       ..snapshotHash = json['snapshot_hash'] as String?

@@ -17,7 +17,7 @@ CollectibleToken _$CollectibleTokenFromJson(Map<String, dynamic> json) =>
       CollectibleTokenMeta.fromJson(json['meta'] as Map<String, dynamic>),
       json['created_at'] as String,
       (json['receivers'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      json['receivers_threshold'] as int,
+      (json['receivers_threshold'] as num).toInt(),
       json['collection_id'] as String,
     );
 

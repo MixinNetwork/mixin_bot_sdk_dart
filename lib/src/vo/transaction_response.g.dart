@@ -16,7 +16,7 @@ TransactionResponse _$TransactionResponseFromJson(Map<String, dynamic> json) =>
       snapshotId: json['snapshot_id'] as String?,
       asset: json['asset'] as String,
       sendersHash: json['senders_hash'] as String,
-      sendersThreshold: json['senders_threshold'] as int,
+      sendersThreshold: (json['senders_threshold'] as num).toInt(),
       senders:
           (json['senders'] as List<dynamic>).map((e) => e as String).toList(),
       signers:

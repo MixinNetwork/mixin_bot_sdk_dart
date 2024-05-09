@@ -7,8 +7,8 @@ part of 'mixin_error.dart';
 // **************************************************************************
 
 MixinError _$MixinErrorFromJson(Map<String, dynamic> json) => MixinError(
-      json['status'] as int?,
-      json['code'] as int? ?? 0,
+      (json['status'] as num?)?.toInt(),
+      (json['code'] as num?)?.toInt() ?? 0,
       json['description'] as String? ?? '',
     );
 

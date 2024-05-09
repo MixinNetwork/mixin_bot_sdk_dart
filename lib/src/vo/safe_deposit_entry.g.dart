@@ -15,7 +15,7 @@ SafeDepositEntry _$SafeDepositEntryFromJson(Map<String, dynamic> json) =>
           (json['members'] as List<dynamic>).map((e) => e as String).toList(),
       tag: json['tag'] as String?,
       signature: json['signature'] as String,
-      threshold: json['threshold'] as int,
+      threshold: (json['threshold'] as num).toInt(),
       isPrimary: json['is_primary'] as bool,
     );
 

@@ -12,7 +12,7 @@ PaymentCodeResponse _$PaymentCodeResponseFromJson(Map<String, dynamic> json) =>
       json['asset_id'] as String,
       json['amount'] as String,
       (json['receivers'] as List<dynamic>).map((e) => e as String).toList(),
-      json['threshold'] as int,
+      (json['threshold'] as num).toInt(),
       json['status'] as String,
       json['memo'] as String,
       json['trace_id'] as String,
