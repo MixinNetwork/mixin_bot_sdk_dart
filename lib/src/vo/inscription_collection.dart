@@ -39,8 +39,7 @@ class InscriptionCollection with EquatableMixin {
   Map<String, dynamic> toJson() => _$InscriptionCollectionToJson(this);
 
   @override
-  List<Object?> get props =>
-      [
+  List<Object?> get props => [
         collectionHash,
         supply,
         unit,
