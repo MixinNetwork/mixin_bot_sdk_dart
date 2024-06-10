@@ -24,7 +24,7 @@ dependencies:
   pointycastle: ^3.7.4
   fixnum: ^1.0.1
   base_x: ^2.0.1
-  decimal: ^2.3.3
+  decimal: ">=2.3.3 <4.0.0"
   thirds: ^0.2.0-alpha.1
   edwards25519: ^1.0.4
 
