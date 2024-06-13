@@ -5,16 +5,10 @@ import 'dart:typed_data';
 import 'package:convert/convert.dart';
 import 'package:ed25519_edwards/ed25519_edwards.dart' as ed;
 
-import '../lib/mixin_bot_sdk_dart.dart';
+import 'package:mixin_bot_sdk_dart/mixin_bot_sdk_dart.dart';
 import 'common.dart';
 
 class KeyStore {
-  final String userId;
-  final String sessionId;
-  final String sessionPrivateKey;
-  final String spendKey;
-  final String pinTokenBase64;
-
   KeyStore({
     required this.userId,
     required this.sessionId,
@@ -23,12 +17,18 @@ class KeyStore {
     required this.pinTokenBase64,
   });
 
+  final String userId;
+  final String sessionId;
+  final String sessionPrivateKey;
+  final String spendKey;
+  final String pinTokenBase64;
+
   Map<String, dynamic> toJson() => {
-        "user_id": userId,
-        "session_id": sessionId,
-        "session_private_key": sessionPrivateKey,
-        "spend_key": spendKey,
-        "pin_token_base64": pinTokenBase64,
+        'user_id': userId,
+        'session_id': sessionId,
+        'session_private_key': sessionPrivateKey,
+        'spend_key': spendKey,
+        'pin_token_base64': pinTokenBase64,
       };
 }
 

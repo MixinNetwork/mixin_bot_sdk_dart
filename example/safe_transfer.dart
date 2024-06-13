@@ -5,7 +5,7 @@ Future<void> main() async {
     assetId: Token.cnb.assetId,
     threshold: 1,
   );
-  print('cnb balance: ${balance}');
+  print('cnb balance: $balance');
 
   // transaction to one user
   await client.utxoApi.transactionToUser(

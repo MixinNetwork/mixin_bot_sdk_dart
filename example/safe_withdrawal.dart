@@ -5,7 +5,7 @@ Future<void> main() async {
     assetId: Token.tronUSDT.assetId,
     threshold: 1,
   );
-  print('balance: ${balance}');
+  print('balance: $balance');
 
   await client.utxoApi.withdrawalToAddress(
     amount: '0.01',
