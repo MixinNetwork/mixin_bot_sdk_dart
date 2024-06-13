@@ -22,6 +22,9 @@ class Key {
   factory Key.fromHexSeed(String seedInHex) =>
       Key.fromSeed(seedInHex.hexToBytes());
 
+  Uint8List publicKey() =>
+      Uint8List.fromList(ed.public(ed.PrivateKey(raw)).bytes);
+
   final Uint8List _raw;
 
   Uint8List get raw => _raw;

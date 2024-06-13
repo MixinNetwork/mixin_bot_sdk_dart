@@ -283,7 +283,8 @@ String signSafeTransaction({
     final index = utxo.keys.indexOf(key.publicKey().hexString());
     if (index == -1) {
       throw Exception(
-          'invalid public key for the input: $i ${utxo.keys}, ${key.publicKey().hexString()}');
+          'invalid public key for the input: $i ${utxo.keys}, ${key.publicKey().hexString()}.\n'
+          'maybe this is a invalid spendKey: ${privateKey.publicKey().toHexString()}');
     }
     final sigs = <int, String>{};
     final sig = key.sign(msg);
