@@ -1,3 +1,7 @@
+## 1.2.4
+
+* More example
+
 ## 1.2.3
 
 * `Token` add `collection_hash` field.
