@@ -1,3 +1,7 @@
+## 1.2.5
+
+* `User` add `Membership` field.
+
 ## 1.2.4
 
 * More example
