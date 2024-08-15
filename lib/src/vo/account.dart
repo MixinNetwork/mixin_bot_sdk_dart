@@ -1,9 +1,12 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../mixin_bot_sdk_dart.dart';
+
 part 'account.g.dart';
 
 @JsonSerializable()
+@UserRelationshipJsonConverter()
 class Account with EquatableMixin {
   Account({
     required this.userId,
@@ -52,7 +55,7 @@ class Account with EquatableMixin {
   @JsonKey(name: 'avatar_url')
   String? avatarUrl;
   @JsonKey(name: 'relationship')
-  String relationship;
+  UserRelationship? relationship;
   @JsonKey(name: 'mute_until')
   String muteUntil;
   @JsonKey(name: 'created_at')
@@ -97,6 +100,9 @@ class Account with EquatableMixin {
   @JsonKey(name: 'tip_key_base64')
   String tipKeyBase64;
 
+  @JsonKey(name: 'membership')
+  Membership? membership;
+
   Map<String, dynamic> toJson() => _$AccountToJson(this);
 
   @override
@@ -128,5 +134,6 @@ class Account with EquatableMixin {
         transferConfirmationThreshold,
         tipCounter,
         tipKeyBase64,
+        membership
       ];
 }

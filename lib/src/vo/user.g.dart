@@ -28,6 +28,9 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
       codeId: json['code_id'] as String?,
       codeUrl: json['code_url'] as String?,
       isDeactivated: json['is_deactivated'] as bool?,
+      membership: json['membership'] == null
+          ? null
+          : Membership.fromJson(json['membership'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
@@ -48,4 +51,5 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'code_id': instance.codeId,
       'code_url': instance.codeUrl,
       'is_deactivated': instance.isDeactivated,
+      'membership': instance.membership,
     };
