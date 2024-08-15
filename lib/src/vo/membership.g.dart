@@ -19,7 +19,7 @@ Map<String, dynamic> _$MembershipToJson(Membership instance) =>
 
 const _$PlanEnumMap = {
   Plan.none: 'none',
-  Plan.basic: 'basic',
-  Plan.standard: 'standard',
-  Plan.premium: 'premium',
+  Plan.basic: 'advance',
+  Plan.standard: 'elite',
+  Plan.premium: 'prosperity',
 };

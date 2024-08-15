@@ -5,11 +5,16 @@ import '../../mixin_bot_sdk_dart.dart';
 
 part 'membership.g.dart';
 
+@JsonEnum(valueField: 'value')
 enum Plan {
-  none,
-  basic,
-  standard,
-  premium;
+  none('none'),
+  basic('advance'),
+  standard('elite'),
+  premium('prosperity');
+
+  const Plan(this.value);
+
+  final String value;
 }
 
 @JsonSerializable()
@@ -29,7 +34,7 @@ class Membership with EquatableMixin, CodeTypeInterface {
   @override
   List<Object?> get props => [plan, expiredAt];
 
-  bool isMembership() =>
+  bool get isValid =>
       [Plan.basic, Plan.standard, Plan.premium].contains(plan) &&
       DateTime.now().isBefore(expiredAt);
 }
