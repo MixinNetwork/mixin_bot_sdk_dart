@@ -3,6 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import './app.dart';
 import 'code_type_interface.dart';
+import 'membership.dart';
 import 'user_relationship.dart';
 
 part 'user.g.dart';
@@ -27,6 +28,7 @@ class User with EquatableMixin, CodeTypeInterface {
     this.codeId,
     this.codeUrl,
     this.isDeactivated,
+    this.membership,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
@@ -67,6 +69,9 @@ class User with EquatableMixin, CodeTypeInterface {
   @JsonKey(name: 'is_deactivated')
   bool? isDeactivated;
 
+  @JsonKey(name: 'membership')
+  Membership? membership;
+
   @override
   List<Object?> get props => [
         userId,
@@ -85,5 +90,6 @@ class User with EquatableMixin, CodeTypeInterface {
         codeId,
         codeUrl,
         isDeactivated,
+        membership
       ];
 }
