@@ -58,6 +58,7 @@ export 'src/vo/ghost_key.dart';
 export 'src/vo/inscription_collection.dart';
 export 'src/vo/inscription_item.dart';
 export 'src/vo/log_response.dart';
+export 'src/vo/membership.dart';
 export 'src/vo/message/app_button.dart';
 export 'src/vo/message/app_card.dart';
 export 'src/vo/message/attachment_message.dart';

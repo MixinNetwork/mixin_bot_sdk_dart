@@ -11,7 +11,8 @@ Account _$AccountFromJson(Map<String, dynamic> json) => Account(
       identityNumber: json['identity_number'] as String,
       phone: json['phone'] as String,
       biography: json['biography'] as String,
-      relationship: json['relationship'] as String,
+      relationship: const UserRelationshipJsonConverter()
+          .fromJson(json['relationship'] as String?),
       muteUntil: json['mute_until'] as String,
       createdAt: DateTime.parse(json['created_at'] as String),
       isVerified: json['is_verified'] as bool,
@@ -37,7 +38,9 @@ Account _$AccountFromJson(Map<String, dynamic> json) => Account(
       tipKeyBase64: json['tip_key_base64'] as String,
       fullName: json['full_name'] as String?,
       avatarUrl: json['avatar_url'] as String?,
-    );
+    )..membership = json['membership'] == null
+        ? null
+        : Membership.fromJson(json['membership'] as Map<String, dynamic>);
 
 Map<String, dynamic> _$AccountToJson(Account instance) => <String, dynamic>{
       'user_id': instance.userId,
@@ -46,7 +49,8 @@ Map<String, dynamic> _$AccountToJson(Account instance) => <String, dynamic>{
       'full_name': instance.fullName,
       'biography': instance.biography,
       'avatar_url': instance.avatarUrl,
-      'relationship': instance.relationship,
+      'relationship':
+          const UserRelationshipJsonConverter().toJson(instance.relationship),
       'mute_until': instance.muteUntil,
       'created_at': instance.createdAt.toIso8601String(),
       'is_verified': instance.isVerified,
@@ -68,4 +72,5 @@ Map<String, dynamic> _$AccountToJson(Account instance) => <String, dynamic>{
       'transfer_confirmation_threshold': instance.transferConfirmationThreshold,
       'tip_counter': instance.tipCounter,
       'tip_key_base64': instance.tipKeyBase64,
+      'membership': instance.membership,
     };
