@@ -2,7 +2,6 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../mixin_bot_sdk_dart.dart';
-import 'membership.dart';
 
 part 'account.g.dart';
 
