@@ -64,7 +64,7 @@ class Asset with EquatableMixin {
   @JsonKey(name: 'deposit_entries')
   List<DepositEntry>? depositEntries;
   @JsonKey(name: 'fee_asset_id')
-  String feeAssetId;
+  String? feeAssetId;
   @JsonKey(name: 'precision')
   int precision;
 

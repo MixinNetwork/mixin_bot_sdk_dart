@@ -24,10 +24,10 @@ class AssetApi {
         AssetFee.fromJson,
       );
 
-  Future<MixinResponse<List<Asset>>> queryAsset(String query) =>
+  Future<MixinResponse<List<Token>>> queryAsset(String query) =>
       MixinResponse.requestList(
         dio.get('/network/assets/search/$query'),
-        Asset.fromJson,
+        Token.fromJson,
       );
 
   Future<MixinResponse<List<PendingDeposit>>> pendingDeposits(String assetId,

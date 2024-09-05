@@ -18,7 +18,7 @@ Asset _$AssetFromJson(Map<String, dynamic> json) => Asset(
       changeBtc: json['change_btc'] as String,
       changeUsd: json['change_usd'] as String,
       confirmations: (json['confirmations'] as num).toInt(),
-      feeAssetId: json['fee_asset_id'] as String,
+      feeAssetId: json['fee_asset_id'] as String?,
       precision: (json['precision'] as num).toInt(),
       tag: json['tag'] as String?,
       assetKey: json['asset_key'] as String?,

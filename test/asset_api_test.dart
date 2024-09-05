@@ -47,6 +47,8 @@ void main() {
     } catch (e) {
       if (e is MixinApiError) {
         testPrint(e.error);
+      } else {
+        rethrow;
       }
     }
   });
@@ -65,8 +67,9 @@ void main() {
   test('test getTopAssets', () async {
     try {
       final mixinResponse = await client.assetApi.getTopAssets();
-      testPrint(mixinResponse.data);
-    } catch (e) {
+      testPrint('top asset: ${mixinResponse.data}');
+    } catch (e, stacktrace) {
+      testPrint('error: $e $stacktrace');
       if (e is MixinApiError) {
         testPrint(e.error);
       }
