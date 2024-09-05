@@ -1,3 +1,8 @@
+## 1.2.6
+
+* fix queryAssets and topAsset
+* downgrade `collections` to 1.18.0
+
 ## 1.2.5
 
 * `User` add `Membership` field.
