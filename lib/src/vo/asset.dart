@@ -10,6 +10,8 @@ class Asset with EquatableMixin {
     required this.assetId,
     required this.symbol,
     required this.name,
+    required this.displaySymbol,
+    required this.displayName,
     required this.iconUrl,
     required this.balance,
     required this.priceBtc,
@@ -36,6 +38,10 @@ class Asset with EquatableMixin {
   String symbol;
   @JsonKey(name: 'name')
   String name;
+  @JsonKey(name: 'display_symbol')
+  String displaySymbol;
+  @JsonKey(name: 'display_name')
+  String displayName;
   @JsonKey(name: 'icon_url')
   String iconUrl;
   @JsonKey(name: 'balance')
@@ -73,6 +79,8 @@ class Asset with EquatableMixin {
         assetId,
         symbol,
         name,
+        displaySymbol,
+        displayName,
         iconUrl,
         balance,
         tag,

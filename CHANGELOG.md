@@ -1,3 +1,7 @@
+## 1.2.7
+
+* `Asset` add `displaySymbol` and `displayName` field.
+
 ## 1.2.6
 
 * fix queryAssets and topAsset
