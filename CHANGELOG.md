@@ -1,3 +1,7 @@
+## 1.2.8
+
+* Fix code generation for `Asset` class.
+
 ## 1.2.7
 
 * `Asset` add `displaySymbol` and `displayName` field.
