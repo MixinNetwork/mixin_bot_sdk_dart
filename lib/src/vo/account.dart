@@ -37,6 +37,7 @@ class Account with EquatableMixin {
     required this.tipKeyBase64,
     this.fullName,
     this.avatarUrl,
+    this.membership,
   });
 
   factory Account.fromJson(Map<String, dynamic> json) =>

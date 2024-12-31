@@ -1,10 +1,17 @@
 // Get APP data from https://developers.mixin.one/dashboard
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:mixin_bot_sdk_dart/mixin_bot_sdk_dart.dart';
 
-const uid = '23cec735-ffb8-435d-8c2c-e352c98a8b59';
-const sid = '63f600c8-7247-4a02-8a71-1546c3a2abdb';
-final private = Key.froHex(
-    'da34117b06b3d186d9f3455717b67861b5340f283c613f75ccb39092485b722bc9db931e3cea42c34f5d33afa306ed2f0b24446779a4e3347cdead21e0216480');
+final _keystore = () {
+  final content = File('.keystore.json').readAsStringSync();
+  return json.decode(content) as Map<String, dynamic>;
+}();
+
+final uid = _keystore['app_id'] as String;
+final sid = _keystore['session_id'] as String;
+final private = Key.fromHexSeed(_keystore['session_private_key'] as String);
 
 final uids = <String>['773e5e77-4107-45c2-b648-8fc722ed77f5'];
 

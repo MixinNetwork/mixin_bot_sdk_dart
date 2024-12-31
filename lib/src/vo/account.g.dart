@@ -38,9 +38,10 @@ Account _$AccountFromJson(Map<String, dynamic> json) => Account(
       tipKeyBase64: json['tip_key_base64'] as String,
       fullName: json['full_name'] as String?,
       avatarUrl: json['avatar_url'] as String?,
-    )..membership = json['membership'] == null
-        ? null
-        : Membership.fromJson(json['membership'] as Map<String, dynamic>);
+      membership: json['membership'] == null
+          ? null
+          : Membership.fromJson(json['membership'] as Map<String, dynamic>),
+    );
 
 Map<String, dynamic> _$AccountToJson(Account instance) => <String, dynamic>{
       'user_id': instance.userId,

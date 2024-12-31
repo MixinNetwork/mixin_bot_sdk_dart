@@ -1,3 +1,7 @@
+## 1.2.9
+
+* update verification response
+
 ## 1.2.8
 
 * Fix code generation for `Asset` class.
