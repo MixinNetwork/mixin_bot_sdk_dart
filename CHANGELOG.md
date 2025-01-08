@@ -1,3 +1,7 @@
+## 1.2.10
+
+* add `kernel_asset_id` field to `SafeSnapshot`
+
 ## 1.2.9
 
 * update verification response
