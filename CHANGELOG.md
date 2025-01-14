@@ -1,3 +1,7 @@
+## 1.2.12
+
+* Revert offset parameter type from `String?` to `int?` in all APIs
+
 ## 1.2.11
 
 * Fix URL encoding for path parameters

@@ -11,11 +11,11 @@ class MessageApi {
       MixinResponse.requestVoid(dio.post('/acknowledgements', data: ack));
 
   Future<MixinResponse<List<BlazeMessageData>>> messageStatusOffset(
-    int? offset,
+    int offset,
   ) =>
       MixinResponse.requestList<BlazeMessageData>(
         dio.get('/messages/status', queryParameters: <String, dynamic>{
-          if (offset != null) 'offset': offset.toString(),
+          'offset': offset,
         }),
         BlazeMessageData.fromJson,
       );

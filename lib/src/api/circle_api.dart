@@ -51,12 +51,12 @@ class CircleApi {
 
   Future<MixinResponse<List<CircleConversation>>> getCircleConversations(
           String id,
-          {int? offset,
+          {String? offset,
           int limit = 500}) =>
       MixinResponse.requestList(
         dio.get('/circles/${Uri.encodeComponent(id)}/conversations',
             queryParameters: {
-              if (offset != null) 'offset': offset.toString(),
+              if (offset != null && offset.isNotEmpty) 'offset': offset,
               'limit': limit,
             }),
         CircleConversation.fromJson,

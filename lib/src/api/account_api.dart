@@ -189,13 +189,13 @@ class AccountApi {
 
   Future<MixinResponse<List<LogResponse>>> pinLogs({
     String? category,
-    int? offset,
+    String? offset,
     int? limit,
   }) =>
       MixinResponse.requestList<LogResponse>(
         dio.get('/logs', queryParameters: {
           if (category != null && category.isNotEmpty) 'category': category,
-          if (offset != null) 'offset': offset.toString(),
+          if (offset != null && offset.isNotEmpty) 'offset': offset,
           if (limit != null) 'limit': limit,
         }),
         LogResponse.fromJson,
