@@ -14,13 +14,13 @@ class UserApi {
 
   Future<MixinResponse<User>> getUserById(String id) =>
       MixinResponse.request<User>(
-        dio.get('/users/$id'),
+        dio.get('/users/${Uri.encodeComponent(id)}'),
         User.fromJson,
       );
 
   Future<MixinResponse<User>> search(String query) =>
       MixinResponse.request<User>(
-        dio.get('/search/$query'),
+        dio.get('/search/${Uri.encodeComponent(query)}'),
         User.fromJson,
       );
 
@@ -56,12 +56,12 @@ class UserApi {
 
   Future<MixinResponse<List<FavoriteApp>>> getUserFavoriteApps(String userId) =>
       MixinResponse.requestList(
-        dio.get('/users/$userId/apps/favorite'),
+        dio.get('/users/${Uri.encodeComponent(userId)}/apps/favorite'),
         FavoriteApp.fromJson,
       );
 
   Future<void> removeFavoriteApp(String appId) => MixinResponse.requestVoid(
-        dio.post('/apps/$appId/unfavorite'),
+        dio.post('/apps/${Uri.encodeComponent(appId)}/unfavorite'),
       );
 
   /// Create Network Users. Only application user can create network users.

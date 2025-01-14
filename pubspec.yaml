@@ -1,6 +1,6 @@
 name: mixin_bot_sdk_dart
 description: Mixin Messenger API for Dart/Flutter, build decentrialized applications on Mixin
-version: 1.2.10
+version: 1.2.11
 homepage: https://github.com/MixinNetwork/mixin_bot_sdk_dart
 
 environment:

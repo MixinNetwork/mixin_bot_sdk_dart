@@ -19,7 +19,7 @@ class CircleApi {
 
   Future<MixinResponse<CircleResponse>> getCircle(String id) =>
       MixinResponse.request<CircleResponse>(
-        dio.get('/circles/$id'),
+        dio.get('/circles/${Uri.encodeComponent(id)}'),
         CircleResponse.fromJson,
       );
 
@@ -32,28 +32,33 @@ class CircleApi {
   Future<MixinResponse<CircleResponse>> updateCircle(
           String id, CircleName circleName) =>
       MixinResponse.request<CircleResponse>(
-        dio.post('/circles/$id', data: circleName),
+        dio.post('/circles/${Uri.encodeComponent(id)}', data: circleName),
         CircleResponse.fromJson,
       );
 
   Future<MixinResponse<void>> deleteCircle(String id) =>
-      MixinResponse.requestVoid(dio.post('/circles/$id/delete'));
+      MixinResponse.requestVoid(
+          dio.post('/circles/${Uri.encodeComponent(id)}/delete'));
 
   Future<MixinResponse<List<CircleConversation>>> updateCircleConversations(
           String id,
           List<CircleConversationRequest> conversationCircleRequests) =>
       MixinResponse.requestList(
-        dio.post('/circles/$id/conversations',
+        dio.post('/circles/${Uri.encodeComponent(id)}/conversations',
             data: conversationCircleRequests),
         CircleConversation.fromJson,
       );
 
   Future<MixinResponse<List<CircleConversation>>> getCircleConversations(
           String id,
-          {String? offset,
+          {int? offset,
           int limit = 500}) =>
       MixinResponse.requestList(
-        dio.get('/circles/$id/conversations?offset=$offset&limit=$limit'),
+        dio.get('/circles/${Uri.encodeComponent(id)}/conversations',
+            queryParameters: {
+              if (offset != null) 'offset': offset.toString(),
+              'limit': limit,
+            }),
         CircleConversation.fromJson,
       );
 }
