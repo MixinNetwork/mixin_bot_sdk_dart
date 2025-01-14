@@ -9,7 +9,7 @@ class SnapshotApi {
 
   Future<MixinResponse<List<Snapshot>>> getSnapshots(
           {String? assetId,
-          String? offset,
+          int? offset,
           int limit = 30,
           String? opponent,
           String? destination,
@@ -17,7 +17,7 @@ class SnapshotApi {
       MixinResponse.requestList(
         dio.get('/snapshots', queryParameters: <String, dynamic>{
           if (assetId != null && assetId.isNotEmpty) 'asset': assetId,
-          if (offset != null && offset.isNotEmpty) 'offset': offset,
+          if (offset != null) 'offset': offset.toString(),
           'limit': limit,
           if (opponent != null && opponent.isNotEmpty) 'opponent': opponent,
           if (destination != null && destination.isNotEmpty)
@@ -35,13 +35,13 @@ class SnapshotApi {
 
   Future<MixinResponse<List<Snapshot>>> getSnapshotsByAssetId(
     String id, {
-    String? offset,
+    int? offset,
     int limit = 30,
   }) =>
       MixinResponse.requestList(
         dio.get('/assets/${Uri.encodeComponent(id)}/snapshots',
             queryParameters: <String, dynamic>{
-              if (offset != null && offset.isNotEmpty) 'offset': offset,
+              if (offset != null) 'offset': offset.toString(),
               'limit': limit,
             }),
         Snapshot.fromJson,
@@ -53,11 +53,11 @@ class SnapshotApi {
         Snapshot.fromJson,
       );
 
-  Future<MixinResponse<Ticker>> getTicker(String assetId, {String? offset}) =>
+  Future<MixinResponse<Ticker>> getTicker(String assetId, {int? offset}) =>
       MixinResponse.request(
         dio.get('/network/ticker', queryParameters: <String, dynamic>{
           'asset': assetId,
-          if (offset != null && offset.isNotEmpty) 'offset': offset,
+          if (offset != null) 'offset': offset.toString(),
         }),
         Ticker.fromJson,
       );
