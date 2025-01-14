@@ -54,19 +54,19 @@ class AccountApi {
 
   Future<MixinResponse<StickerAlbum>> getStickerAlbum(String id) =>
       MixinResponse.request(
-        dio.get('/albums/$id'),
+        dio.get('/albums/${Uri.encodeComponent(id)}'),
         StickerAlbum.fromJson,
       );
 
   Future<MixinResponse<List<Sticker>>> getStickersByAlbumId(String id) =>
       MixinResponse.requestList(
-        dio.get('/stickers/albums/$id'),
+        dio.get('/stickers/albums/${Uri.encodeComponent(id)}'),
         Sticker.fromJson,
       );
 
   Future<MixinResponse<Sticker>> getStickerById(String id) =>
       MixinResponse.request<Sticker>(
-        dio.get('/stickers/$id'),
+        dio.get('/stickers/${Uri.encodeComponent(id)}'),
         Sticker.fromJson,
       );
 
@@ -88,7 +88,7 @@ class AccountApi {
 
   Future<MixinResponse<CodeTypeInterface?>> code(String id) =>
       MixinResponse.request<CodeTypeInterface?>(
-        dio.get('/codes/$id'),
+        dio.get('/codes/${Uri.encodeComponent(id)}'),
         (json) {
           try {
             final jsonObject = json;
@@ -123,7 +123,7 @@ class AccountApi {
 
   Future<MixinResponse<Account>> create(String id, AccountRequest request) =>
       MixinResponse.request<Account>(
-        dio.post('/verifications/$id', data: request),
+        dio.post('/verifications/${Uri.encodeComponent(id)}', data: request),
         Account.fromJson,
       );
 
@@ -161,19 +161,30 @@ class AccountApi {
         User.fromJson,
       );
 
+  @Deprecated('Use deactivateVerification instead')
   Future<MixinResponse<VerificationResponse>> deactiveVerification(
     String id,
     String code,
   ) =>
+      deactivateVerification(id, code);
+
+  Future<MixinResponse<VerificationResponse>> deactivateVerification(
+    String id,
+    String code,
+  ) =>
       MixinResponse.request<VerificationResponse>(
-        dio.post('/verifications/$id', data: {
+        dio.post('/verifications/${Uri.encodeComponent(id)}', data: {
           'code': code,
           'purpose': VerificationPurpose.deactivated.name.toUpperCase(),
         }),
         VerificationResponse.fromJson,
       );
 
+  @Deprecated('Use deactivate instead')
   Future<MixinResponse<void>> deactive(DeactivateRequest request) =>
+      deactivate(request);
+
+  Future<MixinResponse<void>> deactivate(DeactivateRequest request) =>
       MixinResponse.requestVoid(dio.post('/me/deactivate', data: request));
 
   Future<MixinResponse<List<LogResponse>>> pinLogs({

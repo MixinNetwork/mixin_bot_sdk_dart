@@ -16,35 +16,40 @@ class SnapshotApi {
           String? tag}) =>
       MixinResponse.requestList(
         dio.get('/snapshots', queryParameters: <String, dynamic>{
-          'asset': assetId,
-          'offset': offset,
+          if (assetId != null && assetId.isNotEmpty) 'asset': assetId,
+          if (offset != null && offset.isNotEmpty) 'offset': offset,
           'limit': limit,
-          'opponent': opponent,
-          'destination': destination,
-          'tag': tag,
+          if (opponent != null && opponent.isNotEmpty) 'opponent': opponent,
+          if (destination != null && destination.isNotEmpty)
+            'destination': destination,
+          if (tag != null && tag.isNotEmpty) 'tag': tag,
         }),
         Snapshot.fromJson,
       );
 
   Future<MixinResponse<Snapshot>> getSnapshotById(String id) =>
       MixinResponse.request<Snapshot>(
-        dio.get('/snapshots/$id'),
+        dio.get('/snapshots/${Uri.encodeComponent(id)}'),
         Snapshot.fromJson,
       );
 
-  Future<MixinResponse<List<Snapshot>>> getSnapshotsByAssetId(String id,
-          {String? offset, int limit = 30}) =>
+  Future<MixinResponse<List<Snapshot>>> getSnapshotsByAssetId(
+    String id, {
+    String? offset,
+    int limit = 30,
+  }) =>
       MixinResponse.requestList(
-        dio.get('/assets/$id/snapshots', queryParameters: <String, dynamic>{
-          'offset': offset,
-          'limit': limit,
-        }),
+        dio.get('/assets/${Uri.encodeComponent(id)}/snapshots',
+            queryParameters: <String, dynamic>{
+              if (offset != null && offset.isNotEmpty) 'offset': offset,
+              'limit': limit,
+            }),
         Snapshot.fromJson,
       );
 
   Future<MixinResponse<Snapshot>> getSnapshotByTraceId(String traceId) =>
       MixinResponse.request(
-        dio.get('/snapshots/trace/$traceId'),
+        dio.get('/snapshots/trace/${Uri.encodeComponent(traceId)}'),
         Snapshot.fromJson,
       );
 
@@ -52,7 +57,7 @@ class SnapshotApi {
       MixinResponse.request(
         dio.get('/network/ticker', queryParameters: <String, dynamic>{
           'asset': assetId,
-          'offset': offset,
+          if (offset != null && offset.isNotEmpty) 'offset': offset,
         }),
         Ticker.fromJson,
       );

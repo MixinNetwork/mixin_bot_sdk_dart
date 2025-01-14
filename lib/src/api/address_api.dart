@@ -9,7 +9,7 @@ class AddressApi {
 
   Future<MixinResponse<List<Address>>> getAddressesByAssetId(String assetId) =>
       MixinResponse.requestList(
-        dio.get('/assets/$assetId/addresses'),
+        dio.get('/assets/${Uri.encodeComponent(assetId)}/addresses'),
         Address.fromJson,
       );
 
@@ -21,13 +21,13 @@ class AddressApi {
 
   Future<MixinResponse<Address>> getAddressById(String id) =>
       MixinResponse.request<Address>(
-        dio.get('/addresses/$id'),
+        dio.get('/addresses/${Uri.encodeComponent(id)}'),
         Address.fromJson,
       );
 
   Future<MixinResponse<void>> deleteAddressById(String id, String pin) =>
       MixinResponse.requestVoid(dio.post(
-        '/addresses/$id/delete',
+        '/addresses/${Uri.encodeComponent(id)}/delete',
         data: {'pin': pin},
       ));
 }

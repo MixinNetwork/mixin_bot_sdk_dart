@@ -1,3 +1,9 @@
+## 1.2.11
+
+* Fix URL encoding for path parameters
+* Fix query parameters handling for optional values
+* Mark `deactive` and `deactiveVerification` as deprecated in favor of `deactivate` and `deactivateVerification`
+
 ## 1.2.10
 
 * add `kernel_asset_id` field to `SafeSnapshot`

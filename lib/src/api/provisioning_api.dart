@@ -19,7 +19,7 @@ class ProvisioningApi {
 
   Future<MixinResponse<Provisioning>> getProvisioning(String deviceId) =>
       MixinResponse.request<Provisioning>(
-        dio.get('/provisionings/$deviceId'),
+        dio.get('/provisionings/${Uri.encodeComponent(deviceId)}'),
         Provisioning.fromJson,
       );
 
