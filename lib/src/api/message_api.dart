@@ -14,9 +14,7 @@ class MessageApi {
     int offset,
   ) =>
       MixinResponse.requestList<BlazeMessageData>(
-        dio.get('/messages/status', queryParameters: <String, dynamic>{
-          'offset': offset,
-        }),
+        dio.get('/messages/status/$offset'),
         BlazeMessageData.fromJson,
       );
 }
