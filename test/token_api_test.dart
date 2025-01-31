@@ -14,11 +14,9 @@ void main() {
   test('test getAllSnapshots', () async {
     try {
       final resp = await client.tokenApi.getAllSnapshots();
-      // ignore: avoid_print
       print(jsonEncode(resp.data));
     } catch (e) {
       if (e is MixinApiError) {
-        // ignore: avoid_print
         print(e.error);
       }
     }
