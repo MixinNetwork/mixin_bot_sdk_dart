@@ -1,3 +1,7 @@
+## 1.3.0
+
+* Fix message offset api
+
 ## 1.2.12
 
 * Revert offset parameter type from `String?` to `int?` in all APIs
