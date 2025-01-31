@@ -54,19 +54,19 @@ class AccountApi {
 
   Future<MixinResponse<StickerAlbum>> getStickerAlbum(String id) =>
       MixinResponse.request(
-        dio.get('/albums/${Uri.encodeComponent(id)}'),
+        dio.get('/albums/$id'),
         StickerAlbum.fromJson,
       );
 
   Future<MixinResponse<List<Sticker>>> getStickersByAlbumId(String id) =>
       MixinResponse.requestList(
-        dio.get('/stickers/albums/${Uri.encodeComponent(id)}'),
+        dio.get('/stickers/albums/$id'),
         Sticker.fromJson,
       );
 
   Future<MixinResponse<Sticker>> getStickerById(String id) =>
       MixinResponse.request<Sticker>(
-        dio.get('/stickers/${Uri.encodeComponent(id)}'),
+        dio.get('/stickers/$id'),
         Sticker.fromJson,
       );
 
@@ -88,7 +88,7 @@ class AccountApi {
 
   Future<MixinResponse<CodeTypeInterface?>> code(String id) =>
       MixinResponse.request<CodeTypeInterface?>(
-        dio.get('/codes/${Uri.encodeComponent(id)}'),
+        dio.get('/codes/$id'),
         (json) {
           try {
             final jsonObject = json;
@@ -123,7 +123,7 @@ class AccountApi {
 
   Future<MixinResponse<Account>> create(String id, AccountRequest request) =>
       MixinResponse.request<Account>(
-        dio.post('/verifications/${Uri.encodeComponent(id)}', data: request),
+        dio.post('/verifications/$id', data: request),
         Account.fromJson,
       );
 
@@ -173,7 +173,7 @@ class AccountApi {
     String code,
   ) =>
       MixinResponse.request<VerificationResponse>(
-        dio.post('/verifications/${Uri.encodeComponent(id)}', data: {
+        dio.post('/verifications/$id', data: {
           'code': code,
           'purpose': VerificationPurpose.deactivated.name.toUpperCase(),
         }),
@@ -194,9 +194,9 @@ class AccountApi {
   }) =>
       MixinResponse.requestList<LogResponse>(
         dio.get('/logs', queryParameters: {
-          if (category != null && category.isNotEmpty) 'category': category,
-          if (offset != null && offset.isNotEmpty) 'offset': offset,
-          if (limit != null) 'limit': limit,
+          'category': category,
+          'offset': offset,
+          'limit': limit,
         }),
         LogResponse.fromJson,
       );

@@ -14,13 +14,13 @@ class AssetApi {
 
   Future<MixinResponse<Asset>> getAssetById(String id) =>
       MixinResponse.request<Asset>(
-        dio.get('/assets/${Uri.encodeComponent(id)}'),
+        dio.get('/assets/$id'),
         Asset.fromJson,
       );
 
   Future<MixinResponse<AssetFee>> getAssetFee(String id) =>
       MixinResponse.request<AssetFee>(
-        dio.get('/assets/${Uri.encodeComponent(id)}/fee'),
+        dio.get('/assets/$id/fee'),
         AssetFee.fromJson,
       );
 
@@ -30,17 +30,13 @@ class AssetApi {
         Token.fromJson,
       );
 
-  Future<MixinResponse<List<PendingDeposit>>> pendingDeposits(
-    String? assetId, {
-    String? destination,
-    String? tag,
-  }) =>
+  Future<MixinResponse<List<PendingDeposit>>> pendingDeposits(String assetId,
+          {String? destination, String? tag}) =>
       MixinResponse.requestList(
         dio.get('/external/transactions', queryParameters: <String, dynamic>{
-          if (assetId != null && assetId.isNotEmpty) 'asset': assetId,
-          if (destination != null && destination.isNotEmpty)
-            'destination': destination,
-          if (tag != null && tag.isNotEmpty) 'tag': tag,
+          'asset': assetId,
+          'destination': destination,
+          'tag': tag,
         }),
         PendingDeposit.fromJson,
       );
@@ -58,7 +54,7 @@ class AssetApi {
 
   Future<MixinResponse<Chain>> getChain(String chainId) =>
       MixinResponse.request<Chain>(
-        dio.get('/network/chains/${Uri.encodeComponent(chainId)}'),
+        dio.get('/network/chains/$chainId'),
         Chain.fromJson,
       );
 }

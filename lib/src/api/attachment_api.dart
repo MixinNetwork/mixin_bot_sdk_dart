@@ -10,7 +10,7 @@ class AttachmentApi {
 
   Future<MixinResponse<Attachment>> getAttachment(String id) =>
       MixinResponse.request<Attachment>(
-        dio.get('/attachments/${Uri.encodeComponent(id)}'),
+        dio.get('/attachments/$id'),
         Attachment.fromJson,
       );
 
