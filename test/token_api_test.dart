@@ -23,4 +23,20 @@ void main() {
       }
     }
   });
+
+  test('test fetch assets', () async {
+    try {
+      final resp = await client.tokenApi.fetchAssets([
+        btcId,
+        '965e5c6e-434c-3fa9-b780-c50f43cd955c',
+      ]);
+      // ignore: avoid_print
+      print(jsonEncode(resp.data));
+    } catch (e) {
+      if (e is MixinApiError) {
+        // ignore: avoid_print
+        print(e.error);
+      }
+    }
+  });
 }

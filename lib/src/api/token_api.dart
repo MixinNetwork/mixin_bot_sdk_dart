@@ -122,4 +122,10 @@ class TokenApi {
         dio.get('/safe/inscriptions/items/$id'),
         InscriptionItem.fromJson,
       );
+
+  Future<MixinResponse<List<Token>>> fetchAssets(List<String> assetIds) =>
+      MixinResponse.requestList<Token>(
+        dio.post('/safe/assets/fetch', data: assetIds),
+        Token.fromJson,
+      );
 }

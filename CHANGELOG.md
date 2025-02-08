@@ -1,7 +1,11 @@
+## 1.3.2
+
+* add `TokenApi.fetchAssets` api
+
 ## 1.3.1
 
 * Revert to 1.2.10 with following exceptions preserved:
-  * Mark `deactive` and `deactiveVerification` as deprecated in favor of `deactivate` and `deactivateVerification`
+* Mark `deactive` and `deactiveVerification` as deprecated in favor of `deactivate` and `deactivateVerification`
 * Fix `queryAsset` and `search` api
 
 ## 1.3.0
