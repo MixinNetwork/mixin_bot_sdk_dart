@@ -31,7 +31,7 @@ class ProvisioningRequest with EquatableMixin {
   final String code;
   final String platform;
   @JsonKey(name: 'platform_version')
-  final  String platformVersion;
+  final String platformVersion;
   @JsonKey(name: 'app_version')
   final String appVersion;
   final String purpose;

@@ -25,11 +25,11 @@ class TransferRequest with EquatableMixin {
   @JsonKey(name: 'opponent_id')
   final String? opponentId;
   @JsonKey(name: 'amount')
-  final  String amount;
+  final String amount;
   @JsonKey(name: 'pin')
-  final  String? pin;
+  final String? pin;
   @JsonKey(name: 'trace_id')
-  final  String? traceId;
+  final String? traceId;
   @JsonKey(name: 'memo')
   final String? memo;
   @JsonKey(name: 'address_id')

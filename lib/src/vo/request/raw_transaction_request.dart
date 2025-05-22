@@ -22,15 +22,15 @@ class RawTransactionRequest with EquatableMixin {
   @JsonKey(name: 'asset_id')
   final String assetId;
   @JsonKey(name: 'opponent_multisig')
-  final  OpponentMultisig opponentMultisig;
+  final OpponentMultisig opponentMultisig;
   @JsonKey(name: 'amount')
   final String amount;
   @JsonKey(name: 'pin')
-  final  String pin;
+  final String pin;
   @JsonKey(name: 'trace_id')
   final String? traceId;
   @JsonKey(name: 'memo')
-  final  String? memo;
+  final String? memo;
 
   @override
   List<Object?> get props => [
