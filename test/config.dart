@@ -5,8 +5,14 @@ import 'dart:io';
 import 'package:mixin_bot_sdk_dart/mixin_bot_sdk_dart.dart';
 
 final _keystore = () {
-  final content = File('.keystore.json').readAsStringSync();
-  return json.decode(content) as Map<String, dynamic>;
+  try {
+    final content = File('.keystore.json').readAsStringSync();
+    return json.decode(content) as Map<String, dynamic>;
+  } catch (_) {
+    // ignore: avoid_print
+    print('Keystore file not found, using default values');
+    return <String, dynamic>{};
+  }
 }();
 
 final uid = _keystore['app_id'] as String;
