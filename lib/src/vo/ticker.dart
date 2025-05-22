@@ -15,9 +15,9 @@ class Ticker with EquatableMixin {
   Map<String, dynamic> toJson() => _$TickerToJson(this);
 
   @JsonKey(name: 'price_usd')
-  String priceUsd;
+  final String priceUsd;
   @JsonKey(name: 'price_btc')
-  String priceBtc;
+  final String priceBtc;
 
   @override
   List<Object> get props => [priceUsd, priceBtc];

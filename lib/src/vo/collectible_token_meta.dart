@@ -19,19 +19,19 @@ class CollectibleTokenMeta with EquatableMixin {
       _$CollectibleTokenMetaFromJson(json);
 
   @JsonKey(name: 'group')
-  String group;
+  final String group;
   @JsonKey(name: 'name')
-  String name;
+  final String name;
   @JsonKey(name: 'description')
-  String description;
+  final String description;
   @JsonKey(name: 'icon_url')
-  String iconUrl;
+  final String iconUrl;
   @JsonKey(name: 'media_url')
-  String mediaUrl;
+  final String mediaUrl;
   @JsonKey(name: 'mime')
-  String mime;
+  final String mime;
   @JsonKey(name: 'hash')
-  String hash;
+  final String hash;
 
   @override
   List<Object> get props => [

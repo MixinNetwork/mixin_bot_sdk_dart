@@ -22,21 +22,21 @@ class PendingDeposit with EquatableMixin {
   Map<String, dynamic> toJson() => _$PendingDepositToJson(this);
 
   @JsonKey(name: 'type')
-  String type;
+  final String type;
   @JsonKey(name: 'transaction_id')
-  String transactionId;
+  final String transactionId;
   @JsonKey(name: 'transaction_hash')
-  String transactionHash;
+  final String transactionHash;
   @JsonKey(name: 'sender')
-  String sender;
+  final String sender;
   @JsonKey(name: 'amount')
-  String amount;
+  final String amount;
   @JsonKey(name: 'confirmations')
-  int confirmations;
+  final int confirmations;
   @JsonKey(name: 'threshold')
-  int threshold;
+  final int threshold;
   @JsonKey(name: 'created_at')
-  DateTime createdAt;
+  final DateTime createdAt;
 
   @override
   List<Object> get props => [

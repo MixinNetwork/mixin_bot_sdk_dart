@@ -15,7 +15,7 @@ class CircleName with EquatableMixin {
   Map<String, dynamic> toJson() => _$CircleNameToJson(this);
 
   @JsonKey(name: 'name', disallowNullValue: true)
-  String name;
+  final String name;
 
   @override
   List<Object> get props => [

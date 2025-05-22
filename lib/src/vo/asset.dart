@@ -33,46 +33,43 @@ class Asset with EquatableMixin {
   Map<String, dynamic> toJson() => _$AssetToJson(this);
 
   @JsonKey(name: 'asset_id')
-  String assetId;
+  final String assetId;
   @JsonKey(name: 'symbol')
-  String symbol;
+  final String symbol;
   @JsonKey(name: 'name')
-  String name;
+  final String name;
   @JsonKey(name: 'display_symbol')
-  String displaySymbol;
+  final String displaySymbol;
   @JsonKey(name: 'display_name')
-  String displayName;
+  final String displayName;
   @JsonKey(name: 'icon_url')
-  String iconUrl;
+  final String iconUrl;
   @JsonKey(name: 'balance')
-  String balance;
-  @Deprecated('Use depositEntries')
-  @JsonKey(name: 'destination')
-  String? destination;
+  final String balance;
   @JsonKey(name: 'tag')
-  String? tag;
+  final String? tag;
   @JsonKey(name: 'price_btc')
-  String priceBtc;
+  final String priceBtc;
   @JsonKey(name: 'price_usd')
-  String priceUsd;
+  final String priceUsd;
   @JsonKey(name: 'chain_id')
-  String chainId;
+  final String chainId;
   @JsonKey(name: 'change_usd')
-  String changeUsd;
+  final String changeUsd;
   @JsonKey(name: 'change_btc')
-  String changeBtc;
+  final String changeBtc;
   @JsonKey(name: 'confirmations')
-  int confirmations;
+  final int confirmations;
   @JsonKey(name: 'asset_key')
-  String? assetKey;
+  final String? assetKey;
   @JsonKey(name: 'reserve')
-  String? reserve;
+  final String? reserve;
   @JsonKey(name: 'deposit_entries')
-  List<DepositEntry>? depositEntries;
+  final List<DepositEntry>? depositEntries;
   @JsonKey(name: 'fee_asset_id')
-  String? feeAssetId;
+  final String? feeAssetId;
   @JsonKey(name: 'precision')
-  int precision;
+  final int precision;
 
   @override
   List<Object?> get props => [

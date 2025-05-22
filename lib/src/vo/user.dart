@@ -36,41 +36,41 @@ class User with EquatableMixin, CodeTypeInterface {
   Map<String, dynamic> toJson() => _$UserToJson(this);
 
   @JsonKey(name: 'user_id')
-  String userId;
+  final String userId;
   @JsonKey(name: 'identity_number')
-  String identityNumber;
+  final String identityNumber;
   @JsonKey(name: 'relationship')
-  UserRelationship? relationship;
+  final UserRelationship? relationship;
   @JsonKey(name: 'biography')
-  String biography;
+  final String biography;
   @JsonKey(name: 'full_name')
-  String? fullName;
+  final String? fullName;
   @JsonKey(name: 'avatar_url')
-  String? avatarUrl;
+  final String? avatarUrl;
   @JsonKey(name: 'phone')
-  String? phone;
+  final String? phone;
   @JsonKey(name: 'is_verified')
-  bool isVerified;
+  final bool isVerified;
   @JsonKey(name: 'created_at')
-  DateTime? createdAt;
+  final DateTime? createdAt;
   @JsonKey(name: 'mute_until')
-  String muteUntil;
+  final String muteUntil;
   @JsonKey(name: 'has_pin')
-  bool? hasPin;
+  final bool? hasPin;
   @JsonKey(name: 'app')
-  App? app;
+  final App? app;
   @JsonKey(name: 'is_scam')
-  bool isScam;
+  final bool isScam;
 
   @JsonKey(name: 'code_id')
-  String? codeId;
+  final String? codeId;
   @JsonKey(name: 'code_url')
-  String? codeUrl;
+  final String? codeUrl;
   @JsonKey(name: 'is_deactivated')
-  bool? isDeactivated;
+  final bool? isDeactivated;
 
   @JsonKey(name: 'membership')
-  Membership? membership;
+  final Membership? membership;
 
   @override
   List<Object?> get props => [

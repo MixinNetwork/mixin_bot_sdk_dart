@@ -17,11 +17,11 @@ class MixinError with EquatableMixin {
   Map<String, dynamic> toJson() => _$MixinErrorToJson(this);
 
   @JsonKey(name: 'status')
-  int? status;
+  final int? status;
   @JsonKey(name: 'code', defaultValue: 0)
-  int code;
+  final int code;
   @JsonKey(name: 'description', defaultValue: '')
-  String description;
+  final String description;
 
   @override
   List<Object?> get props => [

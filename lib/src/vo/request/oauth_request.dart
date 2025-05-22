@@ -13,11 +13,11 @@ class OauthRequest with EquatableMixin {
   Map<String, dynamic> toJson() => _$OauthRequestToJson(this);
 
   @JsonKey(name: 'client_id')
-  String clientId;
+  final String clientId;
   @JsonKey(name: 'client_secret')
-  String clientSecret;
+  final String clientSecret;
   @JsonKey(name: 'code')
-  String code;
+  final String code;
 
   @override
   List<Object?> get props => [clientId, clientSecret, code];

@@ -34,32 +34,32 @@ class ConversationResponse with EquatableMixin, CodeTypeInterface {
   Map<String, dynamic> toJson() => _$ConversationResponseToJson(this);
 
   @JsonKey(name: 'conversation_id')
-  String conversationId;
+  final String conversationId;
   @JsonKey(name: 'name')
-  String name;
+  final String name;
   @JsonKey(name: 'category')
-  ConversationCategory? category;
+  final ConversationCategory? category;
   @JsonKey(name: 'creator_id')
-  String creatorId;
+  final String creatorId;
   @JsonKey(name: 'icon_url')
-  String iconUrl;
+  final String iconUrl;
   @JsonKey(name: 'code_url')
-  String codeUrl;
+  final String codeUrl;
   @JsonKey(name: 'announcement')
-  String announcement;
+  final String announcement;
   @JsonKey(name: 'created_at')
-  DateTime createdAt;
+  final DateTime createdAt;
   @JsonKey(name: 'participants')
-  List<ParticipantRequest> participants;
+  final List<ParticipantRequest> participants;
   @JsonKey(name: 'participant_sessions')
-  List<UserSession>? participantSessions;
+  final List<UserSession>? participantSessions;
   @JsonKey(name: 'circles')
-  List<CircleConversation>? circles;
+  final List<CircleConversation>? circles;
   @JsonKey(name: 'mute_until')
-  String muteUntil;
+  final String muteUntil;
 
   @JsonKey(name: 'expire_in', defaultValue: 0)
-  int expireIn;
+  final int expireIn;
 
   @override
   List<Object?> get props => [

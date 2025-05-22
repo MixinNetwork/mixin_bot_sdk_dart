@@ -21,19 +21,19 @@ class TransferRequest with EquatableMixin {
   Map<String, dynamic> toJson() => _$TransferRequestToJson(this);
 
   @JsonKey(name: 'asset_id')
-  String assetId;
+  final String assetId;
   @JsonKey(name: 'opponent_id')
-  String? opponentId;
+  final String? opponentId;
   @JsonKey(name: 'amount')
-  String amount;
+  final String amount;
   @JsonKey(name: 'pin')
-  String? pin;
+  final String? pin;
   @JsonKey(name: 'trace_id')
-  String? traceId;
+  final String? traceId;
   @JsonKey(name: 'memo')
-  String? memo;
+  final String? memo;
   @JsonKey(name: 'address_id')
-  String? addressId;
+  final String? addressId;
 
   @override
   List<Object?> get props => [

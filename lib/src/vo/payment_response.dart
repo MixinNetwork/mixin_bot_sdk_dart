@@ -16,7 +16,7 @@ class PaymentResponse with EquatableMixin {
   Map<String, dynamic> toJson() => _$PaymentResponseToJson(this);
 
   @JsonKey(name: 'status')
-  PaymentStatus status;
+  final PaymentStatus status;
 
   @override
   List<Object> get props => [status];

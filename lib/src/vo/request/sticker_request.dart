@@ -16,9 +16,9 @@ class StickerRequest with EquatableMixin {
   Map<String, dynamic> toJson() => _$StickerRequestToJson(this);
 
   @JsonKey(name: 'data_base64')
-  String? dataBase64;
+  final String? dataBase64;
   @JsonKey(name: 'sticker_id')
-  String? stickerId;
+  final String? stickerId;
 
   @override
   List<Object?> get props => [stickerId, dataBase64];

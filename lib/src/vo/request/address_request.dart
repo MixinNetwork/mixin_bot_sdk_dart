@@ -19,15 +19,15 @@ class AddressRequest with EquatableMixin {
   Map<String, dynamic> toJson() => _$AddressRequestToJson(this);
 
   @JsonKey(name: 'asset_id')
-  String assetId;
+  final String assetId;
   @JsonKey(name: 'destination')
-  String? destination;
+  final String? destination;
   @JsonKey(name: 'tag')
-  String? tag;
+  final String? tag;
   @JsonKey(name: 'label')
-  String? label;
+  final String? label;
   @JsonKey(name: 'pin')
-  String pin;
+  final String pin;
 
   @override
   List<Object?> get props => [

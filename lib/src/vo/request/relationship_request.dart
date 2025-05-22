@@ -20,11 +20,11 @@ class RelationshipRequest with EquatableMixin {
   Map<String, dynamic> toJson() => _$RelationshipRequestToJson(this);
 
   @JsonKey(name: 'user_id')
-  String userId;
+  final String userId;
   @JsonKey(name: 'action')
-  RelationshipAction? action;
+  final RelationshipAction? action;
   @JsonKey(name: 'full_name')
-  String? fullName;
+  final String? fullName;
 
   @override
   List<Object?> get props => [
