@@ -1,3 +1,7 @@
+## 1.4.0
+
+* update dart version
+
 ## 1.3.2
 
 * add `TokenApi.fetchAssets` api
