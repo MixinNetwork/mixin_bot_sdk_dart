@@ -13,9 +13,9 @@ class OauthResponse with EquatableMixin {
   Map<String, dynamic> toJson() => _$OauthResponseToJson(this);
 
   @JsonKey(name: 'access_token')
-  String accessToken;
+  final String accessToken;
   @JsonKey(name: 'scope')
-  String scope;
+  final String scope;
 
   @override
   List<Object> get props => [accessToken, scope];

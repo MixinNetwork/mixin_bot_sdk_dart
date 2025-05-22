@@ -13,7 +13,7 @@ class LogoutRequest with EquatableMixin {
   Map<String, dynamic> toJson() => _$LogoutRequestToJson(this);
 
   @JsonKey(name: 'session_id')
-  String sessionId;
+  final String sessionId;
 
   @override
   List<Object?> get props => [sessionId];

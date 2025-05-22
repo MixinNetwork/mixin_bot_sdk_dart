@@ -18,13 +18,13 @@ class Attachment with EquatableMixin {
   Map<String, dynamic> toJson() => _$AttachmentToJson(this);
 
   @JsonKey(name: 'attachment_id')
-  String attachmentId;
+  final String attachmentId;
   @JsonKey(name: 'created_at')
-  String createdAt;
+  final String createdAt;
   @JsonKey(name: 'upload_url')
-  String? uploadUrl;
+  final String? uploadUrl;
   @JsonKey(name: 'view_url')
-  String? viewUrl;
+  final String? viewUrl;
 
   @override
   List<Object?> get props => [

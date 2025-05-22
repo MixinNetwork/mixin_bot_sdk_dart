@@ -13,7 +13,7 @@ class SignalKeyCount with EquatableMixin {
   Map<String, dynamic> toJson() => _$SignalKeyCountToJson(this);
 
   @JsonKey(name: 'one_time_pre_keys_count')
-  int preKeyCount;
+  final int preKeyCount;
 
   @override
   List<Object> get props => [preKeyCount];

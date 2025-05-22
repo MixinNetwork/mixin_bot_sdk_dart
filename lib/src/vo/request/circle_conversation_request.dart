@@ -17,11 +17,11 @@ class CircleConversationRequest with EquatableMixin {
   Map<String, dynamic> toJson() => _$CircleConversationRequestToJson(this);
 
   @JsonKey(name: 'conversation_id', disallowNullValue: true)
-  String conversationId;
+  final String conversationId;
   @JsonKey(name: 'action', disallowNullValue: true)
-  CircleConversationAction action;
+  final CircleConversationAction action;
   @JsonKey(name: 'user_id', disallowNullValue: true)
-  String? userId;
+  final String? userId;
 
   @override
   List<Object?> get props => [conversationId, action, userId];

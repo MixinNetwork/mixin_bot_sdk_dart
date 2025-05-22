@@ -17,11 +17,11 @@ class DepositEntry with EquatableMixin {
   Map<String, dynamic> toJson() => _$DepositEntryToJson(this);
 
   @JsonKey(name: 'destination')
-  String destination;
+  final String destination;
   @JsonKey(name: 'tag')
-  String? tag;
+  final String? tag;
   @JsonKey(name: 'properties')
-  List<String>? properties;
+  final List<String>? properties;
 
   @override
   List<Object?> get props => [destination, tag, properties];

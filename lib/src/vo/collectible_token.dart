@@ -27,31 +27,31 @@ class CollectibleToken with EquatableMixin {
   Map<String, dynamic> toJson() => _$CollectibleTokenToJson(this);
 
   @JsonKey(name: 'type')
-  String type;
+  final String type;
   @JsonKey(name: 'token_id')
-  String tokenId;
+  final String tokenId;
   @JsonKey(name: 'group')
-  String group;
+  final String group;
   @JsonKey(name: 'token')
-  String token;
+  final String token;
   @JsonKey(name: 'mixin_id')
-  String mixinId;
+  final String mixinId;
 
   @JsonKey(name: 'collection_id')
-  String collectionId;
+  final String collectionId;
 
   @JsonKey(name: 'nfo')
-  String nfo;
+  final String nfo;
   @JsonKey(name: 'meta')
-  CollectibleTokenMeta meta;
+  final CollectibleTokenMeta meta;
   @JsonKey(name: 'created_at')
-  String createdAt;
+  final String createdAt;
 
   @JsonKey(name: 'receivers')
-  List<String>? receivers;
+  final List<String>? receivers;
 
   @JsonKey(name: 'receivers_threshold')
-  int receiversThreshold;
+  final int receiversThreshold;
 
   @override
   List<Object?> get props => [

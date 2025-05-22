@@ -17,11 +17,11 @@ class AssetFee with EquatableMixin {
   Map<String, dynamic> toJson() => _$AssetFeeToJson(this);
 
   @JsonKey(name: 'type')
-  String type;
+  final String type;
   @JsonKey(name: 'asset_id')
-  String assetId;
+  final String assetId;
   @JsonKey(name: 'amount')
-  String amount;
+  final String amount;
 
   @override
   List<Object> get props => [type, assetId, amount];

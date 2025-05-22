@@ -25,19 +25,19 @@ class ConversationRequest with EquatableMixin {
   Map<String, dynamic> toJson() => _$ConversationRequestToJson(this);
 
   @JsonKey(name: 'conversation_id')
-  String conversationId;
+  final String conversationId;
   @JsonKey(name: 'category')
-  ConversationCategory? category;
+  final ConversationCategory? category;
   @JsonKey(name: 'name')
-  String? name;
+  final String? name;
   @JsonKey(name: 'icon_base64')
-  String? iconBase64;
+  final String? iconBase64;
   @JsonKey(name: 'announcement')
-  String? announcement;
+  final String? announcement;
   @JsonKey(name: 'participants')
-  List<ParticipantRequest>? participants;
+  final List<ParticipantRequest>? participants;
   @JsonKey(name: 'duration')
-  int? duration;
+  final int? duration;
 
   @override
   List<Object?> get props => [

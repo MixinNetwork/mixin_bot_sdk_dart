@@ -23,23 +23,23 @@ class Sticker with EquatableMixin {
   Map<String, dynamic> toJson() => _$StickerToJson(this);
 
   @JsonKey(name: 'sticker_id')
-  String stickerId;
+  final String stickerId;
   @JsonKey(name: 'album_id')
-  String? albumId;
+  final String? albumId;
   @JsonKey(name: 'name')
-  String name;
+  final String name;
   @JsonKey(name: 'asset_url')
-  String assetUrl;
+  final String assetUrl;
   @JsonKey(name: 'asset_type')
-  String assetType;
+  final String assetType;
   @JsonKey(name: 'asset_width')
-  int assetWidth;
+  final int assetWidth;
   @JsonKey(name: 'asset_height')
-  int assetHeight;
+  final int assetHeight;
   @JsonKey(name: 'created_at')
-  DateTime createdAt;
+  final DateTime createdAt;
   @JsonKey(name: 'last_use_at')
-  DateTime? lastUsedAt;
+  final DateTime? lastUsedAt;
 
   @override
   List<Object?> get props => [

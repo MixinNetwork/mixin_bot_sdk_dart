@@ -23,20 +23,20 @@ class ProvisioningRequest with EquatableMixin {
   Map<String, dynamic> toJson() => _$ProvisioningRequestToJson(this);
 
   @JsonKey(name: 'user_id')
-  String userId;
+  final String userId;
   @JsonKey(name: 'session_id')
-  String sessionId;
+  final String sessionId;
   @JsonKey(name: 'session_secret')
-  String sessionSecret;
-  String code;
-  String platform;
+  final String sessionSecret;
+  final String code;
+  final String platform;
   @JsonKey(name: 'platform_version')
-  String platformVersion;
+  final  String platformVersion;
   @JsonKey(name: 'app_version')
-  String appVersion;
-  String purpose;
+  final String appVersion;
+  final String purpose;
   @JsonKey(name: 'registration_id')
-  int registrationId;
+  final int registrationId;
 
   @override
   List<Object> get props => [

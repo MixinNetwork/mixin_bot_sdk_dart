@@ -21,17 +21,17 @@ class Provisioning with EquatableMixin {
   Map<String, dynamic> toJson() => _$ProvisioningToJson(this);
 
   @JsonKey(name: 'device_id')
-  String deviceId;
+  final String deviceId;
   @JsonKey(name: 'expired_at')
-  DateTime? expiredAt;
-  String secret;
-  String? platform;
+  final DateTime? expiredAt;
+  final String secret;
+  final String? platform;
   @JsonKey(name: 'provisioning_code')
-  String? provisioningCode;
+  final String? provisioningCode;
   @JsonKey(name: 'session_id')
-  String? sessionId;
+  final String? sessionId;
   @JsonKey(name: 'user_id')
-  String? userId;
+  final String? userId;
 
   @override
   List<Object?> get props => [

@@ -25,28 +25,28 @@ class Address with EquatableMixin {
   Map<String, dynamic> toJson() => _$AddressToJson(this);
 
   @JsonKey(name: 'address_id')
-  String addressId;
+  final String addressId;
   @JsonKey(name: 'type')
-  String type;
+  final String type;
   @JsonKey(name: 'asset_id')
-  String assetId;
+  final String assetId;
   @JsonKey(name: 'destination')
-  String destination;
+  final String destination;
   @JsonKey(name: 'label')
-  String label;
+  final String label;
   @JsonKey(name: 'updated_at')
-  DateTime updatedAt;
+  final DateTime updatedAt;
   @JsonKey(name: 'reserve')
-  String reserve;
+  final String reserve;
   @JsonKey(name: 'fee')
-  String fee;
+  final String fee;
   @JsonKey(name: 'tag')
-  String? tag;
+  final String? tag;
   @JsonKey(name: 'dust')
-  String dust;
+  final String dust;
 
   @JsonKey(name: 'fee_asset_id')
-  String feeAssetId;
+  final String feeAssetId;
 
   @override
   List<Object?> get props => [

@@ -24,25 +24,25 @@ class StickerAlbum with EquatableMixin {
   Map<String, dynamic> toJson() => _$StickerAlbumToJson(this);
 
   @JsonKey(name: 'album_id')
-  String albumId;
+  final String albumId;
   @JsonKey(name: 'name')
-  String name;
+  final String name;
   @JsonKey(name: 'icon_url')
-  String iconUrl;
+  final String iconUrl;
   @JsonKey(name: 'created_at')
-  DateTime createdAt;
+  final DateTime createdAt;
   @JsonKey(name: 'update_at')
-  DateTime updateAt;
+  final DateTime updateAt;
   @JsonKey(name: 'user_id')
-  String userId;
+  final String userId;
   @JsonKey(name: 'category')
-  String category;
+  final String category;
   @JsonKey(name: 'description')
-  String description;
+  final String description;
   @JsonKey(name: 'banner')
-  String? banner;
-  @JsonKey(name: 'is_verified', defaultValue: false)
-  bool isVerified;
+  final String? banner;
+  @JsonKey(name: 'is_verified')
+  final bool isVerified;
 
   @override
   List<Object?> get props => [

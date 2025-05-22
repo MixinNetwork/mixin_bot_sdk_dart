@@ -13,7 +13,7 @@ class MixinResponse<T> with EquatableMixin {
     return MixinResponse<T>(data);
   }
 
-  T data;
+  final T data;
 
   static Future<MixinResponse<T>> request<T>(
       Future<Response<Map<String, dynamic>>> future,

@@ -31,35 +31,35 @@ class CollectibleOutput with EquatableMixin {
   static const kStateSpent = 'spent';
 
   @JsonKey(name: 'user_id')
-  String userId;
+  final String userId;
   @JsonKey(name: 'output_id')
-  String outputId;
+  final String outputId;
   @JsonKey(name: 'token_id')
-  String tokenId;
+  final String tokenId;
   @JsonKey(name: 'transaction_hash')
-  String transactionHash;
+  final String transactionHash;
   @JsonKey(name: 'output_index')
-  int outputIndex;
+  final int outputIndex;
   @JsonKey(name: 'amount')
-  String amount;
+  final String amount;
   @JsonKey(name: 'senders_threshold')
-  int sendersThreshold;
+  final int sendersThreshold;
   @JsonKey(name: 'senders')
-  List<String> senders;
+  final List<String> senders;
   @JsonKey(name: 'receivers_threshold')
-  int receiversThreshold;
+  final int receiversThreshold;
   @JsonKey(name: 'receivers')
-  List<String> receivers;
+  final List<String> receivers;
   @JsonKey(name: 'state')
-  String state;
+  final String state;
   @JsonKey(name: 'created_at')
-  String createdAt;
+  final String createdAt;
   @JsonKey(name: 'updated_at')
-  String updatedAt;
+  final String updatedAt;
   @JsonKey(name: 'signed_by')
-  String signedBy;
+  final String signedBy;
   @JsonKey(name: 'signed_tx')
-  String signedTx;
+  final String signedTx;
 
   @override
   List<Object?> get props => [

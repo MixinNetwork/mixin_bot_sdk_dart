@@ -30,7 +30,7 @@ class SafePendingDeposit with EquatableMixin {
   @JsonKey(name: 'transaction_hash')
   final String transactionHash;
   final String amount;
-  int confirmations;
+  final int confirmations;
   @JsonKey(name: 'created_at')
   final String createdAt;
 
