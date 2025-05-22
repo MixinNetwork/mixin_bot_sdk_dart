@@ -54,7 +54,7 @@ class User with EquatableMixin, CodeTypeInterface {
   @JsonKey(name: 'created_at')
   final DateTime? createdAt;
   @JsonKey(name: 'mute_until')
-  final String? muteUntil;
+  final String muteUntil;
   @JsonKey(name: 'has_pin')
   final bool? hasPin;
   @JsonKey(name: 'app')
