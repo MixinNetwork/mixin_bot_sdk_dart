@@ -37,6 +37,10 @@ jobs:
       - name: Analyze project source
         run: dart analyze --fatal-infos
 
+      - name: Decode keystore file
+        run: |
+          echo "${{ secrets.KEYSTORE_JSON_BASE64 }}" | base64 -d > .keystore.json
+
       # Your project will need to have tests in test/ and a dependency on
       # package:test for this step to succeed. Note that Flutter projects will
       # want to change this to 'flutter test'.
