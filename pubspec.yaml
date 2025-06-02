@@ -30,6 +30,6 @@ dependencies:
 
 dev_dependencies:
   test: ^1.26.2
-  very_good_analysis: 7.0.0
+  very_good_analysis: 8.0.0
   build_runner: ^2.4.15
   json_serializable: ^6.9.5
