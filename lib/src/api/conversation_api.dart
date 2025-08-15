@@ -7,6 +7,9 @@ class ConversationApi {
 
   final Dio dio;
 
+  /// Creates a conversation with the provided request.
+  /// 
+  /// For group conversations, the conversation ID should be generated using [groupConversationId].
   Future<MixinResponse<ConversationResponse>> createConversation(
           ConversationRequest request) =>
       MixinResponse.request<ConversationResponse>(
