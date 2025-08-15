@@ -108,3 +108,39 @@ Uint8List sha512Hash(Uint8List data) {
   final digest = pc.SHA512Digest();
   return digest.process(data);
 }
+
+String uniqueConversationId(String userId, String recipientId) {
+  String minId;
+  String maxId;
+  if (userId.compareTo(recipientId) > 0) {
+    minId = recipientId;
+    maxId = userId;
+  } else {
+    minId = userId;
+    maxId = recipientId;
+  }
+
+  final bytes = utf8.encode(minId + maxId);
+  final digest = md5.convert(bytes).bytes;
+
+  digest[6] = (digest[6] & 0x0f) | 0x30;
+  digest[8] = (digest[8] & 0x3f) | 0x80;
+
+  return UuidValue.fromList(digest).toString();
+}
+
+String groupConversationId(String ownerId, String groupName,
+    List<String> participants, String randomId) {
+  final normalizedRandomId = UuidValue.fromString(randomId).toString();
+
+  var gid = uniqueConversationId(ownerId, groupName);
+
+  gid = uniqueConversationId(gid, normalizedRandomId);
+
+  final sortedParticipants = participants.toList()..sort();
+  for (final participant in sortedParticipants) {
+    gid = uniqueConversationId(gid, participant);
+  }
+
+  return gid;
+}

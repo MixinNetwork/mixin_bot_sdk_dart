@@ -18,6 +18,7 @@ ConversationRequest _$ConversationRequestFromJson(Map<String, dynamic> json) =>
           ?.map((e) => ParticipantRequest.fromJson(e as Map<String, dynamic>))
           .toList(),
       duration: (json['duration'] as num?)?.toInt(),
+      randomId: json['random_id'] as String?,
     );
 
 Map<String, dynamic> _$ConversationRequestToJson(
@@ -31,4 +32,5 @@ Map<String, dynamic> _$ConversationRequestToJson(
       'announcement': instance.announcement,
       'participants': instance.participants,
       'duration': instance.duration,
+      'random_id': instance.randomId,
     };

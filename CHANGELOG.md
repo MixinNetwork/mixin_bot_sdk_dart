@@ -1,3 +1,8 @@
+## 1.4.1
+
+* Add `groupConversationId` and `uniqueConversationId` utility functions for generating deterministic group conversation IDs
+* Add `randomId` field to `ConversationRequest` class
+
 ## 1.4.0
 
 * update dart version
