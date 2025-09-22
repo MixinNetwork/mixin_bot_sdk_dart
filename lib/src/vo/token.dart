@@ -10,6 +10,8 @@ class Token with EquatableMixin {
     required this.asset,
     required this.symbol,
     required this.name,
+    required this.displaySymbol,
+    required this.displayName,
     required this.iconUrl,
     required this.priceBtc,
     required this.priceUsd,
@@ -18,7 +20,9 @@ class Token with EquatableMixin {
     required this.changeBtc,
     required this.confirmations,
     required this.assetKey,
+    required this.precision,
     required this.dust,
+    required this.level,
     this.collectionHash,
   });
 
@@ -32,6 +36,10 @@ class Token with EquatableMixin {
   final String symbol;
   @JsonKey(name: 'name')
   final String name;
+  @JsonKey(name: 'display_symbol')
+  final String displaySymbol;
+  @JsonKey(name: 'display_name')
+  final String displayName;
   @JsonKey(name: 'icon_url')
   final String iconUrl;
   @JsonKey(name: 'price_btc')
@@ -48,8 +56,12 @@ class Token with EquatableMixin {
   final int confirmations;
   @JsonKey(name: 'asset_key')
   final String assetKey;
+  @JsonKey(name: 'precision')
+  final int precision;
   @JsonKey(name: 'dust')
   final String dust;
+  @JsonKey(name: 'level')
+  final int level;
   @JsonKey(name: 'collection_hash')
   final String? collectionHash;
 
@@ -61,6 +73,8 @@ class Token with EquatableMixin {
         asset,
         symbol,
         name,
+        displaySymbol,
+        displayName,
         iconUrl,
         priceBtc,
         priceUsd,
@@ -69,7 +83,9 @@ class Token with EquatableMixin {
         changeBtc,
         confirmations,
         assetKey,
+        precision,
         dust,
+        level,
         collectionHash,
       ];
 }

@@ -1,3 +1,6 @@
+## 1.4.2
+* Add displaySymbol, displayName, precision, level to Token class
+
 ## 1.4.1
 
 * Add `groupConversationId` and `uniqueConversationId` utility functions for generating deterministic group conversation IDs

@@ -11,6 +11,8 @@ Token _$TokenFromJson(Map<String, dynamic> json) => Token(
       asset: json['kernel_asset_id'] as String,
       symbol: json['symbol'] as String,
       name: json['name'] as String,
+      displaySymbol: json['display_symbol'] as String,
+      displayName: json['display_name'] as String,
       iconUrl: json['icon_url'] as String,
       priceBtc: json['price_btc'] as String,
       priceUsd: json['price_usd'] as String,
@@ -19,7 +21,9 @@ Token _$TokenFromJson(Map<String, dynamic> json) => Token(
       changeBtc: json['change_btc'] as String,
       confirmations: (json['confirmations'] as num).toInt(),
       assetKey: json['asset_key'] as String,
+      precision: (json['precision'] as num).toInt(),
       dust: json['dust'] as String,
+      level: (json['level'] as num).toInt(),
       collectionHash: json['collection_hash'] as String?,
     );
 
@@ -28,6 +32,8 @@ Map<String, dynamic> _$TokenToJson(Token instance) => <String, dynamic>{
       'kernel_asset_id': instance.asset,
       'symbol': instance.symbol,
       'name': instance.name,
+      'display_symbol': instance.displaySymbol,
+      'display_name': instance.displayName,
       'icon_url': instance.iconUrl,
       'price_btc': instance.priceBtc,
       'price_usd': instance.priceUsd,
@@ -36,6 +42,8 @@ Map<String, dynamic> _$TokenToJson(Token instance) => <String, dynamic>{
       'change_btc': instance.changeBtc,
       'confirmations': instance.confirmations,
       'asset_key': instance.assetKey,
+      'precision': instance.precision,
       'dust': instance.dust,
+      'level': instance.level,
       'collection_hash': instance.collectionHash,
     };
