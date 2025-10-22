@@ -89,14 +89,10 @@ class Encoder {
     write(hex.decode(tx.asset));
 
     writeInt(tx.inputs.length);
-    for (final input in tx.inputs) {
-      encodeInput(input);
-    }
+    tx.inputs.forEach(encodeInput);
 
     writeInt(tx.outputs.length);
-    for (final output in tx.outputs) {
-      encodeOutput(output);
-    }
+    tx.outputs.forEach(encodeOutput);
 
     writeInt(tx.reference.length);
     for (final ref in tx.reference) {

@@ -4,8 +4,8 @@ import 'package:mixin_bot_sdk_dart/mixin_bot_sdk_dart.dart';
 
 import 'config.dart';
 
-void main() {
-  testProvisioningId();
+void main() async {
+  await testProvisioningId();
 }
 
 Future<void> testProvisioningId() async {

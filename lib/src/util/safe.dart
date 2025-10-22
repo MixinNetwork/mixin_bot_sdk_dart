@@ -247,9 +247,7 @@ String encodeSafeTransaction(
   final encoder = Encoder()
     ..encodeTransaction(tx)
     ..writeInt(sigs.length);
-  for (final sig in sigs) {
-    encoder.encodeSignature(sig);
-  }
+  sigs.forEach(encoder.encodeSignature);
   return encoder.toHex();
 }
 
