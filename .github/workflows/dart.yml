@@ -5,6 +5,9 @@
 
 name: Dart
 
+permissions:
+  contents: read
+
 on:
   push:
     branches: [ master ]
