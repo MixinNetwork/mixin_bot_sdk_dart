@@ -30,8 +30,8 @@ class Client {
     _dio.interceptors.addAll(interceptors);
     _dio.interceptors.add(InterceptorsWrapper(
       onRequest: (
-        RequestOptions options,
-        RequestInterceptorHandler handler,
+        options,
+        handler,
       ) async {
         var body = '';
         if (options.data != null) {
@@ -51,8 +51,7 @@ class Client {
         options.headers['Authorization'] = 'Bearer $authToken';
         handler.next(options);
       },
-      onResponse:
-          (Response<dynamic> response, ResponseInterceptorHandler handler) {
+      onResponse: (response, handler) {
         final dynamic error = (response.data as Map)['error'];
         if (error == null) return handler.next(response);
 
