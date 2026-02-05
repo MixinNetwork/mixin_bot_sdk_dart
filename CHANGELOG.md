@@ -1,3 +1,6 @@
+## 1.4.3
+* update version
+
 ## 1.4.2
 * Add displaySymbol, displayName, precision, level to Token class
 
