@@ -7,11 +7,11 @@ part of 'ticker.dart';
 // **************************************************************************
 
 Ticker _$TickerFromJson(Map<String, dynamic> json) => Ticker(
-      priceUsd: json['price_usd'] as String,
-      priceBtc: json['price_btc'] as String,
-    );
+  priceUsd: json['price_usd'] as String,
+  priceBtc: json['price_btc'] as String,
+);
 
 Map<String, dynamic> _$TickerToJson(Ticker instance) => <String, dynamic>{
-      'price_usd': instance.priceUsd,
-      'price_btc': instance.priceBtc,
-    };
+  'price_usd': instance.priceUsd,
+  'price_btc': instance.priceBtc,
+};

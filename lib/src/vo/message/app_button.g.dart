@@ -7,13 +7,13 @@ part of 'app_button.dart';
 // **************************************************************************
 
 AppButton _$AppButtonFromJson(Map<String, dynamic> json) => AppButton(
-      json['label'] as String,
-      json['color'] as String,
-      json['action'] as String,
-    );
+  json['label'] as String,
+  json['color'] as String,
+  json['action'] as String,
+);
 
 Map<String, dynamic> _$AppButtonToJson(AppButton instance) => <String, dynamic>{
-      'label': instance.label,
-      'color': instance.color,
-      'action': instance.action,
-    };
+  'label': instance.label,
+  'color': instance.color,
+  'action': instance.action,
+};

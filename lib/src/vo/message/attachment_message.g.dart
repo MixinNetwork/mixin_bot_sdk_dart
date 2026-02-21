@@ -32,12 +32,18 @@ Map<String, dynamic> _$AttachmentMessageToJson(AttachmentMessage instance) =>
       'size': const JsonStringToInt().toJson(instance.size),
       'name': instance.name,
       'width': _$JsonConverterToJson<dynamic, int>(
-          instance.width, const JsonStringToInt().toJson),
+        instance.width,
+        const JsonStringToInt().toJson,
+      ),
       'height': _$JsonConverterToJson<dynamic, int>(
-          instance.height, const JsonStringToInt().toJson),
+        instance.height,
+        const JsonStringToInt().toJson,
+      ),
       'thumbnail': instance.thumbnail,
       'duration': _$JsonConverterToJson<dynamic, int>(
-          instance.duration, const JsonStringToInt().toJson),
+        instance.duration,
+        const JsonStringToInt().toJson,
+      ),
       'waveform': dynamicToJson(instance.waveform),
       'caption': instance.caption,
       'created_at': instance.createdAt,
@@ -47,5 +53,4 @@ Map<String, dynamic> _$AttachmentMessageToJson(AttachmentMessage instance) =>
 Json? _$JsonConverterToJson<Json, Value>(
   Value? value,
   Json? Function(Value value) toJson,
-) =>
-    value == null ? null : toJson(value);
+) => value == null ? null : toJson(value);

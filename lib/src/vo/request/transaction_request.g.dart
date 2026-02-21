@@ -13,7 +13,4 @@ TransactionRequest _$TransactionRequestFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$TransactionRequestToJson(TransactionRequest instance) =>
-    <String, dynamic>{
-      'raw': instance.raw,
-      'request_id': instance.requestId,
-    };
+    <String, dynamic>{'raw': instance.raw, 'request_id': instance.requestId};

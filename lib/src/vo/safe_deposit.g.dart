@@ -7,9 +7,9 @@ part of 'safe_deposit.dart';
 // **************************************************************************
 
 SafeDeposit _$SafeDepositFromJson(Map<String, dynamic> json) => SafeDeposit(
-      depositHash: json['deposit_hash'] as String,
-      sender: json['sender'] as String? ?? '',
-    );
+  depositHash: json['deposit_hash'] as String,
+  sender: json['sender'] as String? ?? '',
+);
 
 Map<String, dynamic> _$SafeDepositToJson(SafeDeposit instance) =>
     <String, dynamic>{

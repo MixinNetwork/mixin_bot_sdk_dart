@@ -7,12 +7,12 @@ part of 'deposit_entry.dart';
 // **************************************************************************
 
 DepositEntry _$DepositEntryFromJson(Map<String, dynamic> json) => DepositEntry(
-      destination: json['destination'] as String,
-      tag: json['tag'] as String?,
-      properties: (json['properties'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-    );
+  destination: json['destination'] as String,
+  tag: json['tag'] as String?,
+  properties: (json['properties'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
+);
 
 Map<String, dynamic> _$DepositEntryToJson(DepositEntry instance) =>
     <String, dynamic>{

@@ -20,15 +20,15 @@ ProvisioningRequest _$ProvisioningRequestFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$ProvisioningRequestToJson(
-        ProvisioningRequest instance) =>
-    <String, dynamic>{
-      'user_id': instance.userId,
-      'session_id': instance.sessionId,
-      'session_secret': instance.sessionSecret,
-      'code': instance.code,
-      'platform': instance.platform,
-      'platform_version': instance.platformVersion,
-      'app_version': instance.appVersion,
-      'purpose': instance.purpose,
-      'registration_id': instance.registrationId,
-    };
+  ProvisioningRequest instance,
+) => <String, dynamic>{
+  'user_id': instance.userId,
+  'session_id': instance.sessionId,
+  'session_secret': instance.sessionSecret,
+  'code': instance.code,
+  'platform': instance.platform,
+  'platform_version': instance.platformVersion,
+  'app_version': instance.appVersion,
+  'purpose': instance.purpose,
+  'registration_id': instance.registrationId,
+};

@@ -7,12 +7,12 @@ part of 'live_message.dart';
 // **************************************************************************
 
 LiveMessage _$LiveMessageFromJson(Map<String, dynamic> json) => LiveMessage(
-      const JsonStringToInt().fromJson(json['width']),
-      const JsonStringToInt().fromJson(json['height']),
-      json['thumb_url'] as String,
-      json['url'] as String,
-      json['shareable'] as bool? ?? true,
-    );
+  const JsonStringToInt().fromJson(json['width']),
+  const JsonStringToInt().fromJson(json['height']),
+  json['thumb_url'] as String,
+  json['url'] as String,
+  json['shareable'] as bool? ?? true,
+);
 
 Map<String, dynamic> _$LiveMessageToJson(LiveMessage instance) =>
     <String, dynamic>{

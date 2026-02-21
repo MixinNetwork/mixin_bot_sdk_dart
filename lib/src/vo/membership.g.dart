@@ -7,9 +7,9 @@ part of 'membership.dart';
 // **************************************************************************
 
 Membership _$MembershipFromJson(Map<String, dynamic> json) => Membership(
-      plan: $enumDecode(_$PlanEnumMap, json['plan']),
-      expiredAt: DateTime.parse(json['expired_at'] as String),
-    );
+  plan: $enumDecode(_$PlanEnumMap, json['plan']),
+  expiredAt: DateTime.parse(json['expired_at'] as String),
+);
 
 Map<String, dynamic> _$MembershipToJson(Membership instance) =>
     <String, dynamic>{

@@ -7,10 +7,10 @@ part of 'favorite_app.dart';
 // **************************************************************************
 
 FavoriteApp _$FavoriteAppFromJson(Map<String, dynamic> json) => FavoriteApp(
-      json['app_id'] as String,
-      json['user_id'] as String,
-      DateTime.parse(json['created_at'] as String),
-    );
+  json['app_id'] as String,
+  json['user_id'] as String,
+  DateTime.parse(json['created_at'] as String),
+);
 
 Map<String, dynamic> _$FavoriteAppToJson(FavoriteApp instance) =>
     <String, dynamic>{

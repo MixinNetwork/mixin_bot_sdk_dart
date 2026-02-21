@@ -8,8 +8,9 @@ part of 'ghost_key_request.dart';
 
 GhostKeyRequest _$GhostKeyRequestFromJson(Map<String, dynamic> json) =>
     GhostKeyRequest(
-      receivers:
-          (json['receivers'] as List<dynamic>).map((e) => e as String).toList(),
+      receivers: (json['receivers'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
       index: (json['index'] as num).toInt(),
       hint: json['hint'] as String,
     );

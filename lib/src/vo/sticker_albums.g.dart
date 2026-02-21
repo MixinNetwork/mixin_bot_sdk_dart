@@ -7,17 +7,17 @@ part of 'sticker_albums.dart';
 // **************************************************************************
 
 StickerAlbum _$StickerAlbumFromJson(Map<String, dynamic> json) => StickerAlbum(
-      albumId: json['album_id'] as String,
-      name: json['name'] as String,
-      iconUrl: json['icon_url'] as String,
-      createdAt: DateTime.parse(json['created_at'] as String),
-      updateAt: DateTime.parse(json['update_at'] as String),
-      userId: json['user_id'] as String,
-      category: json['category'] as String,
-      description: json['description'] as String,
-      banner: json['banner'] as String?,
-      isVerified: json['is_verified'] as bool? ?? false,
-    );
+  albumId: json['album_id'] as String,
+  name: json['name'] as String,
+  iconUrl: json['icon_url'] as String,
+  createdAt: DateTime.parse(json['created_at'] as String),
+  updateAt: DateTime.parse(json['update_at'] as String),
+  userId: json['user_id'] as String,
+  category: json['category'] as String,
+  description: json['description'] as String,
+  banner: json['banner'] as String?,
+  isVerified: json['is_verified'] as bool? ?? false,
+);
 
 Map<String, dynamic> _$StickerAlbumToJson(StickerAlbum instance) =>
     <String, dynamic>{

@@ -16,8 +16,9 @@ SafeUtxoOutput _$SafeUtxoOutputFromJson(Map<String, dynamic> json) =>
       amount: json['amount'] as String,
       mask: json['mask'] as String,
       keys: (json['keys'] as List<dynamic>).map((e) => e as String).toList(),
-      receivers:
-          (json['receivers'] as List<dynamic>).map((e) => e as String).toList(),
+      receivers: (json['receivers'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
       receiversHash: json['receivers_hash'] as String,
       receiversThreshold: (json['receivers_threshold'] as num).toInt(),
       extra: json['extra'] as String,

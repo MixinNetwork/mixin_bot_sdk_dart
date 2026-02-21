@@ -9,8 +9,9 @@ part of 'authorize_request.dart';
 AuthorizeRequest _$AuthorizeRequestFromJson(Map<String, dynamic> json) =>
     AuthorizeRequest(
       authorizationId: json['authorization_id'] as String,
-      scopes:
-          (json['scopes'] as List<dynamic>).map((e) => e as String).toList(),
+      scopes: (json['scopes'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
       pin: json['pin_base64'] as String?,
     );
 

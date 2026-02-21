@@ -7,10 +7,10 @@ part of 'pin_request.dart';
 // **************************************************************************
 
 PinRequest _$PinRequestFromJson(Map<String, dynamic> json) => PinRequest(
-      pin: json['pin'] as String,
-      oldPin: json['old_pin'] as String?,
-      timestamp: (json['timestamp'] as num?)?.toInt(),
-    );
+  pin: json['pin'] as String,
+  oldPin: json['old_pin'] as String?,
+  timestamp: (json['timestamp'] as num?)?.toInt(),
+);
 
 Map<String, dynamic> _$PinRequestToJson(PinRequest instance) =>
     <String, dynamic>{

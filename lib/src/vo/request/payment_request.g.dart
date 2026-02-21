@@ -16,7 +16,8 @@ PaymentRequest _$PaymentRequestFromJson(Map<String, dynamic> json) =>
       opponentMultisig: json['opponent_multisig'] == null
           ? null
           : OpponentMultisig.fromJson(
-              json['opponent_multisig'] as Map<String, dynamic>),
+              json['opponent_multisig'] as Map<String, dynamic>,
+            ),
       pin: json['pin'] as String?,
       pinBase64: json['pin_base64'] as String?,
       traceId: json['trace_id'] as String?,

@@ -11,8 +11,9 @@ SafeDepositEntry _$SafeDepositEntryFromJson(Map<String, dynamic> json) =>
       entryId: json['entry_id'] as String,
       chainId: json['chain_id'] as String,
       destination: json['destination'] as String,
-      members:
-          (json['members'] as List<dynamic>).map((e) => e as String).toList(),
+      members: (json['members'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
       tag: json['tag'] as String?,
       signature: json['signature'] as String,
       threshold: (json['threshold'] as num).toInt(),

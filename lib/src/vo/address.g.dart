@@ -7,29 +7,29 @@ part of 'address.dart';
 // **************************************************************************
 
 Address _$AddressFromJson(Map<String, dynamic> json) => Address(
-      addressId: json['address_id'] as String,
-      type: json['type'] as String,
-      assetId: json['asset_id'] as String,
-      destination: json['destination'] as String,
-      label: json['label'] as String,
-      updatedAt: DateTime.parse(json['updated_at'] as String),
-      reserve: json['reserve'] as String,
-      fee: json['fee'] as String,
-      tag: json['tag'] as String?,
-      dust: json['dust'] as String,
-      feeAssetId: json['fee_asset_id'] as String,
-    );
+  addressId: json['address_id'] as String,
+  type: json['type'] as String,
+  assetId: json['asset_id'] as String,
+  destination: json['destination'] as String,
+  label: json['label'] as String,
+  updatedAt: DateTime.parse(json['updated_at'] as String),
+  reserve: json['reserve'] as String,
+  fee: json['fee'] as String,
+  tag: json['tag'] as String?,
+  dust: json['dust'] as String,
+  feeAssetId: json['fee_asset_id'] as String,
+);
 
 Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
-      'address_id': instance.addressId,
-      'type': instance.type,
-      'asset_id': instance.assetId,
-      'destination': instance.destination,
-      'label': instance.label,
-      'updated_at': instance.updatedAt.toIso8601String(),
-      'reserve': instance.reserve,
-      'fee': instance.fee,
-      'tag': instance.tag,
-      'dust': instance.dust,
-      'fee_asset_id': instance.feeAssetId,
-    };
+  'address_id': instance.addressId,
+  'type': instance.type,
+  'asset_id': instance.assetId,
+  'destination': instance.destination,
+  'label': instance.label,
+  'updated_at': instance.updatedAt.toIso8601String(),
+  'reserve': instance.reserve,
+  'fee': instance.fee,
+  'tag': instance.tag,
+  'dust': instance.dust,
+  'fee_asset_id': instance.feeAssetId,
+};

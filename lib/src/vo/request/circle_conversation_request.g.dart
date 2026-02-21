@@ -7,7 +7,8 @@ part of 'circle_conversation_request.dart';
 // **************************************************************************
 
 CircleConversationRequest _$CircleConversationRequestFromJson(
-    Map<String, dynamic> json) {
+  Map<String, dynamic> json,
+) {
   $checkKeys(
     json,
     disallowNullValues: const ['conversation_id', 'action', 'user_id'],
@@ -20,12 +21,12 @@ CircleConversationRequest _$CircleConversationRequestFromJson(
 }
 
 Map<String, dynamic> _$CircleConversationRequestToJson(
-        CircleConversationRequest instance) =>
-    <String, dynamic>{
-      'conversation_id': instance.conversationId,
-      'action': _$CircleConversationActionEnumMap[instance.action]!,
-      if (instance.userId case final value?) 'user_id': value,
-    };
+  CircleConversationRequest instance,
+) => <String, dynamic>{
+  'conversation_id': instance.conversationId,
+  'action': _$CircleConversationActionEnumMap[instance.action]!,
+  'user_id': ?instance.userId,
+};
 
 const _$CircleConversationActionEnumMap = {
   CircleConversationAction.add: 'ADD',

@@ -12,6 +12,4 @@ SignalKeyCount _$SignalKeyCountFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$SignalKeyCountToJson(SignalKeyCount instance) =>
-    <String, dynamic>{
-      'one_time_pre_keys_count': instance.preKeyCount,
-    };
+    <String, dynamic>{'one_time_pre_keys_count': instance.preKeyCount};

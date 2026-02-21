@@ -7,11 +7,7 @@ part of 'contact_message.dart';
 // **************************************************************************
 
 ContactMessage _$ContactMessageFromJson(Map<String, dynamic> json) =>
-    ContactMessage(
-      json['user_id'] as String,
-    );
+    ContactMessage(json['user_id'] as String);
 
 Map<String, dynamic> _$ContactMessageToJson(ContactMessage instance) =>
-    <String, dynamic>{
-      'user_id': instance.userId,
-    };
+    <String, dynamic>{'user_id': instance.userId};

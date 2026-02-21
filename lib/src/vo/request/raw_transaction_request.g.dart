@@ -7,32 +7,34 @@ part of 'raw_transaction_request.dart';
 // **************************************************************************
 
 RawTransactionRequest _$RawTransactionRequestFromJson(
-        Map<String, dynamic> json) =>
-    RawTransactionRequest(
-      assetId: json['asset_id'] as String,
-      opponentMultisig: OpponentMultisig.fromJson(
-          json['opponent_multisig'] as Map<String, dynamic>),
-      amount: json['amount'] as String,
-      pin: json['pin'] as String,
-      traceId: json['trace_id'] as String?,
-      memo: json['memo'] as String?,
-    );
+  Map<String, dynamic> json,
+) => RawTransactionRequest(
+  assetId: json['asset_id'] as String,
+  opponentMultisig: OpponentMultisig.fromJson(
+    json['opponent_multisig'] as Map<String, dynamic>,
+  ),
+  amount: json['amount'] as String,
+  pin: json['pin'] as String,
+  traceId: json['trace_id'] as String?,
+  memo: json['memo'] as String?,
+);
 
 Map<String, dynamic> _$RawTransactionRequestToJson(
-        RawTransactionRequest instance) =>
-    <String, dynamic>{
-      'asset_id': instance.assetId,
-      'opponent_multisig': instance.opponentMultisig,
-      'amount': instance.amount,
-      'pin': instance.pin,
-      'trace_id': instance.traceId,
-      'memo': instance.memo,
-    };
+  RawTransactionRequest instance,
+) => <String, dynamic>{
+  'asset_id': instance.assetId,
+  'opponent_multisig': instance.opponentMultisig,
+  'amount': instance.amount,
+  'pin': instance.pin,
+  'trace_id': instance.traceId,
+  'memo': instance.memo,
+};
 
 OpponentMultisig _$OpponentMultisigFromJson(Map<String, dynamic> json) =>
     OpponentMultisig(
-      receivers:
-          (json['receivers'] as List<dynamic>).map((e) => e as String).toList(),
+      receivers: (json['receivers'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
       threshold: (json['threshold'] as num).toInt(),
     );
 

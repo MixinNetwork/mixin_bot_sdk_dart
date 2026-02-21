@@ -9,8 +9,9 @@ part of 'participant_request.dart';
 ParticipantRequest _$ParticipantRequestFromJson(Map<String, dynamic> json) =>
     ParticipantRequest(
       userId: json['user_id'] as String,
-      role: const ParticipantRoleJsonConverter()
-          .fromJson(json['role'] as String?),
+      role: const ParticipantRoleJsonConverter().fromJson(
+        json['role'] as String?,
+      ),
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
