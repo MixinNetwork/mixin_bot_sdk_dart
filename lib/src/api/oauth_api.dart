@@ -14,24 +14,23 @@ class OauthApi {
       );
 
   Future<MixinResponse<AuthorizationResponse>> authorize(
-          AuthorizeRequest request) =>
-      MixinResponse.request<AuthorizationResponse>(
-        dio.post('/oauth/authorize', data: request),
-        AuthorizationResponse.fromJson,
-      );
+    AuthorizeRequest request,
+  ) => MixinResponse.request<AuthorizationResponse>(
+    dio.post('/oauth/authorize', data: request),
+    AuthorizationResponse.fromJson,
+  );
 
   Future<MixinResponse<List<AuthorizationResponse>>> authorizations(
     String? appId,
-  ) =>
-      MixinResponse.requestList(
-        dio.get(
-          '/authorizations',
-          queryParameters: {
-            if (appId != null) 'app': appId,
-          },
-        ),
-        AuthorizationResponse.fromJson,
-      );
+  ) => MixinResponse.requestList(
+    dio.get(
+      '/authorizations',
+      queryParameters: {
+        'app': ?appId,
+      },
+    ),
+    AuthorizationResponse.fromJson,
+  );
 
   Future<MixinResponse<void>> deAuthorize(String clientId) =>
       MixinResponse.requestVoid(
