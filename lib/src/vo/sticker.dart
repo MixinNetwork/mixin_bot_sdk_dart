@@ -43,13 +43,13 @@ class Sticker with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        stickerId,
-        albumId,
-        name,
-        assetUrl,
-        assetType,
-        assetWidth,
-        assetHeight,
-        createdAt
-      ];
+    stickerId,
+    albumId,
+    name,
+    assetUrl,
+    assetType,
+    assetWidth,
+    assetHeight,
+    createdAt,
+  ];
 }

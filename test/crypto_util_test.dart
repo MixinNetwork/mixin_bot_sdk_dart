@@ -38,7 +38,7 @@ void main() {
       186,
       202,
       128,
-      201
+      201,
     ]);
     final privateKey = Uint8List.fromList([
       126,
@@ -104,7 +104,7 @@ void main() {
       186,
       202,
       128,
-      201
+      201,
     ]);
     final targetPrivate = Uint8List.fromList([
       232,
@@ -138,7 +138,7 @@ void main() {
       136,
       192,
       210,
-      87
+      87,
     ]);
     final targetPublic = Uint8List.fromList([
       159,
@@ -172,17 +172,20 @@ void main() {
       7,
       140,
       6,
-      47
+      47,
     ]);
 
     final curve25519PrivateKey = privateKeyToCurve25519(privateKey);
     assert(
-        const ListEquality<int>().equals(curve25519PrivateKey, targetPrivate),
-        'curve25519PrivateKey: $curve25519PrivateKey, targetPrivate: $targetPrivate');
+      const ListEquality<int>().equals(curve25519PrivateKey, targetPrivate),
+      'curve25519PrivateKey: $curve25519PrivateKey, targetPrivate: $targetPrivate',
+    );
 
     final curve25519PublicKey = publicKeyToCurve25519(publicKey);
-    assert(const ListEquality<int>().equals(curve25519PublicKey, targetPublic),
-        'curve25519PublicKey: $curve25519PublicKey, targetPublic: $targetPublic');
+    assert(
+      const ListEquality<int>().equals(curve25519PublicKey, targetPublic),
+      'curve25519PublicKey: $curve25519PublicKey, targetPublic: $targetPublic',
+    );
   });
 
   test('test groupConversationId', () {
@@ -194,7 +197,7 @@ void main() {
       '8391e472-cdbe-4704-be1f-7d184635b885',
       '831fdb67-13ed-4dc5-ac64-dda89aeda2bb',
       'f7ff9dde-18c2-4375-8097-b364068b120e',
-      '088c1e3e-1f07-4065-85b5-6b49b4370d32'
+      '088c1e3e-1f07-4065-85b5-6b49b4370d32',
     ];
     const randomId = '01d21e2c-76f5-4940-8ea0-9b7f21728674';
 

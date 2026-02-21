@@ -22,7 +22,7 @@ class ProvisioningId with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        deviceId,
-        expiredAt,
-      ];
+    deviceId,
+    expiredAt,
+  ];
 }

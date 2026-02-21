@@ -24,12 +24,12 @@ class KeyStore {
   final String pinTokenBase64;
 
   Map<String, dynamic> toJson() => {
-        'user_id': userId,
-        'session_id': sessionId,
-        'session_private_key': sessionPrivateKey,
-        'spend_key': spendKey,
-        'pin_token_base64': pinTokenBase64,
-      };
+    'user_id': userId,
+    'session_id': sessionId,
+    'session_private_key': sessionPrivateKey,
+    'spend_key': spendKey,
+    'pin_token_base64': pinTokenBase64,
+  };
 }
 
 /// Samples for upgrade legacy pin to safe
@@ -40,14 +40,14 @@ void main() async {
   final user = (await client.userApi.createUsers(
     fullName: 'User_${math.Random().nextInt(10)}',
     sessionSecret: sessionKey.publicKey.bytes.base64RawUrlEncode(),
-  ))
-      .data;
+  )).data;
   print(user.userId);
   print(user.sessionId);
 
   final userClient = Client(
-    sessionPrivateKey:
-        Key.fromRaw(Uint8List.fromList(sessionKey.privateKey.bytes)),
+    sessionPrivateKey: Key.fromRaw(
+      Uint8List.fromList(sessionKey.privateKey.bytes),
+    ),
     sessionId: user.sessionId,
     userId: user.userId,
   );

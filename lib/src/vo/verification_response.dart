@@ -36,13 +36,13 @@ class VerificationResponse extends Equatable {
 
   @override
   List<Object?> get props => [
-        type,
-        id,
-        hasEmergencyContact,
-        contactId,
-        deactivationRequestedAt,
-        deactivationEffectiveAt,
-      ];
+    type,
+    id,
+    hasEmergencyContact,
+    contactId,
+    deactivationRequestedAt,
+    deactivationEffectiveAt,
+  ];
 
   Map<String, dynamic> toJson() => _$VerificationResponseToJson(this);
 }

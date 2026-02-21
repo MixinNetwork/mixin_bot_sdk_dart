@@ -11,9 +11,9 @@ class AccountApi {
   final Dio dio;
 
   Future<MixinResponse<Account>> getMe() => MixinResponse.request<Account>(
-        dio.get('/me'),
-        Account.fromJson,
-      );
+    dio.get('/me'),
+    Account.fromJson,
+  );
 
   Future<MixinResponse<Account>> update(AccountUpdateRequest request) =>
       MixinResponse.request<Account>(
@@ -28,9 +28,9 @@ class AccountApi {
       );
 
   Future<MixinResponse<List<User>>> getFriends() => MixinResponse.requestList(
-        dio.get('/friends'),
-        User.fromJson,
-      );
+    dio.get('/friends'),
+    User.fromJson,
+  );
 
   Future<MixinResponse<SignalKeyCount>> getSignalKeyCount() =>
       MixinResponse.request<SignalKeyCount>(
@@ -39,9 +39,10 @@ class AccountApi {
       );
 
   Future<MixinResponse<void>> pushSignalKeys(
-          Map<String, dynamic> signalKeysRequest) =>
-      MixinResponse.requestVoid(
-          dio.post('/signal/keys', data: signalKeysRequest));
+    Map<String, dynamic> signalKeysRequest,
+  ) => MixinResponse.requestVoid(
+    dio.post('/signal/keys', data: signalKeysRequest),
+  );
 
   Future<MixinResponse<void>> logout(LogoutRequest request) =>
       MixinResponse.requestVoid(dio.post('/logout', data: request));
@@ -82,9 +83,9 @@ class AccountApi {
       );
 
   Future<MixinResponse<List<Fiat>>> getFiats() => MixinResponse.requestList(
-        dio.get('/fiats'),
-        Fiat.fromJson,
-      );
+    dio.get('/fiats'),
+    Fiat.fromJson,
+  );
 
   Future<MixinResponse<CodeTypeInterface?>> code(String id) =>
       MixinResponse.request<CodeTypeInterface?>(
@@ -115,11 +116,11 @@ class AccountApi {
       );
 
   Future<MixinResponse<VerificationResponse>> verification(
-          VerificationRequest request) =>
-      MixinResponse.request<VerificationResponse>(
-        dio.post('/verifications', data: request),
-        VerificationResponse.fromJson,
-      );
+    VerificationRequest request,
+  ) => MixinResponse.request<VerificationResponse>(
+    dio.post('/verifications', data: request),
+    VerificationResponse.fromJson,
+  );
 
   Future<MixinResponse<Account>> create(String id, AccountRequest request) =>
       MixinResponse.request<Account>(
@@ -130,17 +131,16 @@ class AccountApi {
   Future<MixinResponse<User>> verifyPin(
     String pin, {
     int? timestamp,
-  }) =>
-      MixinResponse.request<User>(
-        dio.post(
-          '/pin/verify',
-          data: PinRequest(
-            pin: pin,
-            timestamp: timestamp,
-          ).toJson(),
-        ),
-        User.fromJson,
-      );
+  }) => MixinResponse.request<User>(
+    dio.post(
+      '/pin/verify',
+      data: PinRequest(
+        pin: pin,
+        timestamp: timestamp,
+      ).toJson(),
+    ),
+    User.fromJson,
+  );
 
   Future<MixinResponse<User>> createPin(String pin) =>
       MixinResponse.request<User>(
@@ -165,20 +165,21 @@ class AccountApi {
   Future<MixinResponse<VerificationResponse>> deactiveVerification(
     String id,
     String code,
-  ) =>
-      deactivateVerification(id, code);
+  ) => deactivateVerification(id, code);
 
   Future<MixinResponse<VerificationResponse>> deactivateVerification(
     String id,
     String code,
-  ) =>
-      MixinResponse.request<VerificationResponse>(
-        dio.post('/verifications/$id', data: {
-          'code': code,
-          'purpose': VerificationPurpose.deactivated.name.toUpperCase(),
-        }),
-        VerificationResponse.fromJson,
-      );
+  ) => MixinResponse.request<VerificationResponse>(
+    dio.post(
+      '/verifications/$id',
+      data: {
+        'code': code,
+        'purpose': VerificationPurpose.deactivated.name.toUpperCase(),
+      },
+    ),
+    VerificationResponse.fromJson,
+  );
 
   @Deprecated('Use deactivate instead')
   Future<MixinResponse<void>> deactive(DeactivateRequest request) =>
@@ -191,15 +192,17 @@ class AccountApi {
     String? category,
     String? offset,
     int? limit,
-  }) =>
-      MixinResponse.requestList<LogResponse>(
-        dio.get('/logs', queryParameters: {
-          'category': category,
-          'offset': offset,
-          'limit': limit,
-        }),
-        LogResponse.fromJson,
-      );
+  }) => MixinResponse.requestList<LogResponse>(
+    dio.get(
+      '/logs',
+      queryParameters: {
+        'category': category,
+        'offset': offset,
+        'limit': limit,
+      },
+    ),
+    LogResponse.fromJson,
+  );
 
   Future<MixinResponse<List<String>>> getExternalSchemes() =>
       MixinResponse.request<List<String>>(
@@ -211,15 +214,17 @@ class AccountApi {
     required String assetId,
     required String destination,
     String? tag,
-  }) =>
-      MixinResponse.request<AddressFee>(
-        dio.get('/external/addresses/check', queryParameters: {
-          'asset': assetId,
-          'destination': destination,
-          'tag': tag,
-        }),
-        AddressFee.fromJson,
-      );
+  }) => MixinResponse.request<AddressFee>(
+    dio.get(
+      '/external/addresses/check',
+      queryParameters: {
+        'asset': assetId,
+        'destination': destination,
+        'tag': tag,
+      },
+    ),
+    AddressFee.fromJson,
+  );
 
   Future<Account> updateTipPin({
     required String legacyPin,
@@ -240,7 +245,8 @@ class AccountApi {
     final tipPublicKey = hex.decode(tipPublicKeyHex);
     if (tipPublicKey.length != 32) {
       throw ArgumentError(
-          'Invalid tip public key size: ${tipPublicKey.length}');
+        'Invalid tip public key size: ${tipPublicKey.length}',
+      );
     }
     const pinSuffix = [0, 0, 0, 0, 0, 0, 0, 1];
     final newEncryptedPin = encryptBytesPin(
@@ -250,10 +256,12 @@ class AccountApi {
       iterator: iterator + 1,
     );
 
-    final data = await updatePin(PinRequest(
-      pin: newEncryptedPin,
-      oldPin: encryptedLegacyPin,
-    ));
+    final data = await updatePin(
+      PinRequest(
+        pin: newEncryptedPin,
+        oldPin: encryptedLegacyPin,
+      ),
+    );
     return data.data;
   }
 }

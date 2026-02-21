@@ -35,10 +35,10 @@ class LogResponse with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        type,
-        logId,
-        code,
-        ipAddress,
-        createdAt,
-      ];
+    type,
+    logId,
+    code,
+    ipAddress,
+    createdAt,
+  ];
 }

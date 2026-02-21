@@ -87,25 +87,25 @@ class SafeUtxoOutput with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        outputId,
-        transactionHash,
-        outputIndex,
-        asset,
-        sequence,
-        amount,
-        mask,
-        keys,
-        receivers,
-        receiversHash,
-        receiversThreshold,
-        extra,
-        state,
-        createdAt,
-        updatedAt,
-        signedBy,
-        signedAt,
-        spentAt,
-      ];
+    outputId,
+    transactionHash,
+    outputIndex,
+    asset,
+    sequence,
+    amount,
+    mask,
+    keys,
+    receivers,
+    receiversHash,
+    receiversThreshold,
+    extra,
+    state,
+    createdAt,
+    updatedAt,
+    signedBy,
+    signedAt,
+    spentAt,
+  ];
 }
 
 enum OutputState {

@@ -25,8 +25,8 @@ class BlazeAckMessage with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        messageId,
-        status,
-        expireAt,
-      ];
+    messageId,
+    status,
+    expireAt,
+  ];
 }

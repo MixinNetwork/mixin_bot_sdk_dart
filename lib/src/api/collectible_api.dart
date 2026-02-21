@@ -13,20 +13,19 @@ class CollectibleApi {
     String? state,
     String? offset,
     int limit = 500,
-  }) =>
-      MixinResponse.requestList<CollectibleOutput>(
-        dio.get(
-          '/collectibles/outputs',
-          queryParameters: <String, dynamic>{
-            'state': state,
-            'offset': offset,
-            'limit': limit,
-            'members': members,
-            'threshold': threshold,
-          },
-        ),
-        CollectibleOutput.fromJson,
-      );
+  }) => MixinResponse.requestList<CollectibleOutput>(
+    dio.get(
+      '/collectibles/outputs',
+      queryParameters: <String, dynamic>{
+        'state': state,
+        'offset': offset,
+        'limit': limit,
+        'members': members,
+        'threshold': threshold,
+      },
+    ),
+    CollectibleOutput.fromJson,
+  );
 
   Future<MixinResponse<CollectibleToken>> getToken(String tokenId) =>
       MixinResponse.request<CollectibleToken>(
@@ -35,21 +34,23 @@ class CollectibleApi {
       );
 
   Future<MixinResponse<CollectibleCollection>> collections(
-          String collectionId) =>
-      MixinResponse.request<CollectibleCollection>(
-        dio.get('/collectibles/collections/$collectionId'),
-        CollectibleCollection.fromJson,
-      );
+    String collectionId,
+  ) => MixinResponse.request<CollectibleCollection>(
+    dio.get('/collectibles/collections/$collectionId'),
+    CollectibleCollection.fromJson,
+  );
 
   Future<MixinResponse<CollectibleRequest>> requests(
     CollectibleRequestAction action,
     String raw,
-  ) =>
-      MixinResponse.request<CollectibleRequest>(
-        dio.post('/collectibles/requests', data: {
-          'action': action.name,
-          'raw': raw,
-        }),
-        CollectibleRequest.fromJson,
-      );
+  ) => MixinResponse.request<CollectibleRequest>(
+    dio.post(
+      '/collectibles/requests',
+      data: {
+        'action': action.name,
+        'raw': raw,
+      },
+    ),
+    CollectibleRequest.fromJson,
+  );
 }

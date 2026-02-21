@@ -19,6 +19,6 @@ class CircleName with EquatableMixin {
 
   @override
   List<Object> get props => [
-        name,
-      ];
+    name,
+  ];
 }

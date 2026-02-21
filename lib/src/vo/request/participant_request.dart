@@ -27,10 +27,10 @@ class ParticipantRequest with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        userId,
-        role,
-        createdAt,
-      ];
+    userId,
+    role,
+    createdAt,
+  ];
 }
 
 const kRelationshipActionAdd = 'ADD';

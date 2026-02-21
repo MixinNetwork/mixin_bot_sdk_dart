@@ -46,17 +46,17 @@ class AccountRequest extends Equatable {
 
   @override
   List<Object?> get props => [
-        code,
-        notificationToken,
-        registrationId,
-        platform,
-        platformVersion,
-        appVersion,
-        packageName,
-        purpose,
-        pin,
-        sessionSecret,
-      ];
+    code,
+    notificationToken,
+    registrationId,
+    platform,
+    platformVersion,
+    appVersion,
+    packageName,
+    purpose,
+    pin,
+    sessionSecret,
+  ];
 
   Map<String, dynamic> toJson() => _$AccountRequestToJson(this);
 }

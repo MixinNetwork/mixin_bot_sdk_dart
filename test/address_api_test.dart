@@ -4,13 +4,17 @@ import 'package:test/test.dart';
 import 'config.dart';
 
 void main() {
-  final client =
-      Client(userId: uid, sessionId: sid, sessionPrivateKey: private);
+  final client = Client(
+    userId: uid,
+    sessionId: sid,
+    sessionPrivateKey: private,
+  );
 
   test('test getAddressesByAssetId', () async {
     try {
-      final mixinResponse =
-          await client.addressApi.getAddressesByAssetId(btcId);
+      final mixinResponse = await client.addressApi.getAddressesByAssetId(
+        btcId,
+      );
       testPrint(mixinResponse.data);
     } catch (e) {
       if (e is MixinApiError) {
@@ -21,8 +25,9 @@ void main() {
 
   test('test addAddress', () async {
     try {
-      final mixinResponse =
-          await client.addressApi.addAddress(mockAddressRequest);
+      final mixinResponse = await client.addressApi.addAddress(
+        mockAddressRequest,
+      );
       testPrint(mixinResponse.data);
     } catch (e) {
       if (e is MixinApiError) {

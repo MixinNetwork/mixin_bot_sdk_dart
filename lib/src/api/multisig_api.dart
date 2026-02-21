@@ -12,7 +12,8 @@ class MultisigApi {
 
   Future<MixinResponse<void>> unlock(String id, PinRequest request) =>
       MixinResponse.requestVoid(
-          dio.post('/multisigs/$id/unlock', data: request));
+        dio.post('/multisigs/$id/unlock', data: request),
+      );
 
   Future<MixinResponse<void>> cancel(String id) =>
       MixinResponse.requestVoid(dio.post('/multisigs/$id/cancel'));

@@ -63,16 +63,16 @@ class ConversationResponse with EquatableMixin, CodeTypeInterface {
 
   @override
   List<Object?> get props => [
-        conversationId,
-        name,
-        category,
-        iconUrl,
-        codeUrl,
-        createdAt,
-        participants,
-        participantSessions,
-        circles,
-        muteUntil,
-        expireIn,
-      ];
+    conversationId,
+    name,
+    category,
+    iconUrl,
+    codeUrl,
+    createdAt,
+    participants,
+    participantSessions,
+    circles,
+    muteUntil,
+    expireIn,
+  ];
 }

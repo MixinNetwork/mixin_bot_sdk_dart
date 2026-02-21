@@ -44,14 +44,14 @@ class InscriptionItem with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        inscriptionHash,
-        collectionHash,
-        sequence,
-        contentType,
-        contentURL,
-        occupiedBy,
-        occupiedAt,
-        createdAt,
-        updatedAt,
-      ];
+    inscriptionHash,
+    collectionHash,
+    sequence,
+    contentType,
+    contentURL,
+    occupiedBy,
+    occupiedAt,
+    createdAt,
+    updatedAt,
+  ];
 }

@@ -8,14 +8,13 @@ PaddedBlockCipherImpl _createAESCipher({
   required bool encrypt,
 }) {
   final cbcCipher = CBCBlockCipher(AESEngine());
-  return PaddedBlockCipherImpl(PKCS7Padding(), cbcCipher)
-    ..init(
-      encrypt,
-      PaddedBlockCipherParameters(
-        ParametersWithIV(KeyParameter(aesKey), iv),
-        null,
-      ),
-    );
+  return PaddedBlockCipherImpl(PKCS7Padding(), cbcCipher)..init(
+    encrypt,
+    PaddedBlockCipherParameters(
+      ParametersWithIV(KeyParameter(aesKey), iv),
+      null,
+    ),
+  );
 }
 
 Uint8List aesCbcEncrypt(Uint8List key, Uint8List iv, Uint8List plaintext) {

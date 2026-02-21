@@ -7,7 +7,9 @@ class MixinResponse<T> with EquatableMixin {
   );
 
   factory MixinResponse._fromJson(
-      Map<String, dynamic> json, T Function(Map<String, dynamic>) parser) {
+    Map<String, dynamic> json,
+    T Function(Map<String, dynamic>) parser,
+  ) {
     final dataJson = json['data'] as Map<String, dynamic>;
     final data = parser(dataJson);
     return MixinResponse<T>(data);
@@ -16,20 +18,24 @@ class MixinResponse<T> with EquatableMixin {
   final T data;
 
   static Future<MixinResponse<T>> request<T>(
-      Future<Response<Map<String, dynamic>>> future,
-      T Function(Map<String, dynamic>) parser) async {
+    Future<Response<Map<String, dynamic>>> future,
+    T Function(Map<String, dynamic>) parser,
+  ) async {
     final response = (await future).data!;
     return MixinResponse<T>._fromJson(response, parser);
   }
 
   static Future<MixinResponse<List<T>>> requestList<T>(
-      Future<Response<Map<String, dynamic>>> future,
-      T Function(Map<String, dynamic>) parser) async {
+    Future<Response<Map<String, dynamic>>> future,
+    T Function(Map<String, dynamic>) parser,
+  ) async {
     final response = (await future).data!;
     final dataJsonList = response['data'] as List<dynamic>;
-    return MixinResponse<List<T>>(dataJsonList
-        .map((dynamic e) => parser(e as Map<String, dynamic>))
-        .toList());
+    return MixinResponse<List<T>>(
+      dataJsonList
+          .map((dynamic e) => parser(e as Map<String, dynamic>))
+          .toList(),
+    );
   }
 
   static Future<MixinResponse<void>> requestVoid(
@@ -41,6 +47,6 @@ class MixinResponse<T> with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        data,
-      ];
+    data,
+  ];
 }

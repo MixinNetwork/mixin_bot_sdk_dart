@@ -34,13 +34,13 @@ class RawTransactionRequest with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        assetId,
-        opponentMultisig,
-        amount,
-        pin,
-        traceId,
-        memo,
-      ];
+    assetId,
+    opponentMultisig,
+    amount,
+    pin,
+    traceId,
+    memo,
+  ];
 }
 
 @JsonSerializable()
@@ -62,7 +62,7 @@ class OpponentMultisig with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        receivers,
-        threshold,
-      ];
+    receivers,
+    threshold,
+  ];
 }

@@ -37,12 +37,12 @@ class TransferRequest with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        assetId,
-        opponentId,
-        amount,
-        pin,
-        traceId,
-        memo,
-        addressId,
-      ];
+    assetId,
+    opponentId,
+    amount,
+    pin,
+    traceId,
+    memo,
+    addressId,
+  ];
 }

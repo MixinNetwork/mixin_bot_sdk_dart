@@ -34,13 +34,16 @@ final mockAddressRequest = AddressRequest(assetId: btcId, pin: '');
 
 const multisigId = '';
 final mockPinRequest = PinRequest(pin: '', oldPin: '');
-final mockOpponentMultisig =
-    OpponentMultisig(receivers: <String>['', ''], threshold: 10);
+final mockOpponentMultisig = OpponentMultisig(
+  receivers: <String>['', ''],
+  threshold: 10,
+);
 final mockRawTransactionRequest = RawTransactionRequest(
-    assetId: btcId,
-    opponentMultisig: mockOpponentMultisig,
-    amount: '100',
-    pin: '');
+  assetId: btcId,
+  opponentMultisig: mockOpponentMultisig,
+  amount: '100',
+  pin: '',
+);
 
 void testPrint(Object? object) {
   // ignore: avoid_print

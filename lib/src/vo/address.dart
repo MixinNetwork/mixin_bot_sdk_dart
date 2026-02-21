@@ -50,16 +50,16 @@ class Address with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        addressId,
-        type,
-        assetId,
-        destination,
-        label,
-        updatedAt,
-        reserve,
-        fee,
-        tag,
-        dust,
-        feeAssetId,
-      ];
+    addressId,
+    type,
+    assetId,
+    destination,
+    label,
+    updatedAt,
+    reserve,
+    fee,
+    tag,
+    dust,
+    feeAssetId,
+  ];
 }

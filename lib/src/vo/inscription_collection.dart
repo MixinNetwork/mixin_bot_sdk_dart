@@ -40,13 +40,13 @@ class InscriptionCollection with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        collectionHash,
-        supply,
-        unit,
-        symbol,
-        name,
-        iconUrl,
-        createdAt,
-        updatedAt,
-      ];
+    collectionHash,
+    supply,
+    unit,
+    symbol,
+    name,
+    iconUrl,
+    createdAt,
+    updatedAt,
+  ];
 }

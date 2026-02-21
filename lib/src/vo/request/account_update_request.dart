@@ -41,16 +41,16 @@ class AccountUpdateRequest with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        fullName,
-        avatarBase64,
-        receiveMessageSource,
-        acceptConversationSource,
-        acceptSearchSource,
-        biography,
-        fiatCurrency,
-        transferNotificationThreshold,
-        transferConfirmationThreshold,
-      ];
+    fullName,
+    avatarBase64,
+    receiveMessageSource,
+    acceptConversationSource,
+    acceptSearchSource,
+    biography,
+    fiatCurrency,
+    transferNotificationThreshold,
+    transferConfirmationThreshold,
+  ];
 
   Map<String, dynamic> toJson() => _$AccountUpdateRequestToJson(this);
 }

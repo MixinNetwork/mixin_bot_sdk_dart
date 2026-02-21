@@ -28,43 +28,47 @@ class Client {
       transformer.jsonDecodeCallback = jsonDecodeCallback;
     }
     _dio.interceptors.addAll(interceptors);
-    _dio.interceptors.add(InterceptorsWrapper(
-      onRequest: (
-        options,
-        handler,
-      ) async {
-        var body = '';
-        if (options.data != null) {
-          body = jsonEncode(options.data);
-        }
+    _dio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest:
+            (
+              options,
+              handler,
+            ) async {
+              var body = '';
+              if (options.data != null) {
+                body = jsonEncode(options.data);
+              }
 
-        final authToken = accessToken ??
-            signAuthTokenWithEdDSA(
-              userId,
-              sessionId,
-              sessionPrivateKey,
-              scp,
-              options.method,
-              options.uri.toString().substring(options.baseUrl.length),
-              body,
-            );
-        options.headers['Authorization'] = 'Bearer $authToken';
-        handler.next(options);
-      },
-      onResponse: (response, handler) {
-        final dynamic error = (response.data as Map)['error'];
-        if (error == null) return handler.next(response);
+              final authToken =
+                  accessToken ??
+                  signAuthTokenWithEdDSA(
+                    userId,
+                    sessionId,
+                    sessionPrivateKey,
+                    scp,
+                    options.method,
+                    options.uri.toString().substring(options.baseUrl.length),
+                    body,
+                  );
+              options.headers['Authorization'] = 'Bearer $authToken';
+              handler.next(options);
+            },
+        onResponse: (response, handler) {
+          final dynamic error = (response.data as Map)['error'];
+          if (error == null) return handler.next(response);
 
-        return handler.reject(
-          MixinApiError(
-            requestOptions: response.requestOptions,
-            response: response,
-            error: MixinError.fromJson(error as Map<String, dynamic>),
-          ),
-          true,
-        );
-      },
-    ));
+          return handler.reject(
+            MixinApiError(
+              requestOptions: response.requestOptions,
+              response: response,
+              error: MixinError.fromJson(error as Map<String, dynamic>),
+            ),
+            true,
+          );
+        },
+      ),
+    );
     if (httpLogLevel != null) {
       _dio.interceptors.add(MixinLogInterceptor(httpLogLevel));
     }

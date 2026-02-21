@@ -4,23 +4,27 @@ enum HttpLogLevel { none, body, headers, all }
 
 class MixinLogInterceptor extends Interceptor {
   MixinLogInterceptor(HttpLogLevel httpLogLevel)
-      : _request = httpLogLevel != HttpLogLevel.none,
-        _requestHeader = httpLogLevel == HttpLogLevel.all ||
-            httpLogLevel == HttpLogLevel.headers,
-        _responseHeader = httpLogLevel == HttpLogLevel.all ||
-            httpLogLevel == HttpLogLevel.headers,
-        _requestBody = httpLogLevel == HttpLogLevel.all ||
-            httpLogLevel == HttpLogLevel.body,
-        _responseBody = httpLogLevel == HttpLogLevel.all ||
-            httpLogLevel == HttpLogLevel.body,
-        _error = httpLogLevel != HttpLogLevel.none;
+    : _request = httpLogLevel != HttpLogLevel.none,
+      _requestHeader =
+          httpLogLevel == HttpLogLevel.all ||
+          httpLogLevel == HttpLogLevel.headers,
+      _responseHeader =
+          httpLogLevel == HttpLogLevel.all ||
+          httpLogLevel == HttpLogLevel.headers,
+      _requestBody =
+          httpLogLevel == HttpLogLevel.all || httpLogLevel == HttpLogLevel.body,
+      _responseBody =
+          httpLogLevel == HttpLogLevel.all || httpLogLevel == HttpLogLevel.body,
+      _error = httpLogLevel != HttpLogLevel.none;
 
   // ignore: avoid_setters_without_getters
   set httpLogLevel(HttpLogLevel httpLogLevel) {
     _request = httpLogLevel != HttpLogLevel.none;
-    _requestHeader = httpLogLevel == HttpLogLevel.all ||
+    _requestHeader =
+        httpLogLevel == HttpLogLevel.all ||
         httpLogLevel == HttpLogLevel.headers;
-    _responseHeader = httpLogLevel == HttpLogLevel.all ||
+    _responseHeader =
+        httpLogLevel == HttpLogLevel.all ||
         httpLogLevel == HttpLogLevel.headers;
     _requestBody =
         httpLogLevel == HttpLogLevel.all || httpLogLevel == HttpLogLevel.body;
@@ -72,7 +76,9 @@ class MixinLogInterceptor extends Interceptor {
       _printKV('sendTimeout', options.sendTimeout);
       _printKV('receiveTimeout', options.receiveTimeout);
       _printKV(
-          'receiveDataWhenStatusError', options.receiveDataWhenStatusError);
+        'receiveDataWhenStatusError',
+        options.receiveDataWhenStatusError,
+      );
       _printKV('extra', options.extra);
     }
     if (_requestHeader) {
@@ -91,7 +97,9 @@ class MixinLogInterceptor extends Interceptor {
 
   @override
   void onResponse(
-      Response<dynamic> response, ResponseInterceptorHandler handler) {
+    Response<dynamic> response,
+    ResponseInterceptorHandler handler,
+  ) {
     logPrint('*** Response ***');
     _printResponse(response);
     handler.next(response);

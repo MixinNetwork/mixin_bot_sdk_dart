@@ -33,12 +33,12 @@ class VerificationRequest extends Equatable {
 
   @override
   List<Object?> get props => [
-        phone,
-        purpose,
-        gRecaptchaResponse,
-        hCaptchaResponse,
-        packageName,
-      ];
+    phone,
+    purpose,
+    gRecaptchaResponse,
+    hCaptchaResponse,
+    packageName,
+  ];
 
   Map<String, dynamic> toJson() => _$VerificationRequestToJson(this);
 }

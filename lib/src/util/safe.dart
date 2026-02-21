@@ -147,12 +147,11 @@ UserTransactionRecipient buildSafeTransactionRecipient({
   required List<String> members,
   required int threshold,
   required String amount,
-}) =>
-    UserTransactionRecipient(
-      members: members,
-      threshold: threshold,
-      amount: amount,
-    );
+}) => UserTransactionRecipient(
+  members: members,
+  threshold: threshold,
+  amount: amount,
+);
 
 /// Get unspent utxos for recipients.
 ///
@@ -212,22 +211,27 @@ SafeTransaction buildSafeTransaction({
     final recipient = rs[i];
     switch (recipient) {
       case WithdrawalTransactionRecipient():
-        outputs.add(Output(
+        outputs.add(
+          Output(
             type: OutputType.withdrawalSubmit,
             amount: recipient.amount,
             withdrawal: WithdrawalData(
               address: recipient.destination,
               tag: recipient.tag ?? '',
-            )));
+            ),
+          ),
+        );
       case UserTransactionRecipient():
         assert(gs[i] != null, 'ghost key is null for recipient $i');
-        outputs.add(Output(
-          type: OutputType.script,
-          amount: recipient.amount,
-          keys: gs[i]!.keys,
-          mask: gs[i]!.mask,
-          script: encodeScript(recipient.threshold),
-        ));
+        outputs.add(
+          Output(
+            type: OutputType.script,
+            amount: recipient.amount,
+            keys: gs[i]!.keys,
+            mask: gs[i]!.mask,
+            script: encodeScript(recipient.threshold),
+          ),
+        );
     }
   }
 
@@ -260,8 +264,10 @@ String signSafeTransaction({
   final raw = encodeSafeTransaction(tx);
   final msg = Uint8List.fromList(blake3(hex.decode(raw)));
 
-  assert(privateKey.raw.length >= 32,
-      'invalid private key length: ${privateKey.raw.length}');
+  assert(
+    privateKey.raw.length >= 32,
+    'invalid private key length: ${privateKey.raw.length}',
+  );
   final spenty = sha512Hash(privateKey.raw.sublist(0, 32));
 
   final y = Scalar()..setBytesWithClamping(spenty.sublist(0, 32));
@@ -281,8 +287,9 @@ String signSafeTransaction({
     final index = utxo.keys.indexOf(key.publicKey().hexString());
     if (index == -1) {
       throw Exception(
-          'invalid public key for the input: $i ${utxo.keys}, ${key.publicKey().hexString()}.\n'
-          'maybe this is a invalid spendKey: ${privateKey.publicKey().toHexString()}');
+        'invalid public key for the input: $i ${utxo.keys}, ${key.publicKey().hexString()}.\n'
+        'maybe this is a invalid spendKey: ${privateKey.publicKey().toHexString()}',
+      );
     }
     final sigs = <int, String>{};
     final sig = key.sign(msg);

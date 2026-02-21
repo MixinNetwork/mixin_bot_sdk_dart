@@ -35,14 +35,14 @@ class CollectibleTokenMeta with EquatableMixin {
 
   @override
   List<Object> get props => [
-        group,
-        name,
-        description,
-        iconUrl,
-        mediaUrl,
-        mime,
-        hash,
-      ];
+    group,
+    name,
+    description,
+    iconUrl,
+    mediaUrl,
+    mime,
+    hash,
+  ];
 
   Map<String, dynamic> toJson() => _$CollectibleTokenMetaToJson(this);
 }

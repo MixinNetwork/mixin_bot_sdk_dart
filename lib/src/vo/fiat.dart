@@ -21,7 +21,7 @@ class Fiat with EquatableMixin {
 
   @override
   List<Object> get props => [
-        code,
-        rate,
-      ];
+    code,
+    rate,
+  ];
 }

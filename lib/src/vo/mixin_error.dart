@@ -25,8 +25,8 @@ class MixinError with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        status,
-        code,
-        description,
-      ];
+    status,
+    code,
+    description,
+  ];
 }

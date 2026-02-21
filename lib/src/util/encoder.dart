@@ -18,7 +18,8 @@ BigInt _amountToEthUnit(String amount, {int decimals = 8}) {
   final a = Decimal.parse(amount);
   final b = Decimal.parse(a.toStringAsFixed(decimals));
   return BigInt.parse(
-      (b * Decimal.fromInt(10).pow(decimals).toDecimal()).toString());
+    (b * Decimal.fromInt(10).pow(decimals).toDecimal()).toString(),
+  );
 }
 
 class Encoder {

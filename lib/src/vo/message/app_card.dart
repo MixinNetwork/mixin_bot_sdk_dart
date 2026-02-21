@@ -4,8 +4,14 @@ part 'app_card.g.dart';
 
 @JsonSerializable()
 class AppCard {
-  AppCard(this.appId, this.iconUrl, this.title, this.description, this.action,
-      this.updatedAt);
+  AppCard(
+    this.appId,
+    this.iconUrl,
+    this.title,
+    this.description,
+    this.action,
+    this.updatedAt,
+  );
 
   factory AppCard.fromJson(Map<String, dynamic> json) =>
       _$AppCardFromJson(json);

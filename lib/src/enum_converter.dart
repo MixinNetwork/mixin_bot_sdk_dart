@@ -9,8 +9,10 @@ bool _isEnumItem(dynamic enumItem) {
 
 String? enumConvertToString(dynamic enumItem) {
   if (enumItem == null) return null;
-  assert(_isEnumItem(enumItem),
-      '$enumItem of type ${enumItem.runtimeType} is not an enum item');
+  assert(
+    _isEnumItem(enumItem),
+    '$enumItem of type ${enumItem.runtimeType} is not an enum item',
+  );
   final tmp = enumItem.toString().split('.')[1];
   return tmp;
 }
@@ -19,10 +21,10 @@ T? fromStringToEnum<T>(List<T?>? enumValues, String? value) {
   if (value == null || enumValues == null) return null;
 
   return enumValues.cast<T?>().singleWhere(
-        (enumItem) =>
-            enumConvertToString(enumItem)?.toUpperCase() == value.toUpperCase(),
-        orElse: () => null,
-      );
+    (enumItem) =>
+        enumConvertToString(enumItem)?.toUpperCase() == value.toUpperCase(),
+    orElse: () => null,
+  );
 }
 
 abstract class EnumJsonConverter<T> implements JsonConverter<T?, String?> {

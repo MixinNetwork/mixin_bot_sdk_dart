@@ -63,22 +63,22 @@ class CollectibleOutput with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        userId,
-        outputId,
-        tokenId,
-        transactionHash,
-        outputIndex,
-        amount,
-        sendersThreshold,
-        senders,
-        receiversThreshold,
-        receivers,
-        state,
-        createdAt,
-        updatedAt,
-        signedBy,
-        signedTx,
-      ];
+    userId,
+    outputId,
+    tokenId,
+    transactionHash,
+    outputIndex,
+    amount,
+    sendersThreshold,
+    senders,
+    receiversThreshold,
+    receivers,
+    state,
+    createdAt,
+    updatedAt,
+    signedBy,
+    signedTx,
+  ];
 
   Map<String, dynamic> toJson() => _$CollectibleOutputToJson(this);
 }

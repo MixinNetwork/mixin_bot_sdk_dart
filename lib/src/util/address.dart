@@ -31,8 +31,11 @@ Uint8List? getPublicFromMainnetAddress(String address) {
       ...payload,
     ]);
     final checksum = sha3Hash(msg);
-    if (!Uint8List.sublistView(checksum, 0, 4)
-        .equals(Uint8List.sublistView(data, 64))) {
+    if (!Uint8List.sublistView(
+      checksum,
+      0,
+      4,
+    ).equals(Uint8List.sublistView(data, 64))) {
       return null;
     }
     return Uint8List.fromList(payload);
@@ -71,12 +74,11 @@ class MixAddress {
   factory MixAddress.fromMainNetMixAddress(
     List<String> members,
     int threshold,
-  ) =>
-      MixAddress._private(
-        members: members,
-        threshold: threshold,
-        memberType: MixMemberType.xin,
-      );
+  ) => MixAddress._private(
+    members: members,
+    threshold: threshold,
+    memberType: MixMemberType.xin,
+  );
 
   static MixAddress? tryParse(String address) {
     try {
@@ -101,8 +103,11 @@ class MixAddress {
     ]);
     final checkSum = sha3Hash(msg);
 
-    if (!Uint8List.sublistView(checkSum, 0, 4)
-        .equals(Uint8List.sublistView(data, data.length - 4))) {
+    if (!Uint8List.sublistView(
+      checkSum,
+      0,
+      4,
+    ).equals(Uint8List.sublistView(data, data.length - 4))) {
       throw Exception('invalid checksum. $address');
     }
 

@@ -7,27 +7,31 @@ import '../../mixin_bot_sdk_dart.dart';
 
 class PrivateKey {
   PrivateKey(this.bytes)
-      : assert(bytes.length == 32, 'bad private key length: ${bytes.length}');
+    : assert(bytes.length == 32, 'bad private key length: ${bytes.length}');
 
   final Uint8List bytes;
 
   Uint8List sign(Uint8List message) {
     final digest1 = sha512Hash(Uint8List.sublistView(bytes, 0, 32));
-    final messageDigest = sha512Hash(Uint8List.fromList([
-      ...Uint8List.sublistView(digest1, 32),
-      ...message,
-    ]));
+    final messageDigest = sha512Hash(
+      Uint8List.fromList([
+        ...Uint8List.sublistView(digest1, 32),
+        ...message,
+      ]),
+    );
 
     final z = Scalar()..setUniformBytes(messageDigest);
     final r = (Point.newIdentityPoint()..scalarBaseMult(z)).Bytes();
 
     final pub = _publicKey();
 
-    final hramDigest = sha512Hash(Uint8List.fromList([
-      ...r,
-      ...pub,
-      ...message,
-    ]));
+    final hramDigest = sha512Hash(
+      Uint8List.fromList([
+        ...r,
+        ...pub,
+        ...message,
+      ]),
+    );
 
     final x = Scalar()..setUniformBytes(hramDigest);
     final y = Scalar()..setCanonicalBytes(bytes);
@@ -52,7 +56,7 @@ class PrivateKey {
 
 class PublicKey {
   PublicKey(this.bytes)
-      : assert(bytes.length == 32, 'bad public key length: ${bytes.length}');
+    : assert(bytes.length == 32, 'bad public key length: ${bytes.length}');
 
   final Uint8List bytes;
 

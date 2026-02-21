@@ -25,8 +25,8 @@ class CircleResponse with EquatableMixin {
 
   @override
   List<Object> get props => [
-        circleId,
-        name,
-        createdAt,
-      ];
+    circleId,
+    name,
+    createdAt,
+  ];
 }

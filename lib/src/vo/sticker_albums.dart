@@ -46,14 +46,14 @@ class StickerAlbum with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        albumId,
-        name,
-        iconUrl,
-        createdAt,
-        updateAt,
-        userId,
-        category,
-        description,
-        banner,
-      ];
+    albumId,
+    name,
+    iconUrl,
+    createdAt,
+    updateAt,
+    userId,
+    category,
+    description,
+    banner,
+  ];
 }

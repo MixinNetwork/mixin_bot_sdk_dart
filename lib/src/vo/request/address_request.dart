@@ -31,10 +31,10 @@ class AddressRequest with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        assetId,
-        destination,
-        tag,
-        label,
-        pin,
-      ];
+    assetId,
+    destination,
+    tag,
+    label,
+    pin,
+  ];
 }

@@ -28,10 +28,10 @@ class RelationshipRequest with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        userId,
-        action,
-        fullName,
-      ];
+    userId,
+    action,
+    fullName,
+  ];
 }
 
 class RelationshipActionJsonConverter

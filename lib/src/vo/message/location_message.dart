@@ -5,7 +5,12 @@ part 'location_message.g.dart';
 @JsonSerializable()
 class LocationMessage {
   LocationMessage(
-      this.latitude, this.longitude, this.name, this.address, this.venueType);
+    this.latitude,
+    this.longitude,
+    this.name,
+    this.address,
+    this.venueType,
+  );
 
   factory LocationMessage.fromJson(Map<String, dynamic> json) =>
       _$LocationMessageFromJson(json);

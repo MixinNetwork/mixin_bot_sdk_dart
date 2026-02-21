@@ -11,8 +11,9 @@ void main() async {
 Future<void> testProvisioningId() async {
   final client = Client();
   try {
-    final mixinResponse = await client.provisioningApi
-        .getProvisioningId(Platform.operatingSystem);
+    final mixinResponse = await client.provisioningApi.getProvisioningId(
+      Platform.operatingSystem,
+    );
     testPrint(mixinResponse.data.toJson());
   } catch (e) {
     if (e is MixinApiError) {

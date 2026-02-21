@@ -36,13 +36,13 @@ class SafePendingDeposit with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        depositId,
-        assetId,
-        destination,
-        tag,
-        transactionHash,
-        amount,
-        confirmations,
-        createdAt,
-      ];
+    depositId,
+    assetId,
+    destination,
+    tag,
+    transactionHash,
+    amount,
+    confirmations,
+    createdAt,
+  ];
 }

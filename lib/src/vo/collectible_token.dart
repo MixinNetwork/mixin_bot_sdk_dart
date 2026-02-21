@@ -55,16 +55,16 @@ class CollectibleToken with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        type,
-        tokenId,
-        group,
-        token,
-        mixinId,
-        nfo,
-        meta,
-        createdAt,
-        receivers,
-        receiversThreshold,
-        collectionId,
-      ];
+    type,
+    tokenId,
+    group,
+    token,
+    mixinId,
+    nfo,
+    meta,
+    createdAt,
+    receivers,
+    receiversThreshold,
+    collectionId,
+  ];
 }

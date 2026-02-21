@@ -4,8 +4,11 @@ import 'package:test/test.dart';
 import 'config.dart';
 
 void main() {
-  final client =
-      Client(userId: uid, sessionId: sid, sessionPrivateKey: private);
+  final client = Client(
+    userId: uid,
+    sessionId: sid,
+    sessionPrivateKey: private,
+  );
 
   test('test sign', () async {
     try {

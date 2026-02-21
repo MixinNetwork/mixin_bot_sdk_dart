@@ -27,10 +27,10 @@ class Chain with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        chainId,
-        name,
-        symbol,
-        iconUrl,
-        threshold,
-      ];
+    chainId,
+    name,
+    symbol,
+    iconUrl,
+    threshold,
+  ];
 }

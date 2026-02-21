@@ -30,10 +30,10 @@ class CircleConversation with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        conversationId,
-        circleId,
-        userId,
-        createdAt,
-        pinTime,
-      ];
+    conversationId,
+    circleId,
+    userId,
+    createdAt,
+    pinTime,
+  ];
 }

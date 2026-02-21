@@ -66,21 +66,21 @@ class Conversation with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        conversationId,
-        name,
-        ownerId,
-        category,
-        announcement,
-        iconUrl,
-        createdAt,
-        pinedAt,
-        lastMessageId,
-        lastReadMessageId,
-        unseenMessageCount,
-        status,
-        draft,
-        muteUntil,
-      ];
+    conversationId,
+    name,
+    ownerId,
+    category,
+    announcement,
+    iconUrl,
+    createdAt,
+    pinedAt,
+    lastMessageId,
+    lastReadMessageId,
+    unseenMessageCount,
+    status,
+    draft,
+    muteUntil,
+  ];
 }
 
 enum ConversationStatus {

@@ -27,7 +27,8 @@ void main() async {
   print('spend public key: ${spendKey.publicKey().toHexString()}');
 
   print(
-      'use Mixin Messenger scan the qrcode, and transfer to this network user');
+    'use Mixin Messenger scan the qrcode, and transfer to this network user',
+  );
   print('mixin://pay/${_networkUserKeystore.userId}?asset=$cnb');
 
   final txs = await userClient.utxoApi.transactionToUser(

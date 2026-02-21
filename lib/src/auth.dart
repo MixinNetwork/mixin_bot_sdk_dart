@@ -7,28 +7,57 @@ import 'package:uuid/uuid.dart';
 
 import '../mixin_bot_sdk_dart.dart';
 
-String signAuthTokenWithRSA(String? userId, String? sessionId, Key? privateKey,
-        String? scp, String method, String uri, String body) =>
-    _signAuthenticationToken(
-        userId, sessionId, privateKey, scp, method, uri, body, true);
+String signAuthTokenWithRSA(
+  String? userId,
+  String? sessionId,
+  Key? privateKey,
+  String? scp,
+  String method,
+  String uri,
+  String body,
+) => _signAuthenticationToken(
+  userId,
+  sessionId,
+  privateKey,
+  scp,
+  method,
+  uri,
+  body,
+  true,
+);
 
-String signAuthTokenWithEdDSA(String? userId, String? sessionId,
-        Key? privateKey, String? scp, String method, String uri, String body,
-        {String? aud}) =>
-    _signAuthenticationToken(
-        userId, sessionId, privateKey, scp, method, uri, body, false,
-        aud: aud);
+String signAuthTokenWithEdDSA(
+  String? userId,
+  String? sessionId,
+  Key? privateKey,
+  String? scp,
+  String method,
+  String uri,
+  String body, {
+  String? aud,
+}) => _signAuthenticationToken(
+  userId,
+  sessionId,
+  privateKey,
+  scp,
+  method,
+  uri,
+  body,
+  false,
+  aud: aud,
+);
 
 String _signAuthenticationToken(
-    String? userId,
-    String? sessionId,
-    Key? privateKey,
-    String? scp,
-    String method,
-    String uri,
-    String body,
-    bool isRSA,
-    {String? aud}) {
+  String? userId,
+  String? sessionId,
+  Key? privateKey,
+  String? scp,
+  String method,
+  String uri,
+  String body,
+  bool isRSA, {
+  String? aud,
+}) {
   if ([userId, sessionId].any((element) => element?.isEmpty ?? true)) {
     return '';
   }

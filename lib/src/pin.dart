@@ -17,7 +17,13 @@ String encryptPin(
   final iv = randBytes(16);
   final nowSec = DateTime.now().millisecondsSinceEpoch ~/ 1000;
   return encryptPinWithIv(
-      pin, pinTokenBase64, privateKey, iterator, nowSec, iv);
+    pin,
+    pinTokenBase64,
+    privateKey,
+    iterator,
+    nowSec,
+    iv,
+  );
 }
 
 String encryptPinWithIv(

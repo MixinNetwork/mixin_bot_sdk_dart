@@ -40,14 +40,14 @@ class ProvisioningRequest with EquatableMixin {
 
   @override
   List<Object> get props => [
-        userId,
-        sessionId,
-        sessionSecret,
-        code,
-        platform,
-        platformVersion,
-        appVersion,
-        purpose,
-        registrationId,
-      ];
+    userId,
+    sessionId,
+    sessionSecret,
+    code,
+    platform,
+    platformVersion,
+    appVersion,
+    purpose,
+    registrationId,
+  ];
 }

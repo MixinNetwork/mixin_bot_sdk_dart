@@ -74,22 +74,22 @@ class User with EquatableMixin, CodeTypeInterface {
 
   @override
   List<Object?> get props => [
-        userId,
-        identityNumber,
-        relationship,
-        biography,
-        fullName,
-        avatarUrl,
-        phone,
-        isVerified,
-        createdAt,
-        muteUntil,
-        hasPin,
-        app,
-        isScam,
-        codeId,
-        codeUrl,
-        isDeactivated,
-        membership
-      ];
+    userId,
+    identityNumber,
+    relationship,
+    biography,
+    fullName,
+    avatarUrl,
+    phone,
+    isVerified,
+    createdAt,
+    muteUntil,
+    hasPin,
+    app,
+    isScam,
+    codeId,
+    codeUrl,
+    isDeactivated,
+    membership,
+  ];
 }

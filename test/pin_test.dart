@@ -13,9 +13,17 @@ void main() {
     const iterator = 1;
     final iv = hex.decode('ce487d133c307d6b9bed18a4df43c2c8');
     const time = 1658399540;
-    final c = encryptPinWithIv(pin, pinTokenBase64, privateKey, iterator, time,
-        Uint8List.fromList(iv));
+    final c = encryptPinWithIv(
+      pin,
+      pinTokenBase64,
+      privateKey,
+      iterator,
+      time,
+      Uint8List.fromList(iv),
+    );
     expect(
-        c, 'zkh9EzwwfWub7Rik30PCyDYYPfbrOIs-dxG-5BmXaocQp3kMOmcG76QiqoTyYwim');
+      c,
+      'zkh9EzwwfWub7Rik30PCyDYYPfbrOIs-dxG-5BmXaocQp3kMOmcG76QiqoTyYwim',
+    );
   });
 }

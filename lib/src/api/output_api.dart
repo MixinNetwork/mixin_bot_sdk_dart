@@ -8,12 +8,12 @@ class OutputApi {
   final Dio dio;
 
   Future<MixinResponse<List<GhostKey>>> loadGhostKeys(
-          List<OutputRequest> request) =>
-      MixinResponse.requestList<GhostKey>(
-        dio.post(
-          '/outputs',
-          data: request.map((e) => e.toJson()).toList(),
-        ),
-        GhostKey.fromJson,
-      );
+    List<OutputRequest> request,
+  ) => MixinResponse.requestList<GhostKey>(
+    dio.post(
+      '/outputs',
+      data: request.map((e) => e.toJson()).toList(),
+    ),
+    GhostKey.fromJson,
+  );
 }

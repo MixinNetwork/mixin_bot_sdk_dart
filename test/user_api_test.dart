@@ -5,8 +5,11 @@ import 'config.dart';
 
 void main() {
   group('user apis', () {
-    final client =
-        Client(userId: uid, sessionId: sid, sessionPrivateKey: private);
+    final client = Client(
+      userId: uid,
+      sessionId: sid,
+      sessionPrivateKey: private,
+    );
 
     test('test getUsers', () async {
       try {
@@ -44,8 +47,11 @@ void main() {
   });
 
   test('test getSessions', () async {
-    final client =
-        Client(userId: uid, sessionId: sid, sessionPrivateKey: private);
+    final client = Client(
+      userId: uid,
+      sessionId: sid,
+      sessionPrivateKey: private,
+    );
     try {
       final mixinResponse = await client.userApi.getSessions(uids);
       testPrint(mixinResponse.data.map((e) => e.toJson()).toList());

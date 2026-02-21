@@ -25,8 +25,8 @@ class PinRequest with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        pin,
-        oldPin,
-        timestamp,
-      ];
+    pin,
+    oldPin,
+    timestamp,
+  ];
 }

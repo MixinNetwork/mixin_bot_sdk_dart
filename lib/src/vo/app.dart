@@ -54,18 +54,18 @@ class App with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        appId,
-        appNumber,
-        homeUri,
-        redirectUri,
-        name,
-        iconUrl,
-        category,
-        description,
-        capabilites,
-        appSecret,
-        creatorId,
-        resourcePatterns,
-        updatedAt,
-      ];
+    appId,
+    appNumber,
+    homeUri,
+    redirectUri,
+    name,
+    iconUrl,
+    category,
+    description,
+    capabilites,
+    appSecret,
+    creatorId,
+    resourcePatterns,
+    updatedAt,
+  ];
 }

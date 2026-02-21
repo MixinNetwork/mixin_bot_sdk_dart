@@ -40,13 +40,13 @@ class PendingDeposit with EquatableMixin {
 
   @override
   List<Object> get props => [
-        type,
-        transactionId,
-        transactionHash,
-        sender,
-        amount,
-        confirmations,
-        threshold,
-        createdAt,
-      ];
+    type,
+    transactionId,
+    transactionHash,
+    sender,
+    amount,
+    confirmations,
+    threshold,
+    createdAt,
+  ];
 }

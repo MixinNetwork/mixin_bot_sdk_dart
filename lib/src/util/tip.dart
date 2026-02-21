@@ -19,7 +19,8 @@ class TipBody {
   }) {
     var body = assetId + opponentKey;
     body += opponentReceivers.join();
-    body = body +
+    body =
+        body +
         opponentThreshold.toString() +
         amount +
         (traceId ?? '') +

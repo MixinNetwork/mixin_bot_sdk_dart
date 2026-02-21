@@ -8,9 +8,9 @@ class UserApi {
   final Dio dio;
 
   Future<MixinResponse<User>> getMe() => MixinResponse.request<User>(
-        dio.get('/me'),
-        User.fromJson,
-      );
+    dio.get('/me'),
+    User.fromJson,
+  );
 
   Future<MixinResponse<User>> getUserById(String id) =>
       MixinResponse.request<User>(
@@ -61,8 +61,8 @@ class UserApi {
       );
 
   Future<void> removeFavoriteApp(String appId) => MixinResponse.requestVoid(
-        dio.post('/apps/$appId/unfavorite'),
-      );
+    dio.post('/apps/$appId/unfavorite'),
+  );
 
   /// Create Network Users. Only application user can create network users.
   ///
@@ -71,15 +71,14 @@ class UserApi {
   Future<MixinResponse<Account>> createUsers({
     required String fullName,
     required String sessionSecret,
-  }) =>
-      MixinResponse.request<Account>(
-        dio.post(
-          '/users',
-          data: {
-            'full_name': fullName,
-            'session_secret': sessionSecret,
-          },
-        ),
-        Account.fromJson,
-      );
+  }) => MixinResponse.request<Account>(
+    dio.post(
+      '/users',
+      data: {
+        'full_name': fullName,
+        'session_secret': sessionSecret,
+      },
+    ),
+    Account.fromJson,
+  );
 }

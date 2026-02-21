@@ -28,9 +28,9 @@ class Attachment with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        attachmentId,
-        uploadUrl,
-        viewUrl,
-        createdAt,
-      ];
+    attachmentId,
+    uploadUrl,
+    viewUrl,
+    createdAt,
+  ];
 }
