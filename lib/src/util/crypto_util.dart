@@ -78,12 +78,10 @@ Uint8List randBytes(int n) {
 /// Static factory to retrieve a type 3(name based) UUID based on the given
 /// byte array.
 /// The same as java.util.UUID.nameUUIDFromBytes.
-// ignore: experimental_member_use
 UuidValue nameUuidFromBytes(List<int> name) {
   final bytes = md5.convert(name).bytes;
   bytes[6] = (bytes[6] & 0x0f) | 0x30;
   bytes[8] = (bytes[8] & 0x3f) | 0x80;
-  // ignore: experimental_member_use
   return UuidValue.fromList(bytes);
 }
 
@@ -129,7 +127,6 @@ String uniqueConversationId(String userId, String recipientId) {
   digest[6] = (digest[6] & 0x0f) | 0x30;
   digest[8] = (digest[8] & 0x3f) | 0x80;
 
-  // ignore: experimental_member_use
   return UuidValue.fromList(digest).toString();
 }
 
@@ -139,7 +136,6 @@ String groupConversationId(
   List<String> participants,
   String randomId,
 ) {
-  // ignore: experimental_member_use
   final normalizedRandomId = UuidValue.fromString(randomId).toString();
 
   var gid = uniqueConversationId(ownerId, groupName);
