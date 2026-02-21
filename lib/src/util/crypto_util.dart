@@ -96,8 +96,9 @@ String hashMembers(List<String> memberIds) {
   return hex.encode(pc.SHA3Digest(256).process(bytes));
 }
 
-final base58 =
-    BaseXCodec('123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz');
+final base58 = BaseXCodec(
+  '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz',
+);
 
 Uint8List sha256Hash(Uint8List data) {
   final digest = pc.SHA256Digest();
@@ -126,11 +127,17 @@ String uniqueConversationId(String userId, String recipientId) {
   digest[6] = (digest[6] & 0x0f) | 0x30;
   digest[8] = (digest[8] & 0x3f) | 0x80;
 
+  // ignore: experimental_member_use
   return UuidValue.fromList(digest).toString();
 }
 
-String groupConversationId(String ownerId, String groupName,
-    List<String> participants, String randomId) {
+String groupConversationId(
+  String ownerId,
+  String groupName,
+  List<String> participants,
+  String randomId,
+) {
+  // ignore: experimental_member_use
   final normalizedRandomId = UuidValue.fromString(randomId).toString();
 
   var gid = uniqueConversationId(ownerId, groupName);

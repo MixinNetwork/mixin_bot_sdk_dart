@@ -38,22 +38,21 @@ class UtxoApi {
     int limit = _kLimit,
     String? state,
     String? asset,
-  }) =>
-      MixinResponse.requestList<SafeUtxoOutput>(
-        dio.get(
-          '/safe/outputs',
-          queryParameters: {
-            if (members != null && members.isNotEmpty)
-              'members': hashMembers(members),
-            'threshold': threshold,
-            'offset': offset,
-            'limit': limit,
-            'state': state,
-            'asset': asset,
-          },
-        ),
-        SafeUtxoOutput.fromJson,
-      );
+  }) => MixinResponse.requestList<SafeUtxoOutput>(
+    dio.get(
+      '/safe/outputs',
+      queryParameters: {
+        if (members != null && members.isNotEmpty)
+          'members': hashMembers(members),
+        'threshold': threshold,
+        'offset': offset,
+        'limit': limit,
+        'state': state,
+        'asset': asset,
+      },
+    ),
+    SafeUtxoOutput.fromJson,
+  );
 
   /// https://developers.mixin.one/docs/api/safe-apis#get-a-recharge-address
   ///
@@ -66,18 +65,17 @@ class UtxoApi {
     required String chainId,
     List<String>? members,
     int? threshold,
-  }) =>
-      MixinResponse.requestList<DepositEntry>(
-        dio.post(
-          '/safe/deposit/entries',
-          data: {
-            'chain_id': chainId,
-            if (members != null) 'members': members,
-            if (threshold != null) 'threshold': threshold,
-          },
-        ),
-        DepositEntry.fromJson,
-      );
+  }) => MixinResponse.requestList<DepositEntry>(
+    dio.post(
+      '/safe/deposit/entries',
+      data: {
+        'chain_id': chainId,
+        'members': ?members,
+        'threshold': ?threshold,
+      },
+    ),
+    DepositEntry.fromJson,
+  );
 
   /// https://developers.mixin.one/docs/api/safe-apis#register-user
   ///
@@ -92,18 +90,17 @@ class UtxoApi {
     required String publicKey,
     required String signature,
     required String pin,
-  }) =>
-      MixinResponse.request<Account>(
-        dio.post(
-          '/safe/users',
-          data: {
-            'public_key': publicKey,
-            'signature': signature,
-            'pin_base64': pin,
-          },
-        ),
-        Account.fromJson,
-      );
+  }) => MixinResponse.request<Account>(
+    dio.post(
+      '/safe/users',
+      data: {
+        'public_key': publicKey,
+        'signature': signature,
+        'pin_base64': pin,
+      },
+    ),
+    Account.fromJson,
+  );
 
   /// https://developers.mixin.one/docs/api/safe-apis#get-payment-information
   ///
@@ -115,14 +112,13 @@ class UtxoApi {
   /// of the other party through this API.
   Future<MixinResponse<List<SafeGhostKey>>> ghostKey(
     List<GhostKeyRequest> ghostKeyRequests,
-  ) =>
-      MixinResponse.requestList<SafeGhostKey>(
-        dio.post(
-          '/safe/keys',
-          data: ghostKeyRequests,
-        ),
-        SafeGhostKey.fromJson,
-      );
+  ) => MixinResponse.requestList<SafeGhostKey>(
+    dio.post(
+      '/safe/keys',
+      data: ghostKeyRequests,
+    ),
+    SafeGhostKey.fromJson,
+  );
 
   /// https://developers.mixin.one/docs/api/safe-apis#verify-transaction-format
   ///
@@ -138,14 +134,13 @@ class UtxoApi {
   /// which is for the convenience of batch verification of transactions.
   Future<MixinResponse<List<TransactionResponse>>> transactionRequest(
     List<TransactionRequest> transactionRequests,
-  ) =>
-      MixinResponse.requestList<TransactionResponse>(
-        dio.post(
-          '/safe/transaction/requests',
-          data: transactionRequests,
-        ),
-        TransactionResponse.fromJson,
-      );
+  ) => MixinResponse.requestList<TransactionResponse>(
+    dio.post(
+      '/safe/transaction/requests',
+      data: transactionRequests,
+    ),
+    TransactionResponse.fromJson,
+  );
 
   /// https://developers.mixin.one/docs/api/safe-apis#sign-and-send-transaction
   ///
@@ -163,14 +158,13 @@ class UtxoApi {
   /// and snapshot query services.
   Future<MixinResponse<List<TransactionResponse>>> transactions(
     List<TransactionRequest> transactionRequests,
-  ) =>
-      MixinResponse.requestList<TransactionResponse>(
-        dio.post(
-          '/safe/transactions',
-          data: transactionRequests,
-        ),
-        TransactionResponse.fromJson,
-      );
+  ) => MixinResponse.requestList<TransactionResponse>(
+    dio.post(
+      '/safe/transactions',
+      data: transactionRequests,
+    ),
+    TransactionResponse.fromJson,
+  );
 
   /// https://developers.mixin.one/docs/api/safe-apis#query-transaction
   ///
@@ -178,13 +172,12 @@ class UtxoApi {
   /// you can query the transaction status through the request UUID.
   Future<MixinResponse<TransactionResponse>> getTransactionsById({
     required String id,
-  }) =>
-      MixinResponse.request<TransactionResponse>(
-        dio.get(
-          '/safe/transactions/$id',
-        ),
-        TransactionResponse.fromJson,
-      );
+  }) => MixinResponse.request<TransactionResponse>(
+    dio.get(
+      '/safe/transactions/$id',
+    ),
+    TransactionResponse.fromJson,
+  );
 
   Future<MixinResponse<TransactionResponse>> getMultisigs(String requestId) =>
       MixinResponse.request<TransactionResponse>(
@@ -197,23 +190,22 @@ class UtxoApi {
   Future<MixinResponse<TransactionResponse>> signTransactionMultisigs(
     String requestId,
     TransactionRequest request,
-  ) =>
-      MixinResponse.request<TransactionResponse>(
-        dio.post(
-          '/safe/multisigs/$requestId/sign',
-          data: request.toJson(),
-        ),
-        TransactionResponse.fromJson,
-      );
+  ) => MixinResponse.request<TransactionResponse>(
+    dio.post(
+      '/safe/multisigs/$requestId/sign',
+      data: request.toJson(),
+    ),
+    TransactionResponse.fromJson,
+  );
 
   Future<MixinResponse<TransactionResponse>> unlockTransactionMultisigs(
-          String requestId) =>
-      MixinResponse.request<TransactionResponse>(
-        dio.post(
-          '/safe/multisigs/$requestId/unlock',
-        ),
-        TransactionResponse.fromJson,
-      );
+    String requestId,
+  ) => MixinResponse.request<TransactionResponse>(
+    dio.post(
+      '/safe/multisigs/$requestId/unlock',
+    ),
+    TransactionResponse.fromJson,
+  );
 
   Future<String> assetBalance({
     required String assetId,
@@ -229,8 +221,7 @@ class UtxoApi {
         asset: assetId,
         state: OutputState.unspent.name,
         offset: latestSequence == null ? null : latestSequence + 1,
-      ))
-          .data;
+      )).data;
       outputs.addAll(data);
       if (data.length < _kLimit) {
         break;
@@ -262,12 +253,13 @@ class UtxoApi {
         members: members,
         limit: limit,
         offset: latestSequence == null ? null : latestSequence + 1,
-      ))
-          .data;
+      )).data;
       latestSequence = data.lastOrNull?.sequence;
       final noMoreOutputs = data.length < limit;
-      final (amount, candidates) =
-          getUnspentOutputsForTransaction(data, desiredAmount);
+      final (amount, candidates) = getUnspentOutputsForTransaction(
+        data,
+        desiredAmount,
+      );
       outputsAmount += amount;
       outputs.addAll(candidates);
 
@@ -311,7 +303,7 @@ class UtxoApi {
     String? transactionRequestId,
   }) async {
     assert(receiverIds.isNotEmpty, 'receiverIds is empty');
-    receiverIds = receiverIds.toList()..sort();
+    final rIds = receiverIds.toList()..sort();
 
     final (utxos, change) = await _getEnoughOutputsForTransaction(
       asset: asset,
@@ -322,7 +314,7 @@ class UtxoApi {
 
     final recipients = [
       UserTransactionRecipient(
-        members: receiverIds,
+        members: rIds,
         threshold: threshold,
         amount: amount,
       ),
@@ -345,8 +337,7 @@ class UtxoApi {
             ),
           )
           .toList(),
-    ))
-        .data;
+    )).data;
 
     final tx = buildSafeTransaction(
       utxos: utxos,
@@ -362,11 +353,9 @@ class UtxoApi {
         TransactionRequest(
           requestId: requestId,
           raw: raw,
-        )
+        ),
       ],
-    ))
-        .data
-        .first;
+    )).data.first;
 
     // sign safe transaction with the private key registered in the safe
     final signedRaw = signSafeTransaction(
@@ -388,8 +377,10 @@ class UtxoApi {
     required String pinTokenBase64,
     required String sessionPrivateKeyBase64,
   }) async {
-    final safePublicKeyHex =
-        ed.public(ed.PrivateKey(tipPrivateKey)).bytes.toHexString();
+    final safePublicKeyHex = ed
+        .public(ed.PrivateKey(tipPrivateKey))
+        .bytes
+        .toHexString();
 
     final me = (await _accountApi.getMe()).data;
     if (me.hasSafe) {
@@ -401,8 +392,9 @@ class UtxoApi {
       pinTokenBase64: pinTokenBase64,
       privateKeyBase64: sessionPrivateKeyBase64,
       signTarget: TipBody.forSequencerRegister(
-              userId: userId, publicKey: safePublicKeyHex)
-          .bytes,
+        userId: userId,
+        publicKey: safePublicKeyHex,
+      ).bytes,
       tipPrivateKey: tipPrivateKey,
     );
 
@@ -433,15 +425,20 @@ class UtxoApi {
         ? token
         : (await _tokenApi.getAssetById(token.chainId)).data;
 
-    final feeResponse =
-        (await _tokenApi.getFees(asset: asset, destination: destination)).data;
-    late final assetFee =
-        feeResponse.firstWhereOrNull((element) => element.assetId == asset);
-    late final chainFee = feeResponse
-        .firstWhereOrNull((element) => element.assetId == chain.assetId);
+    final feeResponse = (await _tokenApi.getFees(
+      asset: asset,
+      destination: destination,
+    )).data;
+    late final assetFee = feeResponse.firstWhereOrNull(
+      (element) => element.assetId == asset,
+    );
+    late final chainFee = feeResponse.firstWhereOrNull(
+      (element) => element.assetId == chain.assetId,
+    );
 
-    final fee =
-        (preferAssetFeeOverChainFee && assetFee != null) ? assetFee : chainFee;
+    final fee = (preferAssetFeeOverChainFee && assetFee != null)
+        ? assetFee
+        : chainFee;
     if (fee == null) {
       throw Exception('fee not found: $asset $feeResponse');
     }
@@ -492,11 +489,17 @@ class UtxoApi {
       final ghosts = (await ghostKey([
         // fee
         GhostKeyRequest(
-            receivers: [feeReceiverId], hint: const Uuid().v4(), index: 0),
+          receivers: [feeReceiverId],
+          hint: const Uuid().v4(),
+          index: 0,
+        ),
         // change
         if (change > Decimal.zero)
           GhostKeyRequest(
-              receivers: utxos[0].receivers, hint: const Uuid().v4(), index: 1),
+            receivers: utxos[0].receivers,
+            hint: const Uuid().v4(),
+            index: 1,
+          ),
         // fee change
         if (feeChange > Decimal.zero)
           GhostKeyRequest(
@@ -504,8 +507,7 @@ class UtxoApi {
             hint: const Uuid().v4(),
             index: 1,
           ),
-      ]))
-          .data;
+      ])).data;
 
       final feeGhostKey = ghosts[0];
       final changeGhostKey = (change > Decimal.zero) ? ghosts[1] : null;
@@ -565,18 +567,19 @@ class UtxoApi {
       final requestResponse = (await transactionRequest([
         TransactionRequest(requestId: withdrawalRequestId, raw: withdrawTxRaw),
         TransactionRequest(requestId: feeRequestId, raw: feeTxRaw),
-      ]))
-          .data;
+      ])).data;
       if (requestResponse.isEmpty) {
         throw Exception('Parameter exception');
       } else if (requestResponse.first.state != OutputState.unspent.name) {
         throw Exception('Transfer is already paid');
       }
 
-      final withdrawalData = requestResponse
-          .firstWhere((element) => element.requestId == withdrawalRequestId);
-      final feeData = requestResponse
-          .firstWhere((element) => element.requestId == feeRequestId);
+      final withdrawalData = requestResponse.firstWhere(
+        (element) => element.requestId == withdrawalRequestId,
+      );
+      final feeData = requestResponse.firstWhere(
+        (element) => element.requestId == feeRequestId,
+      );
 
       final singedWithdrawalRaw = signSafeTransaction(
         tx: withdrawalTx,
@@ -592,7 +595,9 @@ class UtxoApi {
       );
       final sentTx = await transactions([
         TransactionRequest(
-            raw: singedWithdrawalRaw, requestId: withdrawalRequestId),
+          raw: singedWithdrawalRaw,
+          requestId: withdrawalRequestId,
+        ),
         TransactionRequest(raw: singedFeeRaw, requestId: feeRequestId),
       ]);
       return sentTx.data;
@@ -606,13 +611,18 @@ class UtxoApi {
       final ghosts = (await ghostKey([
         // fee
         GhostKeyRequest(
-            receivers: [feeReceiverId], hint: const Uuid().v4(), index: 1),
+          receivers: [feeReceiverId],
+          hint: const Uuid().v4(),
+          index: 1,
+        ),
         // fee change
         if (change > Decimal.zero)
           GhostKeyRequest(
-              receivers: utxos[0].receivers, hint: const Uuid().v4(), index: 2),
-      ]))
-          .data;
+            receivers: utxos[0].receivers,
+            hint: const Uuid().v4(),
+            index: 2,
+          ),
+      ])).data;
 
       final tx = buildSafeTransaction(
         utxos: utxos,
@@ -642,9 +652,7 @@ class UtxoApi {
       final requestId = transactionRequestId ?? const Uuid().v4();
       final verifiedTx = (await transactionRequest(
         [TransactionRequest(requestId: requestId, raw: raw)],
-      ))
-          .data
-          .first;
+      )).data.first;
       final signedRaw = signSafeTransaction(
         tx: tx,
         utxos: utxos,
