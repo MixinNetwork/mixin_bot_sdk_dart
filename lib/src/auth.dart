@@ -66,9 +66,9 @@ String _signAuthenticationToken(
     return '';
   }
 
-  final bytes = utf8.encode(method + uri + body);
+  final bs = utf8.encode(method + uri + body);
 
-  final hash = sha256.convert(bytes);
+  final hash = sha256.convert(bs);
   final jwt = JWT({
     'uid': userId,
     'sid': sessionId,
