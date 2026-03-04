@@ -9,6 +9,7 @@ class Address with EquatableMixin {
     required this.addressId,
     required this.type,
     required this.assetId,
+    required this.chainId,
     required this.destination,
     required this.label,
     required this.updatedAt,
@@ -30,6 +31,8 @@ class Address with EquatableMixin {
   final String type;
   @JsonKey(name: 'asset_id')
   final String assetId;
+  @JsonKey(name: 'chain_id')
+  final String chainId;
   @JsonKey(name: 'destination')
   final String destination;
   @JsonKey(name: 'label')
@@ -53,6 +56,7 @@ class Address with EquatableMixin {
     addressId,
     type,
     assetId,
+    chainId,
     destination,
     label,
     updatedAt,
