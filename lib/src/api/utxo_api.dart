@@ -11,6 +11,9 @@ import '../../mixin_bot_sdk_dart.dart';
 
 const _kLimit = 500;
 
+typedef MixinTransactionRelay = Future<MixinResponse<List<TransactionResponse>>>
+    Function(List<TransactionRequest> transactionRequests);
+
 class UtxoApi {
   UtxoApi(this._accountApi, this._tokenApi, {required this.dio});
 
@@ -321,6 +324,7 @@ class UtxoApi {
     int threshold = 1,
     String? memo,
     String? transactionRequestId,
+    MixinTransactionRelay? transactionRelay,
   }) async {
     assert(receiverIds.isNotEmpty, 'receiverIds is empty');
     final rIds = receiverIds.toList()..sort();
@@ -385,7 +389,7 @@ class UtxoApi {
       privateKey: spendKey,
     );
 
-    final sentTx = await transactions(
+    final sentTx = await (transactionRelay ?? transactions)(
       [TransactionRequest(raw: signedRaw, requestId: requestId)],
     );
     return sentTx.data;
@@ -439,6 +443,7 @@ class UtxoApi {
     String? memo,
     bool preferAssetFeeOverChainFee = false,
     String? transactionRequestId,
+    MixinTransactionRelay? transactionRelay,
   }) async {
     final token = (await _tokenApi.getAssetById(asset)).data;
     final chain = token.chainId == token.assetId
@@ -475,6 +480,7 @@ class UtxoApi {
       tag: tag,
       spendKey: spendKey,
       transactionRequestId: transactionRequestId,
+      transactions: transactionRelay ?? transactions,
     );
   }
 
@@ -487,6 +493,7 @@ class UtxoApi {
     required String destination,
     required String? tag,
     required Key spendKey,
+    required MixinTransactionRelay transactions,
     int threshold = 1,
     String? memo,
     String? transactionRequestId,
