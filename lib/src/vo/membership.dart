@@ -18,7 +18,7 @@ enum Plan {
 }
 
 @JsonSerializable()
-class Membership with EquatableMixin, CodeTypeInterface {
+class Membership with Equatable, CodeTypeInterface {
   Membership({required this.plan, required this.expiredAt});
 
   factory Membership.fromJson(Map<String, dynamic> json) =>

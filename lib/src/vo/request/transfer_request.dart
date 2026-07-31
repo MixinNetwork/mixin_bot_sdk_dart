@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'transfer_request.g.dart';
 
 @JsonSerializable()
-class TransferRequest with EquatableMixin {
+class TransferRequest with Equatable {
   TransferRequest({
     required this.assetId,
     required this.amount,

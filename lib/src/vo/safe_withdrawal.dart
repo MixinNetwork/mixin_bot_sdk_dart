@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'safe_withdrawal.g.dart';
 
 @JsonSerializable()
-class SafeWithdrawal with EquatableMixin {
+class SafeWithdrawal with Equatable {
   const SafeWithdrawal({
     required this.withdrawalHash,
     required this.receiver,

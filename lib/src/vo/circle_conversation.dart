@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'circle_conversation.g.dart';
 
 @JsonSerializable()
-class CircleConversation with EquatableMixin {
+class CircleConversation with Equatable {
   CircleConversation({
     required this.conversationId,
     required this.circleId,

@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'token.g.dart';
 
 @JsonSerializable()
-class Token with EquatableMixin {
+class Token with Equatable {
   Token({
     required this.assetId,
     required this.asset,

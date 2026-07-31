@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'inscription_item.g.dart';
 
 @JsonSerializable()
-class InscriptionItem with EquatableMixin {
+class InscriptionItem with Equatable {
   InscriptionItem({
     required this.inscriptionHash,
     required this.collectionHash,

@@ -6,7 +6,7 @@ import 'collectible_token_meta.dart';
 part 'collectible_token.g.dart';
 
 @JsonSerializable()
-class CollectibleToken with EquatableMixin {
+class CollectibleToken with Equatable {
   CollectibleToken(
     this.type,
     this.tokenId,

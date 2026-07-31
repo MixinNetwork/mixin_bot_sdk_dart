@@ -6,7 +6,7 @@ part 'participant_request.g.dart';
 
 @JsonSerializable()
 @ParticipantRoleJsonConverter()
-class ParticipantRequest with EquatableMixin {
+class ParticipantRequest with Equatable {
   ParticipantRequest({
     required this.userId,
     this.role,

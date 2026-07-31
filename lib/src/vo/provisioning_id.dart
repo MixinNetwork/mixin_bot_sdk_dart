@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'provisioning_id.g.dart';
 
 @JsonSerializable()
-class ProvisioningId with EquatableMixin {
+class ProvisioningId with Equatable {
   ProvisioningId({
     required this.deviceId,
     required this.expiredAt,

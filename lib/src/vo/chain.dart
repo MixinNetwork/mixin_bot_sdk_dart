@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'chain.g.dart';
 
 @JsonSerializable()
-class Chain with EquatableMixin {
+class Chain with Equatable {
   Chain({
     required this.chainId,
     required this.name,

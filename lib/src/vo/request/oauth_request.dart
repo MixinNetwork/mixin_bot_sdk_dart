@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'oauth_request.g.dart';
 
 @JsonSerializable()
-class OauthRequest with EquatableMixin {
+class OauthRequest with Equatable {
   OauthRequest(this.clientId, this.clientSecret, this.code);
 
   factory OauthRequest.fromJson(Map<String, dynamic> json) =>

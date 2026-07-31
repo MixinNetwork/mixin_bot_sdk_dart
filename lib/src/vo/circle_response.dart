@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'circle_response.g.dart';
 
 @JsonSerializable()
-class CircleResponse with EquatableMixin {
+class CircleResponse with Equatable {
   CircleResponse({
     required this.circleId,
     required this.name,

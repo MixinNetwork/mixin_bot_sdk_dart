@@ -7,7 +7,7 @@ part 'account.g.dart';
 
 @JsonSerializable()
 @UserRelationshipJsonConverter()
-class Account with EquatableMixin {
+class Account with Equatable {
   Account({
     required this.userId,
     required this.identityNumber,

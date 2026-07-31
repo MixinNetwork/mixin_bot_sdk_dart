@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 
-class MixinResponse<T> with EquatableMixin {
+class MixinResponse<T> with Equatable {
   MixinResponse(
     this.data,
   );

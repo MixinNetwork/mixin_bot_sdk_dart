@@ -5,7 +5,7 @@ import 'deposit_entry.dart';
 part 'asset.g.dart';
 
 @JsonSerializable()
-class Asset with EquatableMixin {
+class Asset with Equatable {
   Asset({
     required this.assetId,
     required this.symbol,

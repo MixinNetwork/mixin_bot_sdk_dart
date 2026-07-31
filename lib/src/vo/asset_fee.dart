@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'asset_fee.g.dart';
 
 @JsonSerializable()
-class AssetFee with EquatableMixin {
+class AssetFee with Equatable {
   AssetFee({
     required this.type,
     required this.assetId,

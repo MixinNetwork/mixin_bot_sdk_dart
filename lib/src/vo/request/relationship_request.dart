@@ -7,7 +7,7 @@ part 'relationship_request.g.dart';
 
 @JsonSerializable()
 @RelationshipActionJsonConverter()
-class RelationshipRequest with EquatableMixin {
+class RelationshipRequest with Equatable {
   RelationshipRequest({
     required this.userId,
     required this.action,

@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'logout_request.g.dart';
 
 @JsonSerializable()
-class LogoutRequest with EquatableMixin {
+class LogoutRequest with Equatable {
   LogoutRequest(this.sessionId);
 
   factory LogoutRequest.fromJson(Map<String, dynamic> json) =>

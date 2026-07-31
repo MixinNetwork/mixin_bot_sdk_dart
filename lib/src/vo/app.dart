@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'app.g.dart';
 
 @JsonSerializable()
-class App with EquatableMixin {
+class App with Equatable {
   App({
     required this.appId,
     required this.appNumber,

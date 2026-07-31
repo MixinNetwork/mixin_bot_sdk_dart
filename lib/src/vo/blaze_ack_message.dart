@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'blaze_ack_message.g.dart';
 
 @JsonSerializable()
-class BlazeAckMessage with EquatableMixin {
+class BlazeAckMessage with Equatable {
   BlazeAckMessage({
     required this.messageId,
     required this.status,

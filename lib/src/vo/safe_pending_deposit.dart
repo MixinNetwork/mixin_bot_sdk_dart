@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'safe_pending_deposit.g.dart';
 
 @JsonSerializable()
-class SafePendingDeposit with EquatableMixin {
+class SafePendingDeposit with Equatable {
   SafePendingDeposit({
     required this.depositId,
     required this.assetId,

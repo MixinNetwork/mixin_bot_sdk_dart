@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'user_session.g.dart';
 
 @JsonSerializable()
-class UserSession with EquatableMixin {
+class UserSession with Equatable {
   UserSession(
     this.userId,
     this.sessionId,

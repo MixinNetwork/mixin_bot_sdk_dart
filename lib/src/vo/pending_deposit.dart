@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'pending_deposit.g.dart';
 
 @JsonSerializable()
-class PendingDeposit with EquatableMixin {
+class PendingDeposit with Equatable {
   PendingDeposit({
     required this.type,
     required this.transactionId,

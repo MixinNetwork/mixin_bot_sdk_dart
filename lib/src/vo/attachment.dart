@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'attachment.g.dart';
 
 @JsonSerializable()
-class Attachment with EquatableMixin {
+class Attachment with Equatable {
   Attachment(
     this.attachmentId,
     this.createdAt, {

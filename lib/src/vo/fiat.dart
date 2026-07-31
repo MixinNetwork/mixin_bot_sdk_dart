@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'fiat.g.dart';
 
 @JsonSerializable()
-class Fiat with EquatableMixin {
+class Fiat with Equatable {
   Fiat({
     required this.code,
     required this.rate,

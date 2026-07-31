@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'ticker.g.dart';
 
 @JsonSerializable()
-class Ticker with EquatableMixin {
+class Ticker with Equatable {
   Ticker({
     required this.priceUsd,
     required this.priceBtc,

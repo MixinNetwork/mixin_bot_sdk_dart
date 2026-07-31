@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import './app.dart';
+import 'app.dart';
 import 'code_type_interface.dart';
 import 'membership.dart';
 import 'user_relationship.dart';
@@ -10,7 +10,7 @@ part 'user.g.dart';
 
 @JsonSerializable()
 @UserRelationshipJsonConverter()
-class User with EquatableMixin, CodeTypeInterface {
+class User with Equatable, CodeTypeInterface {
   User({
     required this.userId,
     required this.identityNumber,

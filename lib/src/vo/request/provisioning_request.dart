@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'provisioning_request.g.dart';
 
 @JsonSerializable()
-class ProvisioningRequest with EquatableMixin {
+class ProvisioningRequest with Equatable {
   ProvisioningRequest({
     required this.userId,
     required this.sessionId,

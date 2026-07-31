@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'sticker_request.g.dart';
 
 @JsonSerializable()
-class StickerRequest with EquatableMixin {
+class StickerRequest with Equatable {
   StickerRequest({
     this.dataBase64,
     this.stickerId,

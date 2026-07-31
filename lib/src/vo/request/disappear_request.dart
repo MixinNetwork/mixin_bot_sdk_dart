@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'disappear_request.g.dart';
 
 @JsonSerializable()
-class DisappearRequest with EquatableMixin {
+class DisappearRequest with Equatable {
   const DisappearRequest({required this.duration});
 
   factory DisappearRequest.fromJson(Map<String, dynamic> json) =>

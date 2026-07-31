@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'address_request.g.dart';
 
 @JsonSerializable()
-class AddressRequest with EquatableMixin {
+class AddressRequest with Equatable {
   AddressRequest({
     required this.assetId,
     required this.pin,

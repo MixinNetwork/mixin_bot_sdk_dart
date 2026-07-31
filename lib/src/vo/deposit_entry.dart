@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'deposit_entry.g.dart';
 
 @JsonSerializable()
-class DepositEntry with EquatableMixin {
+class DepositEntry with Equatable {
   DepositEntry({
     required this.destination,
     this.tag,

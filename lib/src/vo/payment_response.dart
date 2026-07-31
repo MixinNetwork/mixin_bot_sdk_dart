@@ -7,7 +7,7 @@ part 'payment_response.g.dart';
 
 @JsonSerializable()
 @PaymentStatusJsonConverter()
-class PaymentResponse with EquatableMixin {
+class PaymentResponse with Equatable {
   PaymentResponse({required this.status});
 
   factory PaymentResponse.fromJson(Map<String, dynamic> json) =>

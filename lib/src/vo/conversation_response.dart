@@ -1,17 +1,17 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import './request/participant_request.dart';
 import 'circle_conversation.dart';
 import 'code_type_interface.dart';
 import 'conversation_category.dart';
+import 'request/participant_request.dart';
 import 'user_session.dart';
 
 part 'conversation_response.g.dart';
 
 @JsonSerializable()
 @ConversationCategoryJsonConverter()
-class ConversationResponse with EquatableMixin, CodeTypeInterface {
+class ConversationResponse with Equatable, CodeTypeInterface {
   ConversationResponse({
     required this.conversationId,
     required this.name,

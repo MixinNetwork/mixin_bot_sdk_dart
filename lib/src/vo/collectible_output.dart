@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'collectible_output.g.dart';
 
 @JsonSerializable()
-class CollectibleOutput with EquatableMixin {
+class CollectibleOutput with Equatable {
   CollectibleOutput(
     this.userId,
     this.outputId,

@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'signal_key_count.g.dart';
 
 @JsonSerializable()
-class SignalKeyCount with EquatableMixin {
+class SignalKeyCount with Equatable {
   SignalKeyCount({required this.preKeyCount});
 
   factory SignalKeyCount.fromJson(Map<String, dynamic> json) =>

@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'collectible_token_meta.g.dart';
 
 @JsonSerializable()
-class CollectibleTokenMeta with EquatableMixin {
+class CollectibleTokenMeta with Equatable {
   CollectibleTokenMeta(
     this.group,
     this.name,

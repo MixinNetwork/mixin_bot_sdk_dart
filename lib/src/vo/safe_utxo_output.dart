@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'safe_utxo_output.g.dart';
 
 @JsonSerializable()
-class SafeUtxoOutput with EquatableMixin {
+class SafeUtxoOutput with Equatable {
   const SafeUtxoOutput({
     required this.outputId,
     required this.transactionHash,

@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'account_update_request.g.dart';
 
 @JsonSerializable()
-class AccountUpdateRequest with EquatableMixin {
+class AccountUpdateRequest with Equatable {
   AccountUpdateRequest({
     this.fullName,
     this.avatarBase64,

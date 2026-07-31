@@ -8,7 +8,7 @@ import '../../mixin_bot_sdk_dart.dart';
 part 'transaction_response.g.dart';
 
 @JsonSerializable()
-class TransactionResponse with EquatableMixin {
+class TransactionResponse with Equatable {
   TransactionResponse({
     required this.type,
     required this.requestId,

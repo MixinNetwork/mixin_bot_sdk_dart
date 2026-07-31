@@ -18,7 +18,7 @@ class GhostKey {
 }
 
 @JsonSerializable()
-class SafeGhostKey with EquatableMixin {
+class SafeGhostKey with Equatable {
   SafeGhostKey({
     required this.mask,
     required this.keys,

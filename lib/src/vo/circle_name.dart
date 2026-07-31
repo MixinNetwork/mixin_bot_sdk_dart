@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'circle_name.g.dart';
 
 @JsonSerializable()
-class CircleName with EquatableMixin {
+class CircleName with Equatable {
   CircleName({
     required this.name,
   });

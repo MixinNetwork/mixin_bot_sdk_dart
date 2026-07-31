@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'raw_transaction_request.g.dart';
 
 @JsonSerializable()
-class RawTransactionRequest with EquatableMixin {
+class RawTransactionRequest with Equatable {
   RawTransactionRequest({
     required this.assetId,
     required this.opponentMultisig,
@@ -44,7 +44,7 @@ class RawTransactionRequest with EquatableMixin {
 }
 
 @JsonSerializable()
-class OpponentMultisig with EquatableMixin {
+class OpponentMultisig with Equatable {
   OpponentMultisig({
     required this.receivers,
     required this.threshold,

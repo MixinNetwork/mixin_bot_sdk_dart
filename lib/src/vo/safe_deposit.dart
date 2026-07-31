@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'safe_deposit.g.dart';
 
 @JsonSerializable()
-class SafeDeposit with EquatableMixin {
+class SafeDeposit with Equatable {
   SafeDeposit({
     required this.depositHash,
     required this.sender,

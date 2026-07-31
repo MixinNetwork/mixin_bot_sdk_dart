@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'log_response.g.dart';
 
 @JsonSerializable()
-class LogResponse with EquatableMixin {
+class LogResponse with Equatable {
   LogResponse({
     required this.type,
     required this.logId,

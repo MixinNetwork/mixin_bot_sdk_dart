@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'mixin_error.g.dart';
 
 @JsonSerializable()
-class MixinError with EquatableMixin {
+class MixinError with Equatable {
   MixinError(
     this.status,
     this.code,

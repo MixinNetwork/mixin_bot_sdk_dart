@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'pin_request.g.dart';
 
 @JsonSerializable()
-class PinRequest with EquatableMixin {
+class PinRequest with Equatable {
   PinRequest({
     required this.pin,
     this.oldPin,

@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'oauth_response.g.dart';
 
 @JsonSerializable()
-class OauthResponse with EquatableMixin {
+class OauthResponse with Equatable {
   OauthResponse({required this.accessToken, required this.scope});
 
   factory OauthResponse.fromJson(Map<String, dynamic> json) =>

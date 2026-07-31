@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'sticker_albums.g.dart';
 
 @JsonSerializable()
-class StickerAlbum with EquatableMixin {
+class StickerAlbum with Equatable {
   StickerAlbum({
     required this.albumId,
     required this.name,

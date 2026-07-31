@@ -7,7 +7,7 @@ import 'safe_withdrawal.dart';
 part 'safe_snapshot.g.dart';
 
 @JsonSerializable()
-class SafeSnapshot with EquatableMixin {
+class SafeSnapshot with Equatable {
   SafeSnapshot({
     required this.snapshotId,
     required this.type,

@@ -8,7 +8,7 @@ part 'conversation.g.dart';
 @JsonSerializable()
 @ConversationCategoryJsonConverter()
 @ConversationStatusJsonConverter()
-class Conversation with EquatableMixin {
+class Conversation with Equatable {
   Conversation({
     required this.conversationId,
     required this.createdAt,
