@@ -17,13 +17,39 @@ String? enumConvertToString(dynamic enumItem) {
   return tmp;
 }
 
+// Conversions by enum values list, then by input. A conversion scanned every
+// enum item and allocated several strings for each, and an app converts
+// several columns of every database row. Inputs come from a small set, and a
+// list keeps at most [_maxCachedInputs] of them.
+final _enumLookups = Expando<Map<String, Object?>>();
+final _jsonLookups = Expando<Map<String, Object?>>();
+const _maxCachedInputs = 256;
+
+T? _cached<T>(
+  Expando<Map<String, Object?>> lookups,
+  List<T?> enumValues,
+  String value,
+  T? Function() convert,
+) {
+  final lookup = lookups[enumValues] ??= <String, Object?>{};
+  if (lookup.containsKey(value)) return lookup[value] as T?;
+  final result = convert();
+  if (lookup.length < _maxCachedInputs) lookup[value] = result;
+  return result;
+}
+
 T? fromStringToEnum<T>(List<T?>? enumValues, String? value) {
   if (value == null || enumValues == null) return null;
 
-  return enumValues.cast<T?>().singleWhere(
-    (enumItem) =>
-        enumConvertToString(enumItem)?.toUpperCase() == value.toUpperCase(),
-    orElse: () => null,
+  return _cached(
+    _enumLookups,
+    enumValues,
+    value,
+    () => enumValues.cast<T?>().singleWhere(
+      (enumItem) =>
+          enumConvertToString(enumItem)?.toUpperCase() == value.toUpperCase(),
+      orElse: () => null,
+    ),
   );
 }
 
@@ -37,12 +63,17 @@ abstract class EnumJsonConverter<T> implements JsonConverter<T?, String?> {
   T? get unknownEnumValue => null;
 
   @override
-  T? fromJson(String? json) =>
-      fromStringToEnum(
-        enumValues(),
-        json?.camelCase,
-      ) ??
-      unknownEnumValue;
+  T? fromJson(String? json) {
+    if (json == null) return unknownEnumValue;
+    final values = enumValues();
+    return _cached(
+          _jsonLookups,
+          values,
+          json,
+          () => fromStringToEnum(values, json.camelCase),
+        ) ??
+        unknownEnumValue;
+  }
 
   @override
   String? toJson(T? object) =>
