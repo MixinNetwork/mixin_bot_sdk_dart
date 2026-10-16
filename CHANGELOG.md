@@ -1,3 +1,6 @@
+## 1.5.1
+* Cache enum conversions by enum values and input, so converting the same JSON value again does not scan the values or allocate strings.
+
 ## 1.5.0
 * update version
 
