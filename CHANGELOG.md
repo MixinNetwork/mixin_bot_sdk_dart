@@ -1,3 +1,6 @@
+## 1.5.3
+* Require `equatable: ^2.1.0`. Models use `with Equatable`, which fails to compile against equatable 2.0.x ("Can't use 'Equatable' as a mixin because it has constructors").
+
 ## 1.5.2
 * Send a default `User-Agent: mixin_bot_sdk_dart/<version>` header (not on web). A `User-Agent` set in `dioOptions` takes precedence.
 
