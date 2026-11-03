@@ -1,3 +1,6 @@
+## 1.5.2
+* Send a default `User-Agent: mixin_bot_sdk_dart/<version>` header (not on web). A `User-Agent` set in `dioOptions` takes precedence.
+
 ## 1.5.1
 * Cache enum conversions by enum values and input, so converting the same JSON value again does not scan the values or allocate strings.
 

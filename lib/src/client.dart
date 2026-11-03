@@ -6,6 +6,8 @@ import '../mixin_bot_sdk_dart.dart';
 
 const mixinBaseUrl0 = 'https://api.mixin.one';
 
+const _isWeb = bool.fromEnvironment('dart.library.js_interop');
+
 class Client {
   Client({
     String? userId,
@@ -23,6 +25,11 @@ class Client {
     _dio.options.baseUrl = baseUrl ?? mixinBaseUrl0;
     _dio.options.responseType = ResponseType.json;
     _dio.options.contentType = Headers.jsonContentType;
+    // Browsers refuse to let scripts set User-Agent, so only set it off the web.
+    // A User-Agent passed in dioOptions takes precedence.
+    if (!_isWeb) {
+      _dio.options.headers.putIfAbsent('User-Agent', () => defaultUserAgent);
+    }
     final transformer = dio.transformer;
     if (transformer is SyncTransformer && jsonDecodeCallback != null) {
       transformer.jsonDecodeCallback = jsonDecodeCallback;
