@@ -210,4 +210,9 @@ void main() {
 
     expect(conversationId, equals('5dac944e-2037-31b4-bbd9-e5fd3ffe571e'));
   });
+
+  test('randBytes covers the full byte range', () {
+    // A missing 0xFF in 8192 uniform bytes has probability about e^-32.
+    expect(randBytes(8192), contains(255));
+  });
 }
