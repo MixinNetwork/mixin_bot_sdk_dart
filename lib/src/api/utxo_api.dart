@@ -77,6 +77,26 @@ class UtxoApi {
     DepositEntry.fromJson,
   );
 
+  /// Same endpoint as [createDeposit]. Each entry has the signature that
+  /// clients verify before they show the destination.
+  Future<MixinResponse<List<SafeDepositEntry>>> createSafeDepositEntries({
+    required String chainId,
+    String? assetId,
+    List<String>? members,
+    int? threshold,
+  }) => MixinResponse.requestList<SafeDepositEntry>(
+    dio.post(
+      '/safe/deposit/entries',
+      data: {
+        'chain_id': chainId,
+        'asset_id': ?assetId,
+        'members': ?members,
+        'threshold': ?threshold,
+      },
+    ),
+    SafeDepositEntry.fromJson,
+  );
+
   /// https://developers.mixin.one/docs/api/safe-apis#register-user
   ///
   /// Register user No matter if it is a new user or an old user,

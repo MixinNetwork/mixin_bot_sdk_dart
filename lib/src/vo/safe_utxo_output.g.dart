@@ -28,6 +28,7 @@ SafeUtxoOutput _$SafeUtxoOutputFromJson(Map<String, dynamic> json) =>
       signedBy: json['signed_by'] as String,
       signedAt: json['signed_at'] as String,
       spentAt: json['spent_at'] as String,
+      inscriptionHash: json['inscription_hash'] as String?,
     );
 
 Map<String, dynamic> _$SafeUtxoOutputToJson(SafeUtxoOutput instance) =>
@@ -50,4 +51,5 @@ Map<String, dynamic> _$SafeUtxoOutputToJson(SafeUtxoOutput instance) =>
       'signed_by': instance.signedBy,
       'signed_at': instance.signedAt,
       'spent_at': instance.spentAt,
+      'inscription_hash': instance.inscriptionHash,
     };
