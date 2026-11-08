@@ -24,6 +24,7 @@ class SafeUtxoOutput with Equatable {
     required this.signedBy,
     required this.signedAt,
     required this.spentAt,
+    this.inscriptionHash,
   });
 
   factory SafeUtxoOutput.fromJson(Map<String, dynamic> json) =>
@@ -83,6 +84,9 @@ class SafeUtxoOutput with Equatable {
   @JsonKey(name: 'spent_at')
   final String spentAt;
 
+  @JsonKey(name: 'inscription_hash')
+  final String? inscriptionHash;
+
   Map<String, dynamic> toJson() => _$SafeUtxoOutputToJson(this);
 
   @override
@@ -105,6 +109,7 @@ class SafeUtxoOutput with Equatable {
     signedBy,
     signedAt,
     spentAt,
+    inscriptionHash,
   ];
 }
 

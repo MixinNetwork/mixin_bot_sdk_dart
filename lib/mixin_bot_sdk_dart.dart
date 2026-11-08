@@ -30,6 +30,7 @@ export 'src/util/key.dart';
 export 'src/util/safe.dart';
 export 'src/util/string_extension.dart';
 export 'src/util/tip.dart';
+export 'src/version.dart';
 export 'src/vo/account.dart';
 export 'src/vo/address.dart';
 export 'src/vo/address_fee.dart';
