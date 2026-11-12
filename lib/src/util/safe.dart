@@ -9,6 +9,9 @@ import 'package:thirds/blake3.dart';
 import '../../mixin_bot_sdk_dart.dart';
 import 'encoder.dart';
 import 'multisigs.dart';
+import 'safe_signer_sync.dart'
+    if (dart.library.io) 'safe_signer_isolate.dart'
+    as signer_impl;
 
 class WithdrawalTransactionRecipient implements SafeTransactionRecipient {
   WithdrawalTransactionRecipient({
@@ -298,3 +301,27 @@ String signSafeTransaction({
   }
   return encodeSafeTransaction(tx, sigs: signaturesMap);
 }
+
+/// Signs a safe transaction and returns the signed raw transaction, so a
+/// caller can supply its own signing isolate.
+typedef SafeTransactionSigner =
+    Future<String> Function({
+      required SafeTransaction tx,
+      required List<SafeUtxoOutput> utxos,
+      required List<String> views,
+      required Key privateKey,
+    });
+
+/// Returns the signed raw transaction of [tx], computed on a signer isolate
+/// shared by every call from the same isolate, except in a web build.
+Future<String> signSafeTransactionInIsolate({
+  required SafeTransaction tx,
+  required List<SafeUtxoOutput> utxos,
+  required List<String> views,
+  required Key privateKey,
+}) => signer_impl.signOnSignerIsolate(
+  tx: tx,
+  utxos: utxos,
+  views: views,
+  privateKey: privateKey,
+);
