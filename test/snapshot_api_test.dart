@@ -32,7 +32,7 @@ void main() {
         testPrint(e.error);
       }
     }
-  });
+  }, skip: snapshotId.isEmpty ? 'set snapshotId in test/config.dart' : null);
 
   test('test getSnapshotsByAssetId', () async {
     try {
@@ -58,7 +58,7 @@ void main() {
         testPrint(e.error);
       }
     }
-  });
+  }, skip: traceId.isEmpty ? 'set traceId in test/config.dart' : null);
 
   test('test getTicker', () async {
     try {
