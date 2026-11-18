@@ -7,8 +7,8 @@ import 'package:uuid/uuid.dart';
 
 import '../mixin_bot_sdk_dart.dart';
 
-// The Mixin API and the Go and Node.js bot SDKs use tokens that expire 5
-// minutes after they are issued.
+// Match the Go and Node.js bot SDKs, whose tokens expire 5 minutes after they
+// are issued.
 const _authTokenLifetime = Duration(minutes: 5);
 
 String signAuthTokenWithRSA(
