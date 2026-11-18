@@ -7,7 +7,6 @@ part 'live_message.g.dart';
 @JsonSerializable()
 @JsonStringToInt()
 class LiveMessage {
-  // ignore: avoid_positional_boolean_parameters
   LiveMessage(this.width, this.height, this.thumbUrl, this.url, this.shareable);
 
   factory LiveMessage.fromJson(Map<String, dynamic> json) =>
