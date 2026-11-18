@@ -1,3 +1,7 @@
+## 1.5.4
+* Authentication tokens expire 5 minutes after `iat` (was 365 days), as in the Go and Node.js bot SDKs. `iat` and `exp` come from the same clock read.
+* Add `SafeUtxoOutput.inscriptionHash` and `createSafeDepositEntries` (#156).
+
 ## 1.5.3
 * Require `equatable: ^2.1.0`. Models use `with Equatable`, which fails to compile against equatable 2.0.x ("Can't use 'Equatable' as a mixin because it has constructors").
 
