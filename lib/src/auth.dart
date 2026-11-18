@@ -7,6 +7,10 @@ import 'package:uuid/uuid.dart';
 
 import '../mixin_bot_sdk_dart.dart';
 
+// Match the Go and Node.js bot SDKs, whose tokens expire 5 minutes after they
+// are issued.
+const _authTokenLifetime = Duration(minutes: 5);
+
 String signAuthTokenWithRSA(
   String? userId,
   String? sessionId,
@@ -69,14 +73,12 @@ String _signAuthenticationToken(
   final bs = utf8.encode(method + uri + body);
 
   final hash = sha256.convert(bs);
+  final issuedAt = DateTime.now().millisecondsSinceEpoch ~/ 1000;
   final jwt = JWT({
     'uid': userId,
     'sid': sessionId,
-    'iat': (DateTime.now().millisecondsSinceEpoch / 1000).floor(),
-    'exp':
-        (DateTime.now().add(const Duration(days: 365)).millisecondsSinceEpoch /
-                1000)
-            .floor(),
+    'iat': issuedAt,
+    'exp': issuedAt + _authTokenLifetime.inSeconds,
     'jti': const Uuid().v4(),
     'sig': hex.encode(hash.bytes),
     'scp': scp ?? 'FULL',
