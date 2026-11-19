@@ -64,6 +64,7 @@ class MixinLogInterceptor extends Interceptor {
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+    if (!_request) return handler.next(options);
     logPrint('*** Request ***');
     _printKV('uri', options.uri);
     //options.headers;
@@ -83,7 +84,12 @@ class MixinLogInterceptor extends Interceptor {
     }
     if (_requestHeader) {
       logPrint('headers:');
-      options.headers.forEach((key, dynamic v) => _printKV(' $key', v));
+      options.headers.forEach(
+        (key, dynamic v) => _printKV(
+          ' $key',
+          key.toLowerCase() == 'authorization' ? '<redacted>' : v,
+        ),
+      );
     }
     if (_requestBody) {
       _printKV('data isEmpty', options.data?.toString().trim().isEmpty ?? true);
@@ -100,6 +106,7 @@ class MixinLogInterceptor extends Interceptor {
     Response<dynamic> response,
     ResponseInterceptorHandler handler,
   ) {
+    if (!_request) return handler.next(response);
     logPrint('*** Response ***');
     _printResponse(response);
     handler.next(response);
