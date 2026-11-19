@@ -142,17 +142,6 @@ class SafeTransaction {
   final List<String> reference;
 }
 
-@Deprecated('use UserTransactionRecipient instead')
-UserTransactionRecipient buildSafeTransactionRecipient({
-  required List<String> members,
-  required int threshold,
-  required String amount,
-}) => UserTransactionRecipient(
-  members: members,
-  threshold: threshold,
-  amount: amount,
-);
-
 /// Get unspent utxos for recipients.
 ///
 /// return param1: the amount that we need to get more utxos
