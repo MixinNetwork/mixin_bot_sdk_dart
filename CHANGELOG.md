@@ -2,6 +2,7 @@
 * **Breaking:** `signAuthTokenWithEdDSA` and `signAuthTokenWithRSA` take a `requestId` after `body`, which becomes the token's `jti`. The server now rejects a token whose `jti` is not the `X-Request-Id` of the request (`request_id_mismatch`). Send the same ID in that header.
 * `Client` sends an `X-Request-Id` on every request and signs it as the `jti`. An `X-Request-Id` set by the caller is kept.
 * **Breaking:** remove the deprecated `AccountApi.createUsers` (use `UserApi.createUsers`), `AccountApi.deactiveVerification` (use `deactivateVerification`), `AccountApi.deactive` (use `deactivate`), `Client.transferApi` (use `utxoApi`) and `buildSafeTransactionRecipient` (use `UserTransactionRecipient`).
+* The log interceptor prints `<redacted>` for the `Authorization` header, and prints nothing at `HttpLogLevel.none` (#154).
 
 ## 1.5.4
 * Authentication tokens expire 5 minutes after `iat` (was 365 days), as in the Go and Node.js bot SDKs. `iat` and `exp` come from the same clock read.
