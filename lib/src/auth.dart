@@ -17,9 +17,9 @@ String signAuthTokenWithRSA(
   String? scp,
   String method,
   String uri,
-  String body, {
-  required String requestId,
-}) => _signAuthenticationToken(
+  String body,
+  String requestId,
+) => _signAuthenticationToken(
   userId,
   sessionId,
   privateKey,
@@ -27,8 +27,8 @@ String signAuthTokenWithRSA(
   method,
   uri,
   body,
+  requestId,
   true,
-  requestId: requestId,
 );
 
 String signAuthTokenWithEdDSA(
@@ -38,8 +38,8 @@ String signAuthTokenWithEdDSA(
   String? scp,
   String method,
   String uri,
-  String body, {
-  required String requestId,
+  String body,
+  String requestId, {
   String? aud,
 }) => _signAuthenticationToken(
   userId,
@@ -49,9 +49,9 @@ String signAuthTokenWithEdDSA(
   method,
   uri,
   body,
+  requestId,
   false,
   aud: aud,
-  requestId: requestId,
 );
 
 String _signAuthenticationToken(
@@ -62,8 +62,8 @@ String _signAuthenticationToken(
   String method,
   String uri,
   String body,
+  String requestId,
   bool isRSA, {
-  required String requestId,
   String? aud,
 }) {
   if ([userId, sessionId].any((element) => element?.isEmpty ?? true)) {

@@ -62,7 +62,7 @@ class Client {
                     options.method,
                     options.uri.toString().substring(options.baseUrl.length),
                     body,
-                    requestId: requestId,
+                    requestId,
                   );
               options.headers['Authorization'] = 'Bearer $authToken';
               handler.next(options);
