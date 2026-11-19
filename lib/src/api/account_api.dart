@@ -154,19 +154,6 @@ class AccountApi {
         Account.fromJson,
       );
 
-  @Deprecated('use userApi#createUser')
-  Future<MixinResponse<User>> createUsers(AccountRequest request) =>
-      MixinResponse.request<User>(
-        dio.post('/users', data: request),
-        User.fromJson,
-      );
-
-  @Deprecated('Use deactivateVerification instead')
-  Future<MixinResponse<VerificationResponse>> deactiveVerification(
-    String id,
-    String code,
-  ) => deactivateVerification(id, code);
-
   Future<MixinResponse<VerificationResponse>> deactivateVerification(
     String id,
     String code,
@@ -180,10 +167,6 @@ class AccountApi {
     ),
     VerificationResponse.fromJson,
   );
-
-  @Deprecated('Use deactivate instead')
-  Future<MixinResponse<void>> deactive(DeactivateRequest request) =>
-      deactivate(request);
 
   Future<MixinResponse<void>> deactivate(DeactivateRequest request) =>
       MixinResponse.requestVoid(dio.post('/me/deactivate', data: request));

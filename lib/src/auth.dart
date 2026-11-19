@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:convert/convert.dart';
 import 'package:crypto/crypto.dart';
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
-import 'package:uuid/uuid.dart';
 
 import '../mixin_bot_sdk_dart.dart';
 
@@ -19,6 +18,7 @@ String signAuthTokenWithRSA(
   String method,
   String uri,
   String body,
+  String requestId,
 ) => _signAuthenticationToken(
   userId,
   sessionId,
@@ -27,6 +27,7 @@ String signAuthTokenWithRSA(
   method,
   uri,
   body,
+  requestId,
   true,
 );
 
@@ -37,7 +38,8 @@ String signAuthTokenWithEdDSA(
   String? scp,
   String method,
   String uri,
-  String body, {
+  String body,
+  String requestId, {
   String? aud,
 }) => _signAuthenticationToken(
   userId,
@@ -47,6 +49,7 @@ String signAuthTokenWithEdDSA(
   method,
   uri,
   body,
+  requestId,
   false,
   aud: aud,
 );
@@ -59,6 +62,7 @@ String _signAuthenticationToken(
   String method,
   String uri,
   String body,
+  String requestId,
   bool isRSA, {
   String? aud,
 }) {
@@ -79,7 +83,10 @@ String _signAuthenticationToken(
     'sid': sessionId,
     'iat': issuedAt,
     'exp': issuedAt + _authTokenLifetime.inSeconds,
-    'jti': const Uuid().v4(),
+    // The server rejects a token whose jti is not the X-Request-Id of the
+    // request (request_id_mismatch), so the caller sends this ID in that
+    // header.
+    'jti': requestId,
     'sig': hex.encode(hash.bytes),
     'scp': scp ?? 'FULL',
   });
